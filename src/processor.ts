@@ -14,11 +14,9 @@ vault
     });
     ctx.meter.Counter("cumulative_borrow_amount").add(event.data_typed.amount, {
       coin: event.type_arguments[0],
-      // borrower: ctx.transaction.sender,
     });
     ctx.meter.Counter("cumulative_borrow_fee").add(event.data_typed.fee, {
       coin: event.type_arguments[0],
-      // borrower: ctx.transaction.sender,
     });
   })
   .onEventRepayEvent((event, ctx) => {
