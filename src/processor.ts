@@ -1,13 +1,15 @@
 import { oracle, vault } from "./types/aptos/mod";
 
+const START_VERSION = 283621865
+
 oracle
-  .bind({ startVersion: 277151455 })
+  .bind({ startVersion: START_VERSION })
   .onEntryUpdate((call, ctx) => {
     ctx.meter.Counter("count_update_oracle").add(1);
   });
 
 vault
-  .bind({ startVersion: 278887758 })
+  .bind({ startVersion: START_VERSION })
   .onEventBorrowEvent((event, ctx) => {
     ctx.meter.Counter("count_borrow").add(1);
     ctx.meter
