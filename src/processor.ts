@@ -1,10 +1,6 @@
-import { oracle, vault } from "./types/aptos/mod";
+import { oracle, vault, stability_pool } from "./types/aptos/mod";
 
 const START_VERSION = 283621865;
-
-oracle.bind({ startVersion: START_VERSION }).onEntryUpdate((call, ctx) => {
-  ctx.meter.Counter("count_update_oracle").add(1);
-});
 
 vault
   .bind({ startVersion: START_VERSION })
@@ -47,3 +43,26 @@ vault
         coin: event.type_arguments[0],
       });
   });
+
+stability_pool
+  .bind({ startVersion: START_VERSION })
+  .onEventDepositEvent((event, ctx) => {
+    ctx.meter.Counter("count_deposit_stability").add(1, {
+      account: ctx.transaction.sender,
+    });
+    ctx.meter.Counter("total_stability").add(event.data_typed.amount, {
+      account: ctx.transaction.sender,
+    });
+  })
+  .onEventWithdrawEvent((event, ctx) => {
+    ctx.meter.Counter("count_withdraw_stability").add(1, {
+      account: ctx.transaction.sender,
+    });
+    ctx.meter.Counter("total_stability").sub(event.data_typed.amount, {
+      account: ctx.transaction.sender,
+    });
+  });
+
+oracle.bind({ startVersion: START_VERSION }).onEntryUpdate((call, ctx) => {
+  ctx.meter.Counter("count_update_oracle").add(1);
+});
