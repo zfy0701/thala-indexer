@@ -1,6 +1,6 @@
-import { oracle, vault, stability_pool } from "./types/aptos/mod";
+import { vault, stability_pool } from "./types/aptos/testnet/mod";
 
-const START_VERSION = 283621865;
+const START_VERSION = 340033099;
 
 vault
   .bind({ startVersion: START_VERSION })
@@ -62,7 +62,3 @@ stability_pool
       account: ctx.transaction.sender,
     });
   });
-
-oracle.bind({ startVersion: START_VERSION }).onEntryUpdate((call, ctx) => {
-  ctx.meter.Counter("count_update_oracle").add(1);
-});
