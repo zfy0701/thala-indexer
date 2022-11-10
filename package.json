@@ -10,6 +10,7 @@
     "postinstall": "sentio gen"
   },
   "dependencies": {
+    "@manahippo/coin-list": "^1.0.22",
     "@sentio/sdk": "^1.26.4"
   },
   "devDependencies": {
