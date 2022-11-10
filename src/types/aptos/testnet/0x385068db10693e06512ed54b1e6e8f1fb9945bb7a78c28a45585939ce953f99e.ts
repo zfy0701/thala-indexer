@@ -5,21 +5,23 @@
 /* Generated modules for account 0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e */
 
 import { aptos } from "@sentio/sdk";
-import { Address, MoveModule } from "aptos/src/generated";
+import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 export namespace lp_coin {
   export class LP<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP";
     dummy_field: Boolean;
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e","name":"lp_coin","friends":[],"exposed_functions":[],"structs":[{"name":"LP","is_native":false,"abilities":[],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
   );
 }
 
-function loadAllTypes(registry: aptos.TypeRegistry) {
-  registry.load(lp_coin.ABI);
+function loadAllTypes(_r: aptos.TypeRegistry) {
+  _r.load(lp_coin.ABI);
 }

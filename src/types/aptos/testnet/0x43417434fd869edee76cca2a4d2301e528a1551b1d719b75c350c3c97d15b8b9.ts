@@ -5,14 +5,14 @@
 /* Generated modules for account 0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9 */
 
 import { aptos } from "@sentio/sdk";
-import { Address, MoveModule } from "aptos/src/generated";
+import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 import { coin, account, event } from "@sentio/sdk/lib/builtin/aptos/0x1";
 import { lp_coin } from "./0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e";
 
 export namespace math {
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"math","friends":[],"exposed_functions":[{"name":"min_u64","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u64"]},{"name":"mul_div","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64"],"return":["u64"]},{"name":"mul_div_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u128","u128"],"return":["u64"]},{"name":"mul_to_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u128"]},{"name":"overflow_add","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u128"],"return":["u128"]},{"name":"pow_10","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u8"],"return":["u64"]},{"name":"sqrt","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128"],"return":["u64"]}],"structs":[]}'
@@ -21,6 +21,8 @@ export namespace math {
 
 export namespace u256 {
   export class DU256 {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::DU256";
     v0: bigint;
     v1: bigint;
     v2: bigint;
@@ -32,14 +34,16 @@ export namespace u256 {
   }
 
   export class U256 {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256";
     v0: bigint;
     v1: bigint;
     v2: bigint;
     v3: bigint;
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"u256","friends":[],"exposed_functions":[{"name":"add","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"as_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["u128"]},{"name":"as_u64","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["u64"]},{"name":"compare","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["u8"]},{"name":"div","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"from_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"from_u64","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"get","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","u64"],"return":["u64"]},{"name":"mul","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"shl","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","u8"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"shr","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","u8"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"sub","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256","0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]},{"name":"zero","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]}],"structs":[{"name":"DU256","is_native":false,"abilities":["copy","drop","store"],"generic_type_params":[],"fields":[{"name":"v0","type":"u64"},{"name":"v1","type":"u64"},{"name":"v2","type":"u64"},{"name":"v3","type":"u64"},{"name":"v4","type":"u64"},{"name":"v5","type":"u64"},{"name":"v6","type":"u64"},{"name":"v7","type":"u64"}]},{"name":"U256","is_native":false,"abilities":["copy","drop","store"],"generic_type_params":[],"fields":[{"name":"v0","type":"u64"},{"name":"v1","type":"u64"},{"name":"v2","type":"u64"},{"name":"v3","type":"u64"}]}]}'
@@ -89,15 +93,21 @@ export class coins extends aptos.AptosBaseProcessor {
 
 export namespace coins {
   export class BTC {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::coins::BTC";
     dummy_field: Boolean;
   }
 
   export class Caps<T0> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::coins::Caps";
     mint: coin.MintCapability<T0>;
     burn: coin.BurnCapability<T0>;
   }
 
   export class USDT {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::coins::USDT";
     dummy_field: Boolean;
   }
 
@@ -113,8 +123,8 @@ export namespace coins {
     type_arguments: [];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"coins","friends":[],"exposed_functions":[{"name":"mint_coin","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]},{"name":"register_coins","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[{"name":"BTC","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Caps","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"mint","type":"0x1::coin::MintCapability<T0>"},{"name":"burn","type":"0x1::coin::BurnCapability<T0>"}]},{"name":"USDT","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
@@ -123,15 +133,19 @@ export namespace coins {
 
 export namespace curves {
   export class Stable {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::curves::Stable";
     dummy_field: Boolean;
   }
 
   export class Uncorrelated {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::curves::Uncorrelated";
     dummy_field: Boolean;
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"curves","friends":[],"exposed_functions":[{"name":"is_stable","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_uncorrelated","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]}],"structs":[{"name":"Stable","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Uncorrelated","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
@@ -203,12 +217,16 @@ export class faucet extends aptos.AptosBaseProcessor {
 
 export namespace faucet {
   export class Faucet<T0> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::faucet::Faucet";
     deposit: coin.Coin<T0>;
     per_request: bigint;
     period: bigint;
   }
 
   export class Restricted<T0> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::faucet::Restricted";
     since: bigint;
   }
 
@@ -236,8 +254,8 @@ export namespace faucet {
     type_arguments: [string];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"faucet","friends":[],"exposed_functions":[{"name":"change_settings","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"change_settings_internal","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"create_faucet","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"create_faucet_internal","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","u64","u64"],"return":[]},{"name":"deposit","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]},{"name":"deposit_internal","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address","0x1::coin::Coin<T0>"],"return":[]},{"name":"request","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"request_internal","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":["0x1::coin::Coin<T0>"]}],"structs":[{"name":"Faucet","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"deposit","type":"0x1::coin::Coin<T0>"},{"name":"per_request","type":"u64"},{"name":"period","type":"u64"}]},{"name":"Restricted","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"since","type":"u64"}]}]}'
@@ -245,8 +263,8 @@ export namespace faucet {
 }
 
 export namespace router {
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"router","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","u64","0x1::coin::Coin<T1>","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>"]},{"name":"calc_optimal_coin_values","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["u64","u64","u64","u64"],"return":["u64","u64"]},{"name":"convert_with_current_price","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64"],"return":["u64"]},{"name":"get_amount_in","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"get_amount_out","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"get_cumulative_prices","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u128","u128","u64"]},{"name":"get_decimals_scales","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"get_reserves_for_lp_coins","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["u64"],"return":["u64","u64"]},{"name":"get_reserves_size","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"is_swap_exists","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"register_pool","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>","u64","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"swap_coin_for_coin_unchecked","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","u64"],"return":["0x1::coin::Coin<T1>"]},{"name":"swap_coin_for_exact_coin","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"swap_exact_coin_for_coin","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","u64"],"return":["0x1::coin::Coin<T1>"]}],"structs":[]}'
@@ -381,8 +399,8 @@ export namespace scripts {
     type_arguments: [string, string, string];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"register_pool","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"register_pool_and_add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"swap","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"swap_into","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
@@ -391,11 +409,13 @@ export namespace scripts {
 
 export namespace uq64x64 {
   export class UQ64x64 {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64";
     v: bigint;
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"uq64x64","friends":[],"exposed_functions":[{"name":"compare","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64","&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"],"return":["u8"]},{"name":"decode","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"],"return":["u64"]},{"name":"div","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64","u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"]},{"name":"encode","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"]},{"name":"fraction","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"]},{"name":"is_zero","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"],"return":["bool"]},{"name":"mul","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64","u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"]},{"name":"to_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::uq64x64::UQ64x64"],"return":["u128"]}],"structs":[{"name":"UQ64x64","is_native":false,"abilities":["copy","drop","store"],"generic_type_params":[],"fields":[{"name":"v","type":"u128"}]}]}'
@@ -459,10 +479,14 @@ export class emergency extends aptos.AptosBaseProcessor {
 
 export namespace emergency {
   export class Disabled {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::emergency::Disabled";
     dummy_field: Boolean;
   }
 
   export class Emergency {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::emergency::Emergency";
     dummy_field: Boolean;
   }
 
@@ -482,8 +506,8 @@ export namespace emergency {
     type_arguments: [];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"emergency","friends":[],"exposed_functions":[{"name":"assert_no_emergency","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"disable_forever","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"is_disabled","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_emergency","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"pause","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"resume","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[{"name":"Disabled","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Emergency","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
@@ -525,6 +549,8 @@ export class lp_account extends aptos.AptosBaseProcessor {
 
 export namespace lp_account {
   export class CapabilityStorage {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::lp_account::CapabilityStorage";
     signer_cap: account.SignerCapability;
   }
 
@@ -534,8 +560,8 @@ export namespace lp_account {
     type_arguments: [];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"lp_account","friends":[],"exposed_functions":[{"name":"initialize_lp_account","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<u8>"],"return":[]},{"name":"retrieve_signer_cap","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":["0x1::account::SignerCapability"]}],"structs":[{"name":"CapabilityStorage","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
@@ -543,8 +569,8 @@ export namespace lp_account {
 }
 
 export namespace coin_helper {
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"coin_helper","friends":[],"exposed_functions":[{"name":"assert_is_coin","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"compare","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["0x1::comparator::Result"]},{"name":"generate_lp_name_and_symbol","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["0x1::string::String","0x1::string::String"]},{"name":"is_sorted","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"supply","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u128"]}],"structs":[]}'
@@ -563,6 +589,18 @@ export class dao_storage extends aptos.AptosBaseProcessor {
 
   static bind(options: Partial<aptos.AptosBindOptions> = {}): dao_storage {
     return new dao_storage({ ...dao_storage.DEFAULT_OPTIONS, ...options });
+  }
+
+  onEventStorageCreatedEvent(
+    func: (
+      event: dao_storage.StorageCreatedEventInstance,
+      ctx: aptos.AptosContext
+    ) => void
+  ): dao_storage {
+    this.onEvent(func, {
+      type: "dao_storage::StorageCreatedEvent",
+    });
+    return this;
   }
 
   onEventCoinDepositedEvent(
@@ -589,18 +627,6 @@ export class dao_storage extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  onEventStorageCreatedEvent(
-    func: (
-      event: dao_storage.StorageCreatedEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
-  ): dao_storage {
-    this.onEvent(func, {
-      type: "dao_storage::StorageCreatedEvent",
-    });
-    return this;
-  }
-
   loadTypesInternal(registry: aptos.TypeRegistry) {
     loadAllTypes(registry);
   }
@@ -608,6 +634,8 @@ export class dao_storage extends aptos.AptosBaseProcessor {
 
 export namespace dao_storage {
   export class CoinDepositedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::CoinDepositedEvent";
     x_val: bigint;
     y_val: bigint;
   }
@@ -619,6 +647,8 @@ export namespace dao_storage {
   }
 
   export class CoinWithdrawnEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::CoinWithdrawnEvent";
     x_val: bigint;
     y_val: bigint;
   }
@@ -630,6 +660,8 @@ export namespace dao_storage {
   }
 
   export class EventsStore<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::EventsStore";
     storage_registered_handle: event.EventHandle<
       dao_storage.StorageCreatedEvent<T0, T1, T2>
     >;
@@ -642,11 +674,15 @@ export namespace dao_storage {
   }
 
   export class Storage<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::Storage";
     coin_x: coin.Coin<T0>;
     coin_y: coin.Coin<T1>;
   }
 
   export class StorageCreatedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::StorageCreatedEvent";
     dummy_field: Boolean;
   }
 
@@ -656,8 +692,8 @@ export namespace dao_storage {
     type_arguments: [string, string, string];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"dao_storage","friends":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool"],"exposed_functions":[{"name":"deposit","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["address","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"],"return":[]},{"name":"register","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"withdraw","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","address","u64","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]}],"structs":[{"name":"CoinDepositedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"x_val","type":"u64"},{"name":"y_val","type":"u64"}]},{"name":"CoinWithdrawnEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"x_val","type":"u64"},{"name":"y_val","type":"u64"}]},{"name":"EventsStore","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"storage_registered_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::StorageCreatedEvent<T0, T1, T2>>"},{"name":"coin_deposited_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::CoinDepositedEvent<T0, T1, T2>>"},{"name":"coin_withdrawn_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::CoinWithdrawnEvent<T0, T1, T2>>"}]},{"name":"Storage","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"coin_x","type":"0x1::coin::Coin<T0>"},{"name":"coin_y","type":"0x1::coin::Coin<T1>"}]},{"name":"StorageCreatedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
@@ -665,8 +701,8 @@ export namespace dao_storage {
 }
 
 export namespace stable_curve {
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"stable_curve","friends":[],"exposed_functions":[{"name":"coin_in","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u64","u64","u128","u128"],"return":["u128"]},{"name":"coin_out","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u64","u64","u128","u128"],"return":["u128"]},{"name":"lp_value","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u64","u128","u64"],"return":["0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::u256::U256"]}],"structs":[]}'
@@ -704,6 +740,18 @@ export class liquidity_pool extends aptos.AptosBaseProcessor {
     return this;
   }
 
+  onEventPoolCreatedEvent(
+    func: (
+      event: liquidity_pool.PoolCreatedEventInstance,
+      ctx: aptos.AptosContext
+    ) => void
+  ): liquidity_pool {
+    this.onEvent(func, {
+      type: "liquidity_pool::PoolCreatedEvent",
+    });
+    return this;
+  }
+
   onEventLiquidityAddedEvent(
     func: (
       event: liquidity_pool.LiquidityAddedEventInstance,
@@ -728,30 +776,6 @@ export class liquidity_pool extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  onEventOracleUpdatedEvent(
-    func: (
-      event: liquidity_pool.OracleUpdatedEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
-  ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::OracleUpdatedEvent",
-    });
-    return this;
-  }
-
-  onEventPoolCreatedEvent(
-    func: (
-      event: liquidity_pool.PoolCreatedEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
-  ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::PoolCreatedEvent",
-    });
-    return this;
-  }
-
   onEventSwapEvent(
     func: (
       event: liquidity_pool.SwapEventInstance,
@@ -764,6 +788,18 @@ export class liquidity_pool extends aptos.AptosBaseProcessor {
     return this;
   }
 
+  onEventOracleUpdatedEvent(
+    func: (
+      event: liquidity_pool.OracleUpdatedEventInstance,
+      ctx: aptos.AptosContext
+    ) => void
+  ): liquidity_pool {
+    this.onEvent(func, {
+      type: "liquidity_pool::OracleUpdatedEvent",
+    });
+    return this;
+  }
+
   loadTypesInternal(registry: aptos.TypeRegistry) {
     loadAllTypes(registry);
   }
@@ -771,6 +807,8 @@ export class liquidity_pool extends aptos.AptosBaseProcessor {
 
 export namespace liquidity_pool {
   export class EventsStore<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::EventsStore";
     pool_created_handle: event.EventHandle<
       liquidity_pool.PoolCreatedEvent<T0, T1, T2>
     >;
@@ -787,6 +825,8 @@ export namespace liquidity_pool {
   }
 
   export class LiquidityAddedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityAddedEvent";
     added_x_val: bigint;
     added_y_val: bigint;
     lp_tokens_received: bigint;
@@ -799,6 +839,8 @@ export namespace liquidity_pool {
   }
 
   export class LiquidityPool<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityPool";
     coin_x_reserve: coin.Coin<T0>;
     coin_y_reserve: coin.Coin<T1>;
     last_block_timestamp: bigint;
@@ -811,6 +853,8 @@ export namespace liquidity_pool {
   }
 
   export class LiquidityRemovedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityRemovedEvent";
     returned_x_val: bigint;
     returned_y_val: bigint;
     lp_tokens_burned: bigint;
@@ -823,6 +867,8 @@ export namespace liquidity_pool {
   }
 
   export class OracleUpdatedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::OracleUpdatedEvent";
     last_price_x_cumulative: bigint;
     last_price_y_cumulative: bigint;
   }
@@ -834,10 +880,14 @@ export namespace liquidity_pool {
   }
 
   export class PoolAccountCapability {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::PoolAccountCapability";
     signer_cap: account.SignerCapability;
   }
 
   export class PoolCreatedEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::PoolCreatedEvent";
     creator: Address;
   }
 
@@ -848,6 +898,8 @@ export namespace liquidity_pool {
   }
 
   export class SwapEvent<T0, T1, T2> {
+    static TYPE_QNAME =
+      "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::SwapEvent";
     x_in: bigint;
     x_out: bigint;
     y_in: bigint;
@@ -866,32 +918,32 @@ export namespace liquidity_pool {
     type_arguments: [];
   }
 
-  export function loadTypes(registry: aptos.TypeRegistry) {
-    loadAllTypes(registry);
+  export function loadTypes(_r: aptos.TypeRegistry) {
+    loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
     '{"address":"0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9","name":"liquidity_pool","friends":[],"exposed_functions":[{"name":"burn","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"get_cumulative_prices","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u128","u128","u64"]},{"name":"get_decimals_scales","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"get_fees_config","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64","u64"]},{"name":"get_reserves_size","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"is_pool_exists","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"mint","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"],"return":["0x1::coin::Coin<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>"]},{"name":"register","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"swap","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","u64","0x1::coin::Coin<T1>","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]}],"structs":[{"name":"EventsStore","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pool_created_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::PoolCreatedEvent<T0, T1, T2>>"},{"name":"liquidity_added_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityAddedEvent<T0, T1, T2>>"},{"name":"liquidity_removed_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityRemovedEvent<T0, T1, T2>>"},{"name":"swap_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::SwapEvent<T0, T1, T2>>"},{"name":"oracle_updated_handle","type":"0x1::event::EventHandle<0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::OracleUpdatedEvent<T0, T1, T2>>"}]},{"name":"LiquidityAddedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"added_x_val","type":"u64"},{"name":"added_y_val","type":"u64"},{"name":"lp_tokens_received","type":"u64"}]},{"name":"LiquidityPool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"coin_x_reserve","type":"0x1::coin::Coin<T0>"},{"name":"coin_y_reserve","type":"0x1::coin::Coin<T1>"},{"name":"last_block_timestamp","type":"u64"},{"name":"last_price_x_cumulative","type":"u128"},{"name":"last_price_y_cumulative","type":"u128"},{"name":"lp_mint_cap","type":"0x1::coin::MintCapability<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>"},{"name":"lp_burn_cap","type":"0x1::coin::BurnCapability<0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e::lp_coin::LP<T0, T1, T2>>"},{"name":"x_scale","type":"u64"},{"name":"y_scale","type":"u64"}]},{"name":"LiquidityRemovedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"returned_x_val","type":"u64"},{"name":"returned_y_val","type":"u64"},{"name":"lp_tokens_burned","type":"u64"}]},{"name":"OracleUpdatedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"last_price_x_cumulative","type":"u128"},{"name":"last_price_y_cumulative","type":"u128"}]},{"name":"PoolAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"PoolCreatedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"x_in","type":"u64"},{"name":"x_out","type":"u64"},{"name":"y_in","type":"u64"},{"name":"y_out","type":"u64"}]}]}'
   );
 }
 
-function loadAllTypes(registry: aptos.TypeRegistry) {
-  coin.loadTypes(registry);
-  account.loadTypes(registry);
-  event.loadTypes(registry);
-  lp_coin.loadTypes(registry);
+function loadAllTypes(_r: aptos.TypeRegistry) {
+  coin.loadTypes(_r);
+  account.loadTypes(_r);
+  event.loadTypes(_r);
+  lp_coin.loadTypes(_r);
 
-  registry.load(math.ABI);
-  registry.load(u256.ABI);
-  registry.load(coins.ABI);
-  registry.load(curves.ABI);
-  registry.load(faucet.ABI);
-  registry.load(router.ABI);
-  registry.load(scripts.ABI);
-  registry.load(uq64x64.ABI);
-  registry.load(emergency.ABI);
-  registry.load(lp_account.ABI);
-  registry.load(coin_helper.ABI);
-  registry.load(dao_storage.ABI);
-  registry.load(stable_curve.ABI);
-  registry.load(liquidity_pool.ABI);
+  _r.load(math.ABI);
+  _r.load(u256.ABI);
+  _r.load(coins.ABI);
+  _r.load(curves.ABI);
+  _r.load(faucet.ABI);
+  _r.load(router.ABI);
+  _r.load(scripts.ABI);
+  _r.load(uq64x64.ABI);
+  _r.load(emergency.ABI);
+  _r.load(lp_account.ABI);
+  _r.load(coin_helper.ABI);
+  _r.load(dao_storage.ABI);
+  _r.load(stable_curve.ABI);
+  _r.load(liquidity_pool.ABI);
 }
