@@ -1,9 +1,11 @@
 import { vault, stability_pool } from "./types/aptos/testnet/mod";
 
 import { CoinListClient } from "@manahippo/coin-list";
+import { BigDecimal } from "@sentio/sdk";
+import { conversion } from "@sentio/sdk/lib/utils";
 
 const START_VERSION = 344228659;
-const MOD_MANTISSA = 100000000n;
+const MOD_DECIMALS = 8;
 
 const coinListClient = new CoinListClient("testnet");
 
@@ -15,12 +17,12 @@ vault
     });
     ctx.meter
       .Counter("cumulative_borrow_amount")
-      .add(event.data_typed.amount / MOD_MANTISSA, {
+      .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
     ctx.meter
       .Counter("cumulative_borrow_fee")
-      .add(event.data_typed.fee / MOD_MANTISSA, {
+      .add(scaleDown(event.data_typed.fee, MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
   })
@@ -30,7 +32,7 @@ vault
     });
     ctx.meter
       .Counter("cumulative_repay_amount")
-      .add(event.data_typed.amount / MOD_MANTISSA, {
+      .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
   })
@@ -65,7 +67,7 @@ stability_pool
     });
     ctx.meter
       .Counter("total_stability")
-      .add(event.data_typed.amount / MOD_MANTISSA, {
+      .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
         account: ctx.transaction.sender,
       });
   })
@@ -75,7 +77,11 @@ stability_pool
     });
     ctx.meter
       .Counter("total_stability")
-      .sub(event.data_typed.amount / MOD_MANTISSA, {
+      .sub(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
         account: ctx.transaction.sender,
       });
   });
+
+function scaleDown(n: bigint, decimals: number): BigDecimal {
+  return conversion.toBigDecimal(n).dividedBy(10 ** decimals);
+}
