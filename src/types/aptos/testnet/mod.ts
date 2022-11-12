@@ -97,7 +97,7 @@ export namespace init {
     type_arguments: [];
   }
 
-  export interface InitializeCollateralPayload
+  export interface InitializeCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
@@ -691,13 +691,13 @@ export namespace vault {
     type_arguments: [string];
   }
 
-  export interface DisableRedemptionModePayload
+  export interface DisableRedemptionModePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
-  export interface EnableRedemptionModePayload
+  export interface EnableRedemptionModePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
@@ -721,13 +721,13 @@ export namespace vault {
     type_arguments: [];
   }
 
-  export interface SetMcrBpsPayload
+  export interface SetMcrBpsPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface SetMcrPenaltyMultiplierPayload
+  export interface SetMcrPenaltyMultiplierPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
@@ -739,13 +739,13 @@ export namespace vault {
     type_arguments: [];
   }
 
-  export interface SetMintCapPayload
+  export interface SetMintCapPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface SetRedemptionFeeBpsPayload
+  export interface SetRedemptionFeeBpsPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
@@ -1042,55 +1042,55 @@ export namespace oracle {
     tier_2: option.Option<number>;
   }
 
-  export interface InitializeCollateralPayload
+  export interface InitializeCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
-  export interface InitializePythPayload
+  export interface InitializePythPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[string]> {
     arguments_typed: [string];
     type_arguments: [string];
   }
 
-  export interface InitializeSimpleOraclePayload
+  export interface InitializeSimpleOraclePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
-  export interface SetPriceDeviateRejectPctPayload
+  export interface SetPriceDeviateRejectPctPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface SetPythConfigPayload
+  export interface SetPythConfigPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[string]> {
     arguments_typed: [string];
     type_arguments: [string];
   }
 
-  export interface SetStalenessThresholdsPayload
+  export interface SetStalenessThresholdsPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface SetTier1OraclePayload
+  export interface SetTier1OraclePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[number]> {
     arguments_typed: [number];
     type_arguments: [string];
   }
 
-  export interface SetTier2OraclePayload
+  export interface SetTier2OraclePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[number]> {
     arguments_typed: [number];
     type_arguments: [string];
   }
 
-  export interface UpdateSimplePricePayload
+  export interface UpdateSimplePricePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string];
@@ -1274,7 +1274,7 @@ export namespace fees_scripts {
     type_arguments: [];
   }
 
-  export interface TransferFeesPayload
+  export interface TransferFeesPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string];
@@ -1441,49 +1441,49 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
 }
 
 export namespace vault_scripts {
-  export interface BorrowPayload
+  export interface BorrowPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface CloseVaultPayload
+  export interface CloseVaultPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
-  export interface DepositCollateralPayload
+  export interface DepositCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface LiquidatePayload
+  export interface LiquidatePayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string];
   }
 
-  export interface OpenVaultPayload
+  export interface OpenVaultPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface RedeemCollateralPayload
+  export interface RedeemCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface RepayPayload
+  export interface RepayPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export interface WithdrawCollateralPayload
+  export interface WithdrawCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
@@ -2028,7 +2028,7 @@ export class stability_pool_scripts extends aptos.AptosBaseProcessor {
 }
 
 export namespace stability_pool_scripts {
-  export interface ClaimDistributedCollateralPayload
+  export interface ClaimDistributedCollateralPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
@@ -2121,20 +2121,21 @@ export class collateral_auction_scripts extends aptos.AptosBaseProcessor {
 }
 
 export namespace collateral_auction_scripts {
-  export interface BidPayload
+  export interface BidPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface RepayDebtPayload
+  export interface RepayDebtPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface ResetPayload extends aptos.TypedEntryFunctionPayload<[]> {
-    arguments_typed: [];
+  export interface ResetPayload<T0 = any>
+    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    arguments_typed: [bigint];
     type_arguments: [string];
   }
 

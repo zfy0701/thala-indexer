@@ -111,7 +111,7 @@ export namespace coins {
     dummy_field: Boolean;
   }
 
-  export interface MintCoinPayload
+  export interface MintCoinPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[Address, bigint]> {
     arguments_typed: [Address, bigint];
     type_arguments: [string];
@@ -230,25 +230,25 @@ export namespace faucet {
     since: bigint;
   }
 
-  export interface ChangeSettingsPayload
+  export interface ChangeSettingsPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface CreateFaucetPayload
+  export interface CreateFaucetPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
-  export interface DepositPayload
+  export interface DepositPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[Address, bigint]> {
     arguments_typed: [Address, bigint];
     type_arguments: [string];
   }
 
-  export interface RequestPayload
+  export interface RequestPayload<T0 = any>
     extends aptos.TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string];
@@ -363,37 +363,40 @@ export class scripts extends aptos.AptosBaseProcessor {
 }
 
 export namespace scripts {
-  export interface AddLiquidityPayload
+  export interface AddLiquidityPayload<T0 = any, T1 = any, T2 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string];
   }
 
-  export interface RegisterPoolPayload
+  export interface RegisterPoolPayload<T0 = any, T1 = any, T2 = any>
     extends aptos.TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string, string, string];
   }
 
-  export interface RegisterPoolAndAddLiquidityPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+  export interface RegisterPoolAndAddLiquidityPayload<
+    T0 = any,
+    T1 = any,
+    T2 = any
+  > extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string];
   }
 
-  export interface RemoveLiquidityPayload
+  export interface RemoveLiquidityPayload<T0 = any, T1 = any, T2 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string, string, string];
   }
 
-  export interface SwapPayload
+  export interface SwapPayload<T0 = any, T1 = any, T2 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string, string, string];
   }
 
-  export interface SwapIntoPayload
+  export interface SwapIntoPayload<T0 = any, T1 = any, T2 = any>
     extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string, string, string];
