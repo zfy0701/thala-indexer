@@ -2,7 +2,7 @@ import { vault, stability_pool } from "./types/aptos/testnet/mod";
 
 import { CoinListClient } from "@manahippo/coin-list";
 
-const START_VERSION = 340033099;
+const START_VERSION = 344228659;
 const MOD_MANTISSA = 100000000n;
 
 const coinListClient = new CoinListClient("testnet");
