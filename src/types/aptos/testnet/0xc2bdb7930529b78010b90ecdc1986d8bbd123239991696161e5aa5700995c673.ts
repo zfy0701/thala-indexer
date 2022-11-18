@@ -7,13 +7,8 @@
 import { aptos } from "@sentio/sdk";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
-import {
-  coin,
-  event,
-  option,
-  table_with_length,
-} from "@sentio/sdk/lib/builtin/aptos/0x1";
-import { u256 } from "./0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9";
+import * as _0x1 from "@sentio/sdk/lib/builtin/aptos/0x1";
+import * as _0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9 from "./0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9";
 
 export namespace math {
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -157,7 +152,7 @@ export namespace vault {
   export class Vault<T0> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::vault::Vault";
-    collateral: coin.Coin<T0>;
+    collateral: _0x1.coin.Coin<T0>;
     debt: bigint;
     events: vault.VaultEvents<T0>;
   }
@@ -165,11 +160,11 @@ export namespace vault {
   export class VaultEvents<T0> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::vault::VaultEvents";
-    borrow_events: event.EventHandle<vault.BorrowEvent>;
-    repay_events: event.EventHandle<vault.RepayEvent>;
-    deposit_events: event.EventHandle<vault.DepositEvent>;
-    withdraw_events: event.EventHandle<vault.WithdrawEvent>;
-    liquidation_events: event.EventHandle<vault.LiquidationEvent>;
+    borrow_events: _0x1.event.EventHandle<vault.BorrowEvent>;
+    repay_events: _0x1.event.EventHandle<vault.RepayEvent>;
+    deposit_events: _0x1.event.EventHandle<vault.DepositEvent>;
+    withdraw_events: _0x1.event.EventHandle<vault.WithdrawEvent>;
+    liquidation_events: _0x1.event.EventHandle<vault.LiquidationEvent>;
   }
 
   export class VaultTotals<T0> {
@@ -397,7 +392,7 @@ export namespace manager {
   export class Manager {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::manager::Manager";
-    redemption_fees: coin.Coin<apd_coin.APD>;
+    redemption_fees: _0x1.coin.Coin<apd_coin.APD>;
     redemption_mode_enabled: Boolean;
     events: manager.ManagerEvents;
   }
@@ -405,8 +400,8 @@ export namespace manager {
   export class ManagerEvents {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::manager::ManagerEvents";
-    redemption_mode_enabled_events: event.EventHandle<manager.RedemptionModeEnabledEvent>;
-    redemption_mode_disabled_events: event.EventHandle<manager.RedemptionModeDisabledEvent>;
+    redemption_mode_enabled_events: _0x1.event.EventHandle<manager.RedemptionModeEnabledEvent>;
+    redemption_mode_disabled_events: _0x1.event.EventHandle<manager.RedemptionModeDisabledEvent>;
   }
 
   export class RedemptionModeDisabledEvent {
@@ -469,9 +464,9 @@ export namespace apd_coin {
   export class Capabilities {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::apd_coin::Capabilities";
-    burn_capability: coin.BurnCapability<apd_coin.APD>;
-    freeze_capability: coin.FreezeCapability<apd_coin.APD>;
-    mint_capability: coin.MintCapability<apd_coin.APD>;
+    burn_capability: _0x1.coin.BurnCapability<apd_coin.APD>;
+    freeze_capability: _0x1.coin.FreezeCapability<apd_coin.APD>;
+    mint_capability: _0x1.coin.MintCapability<apd_coin.APD>;
   }
 
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -501,7 +496,7 @@ export namespace fixed_point {
   export class FixedPoint {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::fixed_point::FixedPoint";
-    val: u256.U256;
+    val: _0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9.u256.U256;
   }
 
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -596,8 +591,8 @@ export namespace sorted_vaults {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::sorted_vaults::Node";
     nominal_cr: bigint;
-    next: option.Option<Address>;
-    prev: option.Option<Address>;
+    next: _0x1.option.Option<Address>;
+    prev: _0x1.option.Option<Address>;
     address_index: bigint;
   }
 
@@ -616,12 +611,12 @@ export namespace sorted_vaults {
   export class SortedVaults<T0> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::sorted_vaults::SortedVaults";
-    head: option.Option<Address>;
-    tail: option.Option<Address>;
-    nodes: table_with_length.TableWithLength<Address, sorted_vaults.Node>;
+    head: _0x1.option.Option<Address>;
+    tail: _0x1.option.Option<Address>;
+    nodes: _0x1.table_with_length.TableWithLength<Address, sorted_vaults.Node>;
     addresses: Address[];
-    add_events: event.EventHandle<sorted_vaults.AddEvent>;
-    remove_events: event.EventHandle<sorted_vaults.RemoveEvent>;
+    add_events: _0x1.event.EventHandle<sorted_vaults.AddEvent>;
+    remove_events: _0x1.event.EventHandle<sorted_vaults.RemoveEvent>;
   }
 
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -818,20 +813,20 @@ export namespace iterable_table {
   export class IterableTable<T0, T1> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::iterable_table::IterableTable";
-    inner: table_with_length.TableWithLength<
+    inner: _0x1.table_with_length.TableWithLength<
       T0,
       iterable_table.IterableValue<T0, T1>
     >;
-    head: option.Option<T0>;
-    tail: option.Option<T0>;
+    head: _0x1.option.Option<T0>;
+    tail: _0x1.option.Option<T0>;
   }
 
   export class IterableValue<T0, T1> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::iterable_table::IterableValue";
     val: T1;
-    prev: option.Option<T0>;
-    next: option.Option<T0>;
+    prev: _0x1.option.Option<T0>;
+    next: _0x1.option.Option<T0>;
   }
 
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -1009,7 +1004,7 @@ export namespace stability_pool {
   export class DistributedCollateral<T0> {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::stability_pool::DistributedCollateral";
-    collateral: coin.Coin<T0>;
+    collateral: _0x1.coin.Coin<T0>;
   }
 
   export class DistributedCollateralEvent {
@@ -1029,7 +1024,7 @@ export namespace stability_pool {
   export class StabilityPool {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::stability_pool::StabilityPool";
-    apd: coin.Coin<apd_coin.APD>;
+    apd: _0x1.coin.Coin<apd_coin.APD>;
     total_share: bigint;
     num_depositors: bigint;
     collaterals_per_share: iterable_table.IterableTable<
@@ -1042,10 +1037,10 @@ export namespace stability_pool {
   export class StabilityPoolEvents {
     static TYPE_QNAME =
       "0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673::stability_pool::StabilityPoolEvents";
-    deposit_events: event.EventHandle<stability_pool.DepositEvent>;
-    withdraw_events: event.EventHandle<stability_pool.WithdrawEvent>;
-    debt_absorption_events: event.EventHandle<stability_pool.DebtAbsorptionEvent>;
-    distributed_collateral_events: event.EventHandle<stability_pool.DistributedCollateralEvent>;
+    deposit_events: _0x1.event.EventHandle<stability_pool.DepositEvent>;
+    withdraw_events: _0x1.event.EventHandle<stability_pool.WithdrawEvent>;
+    debt_absorption_events: _0x1.event.EventHandle<stability_pool.DebtAbsorptionEvent>;
+    distributed_collateral_events: _0x1.event.EventHandle<stability_pool.DistributedCollateralEvent>;
   }
 
   export class WithdrawEvent {
@@ -1186,12 +1181,11 @@ export namespace stability_pool_scripts {
   );
 }
 
-function loadAllTypes(_r: aptos.TypeRegistry) {
-  coin.loadTypes(_r);
-  event.loadTypes(_r);
-  option.loadTypes(_r);
-  table_with_length.loadTypes(_r);
-  u256.loadTypes(_r);
+export function loadAllTypes(_r: aptos.TypeRegistry) {
+  _0x1.loadAllTypes(_r);
+  _0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9.loadAllTypes(
+    _r
+  );
 
   _r.load(math.ABI);
   _r.load(vault.ABI);
