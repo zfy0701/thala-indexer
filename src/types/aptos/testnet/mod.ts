@@ -7,35 +7,28 @@
 import { aptos } from "@sentio/sdk";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
-import {
-  coin,
-  account,
-  option,
-  event,
-  table_with_length,
-  table,
-} from "@sentio/sdk/lib/builtin/aptos/0x1";
-import { fixed_point64 } from "./0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673";
+import * as _0x1 from "@sentio/sdk/lib/builtin/aptos/0x1";
+import * as _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673 from "./0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673";
 
 export namespace fees {
   export class CollateralFees<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::fees::CollateralFees";
-    redemption_fees: coin.Coin<T0>;
-    liquidation_fees: coin.Coin<T0>;
-    leftover_auction_collateral: coin.Coin<T0>;
+    redemption_fees: _0x1.coin.Coin<T0>;
+    liquidation_fees: _0x1.coin.Coin<T0>;
+    leftover_auction_collateral: _0x1.coin.Coin<T0>;
   }
 
   export class Fees {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::fees::Fees";
-    mod_fees: coin.Coin<mod_coin.MOD>;
+    mod_fees: _0x1.coin.Coin<mod_coin.MOD>;
   }
 
   export class FeesAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::fees::FeesAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -544,8 +537,10 @@ export namespace vault {
     collateral_penalty: bigint;
     liquidator_bonus: bigint;
     liquidation_fee: bigint;
-    stability_pool_repayment: option.Option<vault.StabilityPoolRepayment<T0>>;
-    collateral_auction_id: option.Option<bigint>;
+    stability_pool_repayment: _0x1.option.Option<
+      vault.StabilityPoolRepayment<T0>
+    >;
+    collateral_auction_id: _0x1.option.Option<bigint>;
   }
 
   export interface LiquidationEventInstance
@@ -692,7 +687,7 @@ export namespace vault {
   export class Vault<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::vault::Vault";
-    collateral: coin.Coin<T0>;
+    collateral: _0x1.coin.Coin<T0>;
     debt: bigint;
     events: vault.VaultEvents<T0>;
   }
@@ -700,25 +695,27 @@ export namespace vault {
   export class VaultAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::vault::VaultAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class VaultCollateralEvents<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::vault::VaultCollateralEvents";
-    set_mcr_bps_events: event.EventHandle<vault.SetMcrBpsEvent<T0>>;
-    set_redemption_fee_bps_events: event.EventHandle<
+    set_mcr_bps_events: _0x1.event.EventHandle<vault.SetMcrBpsEvent<T0>>;
+    set_redemption_fee_bps_events: _0x1.event.EventHandle<
       vault.SetRedemptionFeeBpsEvent<T0>
     >;
-    set_mcr_penalty_multiplier_events: event.EventHandle<
+    set_mcr_penalty_multiplier_events: _0x1.event.EventHandle<
       vault.SetMcrPenaltyMultiplierEvent<T0>
     >;
-    set_freeze_collateral: event.EventHandle<vault.FreezeCollateralEvent<T0>>;
-    set_freeze_liquidations: event.EventHandle<
+    set_freeze_collateral: _0x1.event.EventHandle<
+      vault.FreezeCollateralEvent<T0>
+    >;
+    set_freeze_liquidations: _0x1.event.EventHandle<
       vault.FreezeLiquidationsEvent<T0>
     >;
-    set_mint_cap_events: event.EventHandle<vault.SetMintCapEvent<T0>>;
-    redemption_mode_toggle_events: event.EventHandle<
+    set_mint_cap_events: _0x1.event.EventHandle<vault.SetMintCapEvent<T0>>;
+    redemption_mode_toggle_events: _0x1.event.EventHandle<
       vault.RedemptionModeToggleEvent<T0>
     >;
   }
@@ -739,12 +736,12 @@ export namespace vault {
   export class VaultEvents<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::vault::VaultEvents";
-    borrow_events: event.EventHandle<vault.BorrowEvent<T0>>;
-    repay_events: event.EventHandle<vault.RepayEvent<T0>>;
-    deposit_events: event.EventHandle<vault.DepositEvent<T0>>;
-    withdraw_events: event.EventHandle<vault.WithdrawEvent<T0>>;
-    liquidation_events: event.EventHandle<vault.LiquidationEvent<T0>>;
-    vault_updated_events: event.EventHandle<vault.VaultUpdatedEvent<T0>>;
+    borrow_events: _0x1.event.EventHandle<vault.BorrowEvent<T0>>;
+    repay_events: _0x1.event.EventHandle<vault.RepayEvent<T0>>;
+    deposit_events: _0x1.event.EventHandle<vault.DepositEvent<T0>>;
+    withdraw_events: _0x1.event.EventHandle<vault.WithdrawEvent<T0>>;
+    liquidation_events: _0x1.event.EventHandle<vault.LiquidationEvent<T0>>;
+    vault_updated_events: _0x1.event.EventHandle<vault.VaultUpdatedEvent<T0>>;
   }
 
   export class VaultParams {
@@ -760,10 +757,10 @@ export namespace vault {
   export class VaultParamsEvents {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::vault::VaultParamsEvents";
-    set_borrow_fee_bps_events: event.EventHandle<vault.SetBorrowFeeBpsEvent>;
-    set_liquidation_fee_bps_events: event.EventHandle<vault.SetLiquidationFeeBpsEvent>;
-    set_liquidator_bonus_bps_events: event.EventHandle<vault.SetLiquidatorBonusBpsEvent>;
-    set_min_debt_amount_events: event.EventHandle<vault.SetMinDebtAmountEvent>;
+    set_borrow_fee_bps_events: _0x1.event.EventHandle<vault.SetBorrowFeeBpsEvent>;
+    set_liquidation_fee_bps_events: _0x1.event.EventHandle<vault.SetLiquidationFeeBpsEvent>;
+    set_liquidator_bonus_bps_events: _0x1.event.EventHandle<vault.SetLiquidatorBonusBpsEvent>;
+    set_min_debt_amount_events: _0x1.event.EventHandle<vault.SetMinDebtAmountEvent>;
   }
 
   export class VaultTotals<T0> {
@@ -1048,13 +1045,13 @@ export namespace oracle {
   export class CoinPrice<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::CoinPrice";
-    last_price: fixed_point64.FixedPoint64;
+    last_price: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
   }
 
   export class OracleAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::OracleAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class OracleChangeEvent<T0> {
@@ -1074,14 +1071,14 @@ export namespace oracle {
   export class OracleEvents<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::OracleEvents";
-    price_events: event.EventHandle<oracle.PriceEvent<T0>>;
-    simple_oracle_update_events: event.EventHandle<
+    price_events: _0x1.event.EventHandle<oracle.PriceEvent<T0>>;
+    simple_oracle_update_events: _0x1.event.EventHandle<
       oracle.SimpleOracleUpdateEvent<T0>
     >;
-    pyth_config_change_events: event.EventHandle<
+    pyth_config_change_events: _0x1.event.EventHandle<
       oracle.PythConfigChangeEvent<T0>
     >;
-    oracle_change_events: event.EventHandle<oracle.OracleChangeEvent<T0>>;
+    oracle_change_events: _0x1.event.EventHandle<oracle.OracleChangeEvent<T0>>;
   }
 
   export class OracleParams<T0> {
@@ -1095,7 +1092,7 @@ export namespace oracle {
   export class PriceEvent<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::PriceEvent";
-    price: fixed_point64.FixedPoint64;
+    price: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
   }
 
   export interface PriceEventInstance
@@ -1126,7 +1123,7 @@ export namespace oracle {
   export class SimpleOracleUpdateEvent<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::SimpleOracleUpdateEvent";
-    price: fixed_point64.FixedPoint64;
+    price: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
   }
 
   export interface SimpleOracleUpdateEventInstance
@@ -1138,7 +1135,7 @@ export namespace oracle {
   export class SimplePriceStore<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::SimplePriceStore";
-    last_price: fixed_point64.FixedPoint64;
+    last_price: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
     last_timestamp: bigint;
   }
 
@@ -1146,7 +1143,7 @@ export namespace oracle {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::oracle::Tiering";
     tier_1: number;
-    tier_2: option.Option<number>;
+    tier_2: _0x1.option.Option<number>;
   }
 
   export interface InitializePythPayload<T0 = any>
@@ -1257,7 +1254,7 @@ export namespace manager {
   export class ManagerAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::manager::ManagerAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export interface ChangeManagerAddressPayload
@@ -1287,9 +1284,9 @@ export namespace mod_coin {
   export class Capabilities {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::mod_coin::Capabilities";
-    burn_capability: coin.BurnCapability<mod_coin.MOD>;
-    freeze_capability: coin.FreezeCapability<mod_coin.MOD>;
-    mint_capability: coin.MintCapability<mod_coin.MOD>;
+    burn_capability: _0x1.coin.BurnCapability<mod_coin.MOD>;
+    freeze_capability: _0x1.coin.FreezeCapability<mod_coin.MOD>;
+    mint_capability: _0x1.coin.MintCapability<mod_coin.MOD>;
   }
 
   export class MOD {
@@ -1394,17 +1391,17 @@ export namespace sorted_vaults {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::sorted_vaults::Node";
     nominal_cr: bigint;
-    next: option.Option<Address>;
-    prev: option.Option<Address>;
+    next: _0x1.option.Option<Address>;
+    prev: _0x1.option.Option<Address>;
     address_index: bigint;
   }
 
   export class SortedVaults<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::sorted_vaults::SortedVaults";
-    head: option.Option<Address>;
-    tail: option.Option<Address>;
-    nodes: table_with_length.TableWithLength<Address, sorted_vaults.Node>;
+    head: _0x1.option.Option<Address>;
+    tail: _0x1.option.Option<Address>;
+    nodes: _0x1.table_with_length.TableWithLength<Address, sorted_vaults.Node>;
     addresses: Address[];
   }
 
@@ -1724,7 +1721,7 @@ export namespace stability_pool {
   export class DistributedCollateral<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::stability_pool::DistributedCollateral";
-    collateral: coin.Coin<T0>;
+    collateral: _0x1.coin.Coin<T0>;
   }
 
   export class DistributedCollateralEvent {
@@ -1744,25 +1741,25 @@ export namespace stability_pool {
   export class StabilityPool {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::stability_pool::StabilityPool";
-    stability: coin.Coin<mod_coin.MOD>;
+    stability: _0x1.coin.Coin<mod_coin.MOD>;
     reward_distributor: reward_distributor.RewardDistributor;
-    deposit_timestamps: table.Table<Address, bigint>;
+    deposit_timestamps: _0x1.table.Table<Address, bigint>;
     events: stability_pool.StabilityPoolEvents;
   }
 
   export class StabilityPoolAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::stability_pool::StabilityPoolAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class StabilityPoolEvents {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::stability_pool::StabilityPoolEvents";
-    deposit_events: event.EventHandle<stability_pool.DepositEvent>;
-    withdraw_events: event.EventHandle<stability_pool.WithdrawEvent>;
-    debt_absorption_events: event.EventHandle<stability_pool.DebtAbsorptionEvent>;
-    distributed_collateral_events: event.EventHandle<stability_pool.DistributedCollateralEvent>;
+    deposit_events: _0x1.event.EventHandle<stability_pool.DepositEvent>;
+    withdraw_events: _0x1.event.EventHandle<stability_pool.WithdrawEvent>;
+    debt_absorption_events: _0x1.event.EventHandle<stability_pool.DebtAbsorptionEvent>;
+    distributed_collateral_events: _0x1.event.EventHandle<stability_pool.DistributedCollateralEvent>;
   }
 
   export class StabilityPoolParamChangeEvent {
@@ -1783,7 +1780,7 @@ export namespace stability_pool {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::stability_pool::StabilityPoolParams";
     withdrawal_fee_max_bps: bigint;
-    events: event.EventHandle<stability_pool.StabilityPoolParamChangeEvent>;
+    events: _0x1.event.EventHandle<stability_pool.StabilityPoolParamChangeEvent>;
   }
 
   export class WithdrawEvent {
@@ -1902,15 +1899,15 @@ export namespace collateral_auction {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::collateral_auction::CollateralAuction";
     target_debt: bigint;
-    collateral: coin.Coin<T0>;
+    collateral: _0x1.coin.Coin<T0>;
     start_time_seconds: bigint;
-    start_price: fixed_point64.FixedPoint64;
+    start_price: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
   }
 
   export class CollateralAuctionAccountCapability {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::collateral_auction::CollateralAuctionAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class CollateralAuctionBadDebtEvent<T0> {
@@ -1956,19 +1953,19 @@ export namespace collateral_auction {
   export class CollateralAuctionEvents<T0> {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::collateral_auction::CollateralAuctionEvents";
-    auction_start_events: event.EventHandle<
+    auction_start_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionStartEvent<T0>
     >;
-    auction_bid_events: event.EventHandle<
+    auction_bid_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionBidEvent<T0>
     >;
-    auction_end_events: event.EventHandle<
+    auction_end_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionEndEvent<T0>
     >;
-    auction_repay_events: event.EventHandle<
+    auction_repay_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionRepayEvent<T0>
     >;
-    auction_bad_debt_events: event.EventHandle<
+    auction_bad_debt_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionBadDebtEvent<T0>
     >;
   }
@@ -1977,8 +1974,8 @@ export namespace collateral_auction {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::collateral_auction::CollateralAuctionParams";
     expiry_time_seconds: bigint;
-    start_price_increase_ratio: fixed_point64.FixedPoint64;
-    reserve_ratio: fixed_point64.FixedPoint64;
+    start_price_increase_ratio: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
+    reserve_ratio: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
   }
 
   export class CollateralAuctionRepayEvent<T0> {
@@ -2012,9 +2009,12 @@ export namespace collateral_auction {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::collateral_auction::CollateralAuctions";
     next_auction_id: bigint;
-    auctions: table.Table<bigint, collateral_auction.CollateralAuction<T0>>;
-    live_auctions: table.Table<bigint, Boolean>;
-    bad_auctions: table.Table<bigint, Boolean>;
+    auctions: _0x1.table.Table<
+      bigint,
+      collateral_auction.CollateralAuction<T0>
+    >;
+    live_auctions: _0x1.table.Table<bigint, Boolean>;
+    bad_auctions: _0x1.table.Table<bigint, Boolean>;
     params: collateral_auction.CollateralAuctionParams<T0>;
     events: collateral_auction.CollateralAuctionEvents<T0>;
   }
@@ -2032,15 +2032,21 @@ export namespace reward_distributor {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::reward_distributor::RewardDistributor";
     d: bigint;
-    p: fixed_point64.FixedPoint64;
+    p: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
     current_epoch: bigint;
     current_scale: bigint;
-    snapshots: table.Table<Address, reward_distributor.Snapshot>;
-    epoch_scale_sum: table.Table<
+    snapshots: _0x1.table.Table<Address, reward_distributor.Snapshot>;
+    epoch_scale_sum: _0x1.table.Table<
       string,
-      table.Table<bigint, table.Table<bigint, fixed_point64.FixedPoint64>>
+      _0x1.table.Table<
+        bigint,
+        _0x1.table.Table<
+          bigint,
+          _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64
+        >
+      >
     >;
-    e_t: table.Table<string, table.Table<Address, bigint>>;
+    e_t: _0x1.table.Table<string, _0x1.table.Table<Address, bigint>>;
     coins: string[];
   }
 
@@ -2048,8 +2054,11 @@ export namespace reward_distributor {
     static TYPE_QNAME =
       "0xa46f37ead5670b6862709a0f17f7464a767877cba7c3c18196bc8e1e0f3c3a89::reward_distributor::Snapshot";
     d_t: bigint;
-    p_t: fixed_point64.FixedPoint64;
-    s_t: table.Table<string, fixed_point64.FixedPoint64>;
+    p_t: _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64;
+    s_t: _0x1.table.Table<
+      string,
+      _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.fixed_point64.FixedPoint64
+    >;
     epoch_t: bigint;
     scale_t: bigint;
   }
@@ -2248,14 +2257,11 @@ export namespace collateral_auction_scripts {
   );
 }
 
-function loadAllTypes(_r: aptos.TypeRegistry) {
-  coin.loadTypes(_r);
-  account.loadTypes(_r);
-  option.loadTypes(_r);
-  event.loadTypes(_r);
-  table_with_length.loadTypes(_r);
-  table.loadTypes(_r);
-  fixed_point64.loadTypes(_r);
+export function loadAllTypes(_r: aptos.TypeRegistry) {
+  _0x1.loadAllTypes(_r);
+  _0xc2bdb7930529b78010b90ecdc1986d8bbd123239991696161e5aa5700995c673.loadAllTypes(
+    _r
+  );
 
   _r.load(fees.ABI);
   _r.load(init.ABI);

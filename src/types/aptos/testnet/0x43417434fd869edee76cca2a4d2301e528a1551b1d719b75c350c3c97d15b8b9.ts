@@ -7,8 +7,8 @@
 import { aptos } from "@sentio/sdk";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
-import { coin, account, event } from "@sentio/sdk/lib/builtin/aptos/0x1";
-import { lp_coin } from "./0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e";
+import * as _0x1 from "@sentio/sdk/lib/builtin/aptos/0x1";
+import * as _0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e from "./0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e";
 
 export namespace math {
   export function loadTypes(_r: aptos.TypeRegistry) {
@@ -101,8 +101,8 @@ export namespace coins {
   export class Caps<T0> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::coins::Caps";
-    mint: coin.MintCapability<T0>;
-    burn: coin.BurnCapability<T0>;
+    mint: _0x1.coin.MintCapability<T0>;
+    burn: _0x1.coin.BurnCapability<T0>;
   }
 
   export class USDT {
@@ -219,7 +219,7 @@ export namespace faucet {
   export class Faucet<T0> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::faucet::Faucet";
-    deposit: coin.Coin<T0>;
+    deposit: _0x1.coin.Coin<T0>;
     per_request: bigint;
     period: bigint;
   }
@@ -554,7 +554,7 @@ export namespace lp_account {
   export class CapabilityStorage {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::lp_account::CapabilityStorage";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export interface InitializeLpAccountPayload
@@ -665,13 +665,13 @@ export namespace dao_storage {
   export class EventsStore<T0, T1, T2> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::EventsStore";
-    storage_registered_handle: event.EventHandle<
+    storage_registered_handle: _0x1.event.EventHandle<
       dao_storage.StorageCreatedEvent<T0, T1, T2>
     >;
-    coin_deposited_handle: event.EventHandle<
+    coin_deposited_handle: _0x1.event.EventHandle<
       dao_storage.CoinDepositedEvent<T0, T1, T2>
     >;
-    coin_withdrawn_handle: event.EventHandle<
+    coin_withdrawn_handle: _0x1.event.EventHandle<
       dao_storage.CoinWithdrawnEvent<T0, T1, T2>
     >;
   }
@@ -679,8 +679,8 @@ export namespace dao_storage {
   export class Storage<T0, T1, T2> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::dao_storage::Storage";
-    coin_x: coin.Coin<T0>;
-    coin_y: coin.Coin<T1>;
+    coin_x: _0x1.coin.Coin<T0>;
+    coin_y: _0x1.coin.Coin<T1>;
   }
 
   export class StorageCreatedEvent<T0, T1, T2> {
@@ -812,17 +812,17 @@ export namespace liquidity_pool {
   export class EventsStore<T0, T1, T2> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::EventsStore";
-    pool_created_handle: event.EventHandle<
+    pool_created_handle: _0x1.event.EventHandle<
       liquidity_pool.PoolCreatedEvent<T0, T1, T2>
     >;
-    liquidity_added_handle: event.EventHandle<
+    liquidity_added_handle: _0x1.event.EventHandle<
       liquidity_pool.LiquidityAddedEvent<T0, T1, T2>
     >;
-    liquidity_removed_handle: event.EventHandle<
+    liquidity_removed_handle: _0x1.event.EventHandle<
       liquidity_pool.LiquidityRemovedEvent<T0, T1, T2>
     >;
-    swap_handle: event.EventHandle<liquidity_pool.SwapEvent<T0, T1, T2>>;
-    oracle_updated_handle: event.EventHandle<
+    swap_handle: _0x1.event.EventHandle<liquidity_pool.SwapEvent<T0, T1, T2>>;
+    oracle_updated_handle: _0x1.event.EventHandle<
       liquidity_pool.OracleUpdatedEvent<T0, T1, T2>
     >;
   }
@@ -844,13 +844,25 @@ export namespace liquidity_pool {
   export class LiquidityPool<T0, T1, T2> {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::LiquidityPool";
-    coin_x_reserve: coin.Coin<T0>;
-    coin_y_reserve: coin.Coin<T1>;
+    coin_x_reserve: _0x1.coin.Coin<T0>;
+    coin_y_reserve: _0x1.coin.Coin<T1>;
     last_block_timestamp: bigint;
     last_price_x_cumulative: bigint;
     last_price_y_cumulative: bigint;
-    lp_mint_cap: coin.MintCapability<lp_coin.LP<T0, T1, T2>>;
-    lp_burn_cap: coin.BurnCapability<lp_coin.LP<T0, T1, T2>>;
+    lp_mint_cap: _0x1.coin.MintCapability<
+      _0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e.lp_coin.LP<
+        T0,
+        T1,
+        T2
+      >
+    >;
+    lp_burn_cap: _0x1.coin.BurnCapability<
+      _0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e.lp_coin.LP<
+        T0,
+        T1,
+        T2
+      >
+    >;
     x_scale: bigint;
     y_scale: bigint;
   }
@@ -885,7 +897,7 @@ export namespace liquidity_pool {
   export class PoolAccountCapability {
     static TYPE_QNAME =
       "0x43417434fd869edee76cca2a4d2301e528a1551b1d719b75c350c3c97d15b8b9::liquidity_pool::PoolAccountCapability";
-    signer_cap: account.SignerCapability;
+    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class PoolCreatedEvent<T0, T1, T2> {
@@ -929,11 +941,11 @@ export namespace liquidity_pool {
   );
 }
 
-function loadAllTypes(_r: aptos.TypeRegistry) {
-  coin.loadTypes(_r);
-  account.loadTypes(_r);
-  event.loadTypes(_r);
-  lp_coin.loadTypes(_r);
+export function loadAllTypes(_r: aptos.TypeRegistry) {
+  _0x1.loadAllTypes(_r);
+  _0x385068db10693e06512ed54b1e6e8f1fb9945bb7a78c28a45585939ce953f99e.loadAllTypes(
+    _r
+  );
 
   _r.load(math.ABI);
   _r.load(u256.ABI);

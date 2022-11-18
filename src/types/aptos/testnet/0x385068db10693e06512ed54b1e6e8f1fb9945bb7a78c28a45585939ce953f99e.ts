@@ -22,6 +22,6 @@ export namespace lp_coin {
   );
 }
 
-function loadAllTypes(_r: aptos.TypeRegistry) {
+export function loadAllTypes(_r: aptos.TypeRegistry) {
   _r.load(lp_coin.ABI);
 }
