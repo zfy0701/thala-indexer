@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@manahippo/coin-list": "^1.0.22",
-    "@sentio/sdk": "^1.28.0"
+    "@sentio/sdk": "^1.29.0"
   },
   "devDependencies": {
     "@types/jest": "^29.0.0",
