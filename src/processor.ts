@@ -9,7 +9,7 @@ const START_VERSION = 345784333;
 const MOD_DECIMALS = 8;
 
 const coinListClient = new CoinListClient("testnet");
-const exporter = Exporter.register("VaultUpdated", "yU3V6zsg");
+const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaultsV59");
 
 vault
   .bind({ startVersion: START_VERSION })
