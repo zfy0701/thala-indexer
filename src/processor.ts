@@ -1,15 +1,18 @@
 import { vault } from "./types/aptos/testnet/mod";
 
 import { CoinListClient } from "@manahippo/coin-list";
-import { BigDecimal } from "@sentio/sdk";
+import { BigDecimal, Gauge } from "@sentio/sdk";
 import { conversion } from "@sentio/sdk/lib/utils";
 import { Exporter } from "@sentio/sdk/lib/core/exporter";
+import { getPriceByType } from "@sentio/sdk/lib/utils/price";
+import { APTOS_MAINNET_ID } from "@sentio/sdk/lib/utils/chain";
 
 const START_VERSION = 345784333;
 const MOD_DECIMALS = 8;
 
 const coinListClient = new CoinListClient("testnet");
 const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaultsV59");
+const coinPriceGauge = new Gauge("coin_price", { sparse: true });
 
 vault
   .bind({ startVersion: START_VERSION })
@@ -60,11 +63,25 @@ vault
         coin: event.type_arguments[0],
       });
   })
-  .onEventVaultUpdatedEvent((event, ctx) => {
+  .onEventVaultUpdatedEvent(async (event, ctx) => {
+    // a hack to bypass zero values, gonna remove this on later sdk release
+    if (coinPriceGauge.usage === 0) {
+      coinPriceGauge.record(ctx, 0, { coin: "na" });
+    }
+    let coinType = event.type_arguments[0];
+    let price = await getPriceByType(
+      // use mainnet price is fine
+      APTOS_MAINNET_ID,
+      coinType,
+      new Date(Number(ctx.transaction.timestamp) / 1000)
+    );
+
+    coinPriceGauge.record(ctx, price, { coin: coinType });
+
     const data = {
       version: event.version,
       account: event.data_typed.vault_addr,
-      coinType: event.type_arguments[0],
+      coinType,
       collateral: event.data_typed.collateral,
       debt: event.data_typed.debt,
     };
