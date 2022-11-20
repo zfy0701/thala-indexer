@@ -11,7 +11,7 @@ const START_VERSION = 345784333;
 const MOD_DECIMALS = 8;
 
 const coinListClient = new CoinListClient("testnet");
-const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaultsV59");
+const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaultsV2");
 const coinPriceGauge = new Gauge("coin_price", { sparse: true });
 
 vault
