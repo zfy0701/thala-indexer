@@ -927,10 +927,10 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
-"@manahippo/coin-list@^1.0.22":
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/@manahippo/coin-list/-/coin-list-1.0.22.tgz#d86c3cf86afa7775d3b8e36177fc21ea8b33c029"
-  integrity sha512-u/ycealxJz9VSFFAWgLfjSf3yLssn76VkKfWjDe/rYJ9mX5kEnHFRKHuddw8Z4UBUm0yeWgy+Cf1JP/ufJrm8A==
+"@manahippo/coin-list@^2.0.5":
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/@manahippo/coin-list/-/coin-list-2.0.5.tgz#9126e4e663fd5b855ae79324d6bffeaecf84cda1"
+  integrity sha512-C0U9C5/F6hItMdVJvRt/s03ymdrQYX0CyKJTQqzKbN0t1p27G7vOekrYW+bx/55QWTHsQX5lruGXIkvoWxNxdw==
   dependencies:
     "@manahippo/move-to-ts" "0.4.4"
     aptos "1.3.15"
