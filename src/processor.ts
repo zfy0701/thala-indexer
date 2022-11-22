@@ -11,8 +11,8 @@ const START_VERSION = 345784333;
 const MOD_DECIMALS = 8;
 
 const coinListClient = new CoinListClient("testnet");
-const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaultsV2");
-const coinPriceGauge = new Gauge("coin_price", { sparse: true });
+const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
+const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
 
 vault
   .bind({ startVersion: START_VERSION })
@@ -64,10 +64,6 @@ vault
       });
   })
   .onEventVaultUpdatedEvent(async (event, ctx) => {
-    // a hack to bypass zero values, gonna remove this on later sdk release
-    if (coinPriceGauge.usage === 0) {
-      coinPriceGauge.record(ctx, 0, { coin: "na" });
-    }
     let coinType = event.type_arguments[0];
     let price = await getPriceByType(
       // use mainnet price is fine
