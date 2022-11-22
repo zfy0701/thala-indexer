@@ -1,16 +1,32 @@
 import { vault } from "./types/aptos/testnet/mod";
 
-import { CoinListClient } from "@manahippo/coin-list";
 import { BigDecimal, Gauge } from "@sentio/sdk";
 import { conversion } from "@sentio/sdk/lib/utils";
 import { Exporter } from "@sentio/sdk/lib/core/exporter";
-import { getPriceByType } from "@sentio/sdk/lib/utils/price";
+import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
 import { APTOS_MAINNET_ID } from "@sentio/sdk/lib/utils/chain";
+
+interface CoinInfo {
+  address: string;
+  decimals: number;
+}
 
 const START_VERSION = 345784333;
 const MOD_DECIMALS = 8;
 
-const coinListClient = new CoinListClient("testnet");
+const COIN_INFO: { [key: string]: CoinInfo } = {
+  "0x1::aptos_coin::AptosCoin": {
+    address: "0x1::aptos_coin::AptosCoin",
+    decimals: 8,
+  },
+  "0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::TestCoinsV1::BTC":
+    {
+      address:
+        "0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::TestCoinsV1::BTC",
+      decimals: 8,
+    },
+};
+
 const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
 const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
 
@@ -45,32 +61,45 @@ vault
     ctx.meter.Counter("count_deposit_collateral").add(1, {
       coin: event.type_arguments[0],
     });
-    const coin = coinListClient.getCoinInfoByFullName(event.type_arguments[0])!;
+    const coin = event.type_arguments[0];
+    const coinInfo = COIN_INFO[coin];
     ctx.meter
       .Counter("cumulative_deposit_collateral_amount")
-      .add(scaleDown(event.data_typed.amount, coin.decimals), {
-        coin: coin.token_type.type,
+      .add(scaleDown(event.data_typed.amount, coinInfo.decimals), {
+        coin,
       });
   })
   .onEventWithdrawEvent((event, ctx) => {
     ctx.meter.Counter("count_withdraw_collateral").add(1, {
       coin: event.type_arguments[0],
     });
-    const coin = coinListClient.getCoinInfoByFullName(event.type_arguments[0])!;
+    const coin = event.type_arguments[0];
+    const coinInfo = COIN_INFO[coin];
     ctx.meter
       .Counter("cumulative_withdraw_collateral_amount")
-      .add(scaleDown(event.data_typed.amount, coin.decimals), {
+      .add(scaleDown(event.data_typed.amount, coinInfo.decimals), {
         coin: event.type_arguments[0],
       });
   })
   .onEventVaultUpdatedEvent(async (event, ctx) => {
     let coinType = event.type_arguments[0];
-    let price = await getPriceByType(
-      // use mainnet price is fine
-      APTOS_MAINNET_ID,
-      coinType,
-      new Date(Number(ctx.transaction.timestamp) / 1000)
-    );
+    let price = 0;
+    if (
+      coinType ===
+      "0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::TestCoinsV1::BTC"
+    ) {
+      price = await getPriceBySymbol(
+        "BTC",
+        new Date(Number(ctx.transaction.timestamp) / 1000)
+      );
+    } else {
+      price = await getPriceByType(
+        // use mainnet price is fine
+        APTOS_MAINNET_ID,
+        coinType,
+        new Date(Number(ctx.transaction.timestamp) / 1000)
+      );
+    }
 
     coinPriceGauge.record(ctx, price, { coin: coinType });
 
