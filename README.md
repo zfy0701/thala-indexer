@@ -1,3 +1,3 @@
 # Thala Processor
 
-Thala indexer powered by sentio
+Thala indexer powered by Sentio
