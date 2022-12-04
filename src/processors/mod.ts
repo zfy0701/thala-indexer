@@ -1,4 +1,4 @@
-import { vault } from "../types/aptos/testnet/mod";
+import { stability_pool, vault } from "../types/aptos/testnet/mod";
 import { scaleDown, getCoinDecimals } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
@@ -92,5 +92,22 @@ export function processor() {
         debt: event.data_typed.debt,
       };
       exporter.emit(ctx, data);
+    });
+
+  stability_pool
+    .bind({ startVersion: START_VERSION })
+    .onEventDepositEvent((event, ctx) => {
+      ctx.meter
+        .Counter("total_stability")
+        .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
+          account: event.data_typed.depositor,
+        });
+    })
+    .onEventWithdrawEvent((event, ctx) => {
+      ctx.meter
+        .Counter("total_stability")
+        .sub(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
+          account: event.data_typed.depositor,
+        });
     });
 }
