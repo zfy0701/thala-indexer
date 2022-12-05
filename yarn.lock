@@ -1036,10 +1036,10 @@
     "@noble/hashes" "~1.1.1"
     "@scure/base" "~1.1.0"
 
-"@sentio/sdk@^1.31.4":
-  version "1.31.4"
-  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-1.31.4.tgz#524487e15b6fd209221d6153b155d6477146f300"
-  integrity sha512-9nfDk1VsryG7cDvQb47WO/p2X8+YvGEO616vCfIsIzyfqB/D9ZU6Dac1lefJbA+LKo89D6aRL7CxffFVIoxiYw==
+"@sentio/sdk@^1.31.5":
+  version "1.31.5"
+  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-1.31.5.tgz#d312d262c6ef85f0983a0ca66e983d5ce7500ade"
+  integrity sha512-K30Vvx4QLQ770WTCFUxsvpAvsqyLrXc1kaaBJ6HYmSl+elKfVw8UUl2Pm2vSWEx7VOknI4a5Dh0c8iZxpxvG9Q==
   dependencies:
     "@ethersproject/providers" "~5.7.0"
     "@project-serum/anchor" "^0.25.0"
