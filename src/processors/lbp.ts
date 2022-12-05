@@ -86,7 +86,7 @@ function getPriceFromEvent(
     getCoinDecimals(coin0)
   );
   const balance1 = scaleDown(
-    event.data_typed.balance_0,
+    event.data_typed.balance_1,
     getCoinDecimals(coin1)
   );
 
