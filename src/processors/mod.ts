@@ -6,7 +6,7 @@ import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
 import { APTOS_MAINNET_ID } from "@sentio/sdk/lib/utils/chain";
 
-const START_VERSION = 345784333;
+const START_VERSION = 378452652;
 const MOD_DECIMALS = 8;
 
 const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
