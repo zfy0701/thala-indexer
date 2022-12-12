@@ -86,7 +86,7 @@ export function processor() {
 
       const data = {
         version: event.version,
-        account: event.data_typed.vault_addr,
+        account: event.data_typed.vault_address,
         coinType,
         collateral: event.data_typed.collateral,
         debt: event.data_typed.debt,
