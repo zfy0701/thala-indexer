@@ -47,17 +47,36 @@ export function processor() {
           coin3Price || 0,
         ];
         const assetInIndex = bigintToInteger(event.data_typed.asset_in_index);
-        const swapAmount = scaleDown(
+        const swapAmountIn = scaleDown(
           event.data_typed.amount_in,
           getCoinDecimals(event.type_arguments[assetInIndex])
         );
-        const volumeCoin0 = swapAmount.multipliedBy(
+        const volumeCoin0 = swapAmountIn.multipliedBy(
           relativePricesToCoin0[assetInIndex]
         );
+
+        const assetOutIndex = bigintToInteger(event.data_typed.asset_out_index);
+        const swapAmountOut = scaleDown(
+            event.data_typed.amount_out,
+            getCoinDecimals(event.type_arguments[assetOutIndex])
+        );
+
+        const coinIn = event.type_arguments[assetInIndex].split("::")[2];
+        const coinOut = event.type_arguments[assetOutIndex].split("::")[2];
+
+        const swapAttributes = {
+            coin_in: coinIn,
+            coin_out: coinOut,
+            amount_in: swapAmountIn,
+            amount_out: swapAmountOut,
+            fee_amount: event.data_typed.fee_amount,
+            type: "weighted",
+        }
 
         ctx.meter
           .Counter("weighted_volume_coin_0")
           .add(volumeCoin0, { poolTag });
+        ctx.logger.log(1, `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`, swapAttributes);
       }
     );
 }
