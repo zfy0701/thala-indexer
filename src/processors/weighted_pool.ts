@@ -65,8 +65,8 @@ export function processor() {
         const coinAddressOut = event.type_arguments[assetOutIndex];
 
         const swapAttributes = {
-            coin_in: coinAddressIn,
-            coin_out: coinAddressOut,
+            coin_address_in: coinAddressIn,
+            coin_address_out: coinAddressOut,
             amount_in: swapAmountIn,
             amount_out: swapAmountOut,
             fee_amount: event.data_typed.fee_amount,
