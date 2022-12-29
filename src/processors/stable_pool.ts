@@ -54,12 +54,12 @@ export function processor() {
           getCoinDecimals(event.type_arguments[assetOutIndex])
         );
 
-        const coinIn = event.type_arguments[assetInIndex].split("::")[2];
-        const coinOut = event.type_arguments[assetOutIndex].split("::")[2];
+        const coinAddressIn = event.type_arguments[assetInIndex];
+        const coinAddressOut = event.type_arguments[assetOutIndex];
 
         const swapAttributes = {
-            coin_in: coinIn,
-            coin_out: coinOut,
+            coin_address_in: coinAddressIn,
+            coin_address_out: coinAddressOut,
             amount_in: swapAmountIn,
             amount_out: swapAmountOut,
             fee_amount: event.data_typed.fee_amount,
@@ -67,7 +67,7 @@ export function processor() {
         }
 
         ctx.meter.Counter("stable_volume_coin_0").add(volumeCoin0, { poolTag });
-        ctx.logger.log(1, `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in stable_pool`, swapAttributes);
+        ctx.logger.log(1, `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in stable_pool`, swapAttributes);
       }
     );
 }
