@@ -11,7 +11,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@sentio/sdk": "^1.35.0"
+    "@sentio/sdk": "^1.37.3"
   },
   "devDependencies": {
     "@types/jest": "^29.2.3",
