@@ -4,7 +4,7 @@ import { scaleDown, getCoinDecimals } from "../utils";
 import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
-import { APTOS_MAINNET_ID } from "@sentio/sdk/lib/utils/chain";
+import { CHAIN_IDS } from "@sentio/sdk/lib/utils/chain";
 
 const START_VERSION = 378452652;
 const MOD_DECIMALS = 8;
@@ -73,7 +73,7 @@ export function processor() {
       } else {
         price = await getPriceByType(
           // use mainnet price is fine
-          APTOS_MAINNET_ID,
+          CHAIN_IDS.APTOS_MAINNET,
           coinType,
           new Date(Number(ctx.transaction.timestamp) / 1000)
         );
