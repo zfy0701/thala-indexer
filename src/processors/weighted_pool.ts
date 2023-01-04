@@ -2,7 +2,7 @@ import { weighted_pool } from "../types/aptos/testnet/amm";
 import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
-import { AptosContext } from "@sentio/sdk/lib/aptos";
+import { AptosContext } from "@sentio/sdk-aptos";
 
 const START_VERSION = 396264510;
 

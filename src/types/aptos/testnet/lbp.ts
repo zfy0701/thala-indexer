@@ -4,29 +4,38 @@
 
 /* Generated modules for account 0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04 */
 
-import { aptos } from "@sentio/sdk";
+import {
+  TypeRegistry,
+  AptosBindOptions,
+  AptosBaseProcessor,
+  TypedEventInstance,
+  AptosNetwork,
+  TypedEntryFunctionPayload,
+  AptosContext,
+  CallFilter,
+} from "@sentio/sdk-aptos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
-import * as _0x1 from "@sentio/sdk/lib/builtin/aptos/0x1";
+import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
 import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
 
-export class lbp extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class lbp extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("lbp", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): lbp {
+  static bind(options: Partial<AptosBindOptions> = {}): lbp {
     return new lbp({ ...lbp.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryGrantWhitelist(
-    func: (call: lbp.GrantWhitelistPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.GrantWhitelistPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -36,8 +45,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntryRevokeWhitelist(
-    func: (call: lbp.RevokeWhitelistPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.RevokeWhitelistPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -47,8 +56,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetEnabled(
-    func: (call: lbp.SetEnabledPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.SetEnabledPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -58,11 +67,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetMaxDurationSeconds(
-    func: (
-      call: lbp.SetMaxDurationSecondsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.SetMaxDurationSecondsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -72,8 +78,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetMaxSwapFeeBps(
-    func: (call: lbp.SetMaxSwapFeeBpsPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.SetMaxSwapFeeBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -83,11 +89,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetProtocolSwapFeePct(
-    func: (
-      call: lbp.SetProtocolSwapFeePctPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.SetProtocolSwapFeePctPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -97,8 +100,8 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetWeightSchedule(
-    func: (call: lbp.SetWeightSchedulePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp.SetWeightSchedulePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -108,7 +111,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventWhitelistEvent(
-    func: (event: lbp.WhitelistEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: lbp.WhitelistEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::WhitelistEvent",
@@ -117,7 +120,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventSetEnabledEvent(
-    func: (event: lbp.SetEnabledEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: lbp.SetEnabledEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::SetEnabledEvent",
@@ -126,10 +129,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventSetWeightScheduleEvent(
-    func: (
-      event: lbp.SetWeightScheduleEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: lbp.SetWeightScheduleEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::SetWeightScheduleEvent",
@@ -138,10 +138,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventPoolCreationEvent(
-    func: (
-      event: lbp.PoolCreationEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: lbp.PoolCreationEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::PoolCreationEvent",
@@ -150,7 +147,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventLiquidityEvent(
-    func: (event: lbp.LiquidityEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: lbp.LiquidityEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::LiquidityEvent",
@@ -159,7 +156,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventSwapEvent(
-    func: (event: lbp.SwapEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: lbp.SwapEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::SwapEvent",
@@ -168,10 +165,7 @@ export class lbp extends aptos.AptosBaseProcessor {
   }
 
   onEventLBPParamChangeEvent(
-    func: (
-      event: lbp.LBPParamChangeEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: lbp.LBPParamChangeEventInstance, ctx: AptosContext) => void
   ): lbp {
     this.onEvent(func, {
       type: "lbp::LBPParamChangeEvent",
@@ -179,7 +173,7 @@ export class lbp extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -236,7 +230,7 @@ export namespace lbp {
   }
 
   export interface LBPParamChangeEventInstance
-    extends aptos.TypedEventInstance<LBPParamChangeEvent> {
+    extends TypedEventInstance<LBPParamChangeEvent> {
     data_typed: LBPParamChangeEvent;
     type_arguments: [];
   }
@@ -264,7 +258,7 @@ export namespace lbp {
   }
 
   export interface LiquidityEventInstance
-    extends aptos.TypedEventInstance<LiquidityEvent<any, any>> {
+    extends TypedEventInstance<LiquidityEvent<any, any>> {
     data_typed: LiquidityEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -288,7 +282,7 @@ export namespace lbp {
   }
 
   export interface PoolCreationEventInstance
-    extends aptos.TypedEventInstance<PoolCreationEvent<any, any>> {
+    extends TypedEventInstance<PoolCreationEvent<any, any>> {
     data_typed: PoolCreationEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -301,7 +295,7 @@ export namespace lbp {
   }
 
   export interface SetEnabledEventInstance
-    extends aptos.TypedEventInstance<SetEnabledEvent<any, any>> {
+    extends TypedEventInstance<SetEnabledEvent<any, any>> {
     data_typed: SetEnabledEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -317,7 +311,7 @@ export namespace lbp {
   }
 
   export interface SetWeightScheduleEventInstance
-    extends aptos.TypedEventInstance<SetWeightScheduleEvent<any, any>> {
+    extends TypedEventInstance<SetWeightScheduleEvent<any, any>> {
     data_typed: SetWeightScheduleEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -336,7 +330,7 @@ export namespace lbp {
   }
 
   export interface SwapEventInstance
-    extends aptos.TypedEventInstance<SwapEvent<any, any>> {
+    extends TypedEventInstance<SwapEvent<any, any>> {
     data_typed: SwapEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -350,54 +344,54 @@ export namespace lbp {
   }
 
   export interface WhitelistEventInstance
-    extends aptos.TypedEventInstance<WhitelistEvent<any, any>> {
+    extends TypedEventInstance<WhitelistEvent<any, any>> {
     data_typed: WhitelistEvent<any, any>;
     type_arguments: [string, string];
   }
 
   export interface GrantWhitelistPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string, string];
   }
 
   export interface RevokeWhitelistPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string, string];
   }
 
   export interface SetEnabledPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedEntryFunctionPayload<[Boolean]> {
     arguments_typed: [Boolean];
     type_arguments: [string, string];
   }
 
   export interface SetMaxDurationSecondsPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetMaxSwapFeeBpsPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetProtocolSwapFeePctPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetWeightSchedulePayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -405,23 +399,23 @@ export namespace lbp {
   );
 }
 
-export class fees extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class fees extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("fees", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): fees {
+  static bind(options: Partial<AptosBindOptions> = {}): fees {
     return new fees({ ...fees.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryExtractFee(
-    func: (call: fees.ExtractFeePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: fees.ExtractFeePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): fees {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -431,11 +425,8 @@ export class fees extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetLbpCommissionBps(
-    func: (
-      call: fees.SetLbpCommissionBpsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: fees.SetLbpCommissionBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): fees {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -445,10 +436,7 @@ export class fees extends aptos.AptosBaseProcessor {
   }
 
   onEventFeeParamChangeEvent(
-    func: (
-      event: fees.FeeParamChangeEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: fees.FeeParamChangeEventInstance, ctx: AptosContext) => void
   ): fees {
     this.onEvent(func, {
       type: "fees::FeeParamChangeEvent",
@@ -456,7 +444,7 @@ export class fees extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -471,7 +459,7 @@ export namespace fees {
   }
 
   export interface FeeParamChangeEventInstance
-    extends aptos.TypedEventInstance<FeeParamChangeEvent<any>> {
+    extends TypedEventInstance<FeeParamChangeEvent<any>> {
     data_typed: FeeParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -496,18 +484,18 @@ export namespace fees {
   }
 
   export interface ExtractFeePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string];
   }
 
   export interface SetLbpCommissionBpsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -515,23 +503,23 @@ export namespace fees {
   );
 }
 
-export class init extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class init extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("init", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): init {
+  static bind(options: Partial<AptosBindOptions> = {}): init {
     return new init({ ...init.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryInitialize(
-    func: (call: init.InitializePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: init.InitializePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): init {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -540,19 +528,18 @@ export class init extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace init {
-  export interface InitializePayload
-    extends aptos.TypedEntryFunctionPayload<[]> {
+  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -561,7 +548,7 @@ export namespace init {
 }
 
 export namespace math {
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -569,26 +556,26 @@ export namespace math {
   );
 }
 
-export class manager extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class manager extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("manager", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): manager {
+  static bind(options: Partial<AptosBindOptions> = {}): manager {
     return new manager({ ...manager.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryChangeManagerAddress(
     func: (
       call: manager.ChangeManagerAddressPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): manager {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -597,7 +584,7 @@ export class manager extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -616,12 +603,12 @@ export namespace manager {
   }
 
   export interface ChangeManagerAddressPayload
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -630,7 +617,7 @@ export namespace manager {
 }
 
 export namespace coin_helper {
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -638,26 +625,23 @@ export namespace coin_helper {
   );
 }
 
-export class lbp_scripts extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class lbp_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("lbp_scripts", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): lbp_scripts {
+  static bind(options: Partial<AptosBindOptions> = {}): lbp_scripts {
     return new lbp_scripts({ ...lbp_scripts.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryAddLiquidity(
-    func: (
-      call: lbp_scripts.AddLiquidityPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp_scripts.AddLiquidityPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -667,8 +651,8 @@ export class lbp_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryCreateLbp(
-    func: (call: lbp_scripts.CreateLbpPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp_scripts.CreateLbpPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -678,11 +662,8 @@ export class lbp_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryRemoveLiquidity(
-    func: (
-      call: lbp_scripts.RemoveLiquidityPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp_scripts.RemoveLiquidityPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -692,11 +673,8 @@ export class lbp_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntrySwapExactIn(
-    func: (
-      call: lbp_scripts.SwapExactInPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp_scripts.SwapExactInPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -706,11 +684,8 @@ export class lbp_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntrySwapExactOut(
-    func: (
-      call: lbp_scripts.SwapExactOutPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: lbp_scripts.SwapExactOutPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): lbp_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -719,20 +694,20 @@ export class lbp_scripts extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace lbp_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface CreateLbpPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<
+    extends TypedEntryFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint, bigint, bigint, Boolean]
     > {
     arguments_typed: [
@@ -749,24 +724,24 @@ export namespace lbp_scripts {
   }
 
   export interface RemoveLiquidityPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface SwapExactInPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
     arguments_typed: [string, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface SwapExactOutPayload<T0 = any, T1 = any>
-    extends aptos.TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
     arguments_typed: [string, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -774,7 +749,7 @@ export namespace lbp_scripts {
   );
 }
 
-export function loadAllTypes(_r: aptos.TypeRegistry) {
+export function loadAllTypes(_r: TypeRegistry) {
   _0x1.loadAllTypes(_r);
   _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.loadAllTypes(
     _r
