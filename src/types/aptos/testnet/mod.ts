@@ -4,10 +4,19 @@
 
 /* Generated modules for account 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d */
 
-import { aptos } from "@sentio/sdk";
+import {
+  TypeRegistry,
+  AptosBindOptions,
+  AptosBaseProcessor,
+  TypedEventInstance,
+  AptosNetwork,
+  TypedEntryFunctionPayload,
+  AptosContext,
+  CallFilter,
+} from "@sentio/sdk-aptos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
-import * as _0x1 from "@sentio/sdk/lib/builtin/aptos/0x1";
+import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
 import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
 
 export namespace fees {
@@ -29,7 +38,7 @@ export namespace fees {
     signer_cap: _0x1.account.SignerCapability;
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -37,23 +46,23 @@ export namespace fees {
   );
 }
 
-export class init extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class init extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("init", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): init {
+  static bind(options: Partial<AptosBindOptions> = {}): init {
     return new init({ ...init.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryInitialize(
-    func: (call: init.InitializePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: init.InitializePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): init {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -63,11 +72,8 @@ export class init extends aptos.AptosBaseProcessor {
   }
 
   onEntryInitializeCollateral(
-    func: (
-      call: init.InitializeCollateralPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: init.InitializeCollateralPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): init {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -76,25 +82,24 @@ export class init extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace init {
-  export interface InitializePayload
-    extends aptos.TypedEntryFunctionPayload<[]> {
+  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [];
   }
 
   export interface InitializeCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -103,7 +108,7 @@ export namespace init {
 }
 
 export namespace math {
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -111,23 +116,23 @@ export namespace math {
   );
 }
 
-export class vault extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class vault extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("vault", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): vault {
+  static bind(options: Partial<AptosBindOptions> = {}): vault {
     return new vault({ ...vault.DEFAULT_OPTIONS, ...options });
   }
 
   onEntrySetBorrowFeeBps(
-    func: (call: vault.SetBorrowFeeBpsPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetBorrowFeeBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -137,11 +142,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetFreezeCollateral(
-    func: (
-      call: vault.SetFreezeCollateralPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetFreezeCollateralPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -151,11 +153,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetFreezeLiquidations(
-    func: (
-      call: vault.SetFreezeLiquidationsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetFreezeLiquidationsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -165,8 +164,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetInterestApr(
-    func: (call: vault.SetInterestAprPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetInterestAprPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -176,11 +175,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetLiquidationFeeBps(
-    func: (
-      call: vault.SetLiquidationFeeBpsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetLiquidationFeeBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -190,11 +186,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetLiquidatorBonusBps(
-    func: (
-      call: vault.SetLiquidatorBonusBpsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetLiquidatorBonusBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -206,9 +199,9 @@ export class vault extends aptos.AptosBaseProcessor {
   onEntrySetLiquidatorBonusCapModAmount(
     func: (
       call: vault.SetLiquidatorBonusCapModAmountPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -218,8 +211,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetMcrBps(
-    func: (call: vault.SetMcrBpsPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetMcrBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -231,9 +224,9 @@ export class vault extends aptos.AptosBaseProcessor {
   onEntrySetMcrPenaltyMultiplier(
     func: (
       call: vault.SetMcrPenaltyMultiplierPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -243,11 +236,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetMinDebtAmount(
-    func: (
-      call: vault.SetMinDebtAmountPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetMinDebtAmountPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -257,8 +247,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetMintCap(
-    func: (call: vault.SetMintCapPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetMintCapPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -268,11 +258,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetRedemptionFeeBps(
-    func: (
-      call: vault.SetRedemptionFeeBpsPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetRedemptionFeeBpsPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -282,11 +269,8 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetRedemptionMode(
-    func: (
-      call: vault.SetRedemptionModePayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault.SetRedemptionModePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -298,7 +282,7 @@ export class vault extends aptos.AptosBaseProcessor {
   onEventVaultCollateralParamChangeEvent(
     func: (
       event: vault.VaultCollateralParamChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): vault {
     this.onEvent(func, {
@@ -308,7 +292,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventBorrowEvent(
-    func: (event: vault.BorrowEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: vault.BorrowEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::BorrowEvent",
@@ -317,7 +301,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventRepayEvent(
-    func: (event: vault.RepayEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: vault.RepayEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::RepayEvent",
@@ -326,7 +310,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventDepositEvent(
-    func: (event: vault.DepositEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: vault.DepositEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::DepositEvent",
@@ -335,7 +319,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventWithdrawEvent(
-    func: (event: vault.WithdrawEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: vault.WithdrawEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::WithdrawEvent",
@@ -344,10 +328,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventLiquidationEvent(
-    func: (
-      event: vault.LiquidationEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: vault.LiquidationEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::LiquidationEvent",
@@ -356,10 +337,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventRedemptionEvent(
-    func: (
-      event: vault.RedemptionEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: vault.RedemptionEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::RedemptionEvent",
@@ -368,10 +346,7 @@ export class vault extends aptos.AptosBaseProcessor {
   }
 
   onEventVaultUpdatedEvent(
-    func: (
-      event: vault.VaultUpdatedEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: vault.VaultUpdatedEventInstance, ctx: AptosContext) => void
   ): vault {
     this.onEvent(func, {
       type: "vault::VaultUpdatedEvent",
@@ -382,7 +357,7 @@ export class vault extends aptos.AptosBaseProcessor {
   onEventVaultParamChangeEvent(
     func: (
       event: vault.VaultParamChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): vault {
     this.onEvent(func, {
@@ -391,7 +366,7 @@ export class vault extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -405,7 +380,7 @@ export namespace vault {
   }
 
   export interface BorrowEventInstance
-    extends aptos.TypedEventInstance<BorrowEvent<any>> {
+    extends TypedEventInstance<BorrowEvent<any>> {
     data_typed: BorrowEvent<any>;
     type_arguments: [string];
   }
@@ -417,7 +392,7 @@ export namespace vault {
   }
 
   export interface DepositEventInstance
-    extends aptos.TypedEventInstance<DepositEvent<any>> {
+    extends TypedEventInstance<DepositEvent<any>> {
     data_typed: DepositEvent<any>;
     type_arguments: [string];
   }
@@ -434,7 +409,7 @@ export namespace vault {
   }
 
   export interface LiquidationEventInstance
-    extends aptos.TypedEventInstance<LiquidationEvent<any>> {
+    extends TypedEventInstance<LiquidationEvent<any>> {
     data_typed: LiquidationEvent<any>;
     type_arguments: [string];
   }
@@ -448,7 +423,7 @@ export namespace vault {
   }
 
   export interface RedemptionEventInstance
-    extends aptos.TypedEventInstance<RedemptionEvent<any>> {
+    extends TypedEventInstance<RedemptionEvent<any>> {
     data_typed: RedemptionEvent<any>;
     type_arguments: [string];
   }
@@ -460,7 +435,7 @@ export namespace vault {
   }
 
   export interface RepayEventInstance
-    extends aptos.TypedEventInstance<RepayEvent<any>> {
+    extends TypedEventInstance<RepayEvent<any>> {
     data_typed: RepayEvent<any>;
     type_arguments: [string];
   }
@@ -496,7 +471,7 @@ export namespace vault {
   }
 
   export interface VaultCollateralParamChangeEventInstance
-    extends aptos.TypedEventInstance<VaultCollateralParamChangeEvent<any>> {
+    extends TypedEventInstance<VaultCollateralParamChangeEvent<any>> {
     data_typed: VaultCollateralParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -540,7 +515,7 @@ export namespace vault {
   }
 
   export interface VaultParamChangeEventInstance
-    extends aptos.TypedEventInstance<VaultParamChangeEvent> {
+    extends TypedEventInstance<VaultParamChangeEvent> {
     data_typed: VaultParamChangeEvent;
     type_arguments: [];
   }
@@ -565,7 +540,7 @@ export namespace vault {
   }
 
   export interface VaultUpdatedEventInstance
-    extends aptos.TypedEventInstance<VaultUpdatedEvent<any>> {
+    extends TypedEventInstance<VaultUpdatedEvent<any>> {
     data_typed: VaultUpdatedEvent<any>;
     type_arguments: [string];
   }
@@ -585,90 +560,90 @@ export namespace vault {
   }
 
   export interface WithdrawEventInstance
-    extends aptos.TypedEventInstance<WithdrawEvent<any>> {
+    extends TypedEventInstance<WithdrawEvent<any>> {
     data_typed: WithdrawEvent<any>;
     type_arguments: [string];
   }
 
   export interface SetBorrowFeeBpsPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetFreezeCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedEntryFunctionPayload<[Boolean]> {
     arguments_typed: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetFreezeLiquidationsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedEntryFunctionPayload<[Boolean]> {
     arguments_typed: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetInterestAprPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetLiquidationFeeBpsPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusBpsPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusCapModAmountPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetMcrBpsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMcrPenaltyMultiplierPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMinDebtAmountPayload
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [];
   }
 
   export interface SetMintCapPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionFeeBpsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionModePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedEntryFunctionPayload<[Boolean]> {
     arguments_typed: [Boolean];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -676,23 +651,23 @@ export namespace vault {
   );
 }
 
-export class oracle extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class oracle extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("oracle", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): oracle {
+  static bind(options: Partial<AptosBindOptions> = {}): oracle {
     return new oracle({ ...oracle.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryInitializePyth(
-    func: (call: oracle.InitializePythPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: oracle.InitializePythPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -704,9 +679,9 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEntryInitializeSimpleOracle(
     func: (
       call: oracle.InitializeSimpleOraclePayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -718,9 +693,9 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEntrySetPriceDeviateRejectPct(
     func: (
       call: oracle.SetPriceDeviateRejectPctPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -730,8 +705,8 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetPythConfig(
-    func: (call: oracle.SetPythConfigPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: oracle.SetPythConfigPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -743,9 +718,9 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEntrySetStalenessThresholds(
     func: (
       call: oracle.SetStalenessThresholdsPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -755,8 +730,8 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetTier1Oracle(
-    func: (call: oracle.SetTier1OraclePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: oracle.SetTier1OraclePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -766,8 +741,8 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEntrySetTier2Oracle(
-    func: (call: oracle.SetTier2OraclePayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: oracle.SetTier2OraclePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -777,11 +752,8 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEntryUpdateSimplePrice(
-    func: (
-      call: oracle.UpdateSimplePricePayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: oracle.UpdateSimplePricePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): oracle {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -791,7 +763,7 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEventPriceEvent(
-    func: (event: oracle.PriceEventInstance, ctx: aptos.AptosContext) => void
+    func: (event: oracle.PriceEventInstance, ctx: AptosContext) => void
   ): oracle {
     this.onEvent(func, {
       type: "oracle::PriceEvent",
@@ -802,7 +774,7 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEventSimpleOracleUpdateEvent(
     func: (
       event: oracle.SimpleOracleUpdateEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): oracle {
     this.onEvent(func, {
@@ -814,7 +786,7 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEventPythConfigChangeEvent(
     func: (
       event: oracle.PythConfigChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): oracle {
     this.onEvent(func, {
@@ -824,10 +796,7 @@ export class oracle extends aptos.AptosBaseProcessor {
   }
 
   onEventOracleChangeEvent(
-    func: (
-      event: oracle.OracleChangeEventInstance,
-      ctx: aptos.AptosContext
-    ) => void
+    func: (event: oracle.OracleChangeEventInstance, ctx: AptosContext) => void
   ): oracle {
     this.onEvent(func, {
       type: "oracle::OracleChangeEvent",
@@ -838,7 +807,7 @@ export class oracle extends aptos.AptosBaseProcessor {
   onEventOracleParamChangeEvent(
     func: (
       event: oracle.OracleParamChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): oracle {
     this.onEvent(func, {
@@ -847,7 +816,7 @@ export class oracle extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -874,7 +843,7 @@ export namespace oracle {
   }
 
   export interface OracleChangeEventInstance
-    extends aptos.TypedEventInstance<OracleChangeEvent<any>> {
+    extends TypedEventInstance<OracleChangeEvent<any>> {
     data_typed: OracleChangeEvent<any>;
     type_arguments: [string];
   }
@@ -901,7 +870,7 @@ export namespace oracle {
   }
 
   export interface OracleParamChangeEventInstance
-    extends aptos.TypedEventInstance<OracleParamChangeEvent<any>> {
+    extends TypedEventInstance<OracleParamChangeEvent<any>> {
     data_typed: OracleParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -924,7 +893,7 @@ export namespace oracle {
   }
 
   export interface PriceEventInstance
-    extends aptos.TypedEventInstance<PriceEvent<any>> {
+    extends TypedEventInstance<PriceEvent<any>> {
     data_typed: PriceEvent<any>;
     type_arguments: [string];
   }
@@ -943,7 +912,7 @@ export namespace oracle {
   }
 
   export interface PythConfigChangeEventInstance
-    extends aptos.TypedEventInstance<PythConfigChangeEvent<any>> {
+    extends TypedEventInstance<PythConfigChangeEvent<any>> {
     data_typed: PythConfigChangeEvent<any>;
     type_arguments: [string];
   }
@@ -955,7 +924,7 @@ export namespace oracle {
   }
 
   export interface SimpleOracleUpdateEventInstance
-    extends aptos.TypedEventInstance<SimpleOracleUpdateEvent<any>> {
+    extends TypedEventInstance<SimpleOracleUpdateEvent<any>> {
     data_typed: SimpleOracleUpdateEvent<any>;
     type_arguments: [string];
   }
@@ -975,54 +944,54 @@ export namespace oracle {
   }
 
   export interface InitializePythPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[string]> {
+    extends TypedEntryFunctionPayload<[string]> {
     arguments_typed: [string];
     type_arguments: [string];
   }
 
   export interface InitializeSimpleOraclePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[]> {
+    extends TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
   export interface SetPriceDeviateRejectPctPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetPythConfigPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[string]> {
+    extends TypedEntryFunctionPayload<[string]> {
     arguments_typed: [string];
     type_arguments: [string];
   }
 
   export interface SetStalenessThresholdsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
   export interface SetTier1OraclePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[number]> {
+    extends TypedEntryFunctionPayload<[number]> {
     arguments_typed: [number];
     type_arguments: [string];
   }
 
   export interface SetTier2OraclePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[number]> {
+    extends TypedEntryFunctionPayload<[number]> {
     arguments_typed: [number];
     type_arguments: [string];
   }
 
   export interface UpdateSimplePricePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1031,7 +1000,7 @@ export namespace oracle {
 }
 
 export namespace tables {
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1039,26 +1008,26 @@ export namespace tables {
   );
 }
 
-export class manager extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class manager extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("manager", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): manager {
+  static bind(options: Partial<AptosBindOptions> = {}): manager {
     return new manager({ ...manager.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryChangeManagerAddress(
     func: (
       call: manager.ChangeManagerAddressPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): manager {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1067,7 +1036,7 @@ export class manager extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -1086,12 +1055,12 @@ export namespace manager {
   }
 
   export interface ChangeManagerAddressPayload
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1100,7 +1069,7 @@ export namespace manager {
 }
 
 export namespace vectors {
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1123,7 +1092,7 @@ export namespace mod_coin {
     dummy_field: Boolean;
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1131,26 +1100,26 @@ export namespace mod_coin {
   );
 }
 
-export class fees_scripts extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class fees_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("fees_scripts", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): fees_scripts {
+  static bind(options: Partial<AptosBindOptions> = {}): fees_scripts {
     return new fees_scripts({ ...fees_scripts.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryTransferCollateralFees(
     func: (
       call: fees_scripts.TransferCollateralFeesPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): fees_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1162,9 +1131,9 @@ export class fees_scripts extends aptos.AptosBaseProcessor {
   onEntryTransferModFees(
     func: (
       call: fees_scripts.TransferModFeesPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): fees_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1173,25 +1142,25 @@ export class fees_scripts extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace fees_scripts {
   export interface TransferCollateralFeesPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [string];
   }
 
   export interface TransferModFeesPayload
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1216,7 +1185,7 @@ export namespace sorted_vaults {
     nodes: _0x1.table_with_length.TableWithLength<Address, sorted_vaults.Node>;
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1224,23 +1193,23 @@ export namespace sorted_vaults {
   );
 }
 
-export class vault_scripts extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class vault_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("vault_scripts", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): vault_scripts {
+  static bind(options: Partial<AptosBindOptions> = {}): vault_scripts {
     return new vault_scripts({ ...vault_scripts.DEFAULT_OPTIONS, ...options });
   }
 
   onEntryBorrow(
-    func: (call: vault_scripts.BorrowPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault_scripts.BorrowPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1250,11 +1219,8 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryCloseVault(
-    func: (
-      call: vault_scripts.CloseVaultPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault_scripts.CloseVaultPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1266,9 +1232,9 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   onEntryDepositCollateral(
     func: (
       call: vault_scripts.DepositCollateralPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1278,11 +1244,8 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryLiquidate(
-    func: (
-      call: vault_scripts.LiquidatePayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault_scripts.LiquidatePayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1292,11 +1255,8 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryOpenVault(
-    func: (
-      call: vault_scripts.OpenVaultPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault_scripts.OpenVaultPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1308,9 +1268,9 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   onEntryRedeemCollateral(
     func: (
       call: vault_scripts.RedeemCollateralPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1320,8 +1280,8 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   }
 
   onEntryRepay(
-    func: (call: vault_scripts.RepayPayload, ctx: aptos.AptosContext) => void,
-    filter?: aptos.CallFilter
+    func: (call: vault_scripts.RepayPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1333,9 +1293,9 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
   onEntryWithdrawCollateral(
     func: (
       call: vault_scripts.WithdrawCollateralPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): vault_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1344,61 +1304,61 @@ export class vault_scripts extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace vault_scripts {
   export interface BorrowPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
     arguments_typed: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface CloseVaultPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[]> {
+    extends TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
   export interface DepositCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
     arguments_typed: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface LiquidatePayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[Address, Address[]]> {
+    extends TypedEntryFunctionPayload<[Address, Address[]]> {
     arguments_typed: [Address, Address[]];
     type_arguments: [string];
   }
 
   export interface OpenVaultPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, Address[]]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, Address[]]> {
     arguments_typed: [bigint, bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface RedeemCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface RepayPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
     arguments_typed: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface WithdrawCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
     arguments_typed: [bigint, Address[]];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1406,17 +1366,17 @@ export namespace vault_scripts {
   );
 }
 
-export class stability_pool extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class stability_pool extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("stability_pool", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<aptos.AptosBindOptions> = {}): stability_pool {
+  static bind(options: Partial<AptosBindOptions> = {}): stability_pool {
     return new stability_pool({
       ...stability_pool.DEFAULT_OPTIONS,
       ...options,
@@ -1426,9 +1386,9 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEntryAddToRwaWhitelist(
     func: (
       call: stability_pool.AddToRwaWhitelistPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1440,9 +1400,9 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEntryRemoveFromRwaWhitelist(
     func: (
       call: stability_pool.RemoveFromRwaWhitelistPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1454,9 +1414,9 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEntrySetWithdrawalFeeMaxBps(
     func: (
       call: stability_pool.SetWithdrawalFeeMaxBpsPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1468,9 +1428,9 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEntrySetWithdrawalFeePeriodSeconds(
     func: (
       call: stability_pool.SetWithdrawalFeePeriodSecondsPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1482,7 +1442,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEventDepositEvent(
     func: (
       event: stability_pool.DepositEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): stability_pool {
     this.onEvent(func, {
@@ -1494,7 +1454,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEventWithdrawEvent(
     func: (
       event: stability_pool.WithdrawEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): stability_pool {
     this.onEvent(func, {
@@ -1506,7 +1466,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEventDebtAbsorptionEvent(
     func: (
       event: stability_pool.DebtAbsorptionEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): stability_pool {
     this.onEvent(func, {
@@ -1518,7 +1478,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEventDistributedCollateralEvent(
     func: (
       event: stability_pool.DistributedCollateralEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): stability_pool {
     this.onEvent(func, {
@@ -1530,7 +1490,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
   onEventStabilityPoolParamChangeEvent(
     func: (
       event: stability_pool.StabilityPoolParamChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): stability_pool {
     this.onEvent(func, {
@@ -1539,7 +1499,7 @@ export class stability_pool extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -1559,7 +1519,7 @@ export namespace stability_pool {
   }
 
   export interface DebtAbsorptionEventInstance
-    extends aptos.TypedEventInstance<DebtAbsorptionEvent<any>> {
+    extends TypedEventInstance<DebtAbsorptionEvent<any>> {
     data_typed: DebtAbsorptionEvent<any>;
     type_arguments: [string];
   }
@@ -1572,7 +1532,7 @@ export namespace stability_pool {
   }
 
   export interface DepositEventInstance
-    extends aptos.TypedEventInstance<DepositEvent<any>> {
+    extends TypedEventInstance<DepositEvent<any>> {
     data_typed: DepositEvent<any>;
     type_arguments: [string];
   }
@@ -1592,7 +1552,7 @@ export namespace stability_pool {
   }
 
   export interface DistributedCollateralEventInstance
-    extends aptos.TypedEventInstance<DistributedCollateralEvent<any>> {
+    extends TypedEventInstance<DistributedCollateralEvent<any>> {
     data_typed: DistributedCollateralEvent<any>;
     type_arguments: [string];
   }
@@ -1640,7 +1600,7 @@ export namespace stability_pool {
   }
 
   export interface StabilityPoolParamChangeEventInstance
-    extends aptos.TypedEventInstance<StabilityPoolParamChangeEvent<any>> {
+    extends TypedEventInstance<StabilityPoolParamChangeEvent<any>> {
     data_typed: StabilityPoolParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -1669,36 +1629,36 @@ export namespace stability_pool {
   }
 
   export interface WithdrawEventInstance
-    extends aptos.TypedEventInstance<WithdrawEvent<any>> {
+    extends TypedEventInstance<WithdrawEvent<any>> {
     data_typed: WithdrawEvent<any>;
     type_arguments: [string];
   }
 
   export interface AddToRwaWhitelistPayload
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [];
   }
 
   export interface RemoveFromRwaWhitelistPayload
-    extends aptos.TypedEntryFunctionPayload<[Address]> {
+    extends TypedEntryFunctionPayload<[Address]> {
     arguments_typed: [Address];
     type_arguments: [];
   }
 
   export interface SetWithdrawalFeeMaxBpsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface SetWithdrawalFeePeriodSecondsPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1706,19 +1666,17 @@ export namespace stability_pool {
   );
 }
 
-export class collateral_auction extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class collateral_auction extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("collateral_auction", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(
-    options: Partial<aptos.AptosBindOptions> = {}
-  ): collateral_auction {
+  static bind(options: Partial<AptosBindOptions> = {}): collateral_auction {
     return new collateral_auction({
       ...collateral_auction.DEFAULT_OPTIONS,
       ...options,
@@ -1726,11 +1684,8 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   }
 
   onEntryReset(
-    func: (
-      call: collateral_auction.ResetPayload,
-      ctx: aptos.AptosContext
-    ) => void,
-    filter?: aptos.CallFilter
+    func: (call: collateral_auction.ResetPayload, ctx: AptosContext) => void,
+    filter?: CallFilter
   ): collateral_auction {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -1742,7 +1697,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionStartEvent(
     func: (
       event: collateral_auction.CollateralAuctionStartEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1754,7 +1709,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionBidEvent(
     func: (
       event: collateral_auction.CollateralAuctionBidEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1766,7 +1721,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionEndEvent(
     func: (
       event: collateral_auction.CollateralAuctionEndEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1778,7 +1733,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionRepayEvent(
     func: (
       event: collateral_auction.CollateralAuctionRepayEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1790,7 +1745,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionBadDebtEvent(
     func: (
       event: collateral_auction.CollateralAuctionBadDebtEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1802,7 +1757,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
   onEventCollateralAuctionParamChangeEvent(
     func: (
       event: collateral_auction.CollateralAuctionParamChangeEventInstance,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void
   ): collateral_auction {
     this.onEvent(func, {
@@ -1811,7 +1766,7 @@ export class collateral_auction extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
@@ -1840,7 +1795,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionBadDebtEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionBadDebtEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionBadDebtEvent<any>> {
     data_typed: CollateralAuctionBadDebtEvent<any>;
     type_arguments: [string];
   }
@@ -1854,7 +1809,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionBidEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionBidEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionBidEvent<any>> {
     data_typed: CollateralAuctionBidEvent<any>;
     type_arguments: [string];
   }
@@ -1867,7 +1822,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionEndEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionEndEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionEndEvent<any>> {
     data_typed: CollateralAuctionEndEvent<any>;
     type_arguments: [string];
   }
@@ -1901,7 +1856,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionParamChangeEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionParamChangeEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionParamChangeEvent<any>> {
     data_typed: CollateralAuctionParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -1925,7 +1880,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionRepayEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionRepayEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionRepayEvent<any>> {
     data_typed: CollateralAuctionRepayEvent<any>;
     type_arguments: [string];
   }
@@ -1939,7 +1894,7 @@ export namespace collateral_auction {
   }
 
   export interface CollateralAuctionStartEventInstance
-    extends aptos.TypedEventInstance<CollateralAuctionStartEvent<any>> {
+    extends TypedEventInstance<CollateralAuctionStartEvent<any>> {
     data_typed: CollateralAuctionStartEvent<any>;
     type_arguments: [string];
   }
@@ -1958,12 +1913,12 @@ export namespace collateral_auction {
   }
 
   export interface ResetPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -2007,7 +1962,7 @@ export namespace reward_distributor {
     scale_t: bigint;
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -2015,19 +1970,17 @@ export namespace reward_distributor {
   );
 }
 
-export class stability_pool_scripts extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class stability_pool_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("stability_pool_scripts", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
-  static bind(
-    options: Partial<aptos.AptosBindOptions> = {}
-  ): stability_pool_scripts {
+  static bind(options: Partial<AptosBindOptions> = {}): stability_pool_scripts {
     return new stability_pool_scripts({
       ...stability_pool_scripts.DEFAULT_OPTIONS,
       ...options,
@@ -2037,9 +1990,9 @@ export class stability_pool_scripts extends aptos.AptosBaseProcessor {
   onEntryClaimDistributedCollateral(
     func: (
       call: stability_pool_scripts.ClaimDistributedCollateralPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -2051,9 +2004,9 @@ export class stability_pool_scripts extends aptos.AptosBaseProcessor {
   onEntryDepositMod(
     func: (
       call: stability_pool_scripts.DepositModPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -2065,9 +2018,9 @@ export class stability_pool_scripts extends aptos.AptosBaseProcessor {
   onEntryWithdrawMod(
     func: (
       call: stability_pool_scripts.WithdrawModPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): stability_pool_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -2076,31 +2029,31 @@ export class stability_pool_scripts extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace stability_pool_scripts {
   export interface ClaimDistributedCollateralPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[]> {
+    extends TypedEntryFunctionPayload<[]> {
     arguments_typed: [];
     type_arguments: [string];
   }
 
   export interface DepositModPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
   export interface WithdrawModPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint]> {
+    extends TypedEntryFunctionPayload<[bigint]> {
     arguments_typed: [bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -2108,18 +2061,18 @@ export namespace stability_pool_scripts {
   );
 }
 
-export class collateral_auction_scripts extends aptos.AptosBaseProcessor {
-  constructor(options: aptos.AptosBindOptions) {
+export class collateral_auction_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
     super("collateral_auction_scripts", options);
   }
-  static DEFAULT_OPTIONS: aptos.AptosBindOptions = {
+  static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
       "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
-    network: aptos.AptosNetwork.TEST_NET,
+    network: AptosNetwork.TEST_NET,
   };
 
   static bind(
-    options: Partial<aptos.AptosBindOptions> = {}
+    options: Partial<AptosBindOptions> = {}
   ): collateral_auction_scripts {
     return new collateral_auction_scripts({
       ...collateral_auction_scripts.DEFAULT_OPTIONS,
@@ -2130,9 +2083,9 @@ export class collateral_auction_scripts extends aptos.AptosBaseProcessor {
   onEntryBid(
     func: (
       call: collateral_auction_scripts.BidPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): collateral_auction_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -2144,9 +2097,9 @@ export class collateral_auction_scripts extends aptos.AptosBaseProcessor {
   onEntryRepayDebt(
     func: (
       call: collateral_auction_scripts.RepayDebtPayload,
-      ctx: aptos.AptosContext
+      ctx: AptosContext
     ) => void,
-    filter?: aptos.CallFilter
+    filter?: CallFilter
   ): collateral_auction_scripts {
     this.onEntryFunctionCall(func, {
       ...filter,
@@ -2155,25 +2108,25 @@ export class collateral_auction_scripts extends aptos.AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: aptos.TypeRegistry) {
+  loadTypesInternal(registry: TypeRegistry) {
     loadAllTypes(registry);
   }
 }
 
 export namespace collateral_auction_scripts {
   export interface BidPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
     arguments_typed: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
   export interface RepayDebtPayload<T0 = any>
-    extends aptos.TypedEntryFunctionPayload<[bigint, bigint]> {
+    extends TypedEntryFunctionPayload<[bigint, bigint]> {
     arguments_typed: [bigint, bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -2181,7 +2134,7 @@ export namespace collateral_auction_scripts {
   );
 }
 
-export function loadAllTypes(_r: aptos.TypeRegistry) {
+export function loadAllTypes(_r: TypeRegistry) {
   _0x1.loadAllTypes(_r);
   _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.loadAllTypes(
     _r

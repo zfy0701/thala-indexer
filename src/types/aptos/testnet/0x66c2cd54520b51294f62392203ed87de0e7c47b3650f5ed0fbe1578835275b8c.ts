@@ -4,7 +4,16 @@
 
 /* Generated modules for account 0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c */
 
-import { aptos } from "@sentio/sdk";
+import {
+  TypeRegistry,
+  AptosBindOptions,
+  AptosBaseProcessor,
+  TypedEventInstance,
+  AptosNetwork,
+  TypedEntryFunctionPayload,
+  AptosContext,
+  CallFilter,
+} from "@sentio/sdk-aptos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 export namespace stable_pool_lp_coin {
@@ -14,7 +23,7 @@ export namespace stable_pool_lp_coin {
     dummy_field: Boolean;
   }
 
-  export function loadTypes(_r: aptos.TypeRegistry) {
+  export function loadTypes(_r: TypeRegistry) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -22,6 +31,6 @@ export namespace stable_pool_lp_coin {
   );
 }
 
-export function loadAllTypes(_r: aptos.TypeRegistry) {
+export function loadAllTypes(_r: TypeRegistry) {
   _r.load(stable_pool_lp_coin.ABI);
 }

@@ -4,7 +4,7 @@ import { scaleDown, getCoinDecimals } from "../utils";
 import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
-import { CHAIN_IDS } from "@sentio/sdk/lib/utils/chain";
+import { CHAIN_IDS } from "@sentio/sdk";
 
 const START_VERSION = 378452652;
 const MOD_DECIMALS = 8;
