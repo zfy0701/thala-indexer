@@ -1027,11 +1027,12 @@
     webpack "^5.72.1"
     webpack-cli "^5.0.0"
 
-"@sentio/cli@^1.37.4":
-  version "1.37.4"
-  resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.37.4.tgz#cbe09e8d88c73518953481de247178c42af4e172"
-  integrity sha512-4o7zAZMoK7gWVdF5RN9evqqQwOMJd/yKRZA4D4YoMw9lKADDGsqkW79WiOfVEYAz7KgL09UWoRjdUhkXudEeZg==
+"@sentio/cli@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.4.tgz#1f9ea0630d1979a854a0957ba3e5dd534a09c28c"
+  integrity sha512-KVryKAr46tLk50gzGKnGNkenu0iwuH2UNVgBh4iOj47f3/MKPjAZqdYdLfR5Gou7OBnVNOq40nsEGfW0M2xRrQ==
   dependencies:
+    chalk "^4.1.0"
     command-line-args "^5.2.1"
     command-line-usage "^6.1.3"
     express "^4.18.2"
