@@ -73,7 +73,43 @@ export function processor() {
           swapAttributes
         );
       }
-    );
+    )
+    .onEventStablePoolCreationEvent((event, ctx) => {
+      const pool = `${
+        stable_pool.DEFAULT_OPTIONS.address
+      }::stable_pool::StablePool<${event.type_arguments
+        .map((e) => e.trim())
+        .join(", ")}>`;
+      ctx.logger.log(1, "add liquidity", {
+        pool,
+        value: 0,
+        maker: ctx.transaction.sender,
+      });
+    })
+    .onEventAddLiquidityEvent((event, ctx) => {
+      const pool = `${
+        stable_pool.DEFAULT_OPTIONS.address
+      }::stable_pool::StablePool<${event.type_arguments
+        .map((e) => e.trim())
+        .join(", ")}>`;
+      ctx.logger.log(1, "add liquidity", {
+        pool,
+        value: 0,
+        maker: ctx.transaction.sender,
+      });
+    })
+    .onEventRemoveLiquidityEvent((event, ctx) => {
+      const pool = `${
+        stable_pool.DEFAULT_OPTIONS.address
+      }::stable_pool::StablePool<${event.type_arguments
+        .map((e) => e.trim())
+        .join(", ")}>`;
+      ctx.logger.log(1, "remove liquidity", {
+        pool,
+        value: 0,
+        maker: ctx.transaction.sender,
+      });
+    });
 }
 
 // get the price of coin 1, 2, 3 quoted based on coin 0 from SwapEventInstance
