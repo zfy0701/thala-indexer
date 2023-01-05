@@ -57,26 +57,30 @@ export function processor() {
 
         const assetOutIndex = bigintToInteger(event.data_typed.asset_out_index);
         const swapAmountOut = scaleDown(
-            event.data_typed.amount_out,
-            getCoinDecimals(event.type_arguments[assetOutIndex])
+          event.data_typed.amount_out,
+          getCoinDecimals(event.type_arguments[assetOutIndex])
         );
 
         const coinAddressIn = event.type_arguments[assetInIndex];
         const coinAddressOut = event.type_arguments[assetOutIndex];
 
         const swapAttributes = {
-            coin_address_in: coinAddressIn,
-            coin_address_out: coinAddressOut,
-            amount_in: swapAmountIn,
-            amount_out: swapAmountOut,
-            fee_amount: event.data_typed.fee_amount,
-            type: "weighted",
-        }
+          coin_address_in: coinAddressIn,
+          coin_address_out: coinAddressOut,
+          amount_in: swapAmountIn,
+          amount_out: swapAmountOut,
+          fee_amount: event.data_typed.fee_amount,
+          type: "weighted",
+        };
 
         ctx.meter
           .Counter("weighted_volume_coin_0")
           .add(volumeCoin0, { poolTag });
-        ctx.logger.log(1, `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`, swapAttributes);
+        ctx.logger.log(
+          1,
+          `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
+          swapAttributes
+        );
       }
     );
 }
