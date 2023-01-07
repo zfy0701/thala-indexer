@@ -56,8 +56,10 @@ export function processor() {
 
         const coinAddressIn = event.type_arguments[assetInIndex];
         const coinAddressOut = event.type_arguments[assetOutIndex];
+        const pair = coinAddressIn.localeCompare(coinAddressOut) < 0 ? `${coinAddressIn}-${coinAddressOut}` : `${coinAddressOut}-${coinAddressIn}`;
 
         const swapAttributes = {
+          pair,
           coin_address_in: coinAddressIn,
           coin_address_out: coinAddressOut,
           amount_in: swapAmountIn,
