@@ -1009,24 +1009,6 @@
     "@noble/hashes" "~1.1.1"
     "@scure/base" "~1.1.0"
 
-"@sentio/cli@^1.0.0":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.3.tgz#71149b0b003effd7ee1430aa0f90ec26fcc82981"
-  integrity sha512-tKeQZ7invjHJ3RKp7ATU9izGFFgTko/BhGHBP8SCdmABVOnfSoKCLhZ30clcE9mPvtJR7y3EmPswQDbX68OMvg==
-  dependencies:
-    command-line-args "^5.2.1"
-    command-line-usage "^6.1.3"
-    express "^4.18.2"
-    form-data "^4.0.0"
-    fs-extra "^11.0.0"
-    js-yaml "^4.1.0"
-    latest-version "^5.1.0"
-    node-fetch "2"
-    open "^8.4.0"
-    ts-loader "^9.3.0"
-    webpack "^5.72.1"
-    webpack-cli "^5.0.0"
-
 "@sentio/cli@^1.1.4":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.4.tgz#1f9ea0630d1979a854a0957ba3e5dd534a09c28c"
@@ -1046,21 +1028,21 @@
     webpack "^5.72.1"
     webpack-cli "^5.0.0"
 
-"@sentio/protos@^1.37.4":
-  version "1.37.4"
-  resolved "https://registry.yarnpkg.com/@sentio/protos/-/protos-1.37.4.tgz#a548f8150235e2eaddc52b298fc501d838f9991d"
-  integrity sha512-DEpQrXGqSNbMtRrKEGDsKBtr/byFlzA+HdMOx8bMHRQV7YznnLZtQBNwvNTsqe+YfhTVWnmqbF94EAbOxSBZug==
+"@sentio/protos@^1.38.0":
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/@sentio/protos/-/protos-1.38.0.tgz#6e85794204be4b3ceda9d88e8de5761ddddfda29"
+  integrity sha512-5Hyp195JVnYzj/bqXu6l5INLwxdDgRXRq5phPL0AWZ8ikVlU/LSvGYdDE4J9VYRRucPka9FsXLkXfZcB7uvbIA==
   dependencies:
     google-protobuf "^3.15.8"
     nice-grpc "^2.0.0"
 
-"@sentio/runtime@^1.37.4":
-  version "1.37.4"
-  resolved "https://registry.yarnpkg.com/@sentio/runtime/-/runtime-1.37.4.tgz#4b5bdc8fb7c464877ba2f625e53af819aaeb18a1"
-  integrity sha512-fwfm8WG3jqO2k+h4kpJoOvj7H3GiXeDOVD+pd/JESDHb7rwM6QvPzzDKISKyV8Orddv6tGDfj03ZGyaDvmVIPA==
+"@sentio/runtime@^1.38.0":
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/@sentio/runtime/-/runtime-1.38.0.tgz#7f3e9da5d48016af332a0588ca238f8ae3ec62e9"
+  integrity sha512-Xxsd0wiqRE7yMqDj9/+fvHsUpGgIpBG172Z6jm49lcZBP0bBdsdBMJSLmlQZ5yydqZUz9CqbfM/GBv6dKgw+rA==
   dependencies:
     "@ethersproject/providers" "~5.7.0"
-    "@sentio/protos" "^1.37.4"
+    "@sentio/protos" "^1.38.0"
     bignumber.js "^9.1.0"
     command-line-args "^5.2.1"
     command-line-usage "^6.1.3"
@@ -1073,24 +1055,25 @@
     p-queue "^6.6.2"
     winston "^3.8.2"
 
-"@sentio/sdk-aptos@^1.37.4":
-  version "1.37.4"
-  resolved "https://registry.yarnpkg.com/@sentio/sdk-aptos/-/sdk-aptos-1.37.4.tgz#acc1ec34a8cdc404231573db3b53e8806354af45"
-  integrity sha512-K08DDJa251pKmzPMHI2F0Wj0gl1+faQ8TLt75i2mlADttOi3N/SOrrhX0sdVOqLkK+YK+rsAAB5zXyYxnK0Wiw==
+"@sentio/sdk-aptos@^1.38.0":
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/@sentio/sdk-aptos/-/sdk-aptos-1.38.0.tgz#707eb84383e2cfef5c529e48ad32fd689ce9e848"
+  integrity sha512-nROCJqVZBgSx14GFrI0eiF1PsDRUysKD9+17nisCKEyriWfahK1cJfNnQG7XwuOqtJahBeTclQyDEuTSryFpEA==
   dependencies:
-    "@sentio/sdk" "^1.37.4"
+    "@sentio/sdk" "^1.38.0"
+    "@types/prettier" "^2.7.2"
     aptos-sdk "npm:aptos@^1.3.17"
+    chalk "^4.1.0"
     prettier "^2.8.1"
 
-"@sentio/sdk@^1.37.4":
-  version "1.37.4"
-  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-1.37.4.tgz#0bfaf9b644445777e5e6307ad982f9e22d665e19"
-  integrity sha512-y2kWf9/QSqTd4roTh3JDVyt1ozANdATmd8/RFCoTScu6Z4YPwVMronFk1bXAr8HXqxYT+/K3QK2MjJx3lp6bOQ==
+"@sentio/sdk@^1.38.0":
+  version "1.38.0"
+  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-1.38.0.tgz#57cea2024b4fc51b08862dc3658db9ffc1861c3b"
+  integrity sha512-HAlRD57qhZmTUlJqZqtzrA7K9bTPdZEDE/enoKhsmKFcfdILhc36qwmS78xTBsaFEbkALwie9MouChxwCX2MPA==
   dependencies:
     "@ethersproject/providers" "~5.7.0"
-    "@sentio/cli" "^1.0.0"
-    "@sentio/protos" "^1.37.4"
-    "@sentio/runtime" "^1.37.4"
+    "@sentio/protos" "^1.38.0"
+    "@sentio/runtime" "^1.38.0"
     "@typechain/ethers-v5" "^10.0.0"
     bignumber.js "^9.1.0"
     command-line-args "^5.2.1"
@@ -1249,10 +1232,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.8.5.tgz#6a31f820c1077c3f8ce44f9e203e68a176e8f59e"
   integrity sha512-Bq7G3AErwe5A/Zki5fdD3O6+0zDChhg671NfPjtIcbtzDNZTv4NPKMRFr7gtYPG7y+B8uTiNK4Ngd9T0FTar6Q==
 
-"@types/prettier@^2.1.1", "@types/prettier@^2.1.5":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.1.tgz#dfd20e2dc35f027cdd6c1908e80a5ddc7499670e"
-  integrity sha512-ri0UmynRRvZiiUJdiz38MmIblKK+oH30MztdBVR95dv/Ubw6neWSb8u1XpRb72L4qsZOhz+L+z9JD40SJmfWow==
+"@types/prettier@^2.1.1", "@types/prettier@^2.1.5", "@types/prettier@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.2.tgz#6c2324641cc4ba050a8c710b2b251b377581fbf0"
+  integrity sha512-KufADq8uQqo1pYKVIYzfKbJfBAc0sOeXqGbFaSpv8MRmC/zXgowNZmFcbngndGk922QDmOASEXUZCaY48gs4cg==
 
 "@types/stack-utils@^2.0.0":
   version "2.0.1"
@@ -3663,12 +3646,7 @@ prepend-http@^2.0.0:
   resolved "https://registry.yarnpkg.com/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha512-ravE6m9Atw9Z/jjttRUZ+clIXogdghyZAuWJ3qEzjT+jI/dL1ifAqhZeC5VHzQp1MSt1+jxKkFNemj/iO7tVUA==
 
-prettier@^2.3.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
-
-prettier@^2.8.1:
+prettier@^2.3.1, prettier@^2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.1.tgz#4e1fd11c34e2421bc1da9aea9bd8127cd0a35efc"
   integrity sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==
