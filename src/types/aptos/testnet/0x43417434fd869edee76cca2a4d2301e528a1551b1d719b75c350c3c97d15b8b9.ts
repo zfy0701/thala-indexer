@@ -14,6 +14,7 @@ import {
   AptosContext,
   CallFilter,
 } from "@sentio/sdk-aptos";
+import { AptosFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
@@ -75,23 +76,33 @@ export class coins extends AptosBaseProcessor {
 
   onEntryMintCoin(
     func: (call: coins.MintCoinPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): coins {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "coins::mint_coin",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "coins::mint_coin",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRegisterCoins(
     func: (call: coins.RegisterCoinsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): coins {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "coins::register_coins",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "coins::register_coins",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -176,45 +187,65 @@ export class faucet extends AptosBaseProcessor {
 
   onEntryChangeSettings(
     func: (call: faucet.ChangeSettingsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): faucet {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "faucet::change_settings",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "faucet::change_settings",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryCreateFaucet(
     func: (call: faucet.CreateFaucetPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): faucet {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "faucet::create_faucet",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "faucet::create_faucet",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryDeposit(
     func: (call: faucet.DepositPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): faucet {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "faucet::deposit",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "faucet::deposit",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRequest(
     func: (call: faucet.RequestPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): faucet {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "faucet::request",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "faucet::request",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -295,23 +326,33 @@ export class scripts extends AptosBaseProcessor {
 
   onEntryAddLiquidity(
     func: (call: scripts.AddLiquidityPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::add_liquidity",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::add_liquidity",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRegisterPool(
     func: (call: scripts.RegisterPoolPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::register_pool",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::register_pool",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -320,45 +361,65 @@ export class scripts extends AptosBaseProcessor {
       call: scripts.RegisterPoolAndAddLiquidityPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::register_pool_and_add_liquidity",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::register_pool_and_add_liquidity",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRemoveLiquidity(
     func: (call: scripts.RemoveLiquidityPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::remove_liquidity",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::remove_liquidity",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySwap(
     func: (call: scripts.SwapPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::swap",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::swap",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySwapInto(
     func: (call: scripts.SwapIntoPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "scripts::swap_into",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "scripts::swap_into",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -446,34 +507,49 @@ export class emergency extends AptosBaseProcessor {
 
   onEntryDisableForever(
     func: (call: emergency.DisableForeverPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): emergency {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "emergency::disable_forever",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "emergency::disable_forever",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryPause(
     func: (call: emergency.PausePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): emergency {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "emergency::pause",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "emergency::pause",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryResume(
     func: (call: emergency.ResumePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): emergency {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "emergency::resume",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "emergency::resume",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -537,12 +613,17 @@ export class lp_account extends AptosBaseProcessor {
       call: lp_account.InitializeLpAccountPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lp_account {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lp_account::initialize_lp_account",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lp_account::initialize_lp_account",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -599,11 +680,16 @@ export class dao_storage extends AptosBaseProcessor {
     func: (
       event: dao_storage.StorageCreatedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): dao_storage {
-    this.onEvent(func, {
-      type: "dao_storage::StorageCreatedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "dao_storage::StorageCreatedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -611,11 +697,16 @@ export class dao_storage extends AptosBaseProcessor {
     func: (
       event: dao_storage.CoinDepositedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): dao_storage {
-    this.onEvent(func, {
-      type: "dao_storage::CoinDepositedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "dao_storage::CoinDepositedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -623,11 +714,16 @@ export class dao_storage extends AptosBaseProcessor {
     func: (
       event: dao_storage.CoinWithdrawnEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): dao_storage {
-    this.onEvent(func, {
-      type: "dao_storage::CoinWithdrawnEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "dao_storage::CoinWithdrawnEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -732,12 +828,17 @@ export class liquidity_pool extends AptosBaseProcessor {
 
   onEntryInitialize(
     func: (call: liquidity_pool.InitializePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "liquidity_pool::initialize",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "liquidity_pool::initialize",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -745,11 +846,16 @@ export class liquidity_pool extends AptosBaseProcessor {
     func: (
       event: liquidity_pool.PoolCreatedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::PoolCreatedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "liquidity_pool::PoolCreatedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -757,11 +863,16 @@ export class liquidity_pool extends AptosBaseProcessor {
     func: (
       event: liquidity_pool.LiquidityAddedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::LiquidityAddedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "liquidity_pool::LiquidityAddedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -769,20 +880,30 @@ export class liquidity_pool extends AptosBaseProcessor {
     func: (
       event: liquidity_pool.LiquidityRemovedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::LiquidityRemovedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "liquidity_pool::LiquidityRemovedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventSwapEvent(
-    func: (event: liquidity_pool.SwapEventInstance, ctx: AptosContext) => void
+    func: (event: liquidity_pool.SwapEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::SwapEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "liquidity_pool::SwapEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -790,11 +911,16 @@ export class liquidity_pool extends AptosBaseProcessor {
     func: (
       event: liquidity_pool.OracleUpdatedEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): liquidity_pool {
-    this.onEvent(func, {
-      type: "liquidity_pool::OracleUpdatedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "liquidity_pool::OracleUpdatedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 

@@ -14,6 +14,7 @@ import {
   AptosContext,
   CallFilter,
 } from "@sentio/sdk-aptos";
+import { AptosFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 export namespace lp_coin {

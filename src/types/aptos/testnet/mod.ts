@@ -14,6 +14,7 @@ import {
   AptosContext,
   CallFilter,
 } from "@sentio/sdk-aptos";
+import { AptosFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
@@ -62,23 +63,33 @@ export class init extends AptosBaseProcessor {
 
   onEntryInitialize(
     func: (call: init.InitializePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): init {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "init::initialize",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "init::initialize",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryInitializeCollateral(
     func: (call: init.InitializeCollateralPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): init {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "init::initialize_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "init::initialize_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -132,67 +143,97 @@ export class vault extends AptosBaseProcessor {
 
   onEntrySetBorrowFeeBps(
     func: (call: vault.SetBorrowFeeBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_borrow_fee_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_borrow_fee_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetFreezeCollateral(
     func: (call: vault.SetFreezeCollateralPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_freeze_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_freeze_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetFreezeLiquidations(
     func: (call: vault.SetFreezeLiquidationsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_freeze_liquidations",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_freeze_liquidations",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetInterestApr(
     func: (call: vault.SetInterestAprPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_interest_apr",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_interest_apr",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetLiquidationFeeBps(
     func: (call: vault.SetLiquidationFeeBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_liquidation_fee_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_liquidation_fee_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetLiquidatorBonusBps(
     func: (call: vault.SetLiquidatorBonusBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_liquidator_bonus_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_liquidator_bonus_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -201,23 +242,33 @@ export class vault extends AptosBaseProcessor {
       call: vault.SetLiquidatorBonusCapModAmountPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_liquidator_bonus_cap_mod_amount",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_liquidator_bonus_cap_mod_amount",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetMcrBps(
     func: (call: vault.SetMcrBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_mcr_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_mcr_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -226,56 +277,81 @@ export class vault extends AptosBaseProcessor {
       call: vault.SetMcrPenaltyMultiplierPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_mcr_penalty_multiplier",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_mcr_penalty_multiplier",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetMinDebtAmount(
     func: (call: vault.SetMinDebtAmountPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_min_debt_amount",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_min_debt_amount",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetMintCap(
     func: (call: vault.SetMintCapPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_mint_cap",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_mint_cap",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetRedemptionFeeBps(
     func: (call: vault.SetRedemptionFeeBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_redemption_fee_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_redemption_fee_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetRedemptionMode(
     func: (call: vault.SetRedemptionModePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault::set_redemption_mode",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault::set_redemption_mode",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -283,74 +359,114 @@ export class vault extends AptosBaseProcessor {
     func: (
       event: vault.VaultCollateralParamChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::VaultCollateralParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::VaultCollateralParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventBorrowEvent(
-    func: (event: vault.BorrowEventInstance, ctx: AptosContext) => void
+    func: (event: vault.BorrowEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::BorrowEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::BorrowEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventRepayEvent(
-    func: (event: vault.RepayEventInstance, ctx: AptosContext) => void
+    func: (event: vault.RepayEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::RepayEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::RepayEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventDepositEvent(
-    func: (event: vault.DepositEventInstance, ctx: AptosContext) => void
+    func: (event: vault.DepositEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::DepositEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::DepositEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventWithdrawEvent(
-    func: (event: vault.WithdrawEventInstance, ctx: AptosContext) => void
+    func: (event: vault.WithdrawEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::WithdrawEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::WithdrawEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventLiquidationEvent(
-    func: (event: vault.LiquidationEventInstance, ctx: AptosContext) => void
+    func: (event: vault.LiquidationEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::LiquidationEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::LiquidationEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventRedemptionEvent(
-    func: (event: vault.RedemptionEventInstance, ctx: AptosContext) => void
+    func: (event: vault.RedemptionEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::RedemptionEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::RedemptionEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventVaultUpdatedEvent(
-    func: (event: vault.VaultUpdatedEventInstance, ctx: AptosContext) => void
+    func: (event: vault.VaultUpdatedEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::VaultUpdatedEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::VaultUpdatedEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -358,11 +474,16 @@ export class vault extends AptosBaseProcessor {
     func: (
       event: vault.VaultParamChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): vault {
-    this.onEvent(func, {
-      type: "vault::VaultParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "vault::VaultParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -667,12 +788,17 @@ export class oracle extends AptosBaseProcessor {
 
   onEntryInitializePyth(
     func: (call: oracle.InitializePythPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::initialize_pyth",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::initialize_pyth",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -681,12 +807,17 @@ export class oracle extends AptosBaseProcessor {
       call: oracle.InitializeSimpleOraclePayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::initialize_simple_oracle",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::initialize_simple_oracle",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -695,23 +826,33 @@ export class oracle extends AptosBaseProcessor {
       call: oracle.SetPriceDeviateRejectPctPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::set_price_deviate_reject_pct",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_price_deviate_reject_pct",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetPythConfig(
     func: (call: oracle.SetPythConfigPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::set_pyth_config",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_pyth_config",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -720,54 +861,79 @@ export class oracle extends AptosBaseProcessor {
       call: oracle.SetStalenessThresholdsPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::set_staleness_thresholds",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_staleness_thresholds",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetTier1Oracle(
     func: (call: oracle.SetTier1OraclePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::set_tier1_oracle",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_tier1_oracle",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetTier2Oracle(
     func: (call: oracle.SetTier2OraclePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::set_tier2_oracle",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_tier2_oracle",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryUpdateSimplePrice(
     func: (call: oracle.UpdateSimplePricePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "oracle::update_simple_price",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::update_simple_price",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventPriceEvent(
-    func: (event: oracle.PriceEventInstance, ctx: AptosContext) => void
+    func: (event: oracle.PriceEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEvent(func, {
-      type: "oracle::PriceEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "oracle::PriceEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -775,11 +941,16 @@ export class oracle extends AptosBaseProcessor {
     func: (
       event: oracle.SimpleOracleUpdateEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEvent(func, {
-      type: "oracle::SimpleOracleUpdateEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "oracle::SimpleOracleUpdateEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -787,20 +958,30 @@ export class oracle extends AptosBaseProcessor {
     func: (
       event: oracle.PythConfigChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEvent(func, {
-      type: "oracle::PythConfigChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "oracle::PythConfigChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventOracleChangeEvent(
-    func: (event: oracle.OracleChangeEventInstance, ctx: AptosContext) => void
+    func: (event: oracle.OracleChangeEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEvent(func, {
-      type: "oracle::OracleChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "oracle::OracleChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -808,11 +989,16 @@ export class oracle extends AptosBaseProcessor {
     func: (
       event: oracle.OracleParamChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): oracle {
-    this.onEvent(func, {
-      type: "oracle::OracleParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "oracle::OracleParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1027,12 +1213,17 @@ export class manager extends AptosBaseProcessor {
       call: manager.ChangeManagerAddressPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): manager {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "manager::change_manager_address",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "manager::change_manager_address",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1119,12 +1310,17 @@ export class fees_scripts extends AptosBaseProcessor {
       call: fees_scripts.TransferCollateralFeesPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): fees_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "fees_scripts::transfer_collateral_fees",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees_scripts::transfer_collateral_fees",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1133,12 +1329,17 @@ export class fees_scripts extends AptosBaseProcessor {
       call: fees_scripts.TransferModFeesPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): fees_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "fees_scripts::transfer_mod_fees",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees_scripts::transfer_mod_fees",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1209,23 +1410,33 @@ export class vault_scripts extends AptosBaseProcessor {
 
   onEntryBorrow(
     func: (call: vault_scripts.BorrowPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::borrow",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::borrow",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryCloseVault(
     func: (call: vault_scripts.CloseVaultPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::close_vault",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::close_vault",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1234,34 +1445,49 @@ export class vault_scripts extends AptosBaseProcessor {
       call: vault_scripts.DepositCollateralPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::deposit_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::deposit_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryLiquidate(
     func: (call: vault_scripts.LiquidatePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::liquidate",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::liquidate",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryOpenVault(
     func: (call: vault_scripts.OpenVaultPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::open_vault",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::open_vault",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1270,23 +1496,33 @@ export class vault_scripts extends AptosBaseProcessor {
       call: vault_scripts.RedeemCollateralPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::redeem_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::redeem_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRepay(
     func: (call: vault_scripts.RepayPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::repay",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::repay",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1295,12 +1531,17 @@ export class vault_scripts extends AptosBaseProcessor {
       call: vault_scripts.WithdrawCollateralPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): vault_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "vault_scripts::withdraw_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "vault_scripts::withdraw_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1388,12 +1629,17 @@ export class stability_pool extends AptosBaseProcessor {
       call: stability_pool.AddToRwaWhitelistPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool::add_to_rwa_whitelist",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool::add_to_rwa_whitelist",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1402,12 +1648,17 @@ export class stability_pool extends AptosBaseProcessor {
       call: stability_pool.RemoveFromRwaWhitelistPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool::remove_from_rwa_whitelist",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool::remove_from_rwa_whitelist",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1416,12 +1667,17 @@ export class stability_pool extends AptosBaseProcessor {
       call: stability_pool.SetWithdrawalFeeMaxBpsPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool::set_withdrawal_fee_max_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool::set_withdrawal_fee_max_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1430,12 +1686,17 @@ export class stability_pool extends AptosBaseProcessor {
       call: stability_pool.SetWithdrawalFeePeriodSecondsPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool::set_withdrawal_fee_period_seconds",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool::set_withdrawal_fee_period_seconds",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1443,11 +1704,16 @@ export class stability_pool extends AptosBaseProcessor {
     func: (
       event: stability_pool.DepositEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEvent(func, {
-      type: "stability_pool::DepositEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "stability_pool::DepositEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1455,11 +1721,16 @@ export class stability_pool extends AptosBaseProcessor {
     func: (
       event: stability_pool.WithdrawEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEvent(func, {
-      type: "stability_pool::WithdrawEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "stability_pool::WithdrawEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1467,11 +1738,16 @@ export class stability_pool extends AptosBaseProcessor {
     func: (
       event: stability_pool.DebtAbsorptionEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEvent(func, {
-      type: "stability_pool::DebtAbsorptionEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "stability_pool::DebtAbsorptionEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1479,11 +1755,16 @@ export class stability_pool extends AptosBaseProcessor {
     func: (
       event: stability_pool.DistributedCollateralEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEvent(func, {
-      type: "stability_pool::DistributedCollateralEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "stability_pool::DistributedCollateralEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1491,11 +1772,16 @@ export class stability_pool extends AptosBaseProcessor {
     func: (
       event: stability_pool.StabilityPoolParamChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool {
-    this.onEvent(func, {
-      type: "stability_pool::StabilityPoolParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "stability_pool::StabilityPoolParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1685,12 +1971,17 @@ export class collateral_auction extends AptosBaseProcessor {
 
   onEntryReset(
     func: (call: collateral_auction.ResetPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "collateral_auction::reset",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "collateral_auction::reset",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1698,11 +1989,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionStartEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionStartEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionStartEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1710,11 +2006,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionBidEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionBidEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionBidEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1722,11 +2023,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionEndEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionEndEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionEndEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1734,11 +2040,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionRepayEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionRepayEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionRepayEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1746,11 +2057,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionBadDebtEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionBadDebtEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionBadDebtEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1758,11 +2074,16 @@ export class collateral_auction extends AptosBaseProcessor {
     func: (
       event: collateral_auction.CollateralAuctionParamChangeEventInstance,
       ctx: AptosContext
-    ) => void
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction {
-    this.onEvent(func, {
-      type: "collateral_auction::CollateralAuctionParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "collateral_auction::CollateralAuctionParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -1992,12 +2313,17 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       call: stability_pool_scripts.ClaimDistributedCollateralPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool_scripts::claim_distributed_collateral",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool_scripts::claim_distributed_collateral",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -2006,12 +2332,17 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       call: stability_pool_scripts.DepositModPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool_scripts::deposit_mod",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool_scripts::deposit_mod",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -2020,12 +2351,17 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       call: stability_pool_scripts.WithdrawModPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): stability_pool_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "stability_pool_scripts::withdraw_mod",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "stability_pool_scripts::withdraw_mod",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -2085,12 +2421,17 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
       call: collateral_auction_scripts.BidPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "collateral_auction_scripts::bid",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "collateral_auction_scripts::bid",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -2099,12 +2440,17 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
       call: collateral_auction_scripts.RepayDebtPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): collateral_auction_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "collateral_auction_scripts::repay_debt",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "collateral_auction_scripts::repay_debt",
+      },
+      fetchConfig
+    );
     return this;
   }
 

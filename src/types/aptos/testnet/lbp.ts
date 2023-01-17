@@ -14,6 +14,7 @@ import {
   AptosContext,
   CallFilter,
 } from "@sentio/sdk-aptos";
+import { AptosFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
@@ -35,141 +36,214 @@ export class lbp extends AptosBaseProcessor {
 
   onEntryGrantWhitelist(
     func: (call: lbp.GrantWhitelistPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::grant_whitelist",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::grant_whitelist",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRevokeWhitelist(
     func: (call: lbp.RevokeWhitelistPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::revoke_whitelist",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::revoke_whitelist",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetEnabled(
     func: (call: lbp.SetEnabledPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::set_enabled",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::set_enabled",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetMaxDurationSeconds(
     func: (call: lbp.SetMaxDurationSecondsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::set_max_duration_seconds",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::set_max_duration_seconds",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetMaxSwapFeeBps(
     func: (call: lbp.SetMaxSwapFeeBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::set_max_swap_fee_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::set_max_swap_fee_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetProtocolSwapFeePct(
     func: (call: lbp.SetProtocolSwapFeePctPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::set_protocol_swap_fee_pct",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::set_protocol_swap_fee_pct",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetWeightSchedule(
     func: (call: lbp.SetWeightSchedulePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp::set_weight_schedule",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp::set_weight_schedule",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventWhitelistEvent(
-    func: (event: lbp.WhitelistEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.WhitelistEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::WhitelistEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::WhitelistEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventSetEnabledEvent(
-    func: (event: lbp.SetEnabledEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.SetEnabledEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::SetEnabledEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::SetEnabledEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventSetWeightScheduleEvent(
-    func: (event: lbp.SetWeightScheduleEventInstance, ctx: AptosContext) => void
+    func: (
+      event: lbp.SetWeightScheduleEventInstance,
+      ctx: AptosContext
+    ) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::SetWeightScheduleEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::SetWeightScheduleEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventPoolCreationEvent(
-    func: (event: lbp.PoolCreationEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.PoolCreationEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::PoolCreationEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::PoolCreationEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventLiquidityEvent(
-    func: (event: lbp.LiquidityEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.LiquidityEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::LiquidityEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::LiquidityEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventSwapEvent(
-    func: (event: lbp.SwapEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.SwapEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::SwapEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::SwapEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventLBPParamChangeEvent(
-    func: (event: lbp.LBPParamChangeEventInstance, ctx: AptosContext) => void
+    func: (event: lbp.LBPParamChangeEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): lbp {
-    this.onEvent(func, {
-      type: "lbp::LBPParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "lbp::LBPParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -415,32 +489,47 @@ export class fees extends AptosBaseProcessor {
 
   onEntryExtractFee(
     func: (call: fees.ExtractFeePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): fees {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "fees::extract_fee",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees::extract_fee",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySetLbpCommissionBps(
     func: (call: fees.SetLbpCommissionBpsPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): fees {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "fees::set_lbp_commission_bps",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees::set_lbp_commission_bps",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEventFeeParamChangeEvent(
-    func: (event: fees.FeeParamChangeEventInstance, ctx: AptosContext) => void
+    func: (event: fees.FeeParamChangeEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: AptosFetchConfig
   ): fees {
-    this.onEvent(func, {
-      type: "fees::FeeParamChangeEvent",
-    });
+    this.onEvent(
+      func,
+      {
+        type: "fees::FeeParamChangeEvent",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -519,12 +608,17 @@ export class init extends AptosBaseProcessor {
 
   onEntryInitialize(
     func: (call: init.InitializePayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): init {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "init::initialize",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "init::initialize",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -575,12 +669,17 @@ export class manager extends AptosBaseProcessor {
       call: manager.ChangeManagerAddressPayload,
       ctx: AptosContext
     ) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): manager {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "manager::change_manager_address",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "manager::change_manager_address",
+      },
+      fetchConfig
+    );
     return this;
   }
 
@@ -641,56 +740,81 @@ export class lbp_scripts extends AptosBaseProcessor {
 
   onEntryAddLiquidity(
     func: (call: lbp_scripts.AddLiquidityPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp_scripts::add_liquidity",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp_scripts::add_liquidity",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryCreateLbp(
     func: (call: lbp_scripts.CreateLbpPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp_scripts::create_lbp",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp_scripts::create_lbp",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntryRemoveLiquidity(
     func: (call: lbp_scripts.RemoveLiquidityPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp_scripts::remove_liquidity",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp_scripts::remove_liquidity",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySwapExactIn(
     func: (call: lbp_scripts.SwapExactInPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp_scripts::swap_exact_in",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp_scripts::swap_exact_in",
+      },
+      fetchConfig
+    );
     return this;
   }
 
   onEntrySwapExactOut(
     func: (call: lbp_scripts.SwapExactOutPayload, ctx: AptosContext) => void,
-    filter?: CallFilter
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
   ): lbp_scripts {
-    this.onEntryFunctionCall(func, {
-      ...filter,
-      function: "lbp_scripts::swap_exact_out",
-    });
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "lbp_scripts::swap_exact_out",
+      },
+      fetchConfig
+    );
     return this;
   }
 
