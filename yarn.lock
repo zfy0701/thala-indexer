@@ -1009,10 +1009,10 @@
     "@noble/hashes" "~1.1.1"
     "@scure/base" "~1.1.0"
 
-"@sentio/cli@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.4.tgz#1f9ea0630d1979a854a0957ba3e5dd534a09c28c"
-  integrity sha512-KVryKAr46tLk50gzGKnGNkenu0iwuH2UNVgBh4iOj47f3/MKPjAZqdYdLfR5Gou7OBnVNOq40nsEGfW0M2xRrQ==
+"@sentio/cli@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.6.tgz#635eec321a60fa5e92f369dfbd79c6c0be64dd5a"
+  integrity sha512-d2j2LsE9Us9fCgIB6fJsllgZvcCfBwzmrg56zDt/o/79POmfCZuI0tmtKCEXc627zulrlNoqfU2zKZpMhiFeDg==
   dependencies:
     chalk "^4.1.0"
     command-line-args "^5.2.1"
