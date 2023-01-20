@@ -1,5 +1,5 @@
 import { weighted_pool } from "../types/aptos/testnet/amm";
-import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils";
+import { bigintToInteger, getCoinDecimals, getPairTag, scaleDown } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
@@ -26,17 +26,20 @@ export function processor() {
       (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
         const { coins, weights } = getCoinsAndWeights(event);
         const poolTag = getPoolTag(coins, weights);
+        const pair1Tag = getPairTag(coins[0], coins[1]);
         const { coin1Price, coin2Price, coin3Price } = getPrices(
           event,
           coins,
           weights
         );
-        coin1PriceGauge.record(ctx, coin1Price, { poolTag });
+        coin1PriceGauge.record(ctx, coin1Price, { poolTag, pair1Tag });
         if (coin2Price) {
-          coin2PriceGauge.record(ctx, coin2Price, { poolTag });
+          const pair2Tag = getPairTag(coins[0], coins[2]);
+          coin2PriceGauge.record(ctx, coin2Price, { poolTag, pair2Tag });
         }
         if (coin3Price) {
-          coin3PriceGauge.record(ctx, coin3Price, { poolTag });
+          const pair3Tag = getPairTag(coins[0], coins[3]);
+          coin3PriceGauge.record(ctx, coin3Price, { poolTag, pair3Tag });
         }
 
         // volume is converted to coin0 amount

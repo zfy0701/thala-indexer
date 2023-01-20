@@ -52,6 +52,16 @@ export function getCoinDecimals(address: string): number {
   return info ? info.decimals : DEFAULT_DECIMALS;
 }
 
+// use "123456coin1Name-789012coin2Name" as pair tag for each pool
+// the first 6 digits of coin address are used to reduce the length of the tag
+export function getPairTag(coin0: string, coin1: string): string {
+  const fragments0 = coin0.split("::");
+  const coinTag0 = fragments0[0].slice(2, 8) + fragments0[fragments0.length - 1]
+  const fragments1 = coin1.split("::");
+  const coinTag1 = fragments1[0].slice(2, 8) + fragments1[fragments1.length - 1]
+  return coinTag0.concat('-').concat(coinTag1);
+}
+
 // input cannot be larger the 2^31
 // this should allow at least 6 digits precision in the fractional part
 // https://stackoverflow.com/questions/45929493/node-js-maximum-safe-floating-point-number
