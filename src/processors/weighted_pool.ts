@@ -32,14 +32,14 @@ export function processor() {
           coins,
           weights
         );
-        coin1PriceGauge.record(ctx, coin1Price, { poolTag, pair1Tag });
+        coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
         if (coin2Price) {
           const pair2Tag = getPairTag(coins[0], coins[2]);
-          coin2PriceGauge.record(ctx, coin2Price, { poolTag, pair2Tag });
+          coin2PriceGauge.record(ctx, coin2Price, { poolTag, pairTag: pair2Tag });
         }
         if (coin3Price) {
           const pair3Tag = getPairTag(coins[0], coins[3]);
-          coin3PriceGauge.record(ctx, coin3Price, { poolTag, pair3Tag });
+          coin3PriceGauge.record(ctx, coin3Price, { poolTag, pairTag: pair3Tag });
         }
 
         // volume is converted to coin0 amount
