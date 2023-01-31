@@ -1,5 +1,5 @@
 import { stable_pool } from "../types/aptos/testnet/amm";
-import { bigintToInteger, getCoinDecimals, getPairTag, scaleDown } from "../utils";
+import {bigintToInteger, getCoinDecimals, getDateTag, getPairTag, scaleDown} from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
@@ -23,6 +23,7 @@ export function processor() {
       (event: stable_pool.SwapEventInstance, ctx: AptosContext) => {
         const coins = getCoins(event);
         const poolTag = getPoolTag(coins);
+        const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
         const pair1Tag = getPairTag(coins[0], coins[1]);
         const { coin1Price, coin2Price, coin3Price } = getPrices(event, coins);
         coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
@@ -71,7 +72,7 @@ export function processor() {
           type: "stable",
         };
 
-        ctx.meter.Counter("stable_volume_coin_0").add(volumeCoin0, { poolTag });
+        ctx.meter.Counter("stable_volume_coin_0").add(volumeCoin0, { poolTag, dateTag });
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in stable_pool`,
           swapAttributes
