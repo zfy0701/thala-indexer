@@ -81,8 +81,7 @@ export function processor() {
         ctx.meter
           .Counter("weighted_volume_coin_0")
           .add(volumeCoin0, { poolTag });
-        ctx.logger.log(
-          1,
+        ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
           swapAttributes
         );
@@ -94,7 +93,7 @@ export function processor() {
       }::weighted_pool::WeightedPool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.log(1, "add liquidity", {
+      ctx.logger.info( "add liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,
@@ -106,7 +105,7 @@ export function processor() {
       }::weighted_pool::WeightedPool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.log(1, "add liquidity", {
+      ctx.logger.info("add liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,
@@ -118,7 +117,7 @@ export function processor() {
       }::weighted_pool::WeightedPool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.log(1, "remove liquidity", {
+      ctx.logger.info( "remove liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,

@@ -1009,6 +1009,11 @@
     "@noble/hashes" "~1.1.1"
     "@scure/base" "~1.1.0"
 
+"@sentio/bigdecimal@^9.1.1-patch.2":
+  version "9.1.1-patch.3"
+  resolved "https://registry.yarnpkg.com/@sentio/bigdecimal/-/bigdecimal-9.1.1-patch.3.tgz#15e4f2ed6dd0446a97c5375d3931757a71df4287"
+  integrity sha512-O5w8XdyeatUcwI+ZbpSw60/cXFPJk3NbpIupwMHfYmW8fpxpXyRbyGESNJNufWWrB6CadsWGh1R3rd7owvrmlw==
+
 "@sentio/cli@^1.1.9":
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/@sentio/cli/-/cli-1.1.9.tgz#d3b2e7e75754cf65a26990d81afc6825a3a678b9"
