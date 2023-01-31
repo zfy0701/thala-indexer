@@ -63,6 +63,10 @@ export function getPairTag(coin0: string, coin1: string): string {
   return coinTag0.localeCompare(coinTag1) < 0 ? coinTag0.concat('-').concat(coinTag1) : coinTag1.concat('-').concat(coinTag0);
 }
 
+export function getDateTag(timeStamp: number): string {
+  return new Date(timeStamp).toDateString();
+}
+
 // input cannot be larger the 2^31
 // this should allow at least 6 digits precision in the fractional part
 // https://stackoverflow.com/questions/45929493/node-js-maximum-safe-floating-point-number

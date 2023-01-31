@@ -1,5 +1,5 @@
 import { weighted_pool } from "../types/aptos/testnet/amm";
-import { bigintToInteger, getCoinDecimals, getPairTag, scaleDown } from "../utils";
+import { bigintToInteger, getCoinDecimals, getDateTag, getPairTag, scaleDown } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
@@ -27,6 +27,7 @@ export function processor() {
         const { coins, weights } = getCoinsAndWeights(event);
         const poolTag = getPoolTag(coins, weights);
         const pair1Tag = getPairTag(coins[0], coins[1]);
+        const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
         const { coin1Price, coin2Price, coin3Price } = getPrices(
           event,
           coins,
@@ -80,7 +81,7 @@ export function processor() {
 
         ctx.meter
           .Counter("weighted_volume_coin_0")
-          .add(volumeCoin0, { poolTag });
+          .add(volumeCoin0, { poolTag, dateTag });
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
           swapAttributes
