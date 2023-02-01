@@ -1,5 +1,5 @@
 import { lbp } from "../types/aptos/testnet/lbp";
-import {fp64ToFloat, getCoinDecimals, getDateTag, scaleDown} from "../utils";
+import { fp64ToFloat, getCoinDecimals, getDateTag, scaleDown } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 
@@ -18,7 +18,7 @@ export function processor() {
         .Counter("volume_coin_0")
         .add(scaleDown(event.data_typed.amount_0, getCoinDecimals(coin0)), {
           poolId,
-          dateString
+          dateString,
         });
     })
     .onEventLiquidityEvent((event, ctx) => {

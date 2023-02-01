@@ -57,10 +57,14 @@ export function getCoinDecimals(address: string): number {
 // tags are sorted alphabetically
 export function getPairTag(coin0: string, coin1: string): string {
   const fragments0 = coin0.split("::");
-  const coinTag0 = fragments0[0].slice(2, 8) + fragments0[fragments0.length - 1]
+  const coinTag0 =
+    fragments0[0].slice(2, 8) + fragments0[fragments0.length - 1];
   const fragments1 = coin1.split("::");
-  const coinTag1 = fragments1[0].slice(2, 8) + fragments1[fragments1.length - 1]
-  return coinTag0.localeCompare(coinTag1) < 0 ? coinTag0.concat('-').concat(coinTag1) : coinTag1.concat('-').concat(coinTag0);
+  const coinTag1 =
+    fragments1[0].slice(2, 8) + fragments1[fragments1.length - 1];
+  return coinTag0.localeCompare(coinTag1) < 0
+    ? coinTag0.concat("-").concat(coinTag1)
+    : coinTag1.concat("-").concat(coinTag0);
 }
 
 export function getDateTag(timeStamp: number): string {

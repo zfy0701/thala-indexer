@@ -1,5 +1,11 @@
 import { stable_pool } from "../types/aptos/testnet/amm";
-import {bigintToInteger, getCoinDecimals, getDateTag, getPairTag, scaleDown} from "../utils";
+import {
+  bigintToInteger,
+  getCoinDecimals,
+  getDateTag,
+  getPairTag,
+  scaleDown,
+} from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
@@ -29,11 +35,17 @@ export function processor() {
         coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
         if (coin2Price) {
           const pair2Tag = getPairTag(coins[0], coins[2]);
-          coin2PriceGauge.record(ctx, coin2Price, { poolTag, pairTag: pair2Tag });
+          coin2PriceGauge.record(ctx, coin2Price, {
+            poolTag,
+            pairTag: pair2Tag,
+          });
         }
         if (coin3Price) {
           const pair3Tag = getPairTag(coins[0], coins[3]);
-          coin3PriceGauge.record(ctx, coin3Price, { poolTag, pairTag: pair3Tag });
+          coin3PriceGauge.record(ctx, coin3Price, {
+            poolTag,
+            pairTag: pair3Tag,
+          });
         }
 
         // volume is converted to coin0 amount
@@ -60,7 +72,10 @@ export function processor() {
 
         const coinAddressIn = event.type_arguments[assetInIndex];
         const coinAddressOut = event.type_arguments[assetOutIndex];
-        const pair = coinAddressIn.localeCompare(coinAddressOut) < 0 ? `${coinAddressIn}-${coinAddressOut}` : `${coinAddressOut}-${coinAddressIn}`;
+        const pair =
+          coinAddressIn.localeCompare(coinAddressOut) < 0
+            ? `${coinAddressIn}-${coinAddressOut}`
+            : `${coinAddressOut}-${coinAddressIn}`;
 
         const swapAttributes = {
           pair,
@@ -72,7 +87,9 @@ export function processor() {
           type: "stable",
         };
 
-        ctx.meter.Counter("stable_volume_coin_0").add(volumeCoin0, { poolTag, dateTag });
+        ctx.meter
+          .Counter("stable_volume_coin_0")
+          .add(volumeCoin0, { poolTag, dateTag });
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in stable_pool`,
           swapAttributes
@@ -85,7 +102,7 @@ export function processor() {
       }::stable_pool::StablePool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.info( "add liquidity", {
+      ctx.logger.info("add liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,
@@ -97,7 +114,7 @@ export function processor() {
       }::stable_pool::StablePool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.info( "add liquidity", {
+      ctx.logger.info("add liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,
@@ -109,7 +126,7 @@ export function processor() {
       }::stable_pool::StablePool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
-      ctx.logger.info( "remove liquidity", {
+      ctx.logger.info("remove liquidity", {
         pool,
         value: 0,
         maker: ctx.transaction.sender,
