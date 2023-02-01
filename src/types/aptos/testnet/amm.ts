@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/* Generated modules for account 0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba */
+/* Generated modules for account 0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3 */
 
 import {
   MoveCoder,
@@ -19,21 +19,13 @@ import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
 import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
-import * as _0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c from "./0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c";
-import * as _0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02 from "./0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02";
 
 export namespace fees {
-  export class FeesAccountCapability {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::fees::FeesAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"fees","friends":["0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::init","0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool","0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool"],"exposed_functions":[{"name":"absorb_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"register_coin","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"withdraw_fee","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>"]}],"structs":[{"name":"FeesAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"fees","friends":["0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool"],"exposed_functions":[{"name":"absorb_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"balance","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"withdraw_fee","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>"]}],"structs":[]}'
   );
 }
 
@@ -43,7 +35,7 @@ export class init extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -84,37 +76,34 @@ export namespace init {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[]}'
   );
 }
 
-export class manager extends AptosBaseProcessor {
+export class package_ extends AptosBaseProcessor {
   constructor(options: AptosBindOptions) {
-    super("manager", options);
+    super("package", options);
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<AptosBindOptions> = {}): manager {
-    return new manager({ ...manager.DEFAULT_OPTIONS, ...options });
+  static bind(options: Partial<AptosBindOptions> = {}): package_ {
+    return new package_({ ...package_.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryChangeManagerAddress(
-    func: (
-      call: manager.ChangeManagerAddressPayload,
-      ctx: AptosContext
-    ) => void,
+  onEntryPublishPackage(
+    func: (call: package_.PublishPackagePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
     fetchConfig?: AptosFetchConfig
-  ): manager {
+  ): package_ {
     this.onEntryFunctionCall(
       func,
       {
         ...filter,
-        function: "manager::change_manager_address",
+        function: "package::publish_package",
       },
       fetchConfig
     );
@@ -126,24 +115,18 @@ export class manager extends AptosBaseProcessor {
   }
 }
 
-export namespace manager {
-  export class Manager {
+export namespace package_ {
+  export class ResourceSignerCapability {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::manager::Manager";
-    manager_address: Address;
-  }
-
-  export class ManagerAccountCapability {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::manager::ManagerAccountCapability";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::package::ResourceSignerCapability";
     signer_cap: _0x1.account.SignerCapability;
   }
 
-  export interface ChangeManagerAddressPayload
-    extends TypedEntryFunctionPayload<[Address]> {
+  export interface PublishPackagePayload
+    extends TypedEntryFunctionPayload<[string, string[]]> {
     /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
-    arguments_decoded: [Address];
+    arguments_typed: [string, string[]];
+    arguments_decoded: [string, string[]];
     type_arguments: [];
   }
 
@@ -151,7 +134,7 @@ export namespace manager {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"manager","friends":["0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::init"],"exposed_functions":[{"name":"change_manager_address","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_manager","visibility":"public","is_entry":false,"generic_type_params":[],"params":["address"],"return":["bool"]}],"structs":[{"name":"Manager","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"manager_address","type":"address"}]},{"name":"ManagerAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"package","friends":["0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::base_pool","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::fees","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool"],"exposed_functions":[{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"publish_package","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<vector<u8>>"],"return":[]},{"name":"resource_account_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_deployer_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_signer","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["signer"]}],"structs":[{"name":"ResourceSignerCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
   );
 }
 
@@ -161,7 +144,7 @@ export class base_pool extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -204,27 +187,55 @@ export class base_pool extends AptosBaseProcessor {
     return this;
   }
 
+  onEventBasePoolParamChangeEvent(
+    func: (
+      event: base_pool.BasePoolParamChangeEventInstance,
+      ctx: AptosContext
+    ) => void,
+    fetchConfig?: AptosFetchConfig
+  ): base_pool {
+    this.onEvent(
+      func,
+      {
+        type: "base_pool::BasePoolParamChangeEvent",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
   loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
 
 export namespace base_pool {
-  export class BasePoolAccountCapability {
+  export class BasePoolParamChangeEvent {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::base_pool::BasePoolAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::base_pool::BasePoolParamChangeEvent";
+    name: string;
+    prev_value: bigint;
+    new_value: bigint;
+  }
+
+  export interface BasePoolParamChangeEventInstance
+    extends TypedEventInstance<BasePoolParamChangeEvent> {
+    /** @deprecated use {@link data_decoded} instead */
+    data_typed: BasePoolParamChangeEvent;
+    data_decoded: BasePoolParamChangeEvent;
+    type_arguments: [];
   }
 
   export class BasePoolParams {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::base_pool::BasePoolParams";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::base_pool::BasePoolParams";
     swap_fee_protocol_allocation_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
+    param_change_events: _0x1.event.EventHandle<base_pool.BasePoolParamChangeEvent>;
   }
 
   export class Null {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::base_pool::Null";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::base_pool::Null";
     dummy_field: Boolean;
   }
 
@@ -247,203 +258,7 @@ export namespace base_pool {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"base_pool","friends":["0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::init","0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool","0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool"],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_null","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"max_supported_decimals","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["u8"]},{"name":"set_swap_fee_protocol_allocation_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"swap_fee_protocol_allocation_ratio","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"validate_pool_assets","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"validate_swap_fee","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["bool"]}],"structs":[{"name":"BasePoolAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"BasePoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"swap_fee_protocol_allocation_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"Null","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
-  );
-}
-
-export class lp_account extends AptosBaseProcessor {
-  constructor(options: AptosBindOptions) {
-    super("lp_account", options);
-  }
-  static DEFAULT_OPTIONS: AptosBindOptions = {
-    address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
-    network: AptosNetwork.TEST_NET,
-  };
-
-  static bind(options: Partial<AptosBindOptions> = {}): lp_account {
-    return new lp_account({ ...lp_account.DEFAULT_OPTIONS, ...options });
-  }
-
-  onEntryInitializeStablePoolAccount(
-    func: (
-      call: lp_account.InitializeStablePoolAccountPayload,
-      ctx: AptosContext
-    ) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): lp_account {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "lp_account::initialize_stable_pool_account",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  onEntryInitializeWeightedPoolAccount(
-    func: (
-      call: lp_account.InitializeWeightedPoolAccountPayload,
-      ctx: AptosContext
-    ) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): lp_account {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "lp_account::initialize_weighted_pool_account",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  loadTypesInternal(registry: MoveCoder) {
-    loadAllTypes(registry);
-  }
-}
-
-export namespace lp_account {
-  export class StablePoolCapabilityStorage {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::lp_account::StablePoolCapabilityStorage";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
-  export class WeightedPoolCapabilityStorage {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::lp_account::WeightedPoolCapabilityStorage";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
-  export interface InitializeStablePoolAccountPayload
-    extends TypedEntryFunctionPayload<[string, string]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, string];
-    arguments_decoded: [string, string];
-    type_arguments: [];
-  }
-
-  export interface InitializeWeightedPoolAccountPayload
-    extends TypedEntryFunctionPayload<[string, string]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, string];
-    arguments_decoded: [string, string];
-    type_arguments: [];
-  }
-
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"lp_account","friends":[],"exposed_functions":[{"name":"initialize_stable_pool_account","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<u8>"],"return":[]},{"name":"initialize_weighted_pool_account","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<u8>"],"return":[]},{"name":"retrieve_stable_pool_signer_cap","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":["0x1::account::SignerCapability"]},{"name":"retrieve_weighted_pool_signer_cap","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":["0x1::account::SignerCapability"]},{"name":"stable_pool_initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"weighted_pool_initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]}],"structs":[{"name":"StablePoolCapabilityStorage","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"WeightedPoolCapabilityStorage","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
-  );
-}
-
-export class test_coins extends AptosBaseProcessor {
-  constructor(options: AptosBindOptions) {
-    super("test_coins", options);
-  }
-  static DEFAULT_OPTIONS: AptosBindOptions = {
-    address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
-    network: AptosNetwork.TEST_NET,
-  };
-
-  static bind(options: Partial<AptosBindOptions> = {}): test_coins {
-    return new test_coins({ ...test_coins.DEFAULT_OPTIONS, ...options });
-  }
-
-  onEntryInitializeCoin(
-    func: (call: test_coins.InitializeCoinPayload, ctx: AptosContext) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): test_coins {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "test_coins::initialize_coin",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  onEntryMintCoin(
-    func: (call: test_coins.MintCoinPayload, ctx: AptosContext) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): test_coins {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "test_coins::mint_coin",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  loadTypesInternal(registry: MoveCoder) {
-    loadAllTypes(registry);
-  }
-}
-
-export namespace test_coins {
-  export class Capabilities<T0> {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::Capabilities";
-    burn_capability: _0x1.coin.BurnCapability<T0>;
-    freeze_capability: _0x1.coin.FreezeCapability<T0>;
-    mint_capability: _0x1.coin.MintCapability<T0>;
-  }
-
-  export class FakeCoin_A {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_A";
-    dummy_field: Boolean;
-  }
-
-  export class FakeCoin_B {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_B";
-    dummy_field: Boolean;
-  }
-
-  export class FakeCoin_C {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_C";
-    dummy_field: Boolean;
-  }
-
-  export interface InitializeCoinPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[string, number]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, number];
-    arguments_decoded: [string, number];
-    type_arguments: [string];
-  }
-
-  export interface MintCoinPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address, bigint];
-    arguments_decoded: [Address, bigint];
-    type_arguments: [string];
-  }
-
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"test_coins","friends":[],"exposed_functions":[{"name":"initialize_coin","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::string::String","u8"],"return":[]},{"name":"mint_coin","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]}],"structs":[{"name":"Capabilities","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"burn_capability","type":"0x1::coin::BurnCapability<T0>"},{"name":"freeze_capability","type":"0x1::coin::FreezeCapability<T0>"},{"name":"mint_capability","type":"0x1::coin::MintCapability<T0>"}]},{"name":"FakeCoin_A","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"FakeCoin_B","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"FakeCoin_C","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"base_pool","friends":["0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::init","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool","0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool"],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_null","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"max_supported_decimals","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u8"]},{"name":"pool_token_supply","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"set_swap_fee_protocol_allocation_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"swap_fee_protocol_allocation_ratio","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"validate_pool_assets","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"validate_swap_fee","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["bool"]}],"structs":[{"name":"BasePoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"BasePoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"swap_fee_protocol_allocation_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::base_pool::BasePoolParamChangeEvent>"}]},{"name":"Null","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
   );
 }
 
@@ -452,16 +267,7 @@ export namespace coin_helper {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"coin_helper","friends":[],"exposed_functions":[{"name":"is_unique_and_sorted","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"supply","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u128"]}],"structs":[]}'
-  );
-}
-
-export namespace stable_math {
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"stable_math","friends":[],"exposed_functions":[{"name":"get_D","visibility":"public","is_entry":false,"generic_type_params":[],"params":["vector<u64>","u64"],"return":["u64"]},{"name":"get_Y","visibility":"public","is_entry":false,"generic_type_params":[],"params":["vector<u64>","u64","u64","u64","u64"],"return":["u64"]}],"structs":[]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"coin_helper","friends":[],"exposed_functions":[{"name":"is_unique_and_sorted","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]}],"structs":[]}'
   );
 }
 
@@ -471,7 +277,7 @@ export class stable_pool extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -479,8 +285,8 @@ export class stable_pool extends AptosBaseProcessor {
     return new stable_pool({ ...stable_pool.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryInitialize(
-    func: (call: stable_pool.InitializePayload, ctx: AptosContext) => void,
+  onEntrySetAmpFactor(
+    func: (call: stable_pool.SetAmpFactorPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
     fetchConfig?: AptosFetchConfig
   ): stable_pool {
@@ -488,26 +294,7 @@ export class stable_pool extends AptosBaseProcessor {
       func,
       {
         ...filter,
-        function: "stable_pool::initialize",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  onEntrySetAmplicationFactor(
-    func: (
-      call: stable_pool.SetAmplicationFactorPayload,
-      ctx: AptosContext
-    ) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): stable_pool {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "stable_pool::set_amplication_factor",
+        function: "stable_pool::set_amp_factor",
       },
       fetchConfig
     );
@@ -642,7 +429,7 @@ export class stable_pool extends AptosBaseProcessor {
 export namespace stable_pool {
   export class AddLiquidityEvent<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::AddLiquidityEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::AddLiquidityEvent";
     amount_0: bigint;
     amount_1: bigint;
     amount_2: bigint;
@@ -660,7 +447,7 @@ export namespace stable_pool {
 
   export class RemoveLiquidityEvent<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::RemoveLiquidityEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::RemoveLiquidityEvent";
     amount_0: bigint;
     amount_1: bigint;
     amount_2: bigint;
@@ -678,50 +465,29 @@ export namespace stable_pool {
 
   export class StablePool<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePool";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePool";
     asset_0: _0x1.coin.Coin<T0>;
     asset_1: _0x1.coin.Coin<T1>;
     asset_2: _0x1.coin.Coin<T2>;
     asset_3: _0x1.coin.Coin<T3>;
-    amplification_factor: bigint;
+    amp_factor: bigint;
     precision_multipliers: bigint[];
     swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     pool_token_mint_cap: _0x1.coin.MintCapability<
-      _0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c.stable_pool_lp_coin.StablePoolToken<
-        T0,
-        T1,
-        T2,
-        T3
-      >
+      stable_pool.StablePoolToken<T0, T1, T2, T3>
     >;
     pool_token_burn_cap: _0x1.coin.BurnCapability<
-      _0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c.stable_pool_lp_coin.StablePoolToken<
-        T0,
-        T1,
-        T2,
-        T3
-      >
+      stable_pool.StablePoolToken<T0, T1, T2, T3>
     >;
     reserved_lp_coin: _0x1.coin.Coin<
-      _0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c.stable_pool_lp_coin.StablePoolToken<
-        T0,
-        T1,
-        T2,
-        T3
-      >
+      stable_pool.StablePoolToken<T0, T1, T2, T3>
     >;
     events: stable_pool.StablePoolEvents<T0, T1, T2, T3>;
   }
 
-  export class StablePoolAccountCapability {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export class StablePoolCreationEvent<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolCreationEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolCreationEvent";
     creator: Address;
     amount_0: bigint;
     amount_1: bigint;
@@ -741,7 +507,7 @@ export namespace stable_pool {
 
   export class StablePoolEvents<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolEvents";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolEvents";
     pool_creation_events: _0x1.event.EventHandle<
       stable_pool.StablePoolCreationEvent<T0, T1, T2, T3>
     >;
@@ -755,9 +521,24 @@ export namespace stable_pool {
     param_change_events: _0x1.event.EventHandle<stable_pool.StablePoolParamChangeEvent>;
   }
 
+  export class StablePoolInfo {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolInfo";
+    balances: bigint[];
+    precision_multipliers: bigint[];
+    amp_factor: bigint;
+    lp_coin_supply: bigint;
+  }
+
+  export class StablePoolLookup {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolLookup";
+    pools: _0x1.table.Table<string, stable_pool.StablePoolInfo>;
+  }
+
   export class StablePoolParamChangeEvent {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolParamChangeEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -773,16 +554,22 @@ export namespace stable_pool {
 
   export class StablePoolParams {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolParams";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolParams";
     default_swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     param_change_events: _0x1.event.EventHandle<stable_pool.StablePoolParamChangeEvent>;
   }
 
+  export class StablePoolToken<T0, T1, T2, T3> {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken";
+    dummy_field: Boolean;
+  }
+
   export class SwapEvent<T0, T1, T2, T3> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::SwapEvent";
-    asset_in_index: bigint;
-    asset_out_index: bigint;
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::SwapEvent";
+    idx_in: bigint;
+    idx_out: bigint;
     amount_in: bigint;
     amount_out: bigint;
     fee_amount: bigint;
@@ -790,7 +577,7 @@ export namespace stable_pool {
     pool_balance_1: bigint;
     pool_balance_2: bigint;
     pool_balance_3: bigint;
-    amplification_factor: bigint;
+    amp_factor: bigint;
   }
 
   export interface SwapEventInstance
@@ -801,19 +588,8 @@ export namespace stable_pool {
     type_arguments: [string, string, string, string];
   }
 
-  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
-    arguments_decoded: [];
-    type_arguments: [];
-  }
-
-  export interface SetAmplicationFactorPayload<
-    T0 = any,
-    T1 = any,
-    T2 = any,
-    T3 = any
-  > extends TypedEntryFunctionPayload<[bigint]> {
+  export interface SetAmpFactorPayload<T0 = any, T1 = any, T2 = any, T3 = any>
+    extends TypedEntryFunctionPayload<[bigint]> {
     /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
     arguments_decoded: [bigint];
@@ -844,7 +620,7 @@ export namespace stable_pool {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"stable_pool","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"]},{"name":"create_stable_pool","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>","u64"],"return":["0x1::coin::Coin<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"]},{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"set_amplication_factor","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_default_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T4>"],"return":["0x1::coin::Coin<T5>"]}],"structs":[{"name":"AddLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"}]},{"name":"RemoveLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"burned_lp_coin_amount","type":"u64"}]},{"name":"StablePool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"asset_2","type":"0x1::coin::Coin<T2>"},{"name":"asset_3","type":"0x1::coin::Coin<T3>"},{"name":"amplification_factor","type":"u64"},{"name":"precision_multipliers","type":"vector<u64>"},{"name":"swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_token_mint_cap","type":"0x1::coin::MintCapability<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"},{"name":"pool_token_burn_cap","type":"0x1::coin::BurnCapability<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"},{"name":"reserved_lp_coin","type":"0x1::coin::Coin<0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c::stable_pool_lp_coin::StablePoolToken<T0, T1, T2, T3>>"},{"name":"events","type":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolEvents<T0, T1, T2, T3>"}]},{"name":"StablePoolAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"StablePoolCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"},{"name":"swap_fee_bps","type":"u64"}]},{"name":"StablePoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pool_creation_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolCreationEvent<T0, T1, T2, T3>>"},{"name":"add_liquidity_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::AddLiquidityEvent<T0, T1, T2, T3>>"},{"name":"remove_liquidity_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::RemoveLiquidityEvent<T0, T1, T2, T3>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::SwapEvent<T0, T1, T2, T3>>"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolParamChangeEvent>"}]},{"name":"StablePoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"StablePoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"default_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::stable_pool::StablePoolParamChangeEvent>"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_in_index","type":"u64"},{"name":"asset_out_index","type":"u64"},{"name":"amount_in","type":"u64"},{"name":"amount_out","type":"u64"},{"name":"fee_amount","type":"u64"},{"name":"pool_balance_0","type":"u64"},{"name":"pool_balance_1","type":"u64"},{"name":"pool_balance_2","type":"u64"},{"name":"pool_balance_3","type":"u64"},{"name":"amplification_factor","type":"u64"}]}]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"stable_pool","friends":["0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::init"],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"]},{"name":"create_stable_pool","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>","u64"],"return":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"pool_amp_factor","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["u64"]},{"name":"pool_balances","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["vector<u64>"]},{"name":"pool_info","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x1::string::String"],"return":["vector<u64>","u64","u64"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"set_amp_factor","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_default_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"stable_pool_exists","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"swap","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T4>"],"return":["0x1::coin::Coin<T5>"]}],"structs":[{"name":"AddLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"}]},{"name":"RemoveLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"burned_lp_coin_amount","type":"u64"}]},{"name":"StablePool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"asset_2","type":"0x1::coin::Coin<T2>"},{"name":"asset_3","type":"0x1::coin::Coin<T3>"},{"name":"amp_factor","type":"u64"},{"name":"precision_multipliers","type":"vector<u64>"},{"name":"swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_token_mint_cap","type":"0x1::coin::MintCapability<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"},{"name":"pool_token_burn_cap","type":"0x1::coin::BurnCapability<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"},{"name":"reserved_lp_coin","type":"0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolToken<T0, T1, T2, T3>>"},{"name":"events","type":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolEvents<T0, T1, T2, T3>"}]},{"name":"StablePoolCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"},{"name":"swap_fee_bps","type":"u64"}]},{"name":"StablePoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pool_creation_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolCreationEvent<T0, T1, T2, T3>>"},{"name":"add_liquidity_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::AddLiquidityEvent<T0, T1, T2, T3>>"},{"name":"remove_liquidity_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::RemoveLiquidityEvent<T0, T1, T2, T3>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::SwapEvent<T0, T1, T2, T3>>"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolParamChangeEvent>"}]},{"name":"StablePoolInfo","is_native":false,"abilities":["copy","drop","store"],"generic_type_params":[],"fields":[{"name":"balances","type":"vector<u64>"},{"name":"precision_multipliers","type":"vector<u64>"},{"name":"amp_factor","type":"u64"},{"name":"lp_coin_supply","type":"u64"}]},{"name":"StablePoolLookup","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"pools","type":"0x1::table::Table<0x1::string::String, 0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolInfo>"}]},{"name":"StablePoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"StablePoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"default_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::stable_pool::StablePoolParamChangeEvent>"}]},{"name":"StablePoolToken","is_native":false,"abilities":[],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"idx_in","type":"u64"},{"name":"idx_out","type":"u64"},{"name":"amount_in","type":"u64"},{"name":"amount_out","type":"u64"},{"name":"fee_amount","type":"u64"},{"name":"pool_balance_0","type":"u64"},{"name":"pool_balance_1","type":"u64"},{"name":"pool_balance_2","type":"u64"},{"name":"pool_balance_3","type":"u64"},{"name":"amp_factor","type":"u64"}]}]}'
   );
 }
 
@@ -854,7 +630,7 @@ export class fees_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -896,16 +672,7 @@ export namespace fees_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"fees_scripts","friends":[],"exposed_functions":[{"name":"transfer_fee","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]}],"structs":[]}'
-  );
-}
-
-export namespace weighted_math {
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"weighted_math","friends":[],"exposed_functions":[{"name":"calc_in_given_out","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64","u64","u64"],"return":["u64"]},{"name":"calc_out_given_in","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64","u64","u64"],"return":["u64"]},{"name":"compute_asset_amount_to_return","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u128"],"return":["u64"]},{"name":"compute_invariant","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64","u64","u64","u64","u64","u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"compute_pool_tokens_issued","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64","u64","u64","u64","u64","u64","u128"],"return":["u64","u64","u64","u64","u64"]},{"name":"compute_protocol_fees","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u128","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"],"return":["u64"]}],"structs":[]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"fees_scripts","friends":[],"exposed_functions":[{"name":"transfer_fee","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -915,28 +682,12 @@ export class weighted_pool extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
   static bind(options: Partial<AptosBindOptions> = {}): weighted_pool {
     return new weighted_pool({ ...weighted_pool.DEFAULT_OPTIONS, ...options });
-  }
-
-  onEntryInitialize(
-    func: (call: weighted_pool.InitializePayload, ctx: AptosContext) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): weighted_pool {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "weighted_pool::initialize",
-      },
-      fetchConfig
-    );
-    return this;
   }
 
   onEntrySetDefaultPoolSwapFeeBps(
@@ -1067,7 +818,7 @@ export class weighted_pool extends AptosBaseProcessor {
 export namespace weighted_pool {
   export class AddLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::AddLiquidityEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::AddLiquidityEvent";
     amount_0: bigint;
     amount_1: bigint;
     amount_2: bigint;
@@ -1096,7 +847,7 @@ export namespace weighted_pool {
 
   export class RemoveLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::RemoveLiquidityEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::RemoveLiquidityEvent";
     amount_0: bigint;
     amount_1: bigint;
     amount_2: bigint;
@@ -1125,9 +876,9 @@ export namespace weighted_pool {
 
   export class SwapEvent<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::SwapEvent";
-    asset_in_index: bigint;
-    asset_out_index: bigint;
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::SwapEvent";
+    idx_in: bigint;
+    idx_out: bigint;
     amount_in: bigint;
     amount_out: bigint;
     fee_amount: bigint;
@@ -1158,121 +909,121 @@ export namespace weighted_pool {
 
   export class Weight_10 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_10";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_10";
     dummy_field: Boolean;
   }
 
   export class Weight_15 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_15";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_15";
     dummy_field: Boolean;
   }
 
   export class Weight_20 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_20";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_20";
     dummy_field: Boolean;
   }
 
   export class Weight_25 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_25";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_25";
     dummy_field: Boolean;
   }
 
   export class Weight_30 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_30";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_30";
     dummy_field: Boolean;
   }
 
   export class Weight_35 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_35";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_35";
     dummy_field: Boolean;
   }
 
   export class Weight_40 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_40";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_40";
     dummy_field: Boolean;
   }
 
   export class Weight_45 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_45";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_45";
     dummy_field: Boolean;
   }
 
   export class Weight_5 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_5";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_5";
     dummy_field: Boolean;
   }
 
   export class Weight_50 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_50";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_50";
     dummy_field: Boolean;
   }
 
   export class Weight_55 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_55";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_55";
     dummy_field: Boolean;
   }
 
   export class Weight_60 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_60";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_60";
     dummy_field: Boolean;
   }
 
   export class Weight_65 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_65";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_65";
     dummy_field: Boolean;
   }
 
   export class Weight_70 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_70";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_70";
     dummy_field: Boolean;
   }
 
   export class Weight_75 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_75";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_75";
     dummy_field: Boolean;
   }
 
   export class Weight_80 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_80";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_80";
     dummy_field: Boolean;
   }
 
   export class Weight_85 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_85";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_85";
     dummy_field: Boolean;
   }
 
   export class Weight_90 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_90";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_90";
     dummy_field: Boolean;
   }
 
   export class Weight_95 {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::Weight_95";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::Weight_95";
     dummy_field: Boolean;
   }
 
   export class WeightedPool<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPool";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPool";
     asset_0: _0x1.coin.Coin<T0>;
     asset_1: _0x1.coin.Coin<T1>;
     asset_2: _0x1.coin.Coin<T2>;
@@ -1284,53 +1035,20 @@ export namespace weighted_pool {
     swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     inverse_negated_swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     pool_token_mint_cap: _0x1.coin.MintCapability<
-      _0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02.weighted_pool_lp_coin.WeightedPoolToken<
-        T0,
-        T1,
-        T2,
-        T3,
-        T4,
-        T5,
-        T6,
-        T7
-      >
+      weighted_pool.WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>
     >;
     pool_token_burn_cap: _0x1.coin.BurnCapability<
-      _0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02.weighted_pool_lp_coin.WeightedPoolToken<
-        T0,
-        T1,
-        T2,
-        T3,
-        T4,
-        T5,
-        T6,
-        T7
-      >
+      weighted_pool.WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>
     >;
     reserved_lp_coin: _0x1.coin.Coin<
-      _0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02.weighted_pool_lp_coin.WeightedPoolToken<
-        T0,
-        T1,
-        T2,
-        T3,
-        T4,
-        T5,
-        T6,
-        T7
-      >
+      weighted_pool.WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>
     >;
     events: weighted_pool.WeightedPoolEvents<T0, T1, T2, T3, T4, T5, T6, T7>;
   }
 
-  export class WeightedPoolAccountCapability {
-    static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export class WeightedPoolCreationEvent<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolCreationEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolCreationEvent";
     creator: Address;
     amount_0: bigint;
     amount_1: bigint;
@@ -1379,7 +1097,7 @@ export namespace weighted_pool {
 
   export class WeightedPoolEvents<T0, T1, T2, T3, T4, T5, T6, T7> {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolEvents";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolEvents";
     pool_creation_events: _0x1.event.EventHandle<
       weighted_pool.WeightedPoolCreationEvent<T0, T1, T2, T3, T4, T5, T6, T7>
     >;
@@ -1395,9 +1113,23 @@ export namespace weighted_pool {
     param_change_events: _0x1.event.EventHandle<weighted_pool.WeightedPoolParamChangeEvent>;
   }
 
+  export class WeightedPoolInfo {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolInfo";
+    balances: bigint[];
+    weights: bigint[];
+    lp_coin_supply: bigint;
+  }
+
+  export class WeightedPoolLookup {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolLookup";
+    pools: _0x1.table.Table<string, weighted_pool.WeightedPoolInfo>;
+  }
+
   export class WeightedPoolParamChangeEvent {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolParamChangeEvent";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -1413,16 +1145,15 @@ export namespace weighted_pool {
 
   export class WeightedPoolParams {
     static TYPE_QNAME =
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolParams";
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolParams";
     default_swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     param_change_events: _0x1.event.EventHandle<weighted_pool.WeightedPoolParamChangeEvent>;
   }
 
-  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
-    arguments_decoded: [];
-    type_arguments: [];
+  export class WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7> {
+    static TYPE_QNAME =
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken";
+    dummy_field: Boolean;
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
@@ -1462,7 +1193,188 @@ export namespace weighted_pool {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"weighted_pool","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"create_weighted_pool","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"]},{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"set_default_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T8>"],"return":["0x1::coin::Coin<T9>"]},{"name":"swap_exact_out","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T8>","u64"],"return":["0x1::coin::Coin<T8>","0x1::coin::Coin<T9>"]}],"structs":[{"name":"AddLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"}]},{"name":"RemoveLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"burned_lp_coin_amount","type":"u64"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_in_index","type":"u64"},{"name":"asset_out_index","type":"u64"},{"name":"amount_in","type":"u64"},{"name":"amount_out","type":"u64"},{"name":"fee_amount","type":"u64"},{"name":"pool_balance_0","type":"u64"},{"name":"pool_balance_1","type":"u64"},{"name":"pool_balance_2","type":"u64"},{"name":"pool_balance_3","type":"u64"}]},{"name":"Weight_10","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_15","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_20","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_25","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_30","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_35","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_40","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_45","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_5","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_50","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_55","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_60","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_65","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_70","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_75","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_80","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_85","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_90","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_95","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"WeightedPool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"asset_2","type":"0x1::coin::Coin<T2>"},{"name":"asset_3","type":"0x1::coin::Coin<T3>"},{"name":"weight_0","type":"u64"},{"name":"weight_1","type":"u64"},{"name":"weight_2","type":"u64"},{"name":"weight_3","type":"u64"},{"name":"swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"inverse_negated_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_token_mint_cap","type":"0x1::coin::MintCapability<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"pool_token_burn_cap","type":"0x1::coin::BurnCapability<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"reserved_lp_coin","type":"0x1::coin::Coin<0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02::weighted_pool_lp_coin::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"events","type":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolEvents<T0, T1, T2, T3, T4, T5, T6, T7>"}]},{"name":"WeightedPoolAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"WeightedPoolCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"},{"name":"swap_fee_bps","type":"u64"}]},{"name":"WeightedPoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pool_creation_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolCreationEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"add_liquidity_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::AddLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"remove_liquidity_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::RemoveLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::SwapEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolParamChangeEvent>"}]},{"name":"WeightedPoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"WeightedPoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"default_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::weighted_pool::WeightedPoolParamChangeEvent>"}]}]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"weighted_pool","friends":["0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::init"],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"create_weighted_pool","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"],"return":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"pool_balances_and_weights","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["vector<u64>","vector<u64>"]},{"name":"pool_info","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x1::string::String"],"return":["vector<u64>","vector<u64>","u64"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"set_default_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_pool_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T8>"],"return":["0x1::coin::Coin<T9>"]},{"name":"swap_exact_out","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["0x1::coin::Coin<T8>","u64"],"return":["0x1::coin::Coin<T8>","0x1::coin::Coin<T9>"]},{"name":"weighted_pool_exists","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]}],"structs":[{"name":"AddLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"}]},{"name":"RemoveLiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"burned_lp_coin_amount","type":"u64"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"idx_in","type":"u64"},{"name":"idx_out","type":"u64"},{"name":"amount_in","type":"u64"},{"name":"amount_out","type":"u64"},{"name":"fee_amount","type":"u64"},{"name":"pool_balance_0","type":"u64"},{"name":"pool_balance_1","type":"u64"},{"name":"pool_balance_2","type":"u64"},{"name":"pool_balance_3","type":"u64"}]},{"name":"Weight_10","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_15","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_20","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_25","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_30","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_35","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_40","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_45","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_5","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_50","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_55","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_60","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_65","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_70","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_75","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_80","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_85","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_90","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"Weight_95","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"WeightedPool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"asset_2","type":"0x1::coin::Coin<T2>"},{"name":"asset_3","type":"0x1::coin::Coin<T3>"},{"name":"weight_0","type":"u64"},{"name":"weight_1","type":"u64"},{"name":"weight_2","type":"u64"},{"name":"weight_3","type":"u64"},{"name":"swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"inverse_negated_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_token_mint_cap","type":"0x1::coin::MintCapability<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"pool_token_burn_cap","type":"0x1::coin::BurnCapability<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"reserved_lp_coin","type":"0x1::coin::Coin<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolToken<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"events","type":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolEvents<T0, T1, T2, T3, T4, T5, T6, T7>"}]},{"name":"WeightedPoolCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"amount_2","type":"u64"},{"name":"amount_3","type":"u64"},{"name":"minted_lp_coin_amount","type":"u64"},{"name":"swap_fee_bps","type":"u64"}]},{"name":"WeightedPoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pool_creation_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolCreationEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"add_liquidity_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::AddLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"remove_liquidity_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::RemoveLiquidityEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::SwapEvent<T0, T1, T2, T3, T4, T5, T6, T7>>"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolParamChangeEvent>"}]},{"name":"WeightedPoolInfo","is_native":false,"abilities":["copy","drop","store"],"generic_type_params":[],"fields":[{"name":"balances","type":"vector<u64>"},{"name":"weights","type":"vector<u64>"},{"name":"lp_coin_supply","type":"u64"}]},{"name":"WeightedPoolLookup","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"pools","type":"0x1::table::Table<0x1::string::String, 0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolInfo>"}]},{"name":"WeightedPoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"WeightedPoolParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"default_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3::weighted_pool::WeightedPoolParamChangeEvent>"}]},{"name":"WeightedPoolToken","is_native":false,"abilities":[],"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
+  );
+}
+
+export class multi_hop_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
+    super("multi_hop_scripts", options);
+  }
+  static DEFAULT_OPTIONS: AptosBindOptions = {
+    address:
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
+    network: AptosNetwork.TEST_NET,
+  };
+
+  static bind(options: Partial<AptosBindOptions> = {}): multi_hop_scripts {
+    return new multi_hop_scripts({
+      ...multi_hop_scripts.DEFAULT_OPTIONS,
+      ...options,
+    });
+  }
+
+  onEntrySwapExactIn2(
+    func: (
+      call: multi_hop_scripts.SwapExactIn2Payload,
+      ctx: AptosContext
+    ) => void,
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
+  ): multi_hop_scripts {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "multi_hop_scripts::swap_exact_in_2",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  onEntrySwapExactIn3(
+    func: (
+      call: multi_hop_scripts.SwapExactIn3Payload,
+      ctx: AptosContext
+    ) => void,
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
+  ): multi_hop_scripts {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "multi_hop_scripts::swap_exact_in_3",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  loadTypesInternal(registry: MoveCoder) {
+    loadAllTypes(registry);
+  }
+}
+
+export namespace multi_hop_scripts {
+  export interface SwapExactIn2Payload<
+    T0 = any,
+    T1 = any,
+    T2 = any,
+    T3 = any,
+    T4 = any,
+    T5 = any,
+    T6 = any,
+    T7 = any,
+    T8 = any,
+    T9 = any,
+    T10 = any,
+    T11 = any,
+    T12 = any,
+    T13 = any,
+    T14 = any,
+    T15 = any,
+    T16 = any,
+    T17 = any,
+    T18 = any
+  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
+    arguments_typed: [bigint, bigint];
+    arguments_decoded: [bigint, bigint];
+    type_arguments: [
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string
+    ];
+  }
+
+  export interface SwapExactIn3Payload<
+    T0 = any,
+    T1 = any,
+    T2 = any,
+    T3 = any,
+    T4 = any,
+    T5 = any,
+    T6 = any,
+    T7 = any,
+    T8 = any,
+    T9 = any,
+    T10 = any,
+    T11 = any,
+    T12 = any,
+    T13 = any,
+    T14 = any,
+    T15 = any,
+    T16 = any,
+    T17 = any,
+    T18 = any,
+    T19 = any,
+    T20 = any,
+    T21 = any,
+    T22 = any,
+    T23 = any,
+    T24 = any,
+    T25 = any,
+    T26 = any,
+    T27 = any
+  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
+    arguments_typed: [bigint, bigint];
+    arguments_decoded: [bigint, bigint];
+    type_arguments: [
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string
+    ];
+  }
+
+  export function loadTypes(_r: MoveCoder) {
+    loadAllTypes(_r);
+  }
+  export const ABI: MoveModule = JSON.parse(
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"multi_hop_scripts","friends":[],"exposed_functions":[{"name":"swap_exact_in_2","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"swap_exact_in_3","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -1472,7 +1384,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -1614,7 +1526,7 @@ export namespace stable_pool_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"stable_pool_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_stable_pool","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64","u64"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"stable_pool_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_stable_pool","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64","u64"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -1624,7 +1536,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba",
+      "0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -1873,7 +1785,7 @@ export namespace weighted_pool_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba","name":"weighted_pool_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_weighted_pool","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_out","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x64c36fe6c4693034490d8dd14ad7f4b784de65adb35322dc71488190e8cea5e3","name":"weighted_pool_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_weighted_pool","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"swap_exact_out","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -1882,25 +1794,16 @@ export function loadAllTypes(_r: MoveCoder) {
   _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.loadAllTypes(
     _r
   );
-  _0x66c2cd54520b51294f62392203ed87de0e7c47b3650f5ed0fbe1578835275b8c.loadAllTypes(
-    _r
-  );
-  _0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02.loadAllTypes(
-    _r
-  );
 
   _r.load(fees.ABI);
   _r.load(init.ABI);
-  _r.load(manager.ABI);
+  _r.load(package_.ABI);
   _r.load(base_pool.ABI);
-  _r.load(lp_account.ABI);
-  _r.load(test_coins.ABI);
   _r.load(coin_helper.ABI);
-  _r.load(stable_math.ABI);
   _r.load(stable_pool.ABI);
   _r.load(fees_scripts.ABI);
-  _r.load(weighted_math.ABI);
   _r.load(weighted_pool.ABI);
+  _r.load(multi_hop_scripts.ABI);
   _r.load(stable_pool_scripts.ABI);
   _r.load(weighted_pool_scripts.ABI);
 }

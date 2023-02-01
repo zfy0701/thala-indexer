@@ -10,7 +10,8 @@ import {
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
 
-const START_VERSION = 396264510;
+// https://explorer.aptoslabs.com/txn/419104470
+const START_VERSION = 419104470;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
@@ -62,18 +63,18 @@ export function processor() {
           coin2Price || 0,
           coin3Price || 0,
         ];
-        const assetInIndex = bigintToInteger(event.data_typed.asset_in_index);
+        const assetInIndex = bigintToInteger(event.data_decoded.idx_in);
         const swapAmountIn = scaleDown(
-          event.data_typed.amount_in,
+          event.data_decoded.amount_in,
           getCoinDecimals(event.type_arguments[assetInIndex])
         );
         const volumeCoin0 = swapAmountIn.multipliedBy(
           relativePricesToCoin0[assetInIndex]
         );
 
-        const assetOutIndex = bigintToInteger(event.data_typed.asset_out_index);
+        const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
         const swapAmountOut = scaleDown(
-          event.data_typed.amount_out,
+          event.data_decoded.amount_out,
           getCoinDecimals(event.type_arguments[assetOutIndex])
         );
 
@@ -90,7 +91,7 @@ export function processor() {
           coin_address_out: coinAddressOut,
           amount_in: swapAmountIn,
           amount_out: swapAmountOut,
-          fee_amount: event.data_typed.fee_amount,
+          fee_amount: event.data_decoded.fee_amount,
           type: "weighted",
         };
 
@@ -155,11 +156,11 @@ function getPrices(
   const numCoins = coins.length;
 
   const balance0 = scaleDown(
-    event.data_typed.pool_balance_0,
+    event.data_decoded.pool_balance_0,
     getCoinDecimals(coins[0])
   );
   const balance1 = scaleDown(
-    event.data_typed.pool_balance_1,
+    event.data_decoded.pool_balance_1,
     getCoinDecimals(coins[1])
   );
 
@@ -173,7 +174,7 @@ function getPrices(
 
   if (numCoins > 2) {
     const balance2 = scaleDown(
-      event.data_typed.pool_balance_2,
+      event.data_decoded.pool_balance_2,
       getCoinDecimals(coins[2])
     );
     coin2Price = (balance0.div(balance2).toNumber() * weights[2]) / weights[0];
@@ -181,7 +182,7 @@ function getPrices(
 
   if (numCoins > 3) {
     const balance3 = scaleDown(
-      event.data_typed.pool_balance_3,
+      event.data_decoded.pool_balance_3,
       getCoinDecimals(coins[2])
     );
     coin3Price = (balance0.div(balance3).toNumber() * weights[3]) / weights[0];
