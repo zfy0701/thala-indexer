@@ -5,7 +5,7 @@
 /* Generated modules for account 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 */
 
 import {
-  TypeRegistry,
+  MoveCoder,
   AptosBindOptions,
   AptosBaseProcessor,
   TypedEventInstance,
@@ -18,7 +18,7 @@ import { AptosFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "aptos-sdk/src/generated";
 
 export namespace log_exp_math {
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -33,7 +33,7 @@ export namespace fixed_point64 {
     v: bigint;
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -41,7 +41,7 @@ export namespace fixed_point64 {
   );
 }
 
-export function loadAllTypes(_r: TypeRegistry) {
+export function loadAllTypes(_r: MoveCoder) {
   _r.load(log_exp_math.ABI);
   _r.load(fixed_point64.ABI);
 }

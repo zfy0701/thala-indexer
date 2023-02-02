@@ -5,7 +5,7 @@
 /* Generated modules for account 0x504b41d0fe4a9424ddc4ddd3517acbfc23f17805e2fb82d5caf8d9fcfeb28a02 */
 
 import {
-  TypeRegistry,
+  MoveCoder,
   AptosBindOptions,
   AptosBaseProcessor,
   TypedEventInstance,
@@ -24,7 +24,7 @@ export namespace weighted_pool_lp_coin {
     dummy_field: Boolean;
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -32,6 +32,6 @@ export namespace weighted_pool_lp_coin {
   );
 }
 
-export function loadAllTypes(_r: TypeRegistry) {
+export function loadAllTypes(_r: MoveCoder) {
   _r.load(weighted_pool_lp_coin.ABI);
 }

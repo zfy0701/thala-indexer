@@ -5,7 +5,7 @@
 /* Generated modules for account 0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba */
 
 import {
-  TypeRegistry,
+  MoveCoder,
   AptosBindOptions,
   AptosBaseProcessor,
   TypedEventInstance,
@@ -29,7 +29,7 @@ export namespace fees {
     signer_cap: _0x1.account.SignerCapability;
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -67,18 +67,20 @@ export class init extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
 
 export namespace init {
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [];
+    arguments_decoded: [];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -119,7 +121,7 @@ export class manager extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -139,11 +141,13 @@ export namespace manager {
 
   export interface ChangeManagerAddressPayload
     extends TypedEntryFunctionPayload<[Address]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [Address];
+    arguments_decoded: [Address];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -200,7 +204,7 @@ export class base_pool extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -225,17 +229,21 @@ export namespace base_pool {
   }
 
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [];
+    arguments_decoded: [];
     type_arguments: [];
   }
 
   export interface SetSwapFeeProtocolAllocationBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -295,7 +303,7 @@ export class lp_account extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -315,17 +323,21 @@ export namespace lp_account {
 
   export interface InitializeStablePoolAccountPayload
     extends TypedEntryFunctionPayload<[string, string]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [string, string];
+    arguments_decoded: [string, string];
     type_arguments: [];
   }
 
   export interface InitializeWeightedPoolAccountPayload
     extends TypedEntryFunctionPayload<[string, string]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [string, string];
+    arguments_decoded: [string, string];
     type_arguments: [];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -379,7 +391,7 @@ export class test_coins extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -413,17 +425,21 @@ export namespace test_coins {
 
   export interface InitializeCoinPayload<T0 = any>
     extends TypedEntryFunctionPayload<[string, number]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [string, number];
+    arguments_decoded: [string, number];
     type_arguments: [string];
   }
 
   export interface MintCoinPayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [Address, bigint];
+    arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -432,7 +448,7 @@ export namespace test_coins {
 }
 
 export namespace coin_helper {
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -441,7 +457,7 @@ export namespace coin_helper {
 }
 
 export namespace stable_math {
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -618,7 +634,7 @@ export class stable_pool extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -636,7 +652,9 @@ export namespace stable_pool {
 
   export interface AddLiquidityEventInstance
     extends TypedEventInstance<AddLiquidityEvent<any, any, any, any>> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: AddLiquidityEvent<any, any, any, any>;
+    data_decoded: AddLiquidityEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
 
@@ -652,7 +670,9 @@ export namespace stable_pool {
 
   export interface RemoveLiquidityEventInstance
     extends TypedEventInstance<RemoveLiquidityEvent<any, any, any, any>> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: RemoveLiquidityEvent<any, any, any, any>;
+    data_decoded: RemoveLiquidityEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
 
@@ -713,7 +733,9 @@ export namespace stable_pool {
 
   export interface StablePoolCreationEventInstance
     extends TypedEventInstance<StablePoolCreationEvent<any, any, any, any>> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: StablePoolCreationEvent<any, any, any, any>;
+    data_decoded: StablePoolCreationEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
 
@@ -743,7 +765,9 @@ export namespace stable_pool {
 
   export interface StablePoolParamChangeEventInstance
     extends TypedEventInstance<StablePoolParamChangeEvent> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: StablePoolParamChangeEvent;
+    data_decoded: StablePoolParamChangeEvent;
     type_arguments: [];
   }
 
@@ -771,12 +795,16 @@ export namespace stable_pool {
 
   export interface SwapEventInstance
     extends TypedEventInstance<SwapEvent<any, any, any, any>> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: SwapEvent<any, any, any, any>;
+    data_decoded: SwapEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
 
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [];
+    arguments_decoded: [];
     type_arguments: [];
   }
 
@@ -786,13 +814,17 @@ export namespace stable_pool {
     T2 = any,
     T3 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [];
   }
 
@@ -802,11 +834,13 @@ export namespace stable_pool {
     T2 = any,
     T3 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -844,7 +878,7 @@ export class fees_scripts extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -852,11 +886,13 @@ export class fees_scripts extends AptosBaseProcessor {
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [Address, bigint];
+    arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -865,7 +901,7 @@ export namespace fees_scripts {
 }
 
 export namespace weighted_math {
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1023,7 +1059,7 @@ export class weighted_pool extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -1043,7 +1079,9 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       AddLiquidityEvent<any, any, any, any, any, any, any, any>
     > {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: AddLiquidityEvent<any, any, any, any, any, any, any, any>;
+    data_decoded: AddLiquidityEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
       string,
@@ -1070,7 +1108,9 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       RemoveLiquidityEvent<any, any, any, any, any, any, any, any>
     > {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: RemoveLiquidityEvent<any, any, any, any, any, any, any, any>;
+    data_decoded: RemoveLiquidityEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
       string,
@@ -1101,7 +1141,9 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       SwapEvent<any, any, any, any, any, any, any, any>
     > {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: SwapEvent<any, any, any, any, any, any, any, any>;
+    data_decoded: SwapEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
       string,
@@ -1302,7 +1344,18 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       WeightedPoolCreationEvent<any, any, any, any, any, any, any, any>
     > {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: WeightedPoolCreationEvent<
+      any,
+      any,
+      any,
+      any,
+      any,
+      any,
+      any,
+      any
+    >;
+    data_decoded: WeightedPoolCreationEvent<
       any,
       any,
       any,
@@ -1352,7 +1405,9 @@ export namespace weighted_pool {
 
   export interface WeightedPoolParamChangeEventInstance
     extends TypedEventInstance<WeightedPoolParamChangeEvent> {
+    /** @deprecated use {@link data_decoded} instead */
     data_typed: WeightedPoolParamChangeEvent;
+    data_decoded: WeightedPoolParamChangeEvent;
     type_arguments: [];
   }
 
@@ -1364,13 +1419,17 @@ export namespace weighted_pool {
   }
 
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [];
+    arguments_decoded: [];
     type_arguments: [];
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [];
   }
 
@@ -1384,7 +1443,9 @@ export namespace weighted_pool {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [
       string,
       string,
@@ -1397,7 +1458,7 @@ export namespace weighted_pool {
     ];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1495,7 +1556,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -1503,7 +1564,9 @@ export class stable_pool_scripts extends AptosBaseProcessor {
 export namespace stable_pool_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any, T2 = any, T3 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint, bigint, bigint];
+    arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
 
@@ -1515,7 +1578,9 @@ export namespace stable_pool_scripts {
   > extends TypedEntryFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint]
     > {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint, bigint, bigint, bigint];
+    arguments_decoded: [bigint, bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
 
@@ -1525,7 +1590,9 @@ export namespace stable_pool_scripts {
     T2 = any,
     T3 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
 
@@ -1537,11 +1604,13 @@ export namespace stable_pool_scripts {
     T4 = any,
     T5 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [string, string, string, string, string, string];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1661,7 +1730,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
     return this;
   }
 
-  loadTypesInternal(registry: TypeRegistry) {
+  loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
 }
@@ -1677,7 +1746,9 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint, bigint, bigint];
+    arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
       string,
@@ -1700,7 +1771,9 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint, bigint, bigint];
+    arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
       string,
@@ -1723,7 +1796,9 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [
       string,
       string,
@@ -1748,7 +1823,9 @@ export namespace weighted_pool_scripts {
     T8 = any,
     T9 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint];
+    arguments_decoded: [bigint];
     type_arguments: [
       string,
       string,
@@ -1775,7 +1852,9 @@ export namespace weighted_pool_scripts {
     T8 = any,
     T9 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+    /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint];
+    arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
       string,
@@ -1790,7 +1869,7 @@ export namespace weighted_pool_scripts {
     ];
   }
 
-  export function loadTypes(_r: TypeRegistry) {
+  export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
@@ -1798,7 +1877,7 @@ export namespace weighted_pool_scripts {
   );
 }
 
-export function loadAllTypes(_r: TypeRegistry) {
+export function loadAllTypes(_r: MoveCoder) {
   _0x1.loadAllTypes(_r);
   _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.loadAllTypes(
     _r
