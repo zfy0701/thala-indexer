@@ -1,12 +1,13 @@
-import { stability_pool, vault } from "../types/aptos/testnet/mod";
 import { scaleDown, getCoinDecimals } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
 import { CHAIN_IDS } from "@sentio/sdk";
+import { stability_pool, vault } from "../types/aptos/testnet/mod";
 
-const START_VERSION = 378452652;
+// https://explorer.aptoslabs.com/txn/418965101?network=testnet
+const START_VERSION = 418965101;
 const MOD_DECIMALS = 8;
 
 // const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
@@ -21,12 +22,12 @@ export function processor() {
       });
       ctx.meter
         .Counter("cumulative_borrow_amount")
-        .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
+        .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
           coin: event.type_arguments[0],
         });
       ctx.meter
         .Counter("cumulative_borrow_fee")
-        .add(scaleDown(event.data_typed.fee, MOD_DECIMALS), {
+        .add(scaleDown(event.data_decoded.fee, MOD_DECIMALS), {
           coin: event.type_arguments[0],
         });
     })
@@ -36,7 +37,7 @@ export function processor() {
       });
       ctx.meter
         .Counter("cumulative_repay_amount")
-        .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
+        .add(scaleDown(event.data_decoded.debt_amount, MOD_DECIMALS), {
           coin: event.type_arguments[0],
         });
     })
@@ -47,7 +48,7 @@ export function processor() {
       });
       ctx.meter
         .Counter("cumulative_deposit_collateral_amount")
-        .add(scaleDown(event.data_typed.amount, getCoinDecimals(coin)), {
+        .add(scaleDown(event.data_decoded.amount, getCoinDecimals(coin)), {
           coin,
         });
     })
@@ -58,7 +59,7 @@ export function processor() {
       });
       ctx.meter
         .Counter("cumulative_withdraw_collateral_amount")
-        .add(scaleDown(event.data_typed.amount, getCoinDecimals(coin)), {
+        .add(scaleDown(event.data_decoded.amount, getCoinDecimals(coin)), {
           coin,
         });
     })
@@ -83,10 +84,10 @@ export function processor() {
 
       //   const data = {
       //     version: event.version,
-      //     account: event.data_typed.vault_address,
+      //     account: event.data_decoded.vault_address,
       //     coinType,
-      //     collateral: event.data_typed.collateral,
-      //     debt: event.data_typed.debt,
+      //     collateral: event.data_decoded.collateral,
+      //     debt: event.data_decoded.debt,
       //   };
       //   exporter.emit(ctx, data);
     });
@@ -96,15 +97,15 @@ export function processor() {
     .onEventDepositEvent((event, ctx) => {
       ctx.meter
         .Counter("total_stability")
-        .add(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
-          account: event.data_typed.depositor,
+        .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
+          account: event.data_decoded.depositor,
         });
     })
     .onEventWithdrawEvent((event, ctx) => {
       ctx.meter
         .Counter("total_stability")
-        .sub(scaleDown(event.data_typed.amount, MOD_DECIMALS), {
-          account: event.data_typed.depositor,
+        .sub(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
+          account: event.data_decoded.depositor,
         });
     });
 }

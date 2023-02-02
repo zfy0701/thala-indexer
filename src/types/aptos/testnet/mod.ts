@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/* Generated modules for account 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d */
+/* Generated modules for account 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111 */
 
 import {
   MoveCoder,
@@ -21,29 +21,11 @@ import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
 import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
 
 export namespace fees {
-  export class CollateralFees<T0> {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::fees::CollateralFees";
-    collateral_fees: _0x1.coin.Coin<T0>;
-  }
-
-  export class Fees {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::fees::Fees";
-    mod_fees: _0x1.coin.Coin<mod_coin.MOD>;
-  }
-
-  export class FeesAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::fees::FeesAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"fees","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault"],"exposed_functions":[{"name":"absorb_collateral_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"absorb_mod_fee","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":[]},{"name":"extract_collateral_fees","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":["0x1::coin::Coin<T0>"]},{"name":"extract_mod_fees","visibility":"public","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"total_collateral_fees","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"total_mod_fees","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64"]}],"structs":[{"name":"CollateralFees","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"collateral_fees","type":"0x1::coin::Coin<T0>"}]},{"name":"Fees","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"mod_fees","type":"0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"}]},{"name":"FeesAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"fees","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"absorb_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"balance","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"withdraw_fee","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>"]}],"structs":[]}'
   );
 }
 
@@ -53,7 +35,7 @@ export class init extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -118,7 +100,7 @@ export namespace init {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -127,7 +109,7 @@ export namespace math {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"math","friends":[],"exposed_functions":[{"name":"absolute_diff","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u128"],"return":["u128"]},{"name":"adjust_decimals","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u8","u8"],"return":["u64"]},{"name":"compute_nominal_cr","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u128"]},{"name":"exp","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u8"],"return":["u64"]},{"name":"fp_from_bps","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"fp_to_bps","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"],"return":["u64"]},{"name":"max_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u128"]},{"name":"min","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u64"]},{"name":"pow10","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["u64"]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"math","friends":[],"exposed_functions":[{"name":"absolute_diff","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u128","u128"],"return":["u128"]},{"name":"adjust_decimals","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u8","u8"],"return":["u64"]},{"name":"compute_nominal_cr","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u128"]},{"name":"exp","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u8"],"return":["u64"]},{"name":"fp_from_bps","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"fp_to_bps","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"],"return":["u64"]},{"name":"max_u128","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u128"]},{"name":"min","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64"],"return":["u64"]},{"name":"pow10","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["u64"]}],"structs":[]}'
   );
 }
 
@@ -137,7 +119,7 @@ export class vault extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -499,7 +481,7 @@ export class vault extends AptosBaseProcessor {
 export namespace vault {
   export class BorrowEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::BorrowEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::BorrowEvent";
     amount: bigint;
     fee: bigint;
   }
@@ -514,7 +496,7 @@ export namespace vault {
 
   export class DepositEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::DepositEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::DepositEvent";
     amount: bigint;
   }
 
@@ -528,7 +510,7 @@ export namespace vault {
 
   export class LiquidationEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::LiquidationEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::LiquidationEvent";
     vault_address: Address;
     collateral_penalty: bigint;
     liquidator_bonus: bigint;
@@ -547,7 +529,7 @@ export namespace vault {
 
   export class RedemptionEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::RedemptionEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::RedemptionEvent";
     vault_address: Address;
     collateral_amount: bigint;
     mod_amount: bigint;
@@ -563,8 +545,9 @@ export namespace vault {
 
   export class RepayEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::RepayEvent";
-    amount: bigint;
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::RepayEvent";
+    debt_amount: bigint;
+    interest_amount: bigint;
   }
 
   export interface RepayEventInstance
@@ -577,29 +560,24 @@ export namespace vault {
 
   export class StabilityPoolRepayment {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::StabilityPoolRepayment";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::StabilityPoolRepayment";
     collateral_award_amount: bigint;
     mod_repayment_amount: bigint;
   }
 
   export class Vault<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::Vault";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::Vault";
     collateral: _0x1.coin.Coin<T0>;
     debt: bigint;
+    interest: bigint;
     last_interest_index: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     events: vault.VaultEvents<T0>;
   }
 
-  export class VaultAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export class VaultCollateralParamChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultCollateralParamChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultCollateralParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -615,7 +593,7 @@ export namespace vault {
 
   export class VaultCollateralParams<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultCollateralParams";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultCollateralParams";
     mint_cap: bigint;
     mcr_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     redemption_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
@@ -633,7 +611,7 @@ export namespace vault {
 
   export class VaultEvents<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultEvents";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultEvents";
     borrow_events: _0x1.event.EventHandle<vault.BorrowEvent<T0>>;
     repay_events: _0x1.event.EventHandle<vault.RepayEvent<T0>>;
     deposit_events: _0x1.event.EventHandle<vault.DepositEvent<T0>>;
@@ -645,7 +623,7 @@ export namespace vault {
 
   export class VaultParamChangeEvent {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultParamChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -661,7 +639,7 @@ export namespace vault {
 
   export class VaultParams {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultParams";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultParams";
     borrow_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     liquidation_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     liquidator_bonus_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
@@ -672,10 +650,11 @@ export namespace vault {
 
   export class VaultUpdatedEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultUpdatedEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultUpdatedEvent";
     vault_address: Address;
     collateral: bigint;
     debt: bigint;
+    interest: bigint;
   }
 
   export interface VaultUpdatedEventInstance
@@ -688,7 +667,7 @@ export namespace vault {
 
   export class Vaults<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::Vaults";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::Vaults";
     total_collateral: bigint;
     total_debt: bigint;
     sorted_vaults: sorted_vaults.SortedVaults;
@@ -696,7 +675,7 @@ export namespace vault {
 
   export class WithdrawEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::WithdrawEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::WithdrawEvent";
     amount: bigint;
   }
 
@@ -816,7 +795,7 @@ export namespace vault {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"vault","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init"],"exposed_functions":[{"name":"account_collateral_and_debt","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64","u64"]},{"name":"borrow","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"borrow_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"collateral_frozen","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"deposit_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::option::Option<address>"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"interest_index_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"liquidate","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address","0x1::option::Option<address>"],"return":["0x1::coin::Coin<T0>"]},{"name":"liquidation_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"liquidations_frozen","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"liquidator_bonus_cap_mod_amount","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64"]},{"name":"liquidator_bonus_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"mcr_penalty_multiplier","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"minimal_collateral_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"minimal_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64"]},{"name":"mint_cap","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"open_vault","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"redeem_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"redemption_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"redemption_mode_enabled","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"repay","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>","0x1::option::Option<address>"],"return":[]},{"name":"set_borrow_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_freeze_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_freeze_liquidations","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_interest_apr","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_liquidation_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_liquidator_bonus_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_liquidator_bonus_cap_mod_amount","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_mcr_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_mcr_penalty_multiplier","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_min_debt_amount","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_mint_cap","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_redemption_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_redemption_mode","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"total_collateral_and_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"withdraw_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<T0>"]}],"structs":[{"name":"BorrowEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"},{"name":"fee","type":"u64"}]},{"name":"DepositEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"}]},{"name":"LiquidationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral_penalty","type":"u64"},{"name":"liquidator_bonus","type":"u64"},{"name":"liquidation_fee","type":"u64"},{"name":"stability_pool_repayment","type":"0x1::option::Option<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::StabilityPoolRepayment>"},{"name":"collateral_auction_id","type":"0x1::option::Option<u64>"}]},{"name":"RedemptionEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral_amount","type":"u64"},{"name":"mod_amount","type":"u64"}]},{"name":"RepayEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"}]},{"name":"StabilityPoolRepayment","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"collateral_award_amount","type":"u64"},{"name":"mod_repayment_amount","type":"u64"}]},{"name":"Vault","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"collateral","type":"0x1::coin::Coin<T0>"},{"name":"debt","type":"u64"},{"name":"last_interest_index","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"events","type":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultEvents<T0>"}]},{"name":"VaultAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"VaultCollateralParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"VaultCollateralParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"mint_cap","type":"u64"},{"name":"mcr_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"redemption_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"redemption_mode_enabled","type":"bool"},{"name":"collateral_frozen","type":"bool"},{"name":"liquidations_frozen","type":"bool"},{"name":"mcr_penalty_multiplier","type":"u64"},{"name":"global_rate_index_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"global_last_interest_update_seconds","type":"u64"},{"name":"interest_apr_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultCollateralParamChangeEvent<T0>>"}]},{"name":"VaultEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"borrow_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::BorrowEvent<T0>>"},{"name":"repay_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::RepayEvent<T0>>"},{"name":"deposit_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::DepositEvent<T0>>"},{"name":"withdraw_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::WithdrawEvent<T0>>"},{"name":"liquidation_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::LiquidationEvent<T0>>"},{"name":"redemption_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::RedemptionEvent<T0>>"},{"name":"vault_updated_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultUpdatedEvent<T0>>"}]},{"name":"VaultParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"VaultParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"borrow_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidation_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidator_bonus_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidator_bonus_cap_mod_amount","type":"u64"},{"name":"min_debt_amount","type":"u64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault::VaultParamChangeEvent>"}]},{"name":"VaultUpdatedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral","type":"u64"},{"name":"debt","type":"u64"}]},{"name":"Vaults","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"total_collateral","type":"u64"},{"name":"total_debt","type":"u64"},{"name":"sorted_vaults","type":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults"}]},{"name":"WithdrawEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"vault","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init"],"exposed_functions":[{"name":"account_collateral_and_liability","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64","u64","u64"]},{"name":"account_liability_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64"]},{"name":"borrow","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]},{"name":"borrow_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"collateral_frozen","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"deposit_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::option::Option<address>"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","u64"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"interest_index_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"liquidate","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address","0x1::option::Option<address>"],"return":["0x1::coin::Coin<T0>"]},{"name":"liquidation_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"liquidations_frozen","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"liquidator_bonus_cap_mod_amount","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64"]},{"name":"liquidator_bonus_ratio","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"mcr_penalty_multiplier","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"minimal_collateral_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"minimal_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["u64"]},{"name":"mint_cap","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"open_vault","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]},{"name":"redeem_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]},{"name":"redemption_fee_ratio","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"redemption_mode_enabled","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"repay","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>","0x1::option::Option<address>"],"return":[]},{"name":"set_borrow_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_freeze_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_freeze_liquidations","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_interest_apr","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_liquidation_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_liquidator_bonus_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_liquidator_bonus_cap_mod_amount","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_mcr_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_mcr_penalty_multiplier","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_min_debt_amount","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_mint_cap","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_redemption_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_redemption_mode","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"total_collateral_and_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"withdraw_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","0x1::option::Option<address>"],"return":["0x1::coin::Coin<T0>"]}],"structs":[{"name":"BorrowEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"},{"name":"fee","type":"u64"}]},{"name":"DepositEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"}]},{"name":"LiquidationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral_penalty","type":"u64"},{"name":"liquidator_bonus","type":"u64"},{"name":"liquidation_fee","type":"u64"},{"name":"stability_pool_repayment","type":"0x1::option::Option<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::StabilityPoolRepayment>"},{"name":"collateral_auction_id","type":"0x1::option::Option<u64>"}]},{"name":"RedemptionEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral_amount","type":"u64"},{"name":"mod_amount","type":"u64"}]},{"name":"RepayEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"debt_amount","type":"u64"},{"name":"interest_amount","type":"u64"}]},{"name":"StabilityPoolRepayment","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"collateral_award_amount","type":"u64"},{"name":"mod_repayment_amount","type":"u64"}]},{"name":"Vault","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"collateral","type":"0x1::coin::Coin<T0>"},{"name":"debt","type":"u64"},{"name":"interest","type":"u64"},{"name":"last_interest_index","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"events","type":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultEvents<T0>"}]},{"name":"VaultCollateralParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"VaultCollateralParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"mint_cap","type":"u64"},{"name":"mcr_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"redemption_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"redemption_mode_enabled","type":"bool"},{"name":"collateral_frozen","type":"bool"},{"name":"liquidations_frozen","type":"bool"},{"name":"mcr_penalty_multiplier","type":"u64"},{"name":"global_rate_index_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"global_last_interest_update_seconds","type":"u64"},{"name":"interest_apr_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultCollateralParamChangeEvent<T0>>"}]},{"name":"VaultEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"borrow_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::BorrowEvent<T0>>"},{"name":"repay_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::RepayEvent<T0>>"},{"name":"deposit_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::DepositEvent<T0>>"},{"name":"withdraw_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::WithdrawEvent<T0>>"},{"name":"liquidation_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::LiquidationEvent<T0>>"},{"name":"redemption_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::RedemptionEvent<T0>>"},{"name":"vault_updated_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultUpdatedEvent<T0>>"}]},{"name":"VaultParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"VaultParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"borrow_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidation_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidator_bonus_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"liquidator_bonus_cap_mod_amount","type":"u64"},{"name":"min_debt_amount","type":"u64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault::VaultParamChangeEvent>"}]},{"name":"VaultUpdatedEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"vault_address","type":"address"},{"name":"collateral","type":"u64"},{"name":"debt","type":"u64"},{"name":"interest","type":"u64"}]},{"name":"Vaults","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"total_collateral","type":"u64"},{"name":"total_debt","type":"u64"},{"name":"sorted_vaults","type":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults"}]},{"name":"WithdrawEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"}]}]}'
   );
 }
 
@@ -826,7 +805,7 @@ export class oracle extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -869,6 +848,25 @@ export class oracle extends AptosBaseProcessor {
     return this;
   }
 
+  onEntryInitializeSwitchboard(
+    func: (
+      call: oracle.InitializeSwitchboardPayload,
+      ctx: AptosContext
+    ) => void,
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
+  ): oracle {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::initialize_switchboard",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
   onEntrySetPriceDeviateRejectPct(
     func: (
       call: oracle.SetPriceDeviateRejectPctPayload,
@@ -904,6 +902,25 @@ export class oracle extends AptosBaseProcessor {
     return this;
   }
 
+  onEntrySetSimpleOracleConfig(
+    func: (
+      call: oracle.SetSimpleOracleConfigPayload,
+      ctx: AptosContext
+    ) => void,
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
+  ): oracle {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_simple_oracle_config",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
   onEntrySetStalenessThresholds(
     func: (
       call: oracle.SetStalenessThresholdsPayload,
@@ -917,6 +934,22 @@ export class oracle extends AptosBaseProcessor {
       {
         ...filter,
         function: "oracle::set_staleness_thresholds",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  onEntrySetSwitchboardConfig(
+    func: (call: oracle.SetSwitchboardConfigPayload, ctx: AptosContext) => void,
+    filter?: CallFilter,
+    fetchConfig?: AptosFetchConfig
+  ): oracle {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "oracle::set_switchboard_config",
       },
       fetchConfig
     );
@@ -1033,6 +1066,23 @@ export class oracle extends AptosBaseProcessor {
     return this;
   }
 
+  onEventSwitchboardConfigChangeEvent(
+    func: (
+      event: oracle.SwitchboardConfigChangeEventInstance,
+      ctx: AptosContext
+    ) => void,
+    fetchConfig?: AptosFetchConfig
+  ): oracle {
+    this.onEvent(
+      func,
+      {
+        type: "oracle::SwitchboardConfigChangeEvent",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
   onEventOracleParamChangeEvent(
     func: (
       event: oracle.OracleParamChangeEventInstance,
@@ -1050,6 +1100,23 @@ export class oracle extends AptosBaseProcessor {
     return this;
   }
 
+  onEventSimpleOracleConfigChangeEvent(
+    func: (
+      event: oracle.SimpleOracleConfigChangeEventInstance,
+      ctx: AptosContext
+    ) => void,
+    fetchConfig?: AptosFetchConfig
+  ): oracle {
+    this.onEvent(
+      func,
+      {
+        type: "oracle::SimpleOracleConfigChangeEvent",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
   loadTypesInternal(registry: MoveCoder) {
     loadAllTypes(registry);
   }
@@ -1058,19 +1125,13 @@ export class oracle extends AptosBaseProcessor {
 export namespace oracle {
   export class CoinPrice<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::CoinPrice";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::CoinPrice";
     last_price: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-  }
-
-  export class OracleAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
   }
 
   export class OracleChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleChangeEvent";
     tier: number;
     old_oracle: number;
     new_oracle: number;
@@ -1086,7 +1147,7 @@ export namespace oracle {
 
   export class OracleEvents<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleEvents";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleEvents";
     price_events: _0x1.event.EventHandle<oracle.PriceEvent<T0>>;
     simple_oracle_update_events: _0x1.event.EventHandle<
       oracle.SimpleOracleUpdateEvent<T0>
@@ -1095,11 +1156,14 @@ export namespace oracle {
       oracle.PythConfigChangeEvent<T0>
     >;
     oracle_change_events: _0x1.event.EventHandle<oracle.OracleChangeEvent<T0>>;
+    switchboard_config_change_events: _0x1.event.EventHandle<
+      oracle.SwitchboardConfigChangeEvent<T0>
+    >;
   }
 
   export class OracleParamChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleParamChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -1115,7 +1179,7 @@ export namespace oracle {
 
   export class OracleParams<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleParams";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleParams";
     staleness_seconds: bigint;
     staleness_broken_seconds: bigint;
     price_deviate_reject_pct: bigint;
@@ -1126,7 +1190,7 @@ export namespace oracle {
 
   export class PriceEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::PriceEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::PriceEvent";
     price: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
   }
 
@@ -1140,13 +1204,13 @@ export namespace oracle {
 
   export class PythConfig<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::PythConfig";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::PythConfig";
     feed_id: string;
   }
 
   export class PythConfigChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::PythConfigChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::PythConfigChangeEvent";
     old_feed_id: string;
     new_feed_id: string;
   }
@@ -1159,9 +1223,31 @@ export namespace oracle {
     type_arguments: [string];
   }
 
+  export class SimpleOracleConfig {
+    static TYPE_QNAME =
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimpleOracleConfig";
+    updater_address: Address;
+    oracle_updater_change_event: _0x1.event.EventHandle<oracle.SimpleOracleConfigChangeEvent>;
+  }
+
+  export class SimpleOracleConfigChangeEvent {
+    static TYPE_QNAME =
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimpleOracleConfigChangeEvent";
+    old_updater_address: Address;
+    new_updater_address: Address;
+  }
+
+  export interface SimpleOracleConfigChangeEventInstance
+    extends TypedEventInstance<SimpleOracleConfigChangeEvent> {
+    /** @deprecated use {@link data_decoded} instead */
+    data_typed: SimpleOracleConfigChangeEvent;
+    data_decoded: SimpleOracleConfigChangeEvent;
+    type_arguments: [];
+  }
+
   export class SimpleOracleUpdateEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::SimpleOracleUpdateEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimpleOracleUpdateEvent";
     price: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
   }
 
@@ -1175,14 +1261,35 @@ export namespace oracle {
 
   export class SimplePriceStore<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::SimplePriceStore";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimplePriceStore";
     last_price: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     last_timestamp: bigint;
   }
 
+  export class SwitchboardConfig<T0> {
+    static TYPE_QNAME =
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SwitchboardConfig";
+    aggregator_address: Address;
+  }
+
+  export class SwitchboardConfigChangeEvent<T0> {
+    static TYPE_QNAME =
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SwitchboardConfigChangeEvent";
+    old_aggregator_address: Address;
+    new_aggregator_address: Address;
+  }
+
+  export interface SwitchboardConfigChangeEventInstance
+    extends TypedEventInstance<SwitchboardConfigChangeEvent<any>> {
+    /** @deprecated use {@link data_decoded} instead */
+    data_typed: SwitchboardConfigChangeEvent<any>;
+    data_decoded: SwitchboardConfigChangeEvent<any>;
+    type_arguments: [string];
+  }
+
   export class Tiering<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::Tiering";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::Tiering";
     tier_1: number;
     tier_2: _0x1.option.Option<number>;
   }
@@ -1203,6 +1310,14 @@ export namespace oracle {
     type_arguments: [string];
   }
 
+  export interface InitializeSwitchboardPayload<T0 = any>
+    extends TypedEntryFunctionPayload<[Address]> {
+    /** @deprecated use {@link arguments_decoded} instead */
+    arguments_typed: [Address];
+    arguments_decoded: [Address];
+    type_arguments: [string];
+  }
+
   export interface SetPriceDeviateRejectPctPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
     /** @deprecated use {@link arguments_decoded} instead */
@@ -1219,11 +1334,27 @@ export namespace oracle {
     type_arguments: [string];
   }
 
+  export interface SetSimpleOracleConfigPayload
+    extends TypedEntryFunctionPayload<[Address]> {
+    /** @deprecated use {@link arguments_decoded} instead */
+    arguments_typed: [Address];
+    arguments_decoded: [Address];
+    type_arguments: [];
+  }
+
   export interface SetStalenessThresholdsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint]> {
     /** @deprecated use {@link arguments_decoded} instead */
     arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
+    type_arguments: [string];
+  }
+
+  export interface SetSwitchboardConfigPayload<T0 = any>
+    extends TypedEntryFunctionPayload<[Address]> {
+    /** @deprecated use {@link arguments_decoded} instead */
+    arguments_typed: [Address];
+    arguments_decoded: [Address];
     type_arguments: [string];
   }
 
@@ -1255,7 +1386,7 @@ export namespace oracle {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"oracle","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init"],"exposed_functions":[{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialize_pyth","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","vector<u8>"],"return":[]},{"name":"initialize_simple_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"initialized_pyth","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"initialized_simple_oracle","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"price","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"price_deviate_reject_pct","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"set_price_deviate_reject_pct","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_pyth_config","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","vector<u8>"],"return":[]},{"name":"set_staleness_thresholds","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"set_tier1_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u8"],"return":[]},{"name":"set_tier2_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u8"],"return":[]},{"name":"staleness_thresholds","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"update_simple_price","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]}],"structs":[{"name":"CoinPrice","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"last_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"OracleAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"OracleChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"tier","type":"u8"},{"name":"old_oracle","type":"u8"},{"name":"new_oracle","type":"u8"}]},{"name":"OracleEvents","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::PriceEvent<T0>>"},{"name":"simple_oracle_update_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::SimpleOracleUpdateEvent<T0>>"},{"name":"pyth_config_change_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::PythConfigChangeEvent<T0>>"},{"name":"oracle_change_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleChangeEvent<T0>>"}]},{"name":"OracleParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"OracleParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"staleness_seconds","type":"u64"},{"name":"staleness_broken_seconds","type":"u64"},{"name":"price_deviate_reject_pct","type":"u64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::oracle::OracleParamChangeEvent<T0>>"}]},{"name":"PriceEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"PythConfig","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"feed_id","type":"vector<u8>"}]},{"name":"PythConfigChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"old_feed_id","type":"vector<u8>"},{"name":"new_feed_id","type":"vector<u8>"}]},{"name":"SimpleOracleUpdateEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"SimplePriceStore","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"last_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"last_timestamp","type":"u64"}]},{"name":"Tiering","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"tier_1","type":"u8"},{"name":"tier_2","type":"0x1::option::Option<u8>"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"oracle","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init"],"exposed_functions":[{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"initialize_pyth","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","vector<u8>"],"return":[]},{"name":"initialize_simple_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialize_switchboard","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"initialized_pyth","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"initialized_simple_oracle","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"initialized_switchboard","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"price","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"price_deviate_reject_pct","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"set_price_deviate_reject_pct","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_pyth_config","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","vector<u8>"],"return":[]},{"name":"set_simple_oracle_config","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"set_staleness_thresholds","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]},{"name":"set_switchboard_config","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"set_tier1_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u8"],"return":[]},{"name":"set_tier2_oracle","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u8"],"return":[]},{"name":"simple_oracle_updater_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"staleness_thresholds","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64","u64"]},{"name":"switchboard_aggregator_address","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["address"]},{"name":"update_simple_price","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]}],"structs":[{"name":"CoinPrice","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"last_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"OracleChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"tier","type":"u8"},{"name":"old_oracle","type":"u8"},{"name":"new_oracle","type":"u8"}]},{"name":"OracleEvents","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::PriceEvent<T0>>"},{"name":"simple_oracle_update_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimpleOracleUpdateEvent<T0>>"},{"name":"pyth_config_change_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::PythConfigChangeEvent<T0>>"},{"name":"oracle_change_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleChangeEvent<T0>>"},{"name":"switchboard_config_change_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SwitchboardConfigChangeEvent<T0>>"}]},{"name":"OracleParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"OracleParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"staleness_seconds","type":"u64"},{"name":"staleness_broken_seconds","type":"u64"},{"name":"price_deviate_reject_pct","type":"u64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::OracleParamChangeEvent<T0>>"}]},{"name":"PriceEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"PythConfig","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"feed_id","type":"vector<u8>"}]},{"name":"PythConfigChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"old_feed_id","type":"vector<u8>"},{"name":"new_feed_id","type":"vector<u8>"}]},{"name":"SimpleOracleConfig","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"updater_address","type":"address"},{"name":"oracle_updater_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle::SimpleOracleConfigChangeEvent>"}]},{"name":"SimpleOracleConfigChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"old_updater_address","type":"address"},{"name":"new_updater_address","type":"address"}]},{"name":"SimpleOracleUpdateEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"SimplePriceStore","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"last_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"last_timestamp","type":"u64"}]},{"name":"SwitchboardConfig","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"aggregator_address","type":"address"}]},{"name":"SwitchboardConfigChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"old_aggregator_address","type":"address"},{"name":"new_aggregator_address","type":"address"}]},{"name":"Tiering","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"tier_1","type":"u8"},{"name":"tier_2","type":"0x1::option::Option<u8>"}]}]}'
   );
 }
 
@@ -1264,37 +1395,34 @@ export namespace tables {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"tables","friends":[],"exposed_functions":[{"name":"borrow_with_default","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":["copy","drop"]},{"constraints":[]}],"params":["&0x1::table::Table<T0, T1>","T0","&T1"],"return":["&T1"]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"tables","friends":[],"exposed_functions":[{"name":"borrow_with_default","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":["copy","drop"]},{"constraints":[]}],"params":["&0x1::table::Table<T0, T1>","T0","&T1"],"return":["&T1"]}],"structs":[]}'
   );
 }
 
-export class manager extends AptosBaseProcessor {
+export class package_ extends AptosBaseProcessor {
   constructor(options: AptosBindOptions) {
-    super("manager", options);
+    super("package", options);
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<AptosBindOptions> = {}): manager {
-    return new manager({ ...manager.DEFAULT_OPTIONS, ...options });
+  static bind(options: Partial<AptosBindOptions> = {}): package_ {
+    return new package_({ ...package_.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryChangeManagerAddress(
-    func: (
-      call: manager.ChangeManagerAddressPayload,
-      ctx: AptosContext
-    ) => void,
+  onEntryPublishPackage(
+    func: (call: package_.PublishPackagePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
     fetchConfig?: AptosFetchConfig
-  ): manager {
+  ): package_ {
     this.onEntryFunctionCall(
       func,
       {
         ...filter,
-        function: "manager::change_manager_address",
+        function: "package::publish_package",
       },
       fetchConfig
     );
@@ -1306,24 +1434,18 @@ export class manager extends AptosBaseProcessor {
   }
 }
 
-export namespace manager {
-  export class Manager {
+export namespace package_ {
+  export class ResourceSignerCapability {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::manager::Manager";
-    manager_address: Address;
-  }
-
-  export class ManagerAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::manager::ManagerAccountCapability";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::package::ResourceSignerCapability";
     signer_cap: _0x1.account.SignerCapability;
   }
 
-  export interface ChangeManagerAddressPayload
-    extends TypedEntryFunctionPayload<[Address]> {
+  export interface PublishPackagePayload
+    extends TypedEntryFunctionPayload<[string, string[]]> {
     /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
-    arguments_decoded: [Address];
+    arguments_typed: [string, string[]];
+    arguments_decoded: [string, string[]];
     type_arguments: [];
   }
 
@@ -1331,7 +1453,7 @@ export namespace manager {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"manager","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init"],"exposed_functions":[{"name":"change_manager_address","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_manager","visibility":"public","is_entry":false,"generic_type_params":[],"params":["address"],"return":["bool"]}],"structs":[{"name":"Manager","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"manager_address","type":"address"}]},{"name":"ManagerAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"package","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::fees","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::oracle","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"publish_package","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<vector<u8>>"],"return":[]},{"name":"resource_account_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_deployer_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_signer","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["signer"]}],"structs":[{"name":"ResourceSignerCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
   );
 }
 
@@ -1340,14 +1462,14 @@ export namespace vectors {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"vectors","friends":[],"exposed_functions":[{"name":"to_option","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":["copy"]}],"params":["&vector<T0>"],"return":["0x1::option::Option<T0>"]},{"name":"zeros","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["vector<u64>"]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"vectors","friends":[],"exposed_functions":[{"name":"to_option","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":["copy"]}],"params":["&vector<T0>"],"return":["0x1::option::Option<T0>"]},{"name":"zeros","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["vector<u64>"]}],"structs":[]}'
   );
 }
 
 export namespace mod_coin {
   export class Capabilities {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::Capabilities";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::Capabilities";
     burn_capability: _0x1.coin.BurnCapability<mod_coin.MOD>;
     freeze_capability: _0x1.coin.FreezeCapability<mod_coin.MOD>;
     mint_capability: _0x1.coin.MintCapability<mod_coin.MOD>;
@@ -1355,7 +1477,7 @@ export namespace mod_coin {
 
   export class MOD {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD";
     dummy_field: Boolean;
   }
 
@@ -1363,7 +1485,7 @@ export namespace mod_coin {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"mod_coin","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault"],"exposed_functions":[{"name":"burn","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"mint","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]}],"structs":[{"name":"Capabilities","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"burn_capability","type":"0x1::coin::BurnCapability<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"},{"name":"freeze_capability","type":"0x1::coin::FreezeCapability<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"},{"name":"mint_capability","type":"0x1::coin::MintCapability<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"}]},{"name":"MOD","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"mod_coin","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"burn","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"mint","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["u64"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]}],"structs":[{"name":"Capabilities","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"burn_capability","type":"0x1::coin::BurnCapability<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"},{"name":"freeze_capability","type":"0x1::coin::FreezeCapability<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"},{"name":"mint_capability","type":"0x1::coin::MintCapability<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"}]},{"name":"MOD","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]}]}'
   );
 }
 
@@ -1373,7 +1495,7 @@ export class fees_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -1381,11 +1503,8 @@ export class fees_scripts extends AptosBaseProcessor {
     return new fees_scripts({ ...fees_scripts.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryTransferCollateralFees(
-    func: (
-      call: fees_scripts.TransferCollateralFeesPayload,
-      ctx: AptosContext
-    ) => void,
+  onEntryTransferFee(
+    func: (call: fees_scripts.TransferFeePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
     fetchConfig?: AptosFetchConfig
   ): fees_scripts {
@@ -1393,26 +1512,7 @@ export class fees_scripts extends AptosBaseProcessor {
       func,
       {
         ...filter,
-        function: "fees_scripts::transfer_collateral_fees",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  onEntryTransferModFees(
-    func: (
-      call: fees_scripts.TransferModFeesPayload,
-      ctx: AptosContext
-    ) => void,
-    filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
-  ): fees_scripts {
-    this.onEntryFunctionCall(
-      func,
-      {
-        ...filter,
-        function: "fees_scripts::transfer_mod_fees",
+        function: "fees_scripts::transfer_fee",
       },
       fetchConfig
     );
@@ -1425,34 +1525,26 @@ export class fees_scripts extends AptosBaseProcessor {
 }
 
 export namespace fees_scripts {
-  export interface TransferCollateralFeesPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address]> {
+  export interface TransferFeePayload<T0 = any>
+    extends TypedEntryFunctionPayload<[Address, bigint]> {
     /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
-    arguments_decoded: [Address];
+    arguments_typed: [Address, bigint];
+    arguments_decoded: [Address, bigint];
     type_arguments: [string];
-  }
-
-  export interface TransferModFeesPayload
-    extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
-    arguments_decoded: [Address];
-    type_arguments: [];
   }
 
   export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"fees_scripts","friends":[],"exposed_functions":[{"name":"transfer_collateral_fees","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"transfer_mod_fees","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"fees_scripts","friends":[],"exposed_functions":[{"name":"transfer_fee","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]}],"structs":[]}'
   );
 }
 
 export namespace sorted_vaults {
   export class Node {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::Node";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::Node";
     nominal_cr: bigint;
     next: Address;
     prev: Address;
@@ -1460,7 +1552,7 @@ export namespace sorted_vaults {
 
   export class SortedVaults {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults";
     head_sentinel: Address;
     tail_sentinel: Address;
     nodes: _0x1.table_with_length.TableWithLength<Address, sorted_vaults.Node>;
@@ -1470,7 +1562,7 @@ export namespace sorted_vaults {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"sorted_vaults","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault"],"exposed_functions":[{"name":"insert","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults","address","u128","0x1::option::Option<address>"],"return":[]},{"name":"lowest_nicr_address","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults"],"return":["0x1::option::Option<address>"]},{"name":"new","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults"]},{"name":"next_higher_nicr_address","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults","address"],"return":["0x1::option::Option<address>"]},{"name":"remove","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::SortedVaults","address"],"return":[]}],"structs":[{"name":"Node","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"nominal_cr","type":"u128"},{"name":"next","type":"address"},{"name":"prev","type":"address"}]},{"name":"SortedVaults","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"head_sentinel","type":"address"},{"name":"tail_sentinel","type":"address"},{"name":"nodes","type":"0x1::table_with_length::TableWithLength<address, 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::sorted_vaults::Node>"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"sorted_vaults","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"insert","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults","address","u128","0x1::option::Option<address>"],"return":[]},{"name":"lowest_nicr_address","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults"],"return":["0x1::option::Option<address>"]},{"name":"new","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults"]},{"name":"next_higher_nicr_address","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults","address"],"return":["0x1::option::Option<address>"]},{"name":"remove","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::SortedVaults","address"],"return":[]}],"structs":[{"name":"Node","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"nominal_cr","type":"u128"},{"name":"next","type":"address"},{"name":"prev","type":"address"}]},{"name":"SortedVaults","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"head_sentinel","type":"address"},{"name":"tail_sentinel","type":"address"},{"name":"nodes","type":"0x1::table_with_length::TableWithLength<address, 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::sorted_vaults::Node>"}]}]}'
   );
 }
 
@@ -1480,7 +1572,7 @@ export class vault_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -1699,7 +1791,7 @@ export namespace vault_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"vault_scripts","friends":[],"exposed_functions":[{"name":"borrow","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"close_vault","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"deposit_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"liquidate","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","vector<address>"],"return":[]},{"name":"open_vault","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","vector<address>"],"return":[]},{"name":"redeem_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"repay","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"withdraw_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"vault_scripts","friends":[],"exposed_functions":[{"name":"borrow","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"close_vault","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"deposit_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"liquidate","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","vector<address>"],"return":[]},{"name":"open_vault","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","vector<address>"],"return":[]},{"name":"redeem_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"repay","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]},{"name":"withdraw_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","vector<address>"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -1709,7 +1801,7 @@ export class stability_pool extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -1889,13 +1981,13 @@ export class stability_pool extends AptosBaseProcessor {
 export namespace stability_pool {
   export class Crypto {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::Crypto";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::Crypto";
     dummy_field: Boolean;
   }
 
   export class DebtAbsorptionEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DebtAbsorptionEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DebtAbsorptionEvent";
     amount: bigint;
     recipient: Address;
   }
@@ -1910,7 +2002,7 @@ export namespace stability_pool {
 
   export class DepositEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DepositEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DepositEvent";
     depositor: Address;
     amount: bigint;
   }
@@ -1925,13 +2017,13 @@ export namespace stability_pool {
 
   export class DistributedCollateral<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DistributedCollateral";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DistributedCollateral";
     collateral: _0x1.coin.Coin<T0>;
   }
 
   export class DistributedCollateralEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DistributedCollateralEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DistributedCollateralEvent";
     depositor: Address;
     amount: bigint;
     coin_address: Address;
@@ -1947,28 +2039,22 @@ export namespace stability_pool {
 
   export class RWA {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::RWA";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::RWA";
     dummy_field: Boolean;
   }
 
   export class StabilityPool<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPool";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPool";
     stability: _0x1.coin.Coin<mod_coin.MOD>;
     reward_distributor: reward_distributor.RewardDistributor;
     deposit_timestamps: _0x1.table.Table<Address, bigint>;
     events: stability_pool.StabilityPoolEvents<T0>;
   }
 
-  export class StabilityPoolAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export class StabilityPoolEvents<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolEvents";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPoolEvents";
     deposit_events: _0x1.event.EventHandle<stability_pool.DepositEvent<T0>>;
     withdraw_events: _0x1.event.EventHandle<stability_pool.WithdrawEvent<T0>>;
     debt_absorption_events: _0x1.event.EventHandle<
@@ -1981,7 +2067,7 @@ export namespace stability_pool {
 
   export class StabilityPoolParamChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolParamChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPoolParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -1997,7 +2083,7 @@ export namespace stability_pool {
 
   export class StabilityPoolParams<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolParams";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPoolParams";
     withdrawal_fee_period_seconds: bigint;
     withdrawal_fee_max_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     param_change_event: _0x1.event.EventHandle<
@@ -2007,13 +2093,13 @@ export namespace stability_pool {
 
   export class Whitelist<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::Whitelist";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::Whitelist";
     members: _0x1.table.Table<Address, Boolean>;
   }
 
   export class WithdrawEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::WithdrawEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::WithdrawEvent";
     depositor: Address;
     amount: bigint;
   }
@@ -2062,7 +2148,7 @@ export namespace stability_pool {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"stability_pool","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault"],"exposed_functions":[{"name":"account_deposit","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64"]},{"name":"add_to_rwa_whitelist","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"claim_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":["0x1::coin::Coin<T0>"]},{"name":"claimable_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64"]},{"name":"deposit_mod","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":[]},{"name":"distribute_collateral_and_request_mod","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address","u64","0x1::coin::Coin<T0>"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_rwa_asset","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_rwa_cointype","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"remove_from_rwa_whitelist","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"set_withdrawal_fee_max_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_withdrawal_fee_period_seconds","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"total_distributed_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"total_mod_deposit","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"withdraw_mod","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]}],"structs":[{"name":"Crypto","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"DebtAbsorptionEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"},{"name":"recipient","type":"address"}]},{"name":"DepositEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"}]},{"name":"DistributedCollateral","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"collateral","type":"0x1::coin::Coin<T0>"}]},{"name":"DistributedCollateralEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"},{"name":"coin_address","type":"address"}]},{"name":"RWA","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"StabilityPool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"stability","type":"0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"},{"name":"reward_distributor","type":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor"},{"name":"deposit_timestamps","type":"0x1::table::Table<address, u64>"},{"name":"events","type":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolEvents<T0>"}]},{"name":"StabilityPoolAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"StabilityPoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"deposit_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DepositEvent<T0>>"},{"name":"withdraw_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::WithdrawEvent<T0>>"},{"name":"debt_absorption_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DebtAbsorptionEvent<T0>>"},{"name":"distributed_collateral_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::DistributedCollateralEvent<T0>>"}]},{"name":"StabilityPoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"StabilityPoolParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"withdrawal_fee_period_seconds","type":"u64"},{"name":"withdrawal_fee_max_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool::StabilityPoolParamChangeEvent<T0>>"}]},{"name":"Whitelist","is_native":false,"abilities":["store","key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"members","type":"0x1::table::Table<address, bool>"}]},{"name":"WithdrawEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"stability_pool","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"account_deposit","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64"]},{"name":"add_to_rwa_whitelist","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"claim_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":["0x1::coin::Coin<T0>"]},{"name":"claimable_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address"],"return":["u64"]},{"name":"deposit_mod","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"],"return":[]},{"name":"distribute_collateral_and_request_mod","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["address","u64","0x1::coin::Coin<T0>"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_rwa_asset","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_rwa_cointype","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"remove_from_rwa_whitelist","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"set_withdrawal_fee_max_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_withdrawal_fee_period_seconds","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"total_distributed_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"total_mod_deposit","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"withdraw_mod","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]}],"structs":[{"name":"Crypto","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"DebtAbsorptionEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"amount","type":"u64"},{"name":"recipient","type":"address"}]},{"name":"DepositEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"}]},{"name":"DistributedCollateral","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"collateral","type":"0x1::coin::Coin<T0>"}]},{"name":"DistributedCollateralEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"},{"name":"coin_address","type":"address"}]},{"name":"RWA","is_native":false,"abilities":[],"generic_type_params":[],"fields":[{"name":"dummy_field","type":"bool"}]},{"name":"StabilityPool","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"stability","type":"0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"},{"name":"reward_distributor","type":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor"},{"name":"deposit_timestamps","type":"0x1::table::Table<address, u64>"},{"name":"events","type":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPoolEvents<T0>"}]},{"name":"StabilityPoolEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"deposit_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DepositEvent<T0>>"},{"name":"withdraw_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::WithdrawEvent<T0>>"},{"name":"debt_absorption_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DebtAbsorptionEvent<T0>>"},{"name":"distributed_collateral_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::DistributedCollateralEvent<T0>>"}]},{"name":"StabilityPoolParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"StabilityPoolParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"withdrawal_fee_period_seconds","type":"u64"},{"name":"withdrawal_fee_max_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool::StabilityPoolParamChangeEvent<T0>>"}]},{"name":"Whitelist","is_native":false,"abilities":["store","key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"members","type":"0x1::table::Table<address, bool>"}]},{"name":"WithdrawEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"depositor","type":"address"},{"name":"amount","type":"u64"}]}]}'
   );
 }
 
@@ -2072,7 +2158,7 @@ export class collateral_auction extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -2209,22 +2295,16 @@ export class collateral_auction extends AptosBaseProcessor {
 export namespace collateral_auction {
   export class CollateralAuction<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuction";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuction";
     target_debt: bigint;
     collateral: _0x1.coin.Coin<T0>;
     start_time_seconds: bigint;
     start_price: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
   }
 
-  export class CollateralAuctionAccountCapability {
-    static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
   export class CollateralAuctionBadDebtEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionBadDebtEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionBadDebtEvent";
     id: bigint;
     debt: bigint;
   }
@@ -2239,7 +2319,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionBidEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionBidEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionBidEvent";
     id: bigint;
     mod_amount: bigint;
     collateral_amount: bigint;
@@ -2255,7 +2335,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionEndEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionEndEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionEndEvent";
     id: bigint;
     leftover_collateral_amount: bigint;
   }
@@ -2270,7 +2350,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionEvents<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionEvents";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionEvents";
     auction_start_events: _0x1.event.EventHandle<
       collateral_auction.CollateralAuctionStartEvent<T0>
     >;
@@ -2290,7 +2370,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionParamChangeEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionParamChangeEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -2306,7 +2386,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionParams<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionParams";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionParams";
     expiry_time_seconds: bigint;
     start_price_increase_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     reserve_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
@@ -2317,7 +2397,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionRepayEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionRepayEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionRepayEvent";
     id: bigint;
     mod_amount: bigint;
   }
@@ -2332,7 +2412,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctionStartEvent<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionStartEvent";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionStartEvent";
     id: bigint;
     collateral_amount: bigint;
     target_debt: bigint;
@@ -2348,7 +2428,7 @@ export namespace collateral_auction {
 
   export class CollateralAuctions<T0> {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctions";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctions";
     next_auction_id: bigint;
     auctions: _0x1.table.Table<
       bigint,
@@ -2371,14 +2451,14 @@ export namespace collateral_auction {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"collateral_auction","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::init","0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::vault"],"exposed_functions":[{"name":"auction_collateral_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"auction_target_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"bad_auction_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"bid","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>","0x1::coin::Coin<T0>"]},{"name":"current_price","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_bad_auction","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["bool"]},{"name":"is_live_auction","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["bool"]},{"name":"next_auction_id","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"repay_debt","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"],"return":["0x1::coin::Coin<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::mod_coin::MOD>"]},{"name":"reset","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":[]},{"name":"set_expiry_time_seconds","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_reserve_ratio_bps","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_start_price_increase_bps","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"start_collateral_auction","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<T0>"],"return":["u64"]}],"structs":[{"name":"CollateralAuction","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"target_debt","type":"u64"},{"name":"collateral","type":"0x1::coin::Coin<T0>"},{"name":"start_time_seconds","type":"u64"},{"name":"start_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"CollateralAuctionAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"CollateralAuctionBadDebtEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"debt","type":"u64"}]},{"name":"CollateralAuctionBidEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"mod_amount","type":"u64"},{"name":"collateral_amount","type":"u64"}]},{"name":"CollateralAuctionEndEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"leftover_collateral_amount","type":"u64"}]},{"name":"CollateralAuctionEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"auction_start_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionStartEvent<T0>>"},{"name":"auction_bid_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionBidEvent<T0>>"},{"name":"auction_end_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionEndEvent<T0>>"},{"name":"auction_repay_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionRepayEvent<T0>>"},{"name":"auction_bad_debt_events","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionBadDebtEvent<T0>>"}]},{"name":"CollateralAuctionParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"CollateralAuctionParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"expiry_time_seconds","type":"u64"},{"name":"start_price_increase_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"reserve_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionParamChangeEvent<T0>>"}]},{"name":"CollateralAuctionRepayEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"mod_amount","type":"u64"}]},{"name":"CollateralAuctionStartEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"collateral_amount","type":"u64"},{"name":"target_debt","type":"u64"}]},{"name":"CollateralAuctions","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"next_auction_id","type":"u64"},{"name":"auctions","type":"0x1::table::Table<u64, 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuction<T0>>"},{"name":"live_auctions","type":"0x1::table::Table<u64, bool>"},{"name":"bad_auctions","type":"0x1::table::Table<u64, bool>"},{"name":"events","type":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::collateral_auction::CollateralAuctionEvents<T0>"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"collateral_auction","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::init","0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::vault"],"exposed_functions":[{"name":"auction_collateral_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"auction_target_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"bad_auction_debt_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"bid","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>","0x1::coin::Coin<T0>"]},{"name":"current_price","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"initialize_collateral","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"initialized_collateral","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["bool"]},{"name":"is_bad_auction","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["bool"]},{"name":"is_live_auction","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["bool"]},{"name":"next_auction_id","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"repay_debt","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"],"return":["0x1::coin::Coin<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::mod_coin::MOD>"]},{"name":"reset","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":[]},{"name":"set_expiry_time_seconds","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_reserve_ratio_bps","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_start_price_increase_bps","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"start_collateral_auction","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64","0x1::coin::Coin<T0>"],"return":["u64"]}],"structs":[{"name":"CollateralAuction","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"target_debt","type":"u64"},{"name":"collateral","type":"0x1::coin::Coin<T0>"},{"name":"start_time_seconds","type":"u64"},{"name":"start_price","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"}]},{"name":"CollateralAuctionBadDebtEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"debt","type":"u64"}]},{"name":"CollateralAuctionBidEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"mod_amount","type":"u64"},{"name":"collateral_amount","type":"u64"}]},{"name":"CollateralAuctionEndEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"leftover_collateral_amount","type":"u64"}]},{"name":"CollateralAuctionEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"auction_start_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionStartEvent<T0>>"},{"name":"auction_bid_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionBidEvent<T0>>"},{"name":"auction_end_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionEndEvent<T0>>"},{"name":"auction_repay_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionRepayEvent<T0>>"},{"name":"auction_bad_debt_events","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionBadDebtEvent<T0>>"}]},{"name":"CollateralAuctionParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"CollateralAuctionParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"expiry_time_seconds","type":"u64"},{"name":"start_price_increase_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"reserve_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_event","type":"0x1::event::EventHandle<0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionParamChangeEvent<T0>>"}]},{"name":"CollateralAuctionRepayEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"mod_amount","type":"u64"}]},{"name":"CollateralAuctionStartEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"id","type":"u64"},{"name":"collateral_amount","type":"u64"},{"name":"target_debt","type":"u64"}]},{"name":"CollateralAuctions","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"next_auction_id","type":"u64"},{"name":"auctions","type":"0x1::table::Table<u64, 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuction<T0>>"},{"name":"live_auctions","type":"0x1::table::Table<u64, bool>"},{"name":"bad_auctions","type":"0x1::table::Table<u64, bool>"},{"name":"events","type":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::collateral_auction::CollateralAuctionEvents<T0>"}]}]}'
   );
 }
 
 export namespace reward_distributor {
   export class RewardDistributor {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor";
     d: bigint;
     p: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     current_epoch: bigint;
@@ -2400,7 +2480,7 @@ export namespace reward_distributor {
 
   export class Snapshot {
     static TYPE_QNAME =
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::Snapshot";
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::Snapshot";
     d_t: bigint;
     p_t: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     s_t: _0x1.table.Table<
@@ -2415,7 +2495,7 @@ export namespace reward_distributor {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"reward_distributor","friends":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::stability_pool"],"exposed_functions":[{"name":"account_deposit","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"claim","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"claimable","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"deposit","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address","u64"],"return":[]},{"name":"distribute","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","u64","u64"],"return":[]},{"name":"flush","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address"],"return":[]},{"name":"new","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor"]},{"name":"withdraw","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address","u64"],"return":[]},{"name":"withdraw_all","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::RewardDistributor","address"],"return":[]}],"structs":[{"name":"RewardDistributor","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"d","type":"u64"},{"name":"p","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"current_epoch","type":"u64"},{"name":"current_scale","type":"u64"},{"name":"snapshots","type":"0x1::table::Table<address, 0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d::reward_distributor::Snapshot>"},{"name":"epoch_scale_sum","type":"0x1::table::Table<0x1::string::String, 0x1::table::Table<u64, 0x1::table::Table<u64, 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64>>>"},{"name":"e_t","type":"0x1::table::Table<0x1::string::String, 0x1::table::Table<address, u64>>"},{"name":"coins","type":"vector<0x1::string::String>"}]},{"name":"Snapshot","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"d_t","type":"u64"},{"name":"p_t","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"s_t","type":"0x1::table::Table<0x1::string::String, 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64>"},{"name":"epoch_t","type":"u64"},{"name":"scale_t","type":"u64"}]}]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"reward_distributor","friends":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::stability_pool"],"exposed_functions":[{"name":"account_deposit","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"claim","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"claimable","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address"],"return":["u64"]},{"name":"deposit","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address","u64"],"return":[]},{"name":"distribute","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","u64","u64"],"return":[]},{"name":"flush","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address"],"return":[]},{"name":"new","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor"]},{"name":"withdraw","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address","u64"],"return":[]},{"name":"withdraw_all","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&mut 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::RewardDistributor","address"],"return":[]}],"structs":[{"name":"RewardDistributor","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"d","type":"u64"},{"name":"p","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"current_epoch","type":"u64"},{"name":"current_scale","type":"u64"},{"name":"snapshots","type":"0x1::table::Table<address, 0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111::reward_distributor::Snapshot>"},{"name":"epoch_scale_sum","type":"0x1::table::Table<0x1::string::String, 0x1::table::Table<u64, 0x1::table::Table<u64, 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64>>>"},{"name":"e_t","type":"0x1::table::Table<0x1::string::String, 0x1::table::Table<address, u64>>"},{"name":"coins","type":"vector<0x1::string::String>"}]},{"name":"Snapshot","is_native":false,"abilities":["store"],"generic_type_params":[],"fields":[{"name":"d_t","type":"u64"},{"name":"p_t","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"s_t","type":"0x1::table::Table<0x1::string::String, 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64>"},{"name":"epoch_t","type":"u64"},{"name":"scale_t","type":"u64"}]}]}'
   );
 }
 
@@ -2425,7 +2505,7 @@ export class stability_pool_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -2527,7 +2607,7 @@ export namespace stability_pool_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"stability_pool_scripts","friends":[],"exposed_functions":[{"name":"claim_distributed_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"deposit_mod","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"withdraw_mod","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"stability_pool_scripts","friends":[],"exposed_functions":[{"name":"claim_distributed_collateral","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"deposit_mod","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"withdraw_mod","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -2537,7 +2617,7 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d",
+      "0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -2614,7 +2694,7 @@ export namespace collateral_auction_scripts {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x96c2a8e775207b8f8ee8d3a6e4a68f70fcaaddcdcaa1f3511ef38e18d4492a8d","name":"collateral_auction_scripts","friends":[],"exposed_functions":[{"name":"bid","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"repay_debt","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x7023e91e6c4c08c7e60845247668e8b305137b4eb09dea140dbe86b4236a9111","name":"collateral_auction_scripts","friends":[],"exposed_functions":[{"name":"bid","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"repay_debt","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -2630,7 +2710,7 @@ export function loadAllTypes(_r: MoveCoder) {
   _r.load(vault.ABI);
   _r.load(oracle.ABI);
   _r.load(tables.ABI);
-  _r.load(manager.ABI);
+  _r.load(package_.ABI);
   _r.load(vectors.ABI);
   _r.load(mod_coin.ABI);
   _r.load(fees_scripts.ABI);
