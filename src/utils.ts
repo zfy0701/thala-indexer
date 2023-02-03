@@ -17,28 +17,22 @@ const COMMON_COINS: { [key: string]: CoinInfo } = {
   },
 
   // below are test coins
-  "0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::TestCoinsV1::BTC":
+  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::BTC":
     {
       address:
-        "0x16fe2df00ea7dde4a63409201f7f4e536bde7bb7335526a35d05111e68aa322c::TestCoinsV1::BTC",
+        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::BTC",
+      decimals: 6,
+    },
+  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::ETH":
+    {
+      address:
+        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::ETH",
       decimals: 8,
     },
-  "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_A":
+  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::USDC":
     {
       address:
-        "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_A",
-      decimals: 8,
-    },
-  "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_B":
-    {
-      address:
-        "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_B",
-      decimals: 7,
-    },
-  "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_C":
-    {
-      address:
-        "0x9318e16d6d213c3aefcad039ab9fe018ac22ec12af338baf36b9abdda81cc5ba::test_coins::FakeCoin_C",
+        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::USDC",
       decimals: 6,
     },
 };
