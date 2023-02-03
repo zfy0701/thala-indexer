@@ -4,6 +4,7 @@ import {
   getCoinDecimals,
   getDateTag,
   getPairTag,
+  getPriceAsof,
   scaleDown,
 } from "../utils";
 
@@ -30,9 +31,17 @@ export function processor() {
   weighted_pool
     .bind({ startVersion: START_VERSION })
     .onEventSwapEvent(
-      (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
+      async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
         const { coins, weights } = getCoinsAndWeights(event);
         const poolTag = getPoolTag(coins, weights);
+
+        // actual price 0
+        const actualCoin0Price = await getPriceAsof(
+          coins[0],
+          new Date(Number(ctx.transaction.timestamp) / 1000)
+        );
+
+        // relative price 1
         const pair1Tag = getPairTag(coins[0], coins[1]);
         const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
         const { coin1Price, coin2Price, coin3Price } = getPrices(
@@ -41,6 +50,8 @@ export function processor() {
           weights
         );
         coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
+
+        // relative price 2
         if (coin2Price) {
           const pair2Tag = getPairTag(coins[0], coins[2]);
           coin2PriceGauge.record(ctx, coin2Price, {
@@ -48,6 +59,8 @@ export function processor() {
             pairTag: pair2Tag,
           });
         }
+
+        // relative price 3
         if (coin3Price) {
           const pair3Tag = getPairTag(coins[0], coins[3]);
           coin3PriceGauge.record(ctx, coin3Price, {
@@ -68,9 +81,6 @@ export function processor() {
           event.data_decoded.amount_in,
           getCoinDecimals(event.type_arguments[assetInIndex])
         );
-        const volumeCoin0 = swapAmountIn.multipliedBy(
-          relativePricesToCoin0[assetInIndex]
-        );
 
         const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
         const swapAmountOut = scaleDown(
@@ -85,6 +95,7 @@ export function processor() {
             ? `${coinAddressIn}-${coinAddressOut}`
             : `${coinAddressOut}-${coinAddressIn}`;
 
+        // TODO: price_in, price_out, usd_volume
         const swapAttributes = {
           pair,
           coin_address_in: coinAddressIn,
@@ -95,9 +106,14 @@ export function processor() {
           type: "weighted",
         };
 
+        const volumeUsd = swapAmountIn
+          .multipliedBy(relativePricesToCoin0[assetInIndex])
+          .multipliedBy(actualCoin0Price);
+
         ctx.meter
-          .Counter("weighted_volume_coin_0")
-          .add(volumeCoin0, { poolTag, dateTag });
+          .Counter("pool_volume_usd")
+          .add(volumeUsd, { poolTag, dateTag });
+
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
           swapAttributes
@@ -112,6 +128,7 @@ export function processor() {
         .join(", ")}>`;
       ctx.logger.info("add liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
@@ -124,6 +141,7 @@ export function processor() {
         .join(", ")}>`;
       ctx.logger.info("add liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
@@ -136,6 +154,7 @@ export function processor() {
         .join(", ")}>`;
       ctx.logger.info("remove liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
