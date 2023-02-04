@@ -4,6 +4,7 @@ import {
   getCoinDecimals,
   getDateTag,
   getPairTag,
+  getPriceAsof,
   scaleDown,
 } from "../utils";
 
@@ -27,13 +28,23 @@ export function processor() {
   stable_pool
     .bind({ startVersion: START_VERSION })
     .onEventSwapEvent(
-      (event: stable_pool.SwapEventInstance, ctx: AptosContext) => {
+      async (event: stable_pool.SwapEventInstance, ctx: AptosContext) => {
         const coins = getCoins(event);
         const poolTag = getPoolTag(coins);
         const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
+
+        // actual price 0
+        const actualCoin0Price = await getPriceAsof(
+          coins[0],
+          new Date(Number(ctx.transaction.timestamp) / 1000)
+        );
+
+        // relative price 1
         const pair1Tag = getPairTag(coins[0], coins[1]);
         const { coin1Price, coin2Price, coin3Price } = getPrices(event, coins);
         coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
+
+        // relative price 2
         if (coin2Price) {
           const pair2Tag = getPairTag(coins[0], coins[2]);
           coin2PriceGauge.record(ctx, coin2Price, {
@@ -41,6 +52,8 @@ export function processor() {
             pairTag: pair2Tag,
           });
         }
+
+        // relative price 3
         if (coin3Price) {
           const pair3Tag = getPairTag(coins[0], coins[3]);
           coin3PriceGauge.record(ctx, coin3Price, {
@@ -60,9 +73,6 @@ export function processor() {
         const swapAmountIn = scaleDown(
           event.data_decoded.amount_in,
           getCoinDecimals(event.type_arguments[assetInIndex])
-        );
-        const volumeCoin0 = swapAmountIn.multipliedBy(
-          relativePricesToCoin0[assetInIndex]
         );
 
         const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
@@ -88,9 +98,14 @@ export function processor() {
           type: "stable",
         };
 
+        const volumeUsd = swapAmountIn
+          .multipliedBy(relativePricesToCoin0[assetInIndex])
+          .multipliedBy(actualCoin0Price);
+
         ctx.meter
-          .Counter("stable_volume_coin_0")
-          .add(volumeCoin0, { poolTag, dateTag });
+          .Counter("pool_volume_usd")
+          .add(volumeUsd, { poolTag, dateTag });
+
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in stable_pool`,
           swapAttributes

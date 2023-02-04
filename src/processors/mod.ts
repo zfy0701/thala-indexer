@@ -1,9 +1,7 @@
-import { scaleDown, getCoinDecimals } from "../utils";
+import { scaleDown, getCoinDecimals, getPriceAsof } from "../utils";
 
 import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
-import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
-import { CHAIN_IDS } from "@sentio/sdk";
 import { stability_pool, vault } from "../types/aptos/testnet/mod";
 
 // https://explorer.aptoslabs.com/txn/418965101?network=testnet
@@ -65,21 +63,10 @@ export function processor() {
     })
     .onEventVaultUpdatedEvent(async (event, ctx) => {
       let coinType = event.type_arguments[0];
-      let price = 0;
-      if (coinType.includes("TestCoins") || coinType.includes("test_coins")) {
-        price = await getPriceBySymbol(
-          coinType.split("::")[2],
-          new Date(Number(ctx.transaction.timestamp) / 1000)
-        );
-      } else {
-        price = await getPriceByType(
-          // use mainnet price is fine
-          CHAIN_IDS.APTOS_MAINNET,
-          coinType,
-          new Date(Number(ctx.transaction.timestamp) / 1000)
-        );
-      }
-
+      let price = await getPriceAsof(
+        coinType,
+        new Date(Number(ctx.transaction.timestamp) / 1000)
+      );
       coinPriceGauge.record(ctx, price, { coin: coinType });
 
       //   const data = {

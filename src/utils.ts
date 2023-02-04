@@ -1,5 +1,7 @@
 import { BigDecimal } from "@sentio/sdk";
 import { conversion } from "@sentio/sdk/lib/utils";
+import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
+import { CHAIN_IDS } from "@sentio/sdk";
 
 interface CoinInfo {
   address: string;
@@ -36,6 +38,18 @@ const COMMON_COINS: { [key: string]: CoinInfo } = {
       decimals: 6,
     },
 };
+
+export function getPriceAsof(coinType: string, asof: Date): Promise<number> {
+  if (coinType.includes("test_coins")) {
+    return getPriceBySymbol(coinType.split("::")[2], asof);
+  }
+  return getPriceByType(
+    // use mainnet price is fine
+    CHAIN_IDS.APTOS_MAINNET,
+    coinType,
+    asof
+  );
+}
 
 export function scaleDown(n: bigint, decimals: number): BigDecimal {
   return conversion.toBigDecimal(n).dividedBy(10 ** decimals);
