@@ -39,7 +39,14 @@ const COMMON_COINS: { [key: string]: CoinInfo } = {
     },
 };
 
-export function getPriceAsof(coinType: string, asof: Date): Promise<number> {
+export async function getPriceAsof(
+  coinType: string,
+  asof: Date
+): Promise<number> {
+  // TODO: fetch lp coin price from thala-oracle
+  if (coinType.includes("PoolToken")) {
+    return 0;
+  }
   if (coinType.includes("test_coins")) {
     return getPriceBySymbol(coinType.split("::")[2], asof);
   }
