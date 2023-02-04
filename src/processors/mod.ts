@@ -4,8 +4,7 @@ import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { stability_pool, vault } from "../types/aptos/testnet/mod";
 
-// https://explorer.aptoslabs.com/txn/418965101?network=testnet
-const START_VERSION = 418965101;
+const START_VERSION = 421373649;
 const MOD_DECIMALS = 8;
 
 // const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");

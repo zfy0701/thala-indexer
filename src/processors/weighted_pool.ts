@@ -11,8 +11,7 @@ import {
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
 
-// https://explorer.aptoslabs.com/txn/419104470
-const START_VERSION = 419104470;
+const START_VERSION = 421368795;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
