@@ -76,15 +76,19 @@ export function processor() {
           coin3Price || 0,
         ];
         const assetInIndex = bigintToInteger(event.data_decoded.idx_in);
+        const assetIn = event.type_arguments[assetInIndex];
+        const assetInDecimals = getCoinDecimals(assetIn);
         const swapAmountIn = scaleDown(
           event.data_decoded.amount_in,
-          getCoinDecimals(event.type_arguments[assetInIndex])
+          assetInDecimals
         );
 
         const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
+        const assetOut = event.type_arguments[assetOutIndex];
+        const assetOutDecimals = getCoinDecimals(assetOut);
         const swapAmountOut = scaleDown(
           event.data_decoded.amount_out,
-          getCoinDecimals(event.type_arguments[assetOutIndex])
+          assetOutDecimals
         );
 
         const coinAddressIn = event.type_arguments[assetInIndex];
@@ -93,6 +97,10 @@ export function processor() {
           coinAddressIn.localeCompare(coinAddressOut) < 0
             ? `${coinAddressIn}-${coinAddressOut}`
             : `${coinAddressOut}-${coinAddressIn}`;
+
+        const actualCoinInPrice =
+          relativePricesToCoin0[assetInIndex] * actualCoin0Price;
+        // const actualCoinOutPrice = relativePricesToCoin0[assetOutIndex]*actualCoin0Price;
 
         // TODO: price_in, price_out, usd_volume
         const swapAttributes = {
@@ -105,13 +113,24 @@ export function processor() {
           type: "weighted",
         };
 
-        const volumeUsd = swapAmountIn
-          .multipliedBy(relativePricesToCoin0[assetInIndex])
-          .multipliedBy(actualCoin0Price);
+        const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
 
         ctx.meter
           .Counter("pool_volume_usd")
           .add(volumeUsd, { poolTag, dateTag });
+
+        ctx.meter
+          .Counter("pool_swap_fee_usd")
+          .add(
+            scaleDown(
+              event.data_decoded.fee_amount,
+              assetInDecimals
+            ).multipliedBy(actualCoinInPrice),
+            {
+              dateTag,
+              poolTag,
+            }
+          );
 
         ctx.logger.info(
           `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
