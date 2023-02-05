@@ -1,6 +1,5 @@
 import { BigDecimal } from "@sentio/sdk";
-import { conversion } from "@sentio/sdk/lib/utils";
-import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/lib/utils/price";
+import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/utils";
 import { CHAIN_IDS } from "@sentio/sdk";
 
 interface CoinInfo {
@@ -59,7 +58,7 @@ export async function getPriceAsof(
 }
 
 export function scaleDown(n: bigint, decimals: number): BigDecimal {
-  return conversion.toBigDecimal(n).dividedBy(10 ** decimals);
+  return n.asBigDecimal().dividedBy(10 ** decimals);
 }
 
 export function getCoinDecimals(address: string): number {

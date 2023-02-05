@@ -13,12 +13,12 @@ import {
   TypedEntryFunctionPayload,
   AptosContext,
   CallFilter,
-} from "@sentio/sdk-aptos";
+} from "@sentio/sdk/aptos";
 import { AptosFetchConfig } from "@sentio/protos";
-import { Address, MoveModule } from "aptos-sdk/src/generated";
+import { Address, MoveModule } from "@sentio/sdk/aptos";
 
-import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
-import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
+import { _0x1 } from "@sentio/sdk/aptos/builtin";
+import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.js";
 
 export namespace fees {
   export function loadTypes(_r: MoveCoder) {
@@ -66,8 +66,6 @@ export class init extends AptosBaseProcessor {
 
 export namespace init {
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
     arguments_decoded: [];
     type_arguments: [];
   }
@@ -124,8 +122,6 @@ export namespace package_ {
 
   export interface PublishPackagePayload
     extends TypedEntryFunctionPayload<[string, string[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, string[]];
     arguments_decoded: [string, string[]];
     type_arguments: [];
   }
@@ -204,8 +200,6 @@ export namespace base_pool {
 
   export interface BasePoolParamChangeEventInstance
     extends TypedEventInstance<BasePoolParamChangeEvent> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: BasePoolParamChangeEvent;
     data_decoded: BasePoolParamChangeEvent;
     type_arguments: [];
   }
@@ -225,8 +219,6 @@ export namespace base_pool {
 
   export interface SetSwapFeeProtocolAllocationBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -416,8 +408,6 @@ export namespace stable_pool {
 
   export interface AddLiquidityEventInstance
     extends TypedEventInstance<AddLiquidityEvent<any, any, any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: AddLiquidityEvent<any, any, any, any>;
     data_decoded: AddLiquidityEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
@@ -434,8 +424,6 @@ export namespace stable_pool {
 
   export interface RemoveLiquidityEventInstance
     extends TypedEventInstance<RemoveLiquidityEvent<any, any, any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: RemoveLiquidityEvent<any, any, any, any>;
     data_decoded: RemoveLiquidityEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
@@ -476,8 +464,6 @@ export namespace stable_pool {
 
   export interface StablePoolCreationEventInstance
     extends TypedEventInstance<StablePoolCreationEvent<any, any, any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: StablePoolCreationEvent<any, any, any, any>;
     data_decoded: StablePoolCreationEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
@@ -523,8 +509,6 @@ export namespace stable_pool {
 
   export interface StablePoolParamChangeEventInstance
     extends TypedEventInstance<StablePoolParamChangeEvent> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: StablePoolParamChangeEvent;
     data_decoded: StablePoolParamChangeEvent;
     type_arguments: [];
   }
@@ -559,24 +543,18 @@ export namespace stable_pool {
 
   export interface SwapEventInstance
     extends TypedEventInstance<SwapEvent<any, any, any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: SwapEvent<any, any, any, any>;
     data_decoded: SwapEvent<any, any, any, any>;
     type_arguments: [string, string, string, string];
   }
 
   export interface SetAmpFactorPayload<T0 = any, T1 = any, T2 = any, T3 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -587,8 +565,6 @@ export namespace stable_pool {
     T2 = any,
     T3 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
@@ -639,8 +615,6 @@ export class fees_scripts extends AptosBaseProcessor {
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address, bigint];
     arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
@@ -807,8 +781,6 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       AddLiquidityEvent<any, any, any, any, any, any, any, any>
     > {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: AddLiquidityEvent<any, any, any, any, any, any, any, any>;
     data_decoded: AddLiquidityEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
@@ -836,8 +808,6 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       RemoveLiquidityEvent<any, any, any, any, any, any, any, any>
     > {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: RemoveLiquidityEvent<any, any, any, any, any, any, any, any>;
     data_decoded: RemoveLiquidityEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
@@ -869,8 +839,6 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       SwapEvent<any, any, any, any, any, any, any, any>
     > {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: SwapEvent<any, any, any, any, any, any, any, any>;
     data_decoded: SwapEvent<any, any, any, any, any, any, any, any>;
     type_arguments: [
       string,
@@ -1039,17 +1007,6 @@ export namespace weighted_pool {
     extends TypedEventInstance<
       WeightedPoolCreationEvent<any, any, any, any, any, any, any, any>
     > {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: WeightedPoolCreationEvent<
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any,
-      any
-    >;
     data_decoded: WeightedPoolCreationEvent<
       any,
       any,
@@ -1114,8 +1071,6 @@ export namespace weighted_pool {
 
   export interface WeightedPoolParamChangeEventInstance
     extends TypedEventInstance<WeightedPoolParamChangeEvent> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: WeightedPoolParamChangeEvent;
     data_decoded: WeightedPoolParamChangeEvent;
     type_arguments: [];
   }
@@ -1135,8 +1090,6 @@ export namespace weighted_pool {
 
   export interface SetDefaultPoolSwapFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -1151,8 +1104,6 @@ export namespace weighted_pool {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [
       string,
@@ -1256,8 +1207,6 @@ export namespace multi_hop_scripts {
     T17 = any,
     T18 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
@@ -1312,8 +1261,6 @@ export namespace multi_hop_scripts {
     T26 = any,
     T27 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
@@ -1453,8 +1400,6 @@ export class stable_pool_scripts extends AptosBaseProcessor {
 export namespace stable_pool_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any, T2 = any, T3 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1467,8 +1412,6 @@ export namespace stable_pool_scripts {
   > extends TypedEntryFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint]
     > {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1479,8 +1422,6 @@ export namespace stable_pool_scripts {
     T2 = any,
     T3 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1493,8 +1434,6 @@ export namespace stable_pool_scripts {
     T4 = any,
     T5 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string, string, string];
   }
@@ -1635,8 +1574,6 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
@@ -1660,8 +1597,6 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
@@ -1685,8 +1620,6 @@ export namespace weighted_pool_scripts {
     T6 = any,
     T7 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [
       string,
@@ -1712,8 +1645,6 @@ export namespace weighted_pool_scripts {
     T8 = any,
     T9 = any
   > extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [
       string,
@@ -1741,8 +1672,6 @@ export namespace weighted_pool_scripts {
     T8 = any,
     T9 = any
   > extends TypedEntryFunctionPayload<[bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,

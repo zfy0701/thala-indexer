@@ -1,5 +1,10 @@
-import { lbp } from "../types/aptos/testnet/lbp";
-import { fp64ToFloat, getCoinDecimals, getDateTag, scaleDown } from "../utils";
+import { lbp } from "../types/aptos/testnet/lbp.js";
+import {
+  fp64ToFloat,
+  getCoinDecimals,
+  getDateTag,
+  scaleDown,
+} from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
 
@@ -12,11 +17,11 @@ export function processor() {
     .bind({ startVersion: START_VERSION })
     .onEventSwapEvent((event, ctx) => {
       const coin0 = event.type_arguments[0];
-      const poolId = event.data_typed.pool_id;
+      const poolId = event.data_decoded.pool_id;
       const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
       ctx.meter
         .Counter("volume_coin_0")
-        .add(scaleDown(event.data_typed.amount_0, getCoinDecimals(coin0)), {
+        .add(scaleDown(event.data_decoded.amount_0, getCoinDecimals(coin0)), {
           poolId,
           dateString,
         });
@@ -24,7 +29,7 @@ export function processor() {
     .onEventLiquidityEvent((event, ctx) => {
       const coin0 = event.type_arguments[0];
       const coin1 = event.type_arguments[1];
-      const poolId = event.data_typed.pool_id;
+      const poolId = event.data_decoded.pool_id;
       coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
         poolId,
       });
@@ -39,9 +44,9 @@ export function processor() {
         .Counter("net_liquidity_withdrawn_0")
         .add(
           scaleDown(
-            event.data_typed.amount_0,
+            event.data_decoded.amount_0,
             getCoinDecimals(coin0)
-          ).multipliedBy(event.data_typed.is_add ? -1 : 1),
+          ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
           {
             poolId,
           }
@@ -51,26 +56,26 @@ export function processor() {
         .Counter("net_liquidity_withdrawn_1")
         .add(
           scaleDown(
-            event.data_typed.amount_1,
+            event.data_decoded.amount_1,
             getCoinDecimals(coin1)
-          ).multipliedBy(event.data_typed.is_add ? -1 : 1),
+          ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
           {
             poolId,
           }
         );
 
       // Track total liquidity provided by owner
-      if (event.data_typed.is_add) {
+      if (event.data_decoded.is_add) {
         ctx.meter
           .Counter("total_liquidity_provided_1")
-          .add(scaleDown(event.data_typed.amount_1, getCoinDecimals(coin1)), {
+          .add(scaleDown(event.data_decoded.amount_1, getCoinDecimals(coin1)), {
             poolId,
           });
       }
     })
     .onEventSwapEvent((event, ctx) => {
       coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-        poolId: event.data_typed.pool_id,
+        poolId: event.data_decoded.pool_id,
       });
     });
 }
@@ -81,14 +86,14 @@ function getPriceFromEvent(
 ) {
   const coin0 = event.type_arguments[0];
   const coin1 = event.type_arguments[1];
-  const weight0 = fp64ToFloat(event.data_typed.weight_0.v);
-  const weight1 = fp64ToFloat(event.data_typed.weight_1.v);
+  const weight0 = fp64ToFloat(event.data_decoded.weight_0.v);
+  const weight1 = fp64ToFloat(event.data_decoded.weight_1.v);
   const balance0 = scaleDown(
-    event.data_typed.balance_0,
+    event.data_decoded.balance_0,
     getCoinDecimals(coin0)
   );
   const balance1 = scaleDown(
-    event.data_typed.balance_1,
+    event.data_decoded.balance_1,
     getCoinDecimals(coin1)
   );
 
