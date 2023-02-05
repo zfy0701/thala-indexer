@@ -2,13 +2,12 @@ import { weighted_pool } from "../types/aptos/testnet/amm";
 import {
   bigintToInteger,
   getCoinDecimals,
-  getDateTag,
   getPairTag,
   getPriceAsof,
   scaleDown,
 } from "../utils";
 
-import { Gauge } from "@sentio/sdk";
+import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk-aptos";
 
 const START_VERSION = 421368795;
@@ -33,6 +32,11 @@ export function processor() {
       async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
         const { coins, weights } = getCoinsAndWeights(event);
         const poolTag = getPoolTag(coins, weights);
+        const { coin1Price, coin2Price, coin3Price } = getPrices(
+          event,
+          coins,
+          weights
+        );
 
         // actual price 0
         const actualCoin0Price = await getPriceAsof(
@@ -42,12 +46,6 @@ export function processor() {
 
         // relative price 1
         const pair1Tag = getPairTag(coins[0], coins[1]);
-        const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
-        const { coin1Price, coin2Price, coin3Price } = getPrices(
-          event,
-          coins,
-          weights
-        );
         coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
 
         // relative price 2
@@ -68,72 +66,80 @@ export function processor() {
           });
         }
 
-        // volume is converted to coin0 amount
         const relativePricesToCoin0 = [
           1,
           coin1Price,
           coin2Price || 0,
           coin3Price || 0,
         ];
-        const assetInIndex = bigintToInteger(event.data_decoded.idx_in);
-        const assetIn = event.type_arguments[assetInIndex];
-        const assetInDecimals = getCoinDecimals(assetIn);
+
+        const coinTypes = event.type_arguments.slice(0, 4);
+        const decimals = coinTypes.map(getCoinDecimals);
+
+        const idxIn = bigintToInteger(event.data_decoded.idx_in);
+        const idxOut = bigintToInteger(event.data_decoded.idx_out);
+
         const swapAmountIn = scaleDown(
           event.data_decoded.amount_in,
-          assetInDecimals
+          decimals[idxIn]
         );
-
-        const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
-        const assetOut = event.type_arguments[assetOutIndex];
-        const assetOutDecimals = getCoinDecimals(assetOut);
         const swapAmountOut = scaleDown(
           event.data_decoded.amount_out,
-          assetOutDecimals
+          decimals[idxOut]
         );
 
-        const coinAddressIn = event.type_arguments[assetInIndex];
-        const coinAddressOut = event.type_arguments[assetOutIndex];
+        const coinIn = coins[idxIn];
+        const coinOut = coins[idxOut];
         const pair =
-          coinAddressIn.localeCompare(coinAddressOut) < 0
-            ? `${coinAddressIn}-${coinAddressOut}`
-            : `${coinAddressOut}-${coinAddressIn}`;
+          coinIn.localeCompare(coinOut) < 0
+            ? `${coinIn}-${coinOut}`
+            : `${coinOut}-${coinIn}`;
 
-        const actualCoinInPrice =
-          relativePricesToCoin0[assetInIndex] * actualCoin0Price;
-        // const actualCoinOutPrice = relativePricesToCoin0[assetOutIndex]*actualCoin0Price;
+        const actualCoinPrices = relativePricesToCoin0.map(
+          (e) => e * actualCoin0Price
+        );
+        const actualCoinInPrice = actualCoinPrices[idxIn];
 
         // TODO: price_in, price_out, usd_volume
         const swapAttributes = {
           pair,
-          coin_address_in: coinAddressIn,
-          coin_address_out: coinAddressOut,
+          coin_address_in: coinIn,
+          coin_address_out: coinOut,
           amount_in: swapAmountIn,
           amount_out: swapAmountOut,
           fee_amount: event.data_decoded.fee_amount,
           type: "weighted",
         };
 
-        const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
+        // TVL
+        const balances = [
+          event.data_decoded.pool_balance_0,
+          event.data_decoded.pool_balance_1,
+          event.data_decoded.pool_balance_2,
+          event.data_decoded.pool_balance_3,
+        ].map((e, i) => scaleDown(e, decimals[i]));
+
+        const tvlUsd = balances
+          .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
+          .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
+        ctx.meter.Gauge("pool_tvl_usd").record(tvlUsd, { poolTag });
 
         ctx.meter
           .Counter("pool_volume_usd")
-          .add(volumeUsd, { poolTag, dateTag });
+          .add(swapAmountIn.multipliedBy(actualCoinInPrice), { poolTag });
 
         ctx.meter
           .Counter("pool_swap_fee_usd")
           .add(
             scaleDown(
               event.data_decoded.fee_amount,
-              assetInDecimals
+              decimals[idxIn]
             ).multipliedBy(actualCoinInPrice),
-            {
-              dateTag,
-              poolTag,
-            }
+            { poolTag }
           );
 
         ctx.logger.info(
-          `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in weighted_pool`,
+          `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
           swapAttributes
         );
       }
