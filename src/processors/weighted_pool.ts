@@ -2,28 +2,16 @@ import { weighted_pool } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
   getCoinDecimals,
-  getPairTag,
   getPriceAsof,
   scaleDown,
 } from "../utils.js";
 
-import { BigDecimal, Gauge } from "@sentio/sdk";
+import { BigDecimal } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
 
 const START_VERSION = 421368795;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
-
-// all coin prices are relative to coin0
-const coin1PriceGauge = Gauge.register("weighted_price_coin_1", {
-  sparse: true,
-});
-const coin2PriceGauge = Gauge.register("weighted_price_coin_2", {
-  sparse: true,
-});
-const coin3PriceGauge = Gauge.register("weighted_price_coin_3", {
-  sparse: true,
-});
 
 export function processor() {
   weighted_pool
@@ -32,39 +20,13 @@ export function processor() {
       async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
         const { coins, weights } = getCoinsAndWeights(event);
         const poolTag = getPoolTag(coins, weights);
+
+        // relative prices
         const { coin1Price, coin2Price, coin3Price } = getPrices(
           event,
           coins,
           weights
         );
-
-        // actual price 0
-        const actualCoin0Price = await getPriceAsof(
-          coins[0],
-          new Date(Number(ctx.transaction.timestamp) / 1000)
-        );
-
-        // relative price 1
-        const pair1Tag = getPairTag(coins[0], coins[1]);
-        coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
-
-        // relative price 2
-        if (coin2Price) {
-          const pair2Tag = getPairTag(coins[0], coins[2]);
-          coin2PriceGauge.record(ctx, coin2Price, {
-            poolTag,
-            pairTag: pair2Tag,
-          });
-        }
-
-        // relative price 3
-        if (coin3Price) {
-          const pair3Tag = getPairTag(coins[0], coins[3]);
-          coin3PriceGauge.record(ctx, coin3Price, {
-            poolTag,
-            pairTag: pair3Tag,
-          });
-        }
 
         const relativePricesToCoin0 = [
           1,
@@ -73,9 +35,16 @@ export function processor() {
           coin3Price || 0,
         ];
 
-        const coinTypes = event.type_arguments.slice(0, 4);
-        const decimals = coinTypes.map(getCoinDecimals);
+        // actual prices
+        const actualCoin0Price = await getPriceAsof(
+          coins[0],
+          new Date(Number(ctx.transaction.timestamp) / 1000)
+        );
+        const actualCoinPrices = relativePricesToCoin0.map(
+          (e) => e * actualCoin0Price
+        );
 
+        const decimals = coins.map(getCoinDecimals);
         const idxIn = bigintToInteger(event.data_decoded.idx_in);
         const idxOut = bigintToInteger(event.data_decoded.idx_out);
 
@@ -95,12 +64,16 @@ export function processor() {
             ? `${coinIn}-${coinOut}`
             : `${coinOut}-${coinIn}`;
 
-        const actualCoinPrices = relativePricesToCoin0.map(
-          (e) => e * actualCoin0Price
-        );
         const actualCoinInPrice = actualCoinPrices[idxIn];
         const actualCoinOutPrice = actualCoinPrices[idxOut];
         const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
+
+        ctx.meter
+          .Gauge("amm_coin_price")
+          .record(actualCoinInPrice, { pair, coin: coinIn });
+        ctx.meter
+          .Gauge("amm_coin_price")
+          .record(actualCoinOutPrice, { pair, coin: coinOut });
 
         const swapAttributes = {
           pair,
@@ -126,7 +99,9 @@ export function processor() {
           event.data_decoded.pool_balance_1,
           event.data_decoded.pool_balance_2,
           event.data_decoded.pool_balance_3,
-        ].map((e, i) => scaleDown(e, decimals[i]));
+        ]
+          .slice(0, coins.length)
+          .map((e, i) => scaleDown(e, decimals[i]));
 
         const tvlUsd = balances
           .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
