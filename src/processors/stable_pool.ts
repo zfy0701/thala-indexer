@@ -1,4 +1,4 @@
-import { stable_pool } from "../types/aptos/testnet/amm";
+import { stable_pool } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
   getCoinDecimals,
@@ -6,10 +6,10 @@ import {
   getPairTag,
   getPriceAsof,
   scaleDown,
-} from "../utils";
+} from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
-import { AptosContext } from "@sentio/sdk-aptos";
+import { AptosContext } from "@sentio/sdk/aptos";
 
 const START_VERSION = 421368795;
 

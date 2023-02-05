@@ -13,12 +13,12 @@ import {
   TypedEntryFunctionPayload,
   AptosContext,
   CallFilter,
-} from "@sentio/sdk-aptos";
+} from "@sentio/sdk/aptos";
 import { AptosFetchConfig } from "@sentio/protos";
-import { Address, MoveModule } from "aptos-sdk/src/generated";
+import { Address, MoveModule } from "@sentio/sdk/aptos";
 
-import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
-import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
+import { _0x1 } from "@sentio/sdk/aptos/builtin";
+import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.js";
 
 export namespace fees {
   export function loadTypes(_r: MoveCoder) {
@@ -82,16 +82,12 @@ export class init extends AptosBaseProcessor {
 
 export namespace init {
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
     arguments_decoded: [];
     type_arguments: [];
   }
 
   export interface InitializeCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
     type_arguments: [string];
   }
@@ -488,8 +484,6 @@ export namespace vault {
 
   export interface BorrowEventInstance
     extends TypedEventInstance<BorrowEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: BorrowEvent<any>;
     data_decoded: BorrowEvent<any>;
     type_arguments: [string];
   }
@@ -502,8 +496,6 @@ export namespace vault {
 
   export interface DepositEventInstance
     extends TypedEventInstance<DepositEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: DepositEvent<any>;
     data_decoded: DepositEvent<any>;
     type_arguments: [string];
   }
@@ -521,8 +513,6 @@ export namespace vault {
 
   export interface LiquidationEventInstance
     extends TypedEventInstance<LiquidationEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: LiquidationEvent<any>;
     data_decoded: LiquidationEvent<any>;
     type_arguments: [string];
   }
@@ -537,8 +527,6 @@ export namespace vault {
 
   export interface RedemptionEventInstance
     extends TypedEventInstance<RedemptionEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: RedemptionEvent<any>;
     data_decoded: RedemptionEvent<any>;
     type_arguments: [string];
   }
@@ -552,8 +540,6 @@ export namespace vault {
 
   export interface RepayEventInstance
     extends TypedEventInstance<RepayEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: RepayEvent<any>;
     data_decoded: RepayEvent<any>;
     type_arguments: [string];
   }
@@ -585,8 +571,6 @@ export namespace vault {
 
   export interface VaultCollateralParamChangeEventInstance
     extends TypedEventInstance<VaultCollateralParamChangeEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: VaultCollateralParamChangeEvent<any>;
     data_decoded: VaultCollateralParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -631,8 +615,6 @@ export namespace vault {
 
   export interface VaultParamChangeEventInstance
     extends TypedEventInstance<VaultParamChangeEvent> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: VaultParamChangeEvent;
     data_decoded: VaultParamChangeEvent;
     type_arguments: [];
   }
@@ -659,8 +641,6 @@ export namespace vault {
 
   export interface VaultUpdatedEventInstance
     extends TypedEventInstance<VaultUpdatedEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: VaultUpdatedEvent<any>;
     data_decoded: VaultUpdatedEvent<any>;
     type_arguments: [string];
   }
@@ -681,112 +661,84 @@ export namespace vault {
 
   export interface WithdrawEventInstance
     extends TypedEventInstance<WithdrawEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: WithdrawEvent<any>;
     data_decoded: WithdrawEvent<any>;
     type_arguments: [string];
   }
 
   export interface SetBorrowFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetFreezeCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[Boolean]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Boolean];
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetFreezeLiquidationsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[Boolean]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Boolean];
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetInterestAprPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetLiquidationFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusCapModAmountPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMcrBpsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMcrPenaltyMultiplierPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMinDebtAmountPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMintCapPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionFeeBpsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionModePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Boolean]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Boolean];
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
@@ -852,8 +804,6 @@ export namespace package_ {
 
   export interface PublishPackagePayload
     extends TypedEntryFunctionPayload<[string, string[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, string[]];
     arguments_decoded: [string, string[]];
     type_arguments: [];
   }
@@ -936,8 +886,6 @@ export class fees_scripts extends AptosBaseProcessor {
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address, bigint];
     arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
@@ -1134,64 +1082,48 @@ export class vault_scripts extends AptosBaseProcessor {
 export namespace vault_scripts {
   export interface BorrowPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, Address[]];
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface CloseVaultPayload<T0 = any>
     extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
     arguments_decoded: [];
     type_arguments: [string];
   }
 
   export interface DepositCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, Address[]];
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface LiquidatePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address, Address[]];
     arguments_decoded: [Address, Address[]];
     type_arguments: [string];
   }
 
   export interface OpenVaultPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, Address[]];
     arguments_decoded: [bigint, bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface RedeemCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface RepayPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, Address[]];
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface WithdrawCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, Address[]]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, Address[]];
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
@@ -1403,8 +1335,6 @@ export namespace stability_pool {
 
   export interface DebtAbsorptionEventInstance
     extends TypedEventInstance<DebtAbsorptionEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: DebtAbsorptionEvent<any>;
     data_decoded: DebtAbsorptionEvent<any>;
     type_arguments: [string];
   }
@@ -1418,8 +1348,6 @@ export namespace stability_pool {
 
   export interface DepositEventInstance
     extends TypedEventInstance<DepositEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: DepositEvent<any>;
     data_decoded: DepositEvent<any>;
     type_arguments: [string];
   }
@@ -1440,8 +1368,6 @@ export namespace stability_pool {
 
   export interface DistributedCollateralEventInstance
     extends TypedEventInstance<DistributedCollateralEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: DistributedCollateralEvent<any>;
     data_decoded: DistributedCollateralEvent<any>;
     type_arguments: [string];
   }
@@ -1484,8 +1410,6 @@ export namespace stability_pool {
 
   export interface StabilityPoolParamChangeEventInstance
     extends TypedEventInstance<StabilityPoolParamChangeEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: StabilityPoolParamChangeEvent<any>;
     data_decoded: StabilityPoolParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -1515,40 +1439,30 @@ export namespace stability_pool {
 
   export interface WithdrawEventInstance
     extends TypedEventInstance<WithdrawEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: WithdrawEvent<any>;
     data_decoded: WithdrawEvent<any>;
     type_arguments: [string];
   }
 
   export interface AddToRwaWhitelistPayload
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [];
   }
 
   export interface RemoveFromRwaWhitelistPayload
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [];
   }
 
   export interface SetWithdrawalFeeMaxBpsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetWithdrawalFeePeriodSecondsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -1720,8 +1634,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionBadDebtEventInstance
     extends TypedEventInstance<CollateralAuctionBadDebtEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionBadDebtEvent<any>;
     data_decoded: CollateralAuctionBadDebtEvent<any>;
     type_arguments: [string];
   }
@@ -1736,8 +1648,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionBidEventInstance
     extends TypedEventInstance<CollateralAuctionBidEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionBidEvent<any>;
     data_decoded: CollateralAuctionBidEvent<any>;
     type_arguments: [string];
   }
@@ -1751,8 +1661,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionEndEventInstance
     extends TypedEventInstance<CollateralAuctionEndEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionEndEvent<any>;
     data_decoded: CollateralAuctionEndEvent<any>;
     type_arguments: [string];
   }
@@ -1787,8 +1695,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionParamChangeEventInstance
     extends TypedEventInstance<CollateralAuctionParamChangeEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionParamChangeEvent<any>;
     data_decoded: CollateralAuctionParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -1813,8 +1719,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionRepayEventInstance
     extends TypedEventInstance<CollateralAuctionRepayEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionRepayEvent<any>;
     data_decoded: CollateralAuctionRepayEvent<any>;
     type_arguments: [string];
   }
@@ -1829,8 +1733,6 @@ export namespace collateral_auction {
 
   export interface CollateralAuctionStartEventInstance
     extends TypedEventInstance<CollateralAuctionStartEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: CollateralAuctionStartEvent<any>;
     data_decoded: CollateralAuctionStartEvent<any>;
     type_arguments: [string];
   }
@@ -1850,8 +1752,6 @@ export namespace collateral_auction {
 
   export interface ResetPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -1990,24 +1890,18 @@ export class stability_pool_scripts extends AptosBaseProcessor {
 export namespace stability_pool_scripts {
   export interface ClaimDistributedCollateralPayload<T0 = any>
     extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
     arguments_decoded: [];
     type_arguments: [string];
   }
 
   export interface DepositModPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface WithdrawModPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -2085,16 +1979,12 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
 export namespace collateral_auction_scripts {
   export interface BidPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
   export interface RepayDebtPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint];
     arguments_decoded: [bigint, bigint];
     type_arguments: [string];
   }

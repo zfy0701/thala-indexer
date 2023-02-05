@@ -13,12 +13,12 @@ import {
   TypedEntryFunctionPayload,
   AptosContext,
   CallFilter,
-} from "@sentio/sdk-aptos";
+} from "@sentio/sdk/aptos";
 import { AptosFetchConfig } from "@sentio/protos";
-import { Address, MoveModule } from "aptos-sdk/src/generated";
+import { Address, MoveModule } from "@sentio/sdk/aptos";
 
-import * as _0x1 from "@sentio/sdk-aptos/lib/builtin/0x1";
-import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87";
+import { _0x1 } from "@sentio/sdk/aptos/builtin";
+import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.js";
 
 export class lbp extends AptosBaseProcessor {
   constructor(options: AptosBindOptions) {
@@ -305,8 +305,6 @@ export namespace lbp {
 
   export interface LBPParamChangeEventInstance
     extends TypedEventInstance<LBPParamChangeEvent> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: LBPParamChangeEvent;
     data_decoded: LBPParamChangeEvent;
     type_arguments: [];
   }
@@ -335,8 +333,6 @@ export namespace lbp {
 
   export interface LiquidityEventInstance
     extends TypedEventInstance<LiquidityEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: LiquidityEvent<any, any>;
     data_decoded: LiquidityEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -361,8 +357,6 @@ export namespace lbp {
 
   export interface PoolCreationEventInstance
     extends TypedEventInstance<PoolCreationEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: PoolCreationEvent<any, any>;
     data_decoded: PoolCreationEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -376,8 +370,6 @@ export namespace lbp {
 
   export interface SetEnabledEventInstance
     extends TypedEventInstance<SetEnabledEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: SetEnabledEvent<any, any>;
     data_decoded: SetEnabledEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -394,8 +386,6 @@ export namespace lbp {
 
   export interface SetWeightScheduleEventInstance
     extends TypedEventInstance<SetWeightScheduleEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: SetWeightScheduleEvent<any, any>;
     data_decoded: SetWeightScheduleEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -415,8 +405,6 @@ export namespace lbp {
 
   export interface SwapEventInstance
     extends TypedEventInstance<SwapEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: SwapEvent<any, any>;
     data_decoded: SwapEvent<any, any>;
     type_arguments: [string, string];
   }
@@ -431,64 +419,48 @@ export namespace lbp {
 
   export interface WhitelistEventInstance
     extends TypedEventInstance<WhitelistEvent<any, any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: WhitelistEvent<any, any>;
     data_decoded: WhitelistEvent<any, any>;
     type_arguments: [string, string];
   }
 
   export interface GrantWhitelistPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [string, string];
   }
 
   export interface RevokeWhitelistPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [string, string];
   }
 
   export interface SetEnabledPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[Boolean]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Boolean];
     arguments_decoded: [Boolean];
     type_arguments: [string, string];
   }
 
   export interface SetMaxDurationSecondsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMaxSwapFeeBpsPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetProtocolSwapFeePctPayload
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetWeightSchedulePayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
@@ -577,8 +549,6 @@ export namespace fees {
 
   export interface FeeParamChangeEventInstance
     extends TypedEventInstance<FeeParamChangeEvent<any>> {
-    /** @deprecated use {@link data_decoded} instead */
-    data_typed: FeeParamChangeEvent<any>;
     data_decoded: FeeParamChangeEvent<any>;
     type_arguments: [string];
   }
@@ -604,16 +574,12 @@ export namespace fees {
 
   export interface ExtractFeePayload<T0 = any>
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [string];
   }
 
   export interface SetLbpCommissionBpsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint];
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -663,8 +629,6 @@ export class init extends AptosBaseProcessor {
 
 export namespace init {
   export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [];
     arguments_decoded: [];
     type_arguments: [];
   }
@@ -739,8 +703,6 @@ export namespace manager {
 
   export interface ChangeManagerAddressPayload
     extends TypedEntryFunctionPayload<[Address]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [Address];
     arguments_decoded: [Address];
     type_arguments: [];
   }
@@ -864,8 +826,6 @@ export class lbp_scripts extends AptosBaseProcessor {
 export namespace lbp_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
@@ -874,17 +834,6 @@ export namespace lbp_scripts {
     extends TypedEntryFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint, bigint, bigint, Boolean]
     > {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [
-      bigint,
-      bigint,
-      bigint,
-      bigint,
-      bigint,
-      bigint,
-      bigint,
-      Boolean
-    ];
     arguments_decoded: [
       bigint,
       bigint,
@@ -900,24 +849,18 @@ export namespace lbp_scripts {
 
   export interface RemoveLiquidityPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [bigint, bigint, bigint];
     arguments_decoded: [bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface SwapExactInPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, bigint, bigint, bigint];
     arguments_decoded: [string, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface SwapExactOutPayload<T0 = any, T1 = any>
     extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
-    /** @deprecated use {@link arguments_decoded} instead */
-    arguments_typed: [string, bigint, bigint, bigint];
     arguments_decoded: [string, bigint, bigint, bigint];
     type_arguments: [string, string];
   }

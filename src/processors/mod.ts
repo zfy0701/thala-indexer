@@ -1,8 +1,8 @@
-import { scaleDown, getCoinDecimals, getPriceAsof } from "../utils";
+import { scaleDown, getCoinDecimals, getPriceAsof } from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
-import { stability_pool, vault } from "../types/aptos/testnet/mod";
+import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
 
 const START_VERSION = 421373649;
 const MOD_DECIMALS = 8;

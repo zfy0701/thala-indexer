@@ -1,14 +1,14 @@
-import { weighted_pool } from "../types/aptos/testnet/amm";
+import { weighted_pool } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
   getCoinDecimals,
   getPairTag,
   getPriceAsof,
   scaleDown,
-} from "../utils";
+} from "../utils.js";
 
 import { BigDecimal, Gauge } from "@sentio/sdk";
-import { AptosContext } from "@sentio/sdk-aptos";
+import { AptosContext } from "@sentio/sdk/aptos";
 
 const START_VERSION = 421368795;
 

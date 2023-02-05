@@ -13,9 +13,9 @@ import {
   TypedEntryFunctionPayload,
   AptosContext,
   CallFilter,
-} from "@sentio/sdk-aptos";
+} from "@sentio/sdk/aptos";
 import { AptosFetchConfig } from "@sentio/protos";
-import { Address, MoveModule } from "aptos-sdk/src/generated";
+import { Address, MoveModule } from "@sentio/sdk/aptos";
 
 export namespace log_exp_math {
   export function loadTypes(_r: MoveCoder) {
