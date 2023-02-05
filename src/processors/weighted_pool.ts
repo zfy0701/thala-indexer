@@ -99,17 +99,26 @@ export function processor() {
           (e) => e * actualCoin0Price
         );
         const actualCoinInPrice = actualCoinPrices[idxIn];
+        const actualCoinOutPrice = actualCoinPrices[idxOut];
+        const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
 
-        // TODO: price_in, price_out, usd_volume
         const swapAttributes = {
           pair,
           coin_address_in: coinIn,
           coin_address_out: coinOut,
           amount_in: swapAmountIn,
           amount_out: swapAmountOut,
+          price_in: actualCoinInPrice,
+          price_out: actualCoinOutPrice,
+          volume: volumeUsd,
           fee_amount: event.data_decoded.fee_amount,
           type: "weighted",
         };
+
+        ctx.logger.info(
+          `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
+          swapAttributes
+        );
 
         // TVL
         const balances = [
@@ -124,9 +133,7 @@ export function processor() {
           .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
         ctx.meter.Gauge("pool_tvl_usd").record(tvlUsd, { poolTag });
 
-        ctx.meter
-          .Counter("pool_volume_usd")
-          .add(swapAmountIn.multipliedBy(actualCoinInPrice), { poolTag });
+        ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
 
         ctx.meter
           .Counter("pool_swap_fee_usd")
@@ -137,11 +144,6 @@ export function processor() {
             ).multipliedBy(actualCoinInPrice),
             { poolTag }
           );
-
-        ctx.logger.info(
-          `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
-          swapAttributes
-        );
       }
     )
     .onEventWeightedPoolCreationEvent((event, ctx) => {
