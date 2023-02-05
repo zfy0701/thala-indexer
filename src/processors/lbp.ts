@@ -12,73 +12,71 @@ const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
 const START_VERSION = 369883229;
 
-export function processor() {
-  lbp
-    .bind({ startVersion: START_VERSION })
-    .onEventSwapEvent((event, ctx) => {
-      const coin0 = event.type_arguments[0];
-      const poolId = event.data_decoded.pool_id;
-      const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
-      ctx.meter
-        .Counter("volume_coin_0")
-        .add(scaleDown(event.data_decoded.amount_0, getCoinDecimals(coin0)), {
-          poolId,
-          dateString,
-        });
-    })
-    .onEventLiquidityEvent((event, ctx) => {
-      const coin0 = event.type_arguments[0];
-      const coin1 = event.type_arguments[1];
-      const poolId = event.data_decoded.pool_id;
-      coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
+lbp
+  .bind({ startVersion: START_VERSION })
+  .onEventSwapEvent((event, ctx) => {
+    const coin0 = event.type_arguments[0];
+    const poolId = event.data_decoded.pool_id;
+    const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
+    ctx.meter
+      .Counter("volume_coin_0")
+      .add(scaleDown(event.data_decoded.amount_0, getCoinDecimals(coin0)), {
         poolId,
+        dateString,
       });
-
-      // Track the amount of liquidity withdrawn - amount of liquidity provided for each coin
-      // This helps to calculate token accrued and token released amount
-      // coin0 accrued amount = sum(coin0 liquidity withdrawn) - sum(coin0 liquidity provided) + pool balance of coin0
-      // coin1 released amount = sum(coin1 liquidity provided) - sum(coin1 liquidity withdrawn) - pool balance of coin1
-      // and we define:
-      // net_liqudity_withdrawn = sum(liquidity withdrawn) - sum(liquidity provided)
-      ctx.meter
-        .Counter("net_liquidity_withdrawn_0")
-        .add(
-          scaleDown(
-            event.data_decoded.amount_0,
-            getCoinDecimals(coin0)
-          ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
-          {
-            poolId,
-          }
-        );
-
-      ctx.meter
-        .Counter("net_liquidity_withdrawn_1")
-        .add(
-          scaleDown(
-            event.data_decoded.amount_1,
-            getCoinDecimals(coin1)
-          ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
-          {
-            poolId,
-          }
-        );
-
-      // Track total liquidity provided by owner
-      if (event.data_decoded.is_add) {
-        ctx.meter
-          .Counter("total_liquidity_provided_1")
-          .add(scaleDown(event.data_decoded.amount_1, getCoinDecimals(coin1)), {
-            poolId,
-          });
-      }
-    })
-    .onEventSwapEvent((event, ctx) => {
-      coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-        poolId: event.data_decoded.pool_id,
-      });
+  })
+  .onEventLiquidityEvent((event, ctx) => {
+    const coin0 = event.type_arguments[0];
+    const coin1 = event.type_arguments[1];
+    const poolId = event.data_decoded.pool_id;
+    coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
+      poolId,
     });
-}
+
+    // Track the amount of liquidity withdrawn - amount of liquidity provided for each coin
+    // This helps to calculate token accrued and token released amount
+    // coin0 accrued amount = sum(coin0 liquidity withdrawn) - sum(coin0 liquidity provided) + pool balance of coin0
+    // coin1 released amount = sum(coin1 liquidity provided) - sum(coin1 liquidity withdrawn) - pool balance of coin1
+    // and we define:
+    // net_liqudity_withdrawn = sum(liquidity withdrawn) - sum(liquidity provided)
+    ctx.meter
+      .Counter("net_liquidity_withdrawn_0")
+      .add(
+        scaleDown(
+          event.data_decoded.amount_0,
+          getCoinDecimals(coin0)
+        ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
+        {
+          poolId,
+        }
+      );
+
+    ctx.meter
+      .Counter("net_liquidity_withdrawn_1")
+      .add(
+        scaleDown(
+          event.data_decoded.amount_1,
+          getCoinDecimals(coin1)
+        ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
+        {
+          poolId,
+        }
+      );
+
+    // Track total liquidity provided by owner
+    if (event.data_decoded.is_add) {
+      ctx.meter
+        .Counter("total_liquidity_provided_1")
+        .add(scaleDown(event.data_decoded.amount_1, getCoinDecimals(coin1)), {
+          poolId,
+        });
+    }
+  })
+  .onEventSwapEvent((event, ctx) => {
+    coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
+      poolId: event.data_decoded.pool_id,
+    });
+  });
 
 // get the price of coin 1 quoted based on coin 0
 function getPriceFromEvent(
