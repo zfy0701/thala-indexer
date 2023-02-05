@@ -13,159 +13,157 @@ const START_VERSION = 421368795;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
-export function processor() {
-  weighted_pool
-    .bind({ startVersion: START_VERSION })
-    .onEventSwapEvent(
-      async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
-        const { coins, weights } = getCoinsAndWeights(event);
-        const poolTag = getPoolTag(coins, weights);
+weighted_pool
+  .bind({ startVersion: START_VERSION })
+  .onEventSwapEvent(
+    async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
+      const { coins, weights } = getCoinsAndWeights(event);
+      const poolTag = getPoolTag(coins, weights);
 
-        // relative prices
-        const { coin1Price, coin2Price, coin3Price } = getPrices(
-          event,
-          coins,
-          weights
+      // relative prices
+      const { coin1Price, coin2Price, coin3Price } = getPrices(
+        event,
+        coins,
+        weights
+      );
+
+      const relativePricesToCoin0 = [
+        1,
+        coin1Price,
+        coin2Price || 0,
+        coin3Price || 0,
+      ];
+
+      // actual prices
+      const actualCoin0Price = await getPriceAsof(
+        coins[0],
+        new Date(Number(ctx.transaction.timestamp) / 1000)
+      );
+      const actualCoinPrices = relativePricesToCoin0.map(
+        (e) => e * actualCoin0Price
+      );
+
+      const decimals = coins.map(getCoinDecimals);
+      const idxIn = bigintToInteger(event.data_decoded.idx_in);
+      const idxOut = bigintToInteger(event.data_decoded.idx_out);
+
+      const swapAmountIn = scaleDown(
+        event.data_decoded.amount_in,
+        decimals[idxIn]
+      );
+      const swapAmountOut = scaleDown(
+        event.data_decoded.amount_out,
+        decimals[idxOut]
+      );
+
+      const coinIn = coins[idxIn];
+      const coinOut = coins[idxOut];
+      const pair =
+        coinIn.localeCompare(coinOut) < 0
+          ? `${coinIn}-${coinOut}`
+          : `${coinOut}-${coinIn}`;
+
+      const actualCoinInPrice = actualCoinPrices[idxIn];
+      const actualCoinOutPrice = actualCoinPrices[idxOut];
+      const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
+
+      ctx.meter
+        .Gauge("amm_coin_price")
+        .record(actualCoinInPrice, { pair, coin: coinIn });
+      ctx.meter
+        .Gauge("amm_coin_price")
+        .record(actualCoinOutPrice, { pair, coin: coinOut });
+
+      const swapAttributes = {
+        pair,
+        coin_address_in: coinIn,
+        coin_address_out: coinOut,
+        amount_in: swapAmountIn,
+        amount_out: swapAmountOut,
+        price_in: actualCoinInPrice,
+        price_out: actualCoinOutPrice,
+        volume: volumeUsd,
+        fee_amount: event.data_decoded.fee_amount,
+        type: "weighted",
+      };
+
+      ctx.logger.info(
+        `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
+        swapAttributes
+      );
+
+      // TVL
+      const balances = [
+        event.data_decoded.pool_balance_0,
+        event.data_decoded.pool_balance_1,
+        event.data_decoded.pool_balance_2,
+        event.data_decoded.pool_balance_3,
+      ]
+        .slice(0, coins.length)
+        .map((e, i) => scaleDown(e, decimals[i]));
+
+      const tvlUsd = balances
+        .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
+        .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
+      ctx.meter.Gauge("pool_tvl_usd").record(tvlUsd, { poolTag });
+
+      ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
+
+      ctx.meter
+        .Counter("pool_swap_fee_usd")
+        .add(
+          scaleDown(
+            event.data_decoded.fee_amount,
+            decimals[idxIn]
+          ).multipliedBy(actualCoinInPrice),
+          { poolTag }
         );
-
-        const relativePricesToCoin0 = [
-          1,
-          coin1Price,
-          coin2Price || 0,
-          coin3Price || 0,
-        ];
-
-        // actual prices
-        const actualCoin0Price = await getPriceAsof(
-          coins[0],
-          new Date(Number(ctx.transaction.timestamp) / 1000)
-        );
-        const actualCoinPrices = relativePricesToCoin0.map(
-          (e) => e * actualCoin0Price
-        );
-
-        const decimals = coins.map(getCoinDecimals);
-        const idxIn = bigintToInteger(event.data_decoded.idx_in);
-        const idxOut = bigintToInteger(event.data_decoded.idx_out);
-
-        const swapAmountIn = scaleDown(
-          event.data_decoded.amount_in,
-          decimals[idxIn]
-        );
-        const swapAmountOut = scaleDown(
-          event.data_decoded.amount_out,
-          decimals[idxOut]
-        );
-
-        const coinIn = coins[idxIn];
-        const coinOut = coins[idxOut];
-        const pair =
-          coinIn.localeCompare(coinOut) < 0
-            ? `${coinIn}-${coinOut}`
-            : `${coinOut}-${coinIn}`;
-
-        const actualCoinInPrice = actualCoinPrices[idxIn];
-        const actualCoinOutPrice = actualCoinPrices[idxOut];
-        const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
-
-        ctx.meter
-          .Gauge("amm_coin_price")
-          .record(actualCoinInPrice, { pair, coin: coinIn });
-        ctx.meter
-          .Gauge("amm_coin_price")
-          .record(actualCoinOutPrice, { pair, coin: coinOut });
-
-        const swapAttributes = {
-          pair,
-          coin_address_in: coinIn,
-          coin_address_out: coinOut,
-          amount_in: swapAmountIn,
-          amount_out: swapAmountOut,
-          price_in: actualCoinInPrice,
-          price_out: actualCoinOutPrice,
-          volume: volumeUsd,
-          fee_amount: event.data_decoded.fee_amount,
-          type: "weighted",
-        };
-
-        ctx.logger.info(
-          `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
-          swapAttributes
-        );
-
-        // TVL
-        const balances = [
-          event.data_decoded.pool_balance_0,
-          event.data_decoded.pool_balance_1,
-          event.data_decoded.pool_balance_2,
-          event.data_decoded.pool_balance_3,
-        ]
-          .slice(0, coins.length)
-          .map((e, i) => scaleDown(e, decimals[i]));
-
-        const tvlUsd = balances
-          .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
-          .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
-        ctx.meter.Gauge("pool_tvl_usd").record(tvlUsd, { poolTag });
-
-        ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
-
-        ctx.meter
-          .Counter("pool_swap_fee_usd")
-          .add(
-            scaleDown(
-              event.data_decoded.fee_amount,
-              decimals[idxIn]
-            ).multipliedBy(actualCoinInPrice),
-            { poolTag }
-          );
-      }
-    )
-    .onEventWeightedPoolCreationEvent((event, ctx) => {
-      const pool = `${
-        weighted_pool.DEFAULT_OPTIONS.address
-      }::weighted_pool::WeightedPool<${event.type_arguments
-        .map((e) => e.trim())
-        .join(", ")}>`;
-      ctx.logger.info(`create pool ${pool}`, {
-        pool,
-        creator: ctx.transaction.sender,
-        timestamp: ctx.transaction.timestamp,
-      });
-      ctx.logger.info("add liquidity", {
-        pool,
-        // TODO
-        value: 0,
-        maker: ctx.transaction.sender,
-      });
-    })
-    .onEventAddLiquidityEvent((event, ctx) => {
-      const pool = `${
-        weighted_pool.DEFAULT_OPTIONS.address
-      }::weighted_pool::WeightedPool<${event.type_arguments
-        .map((e) => e.trim())
-        .join(", ")}>`;
-      ctx.logger.info("add liquidity", {
-        pool,
-        // TODO
-        value: 0,
-        maker: ctx.transaction.sender,
-      });
-    })
-    .onEventRemoveLiquidityEvent((event, ctx) => {
-      const pool = `${
-        weighted_pool.DEFAULT_OPTIONS.address
-      }::weighted_pool::WeightedPool<${event.type_arguments
-        .map((e) => e.trim())
-        .join(", ")}>`;
-      ctx.logger.info("remove liquidity", {
-        pool,
-        // TODO
-        value: 0,
-        maker: ctx.transaction.sender,
-      });
+    }
+  )
+  .onEventWeightedPoolCreationEvent((event, ctx) => {
+    const pool = `${
+      weighted_pool.DEFAULT_OPTIONS.address
+    }::weighted_pool::WeightedPool<${event.type_arguments
+      .map((e) => e.trim())
+      .join(", ")}>`;
+    ctx.logger.info(`create pool ${pool}`, {
+      pool,
+      creator: ctx.transaction.sender,
+      timestamp: ctx.transaction.timestamp,
     });
-}
+    ctx.logger.info("add liquidity", {
+      pool,
+      // TODO
+      value: 0,
+      maker: ctx.transaction.sender,
+    });
+  })
+  .onEventAddLiquidityEvent((event, ctx) => {
+    const pool = `${
+      weighted_pool.DEFAULT_OPTIONS.address
+    }::weighted_pool::WeightedPool<${event.type_arguments
+      .map((e) => e.trim())
+      .join(", ")}>`;
+    ctx.logger.info("add liquidity", {
+      pool,
+      // TODO
+      value: 0,
+      maker: ctx.transaction.sender,
+    });
+  })
+  .onEventRemoveLiquidityEvent((event, ctx) => {
+    const pool = `${
+      weighted_pool.DEFAULT_OPTIONS.address
+    }::weighted_pool::WeightedPool<${event.type_arguments
+      .map((e) => e.trim())
+      .join(", ")}>`;
+    ctx.logger.info("remove liquidity", {
+      pool,
+      // TODO
+      value: 0,
+      maker: ctx.transaction.sender,
+    });
+  });
 
 // get the price of coin 1, 2, 3 quoted based on coin 0 from SwapEventInstance
 // if any coin is Null, the price is undefined
