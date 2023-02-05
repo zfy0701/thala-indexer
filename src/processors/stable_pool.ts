@@ -117,8 +117,14 @@ export function processor() {
       }::stable_pool::StablePool<${event.type_arguments
         .map((e) => e.trim())
         .join(", ")}>`;
+      ctx.logger.info(`create pool ${pool}`, {
+        pool,
+        creator: ctx.transaction.sender,
+        timestamp: ctx.transaction.timestamp,
+      });
       ctx.logger.info("add liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
@@ -131,6 +137,7 @@ export function processor() {
         .join(", ")}>`;
       ctx.logger.info("add liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
@@ -143,6 +150,7 @@ export function processor() {
         .join(", ")}>`;
       ctx.logger.info("remove liquidity", {
         pool,
+        // TODO
         value: 0,
         maker: ctx.transaction.sender,
       });
