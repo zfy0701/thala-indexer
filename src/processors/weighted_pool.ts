@@ -2,6 +2,7 @@ import { weighted_pool } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
   getCoinDecimals,
+  getPairTag,
   getPriceAsof,
   scaleDown,
 } from "../utils.js";
@@ -58,24 +59,24 @@ weighted_pool
 
       const coinIn = coins[idxIn];
       const coinOut = coins[idxOut];
-      const pair =
-        coinIn.localeCompare(coinOut) < 0
-          ? `${coinIn}-${coinOut}`
-          : `${coinOut}-${coinIn}`;
 
       const actualCoinInPrice = actualCoinPrices[idxIn];
       const actualCoinOutPrice = actualCoinPrices[idxOut];
       const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
 
+      const pairTag = getPairTag(coinIn, coinOut);
       ctx.meter
         .Gauge("amm_coin_price")
-        .record(actualCoinInPrice, { pair, coin: coinIn });
+        .record(actualCoinInPrice, { pairTag, coin: coinIn });
       ctx.meter
         .Gauge("amm_coin_price")
-        .record(actualCoinOutPrice, { pair, coin: coinOut });
+        .record(actualCoinOutPrice, { pairTag, coin: coinOut });
 
       const swapAttributes = {
-        pair,
+        pair:
+          coinIn.localeCompare(coinOut) < 0
+            ? `${coinIn}-${coinOut}`
+            : `${coinOut}-${coinIn}`,
         coin_address_in: coinIn,
         coin_address_out: coinOut,
         amount_in: swapAmountIn,
