@@ -12,7 +12,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@sentio/sdk": "^2.1.2"
+    "@sentio/sdk": "^2.1.4"
   },
   "devDependencies": {
     "@sentio/cli": "^2.0.3",
