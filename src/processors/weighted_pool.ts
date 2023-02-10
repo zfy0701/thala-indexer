@@ -7,12 +7,15 @@ import {
   scaleDown,
 } from "../utils.js";
 
-import { BigDecimal } from "@sentio/sdk";
+import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
 
 const START_VERSION = 421368795;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
+
+const ammCoinPriceGauge = Gauge.register("amm_coin_price", { sparse: true });
+const poolTvlUsdGauge = Gauge.register("pool_tvl_usd", { sparse: true });
 
 weighted_pool
   .bind({ startVersion: START_VERSION })
@@ -65,12 +68,14 @@ weighted_pool
       const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
 
       const pairTag = getPairTag(coinIn, coinOut);
-      ctx.meter
-        .Gauge("amm_coin_price")
-        .record(actualCoinInPrice, { pairTag, coin: coinIn });
-      ctx.meter
-        .Gauge("amm_coin_price")
-        .record(actualCoinOutPrice, { pairTag, coin: coinOut });
+      ammCoinPriceGauge.record(ctx, actualCoinInPrice, {
+        pairTag,
+        coin: coinIn,
+      });
+      ammCoinPriceGauge.record(ctx, actualCoinOutPrice, {
+        pairTag,
+        coin: coinOut,
+      });
 
       const swapAttributes = {
         pair:
@@ -106,7 +111,7 @@ weighted_pool
       const tvlUsd = balances
         .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
         .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
-      ctx.meter.Gauge("pool_tvl_usd").record(tvlUsd, { poolTag });
+      poolTvlUsdGauge.record(ctx, tvlUsd, { poolTag });
 
       ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
 
