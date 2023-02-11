@@ -102,10 +102,10 @@ stable_pool
 
       ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag, dateTag });
 
-      ctx.logger.info(
-        `swap: ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut} in stable_pool`,
-        swapAttributes
-      );
+      ctx.eventLogger.emit("swap", {
+        message: `Swap ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut}`,
+        ...swapAttributes,
+      });
     }
   )
   .onEventStablePoolCreationEvent((event, ctx) => {
@@ -114,12 +114,13 @@ stable_pool
     }::stable_pool::StablePool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info(`create pool ${pool}`, {
+    ctx.eventLogger.emit("create_pool", {
       pool,
       creator: ctx.transaction.sender,
       timestamp: ctx.transaction.timestamp,
     });
-    ctx.logger.info("add liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Add",
       pool,
       // TODO
       value: 0,
@@ -132,7 +133,8 @@ stable_pool
     }::stable_pool::StablePool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info("add liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Add",
       pool,
       // TODO
       value: 0,
@@ -145,7 +147,8 @@ stable_pool
     }::stable_pool::StablePool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info("remove liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Remove",
       pool,
       // TODO
       value: 0,

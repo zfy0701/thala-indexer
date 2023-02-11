@@ -93,10 +93,10 @@ weighted_pool
         type: "weighted",
       };
 
-      ctx.logger.info(
-        `swap: ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut} in weighted_pool`,
-        swapAttributes
-      );
+      ctx.eventLogger.emit("swap", {
+        message: `Swap ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut}`,
+        ...swapAttributes,
+      });
 
       // TVL
       const balances = [
@@ -132,12 +132,14 @@ weighted_pool
     }::weighted_pool::WeightedPool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info(`create pool ${pool}`, {
+
+    ctx.eventLogger.emit("create_pool", {
       pool,
       creator: ctx.transaction.sender,
       timestamp: ctx.transaction.timestamp,
     });
-    ctx.logger.info("add liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Add",
       pool,
       // TODO
       value: 0,
@@ -150,7 +152,8 @@ weighted_pool
     }::weighted_pool::WeightedPool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info("add liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Add",
       pool,
       // TODO
       value: 0,
@@ -163,7 +166,8 @@ weighted_pool
     }::weighted_pool::WeightedPool<${event.type_arguments
       .map((e) => e.trim())
       .join(", ")}>`;
-    ctx.logger.info("remove liquidity", {
+    ctx.eventLogger.emit("liquidity", {
+      liquidityEventType: "Remove",
       pool,
       // TODO
       value: 0,
