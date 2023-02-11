@@ -4,6 +4,7 @@
 
 /* Generated modules for account 0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04 */
 
+import { CallFilter } from "@sentio/sdk/move";
 import {
   MoveCoder,
   AptosBindOptions,
@@ -12,9 +13,8 @@ import {
   AptosNetwork,
   TypedEntryFunctionPayload,
   AptosContext,
-  CallFilter,
 } from "@sentio/sdk/aptos";
-import { AptosFetchConfig } from "@sentio/protos";
+import { MoveFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
@@ -37,7 +37,7 @@ export class lbp extends AptosBaseProcessor {
   onEntryGrantWhitelist(
     func: (call: lbp.GrantWhitelistPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -53,7 +53,7 @@ export class lbp extends AptosBaseProcessor {
   onEntryRevokeWhitelist(
     func: (call: lbp.RevokeWhitelistPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -69,7 +69,7 @@ export class lbp extends AptosBaseProcessor {
   onEntrySetEnabled(
     func: (call: lbp.SetEnabledPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -85,7 +85,7 @@ export class lbp extends AptosBaseProcessor {
   onEntrySetMaxDurationSeconds(
     func: (call: lbp.SetMaxDurationSecondsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -101,7 +101,7 @@ export class lbp extends AptosBaseProcessor {
   onEntrySetMaxSwapFeeBps(
     func: (call: lbp.SetMaxSwapFeeBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -117,7 +117,7 @@ export class lbp extends AptosBaseProcessor {
   onEntrySetProtocolSwapFeePct(
     func: (call: lbp.SetProtocolSwapFeePctPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -133,7 +133,7 @@ export class lbp extends AptosBaseProcessor {
   onEntrySetWeightSchedule(
     func: (call: lbp.SetWeightSchedulePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEntryFunctionCall(
       func,
@@ -148,7 +148,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventWhitelistEvent(
     func: (event: lbp.WhitelistEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -162,7 +162,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventSetEnabledEvent(
     func: (event: lbp.SetEnabledEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -179,7 +179,7 @@ export class lbp extends AptosBaseProcessor {
       event: lbp.SetWeightScheduleEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -193,7 +193,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventPoolCreationEvent(
     func: (event: lbp.PoolCreationEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -207,7 +207,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventLiquidityEvent(
     func: (event: lbp.LiquidityEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -221,7 +221,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventSwapEvent(
     func: (event: lbp.SwapEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -235,7 +235,7 @@ export class lbp extends AptosBaseProcessor {
 
   onEventLBPParamChangeEvent(
     func: (event: lbp.LBPParamChangeEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
@@ -490,7 +490,7 @@ export class fees extends AptosBaseProcessor {
   onEntryExtractFee(
     func: (call: fees.ExtractFeePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): fees {
     this.onEntryFunctionCall(
       func,
@@ -506,7 +506,7 @@ export class fees extends AptosBaseProcessor {
   onEntrySetLbpCommissionBps(
     func: (call: fees.SetLbpCommissionBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): fees {
     this.onEntryFunctionCall(
       func,
@@ -521,7 +521,7 @@ export class fees extends AptosBaseProcessor {
 
   onEventFeeParamChangeEvent(
     func: (event: fees.FeeParamChangeEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): fees {
     this.onEvent(
       func,
@@ -609,7 +609,7 @@ export class init extends AptosBaseProcessor {
   onEntryInitialize(
     func: (call: init.InitializePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): init {
     this.onEntryFunctionCall(
       func,
@@ -670,7 +670,7 @@ export class manager extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): manager {
     this.onEntryFunctionCall(
       func,
@@ -741,7 +741,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   onEntryAddLiquidity(
     func: (call: lbp_scripts.AddLiquidityPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp_scripts {
     this.onEntryFunctionCall(
       func,
@@ -757,7 +757,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   onEntryCreateLbp(
     func: (call: lbp_scripts.CreateLbpPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp_scripts {
     this.onEntryFunctionCall(
       func,
@@ -773,7 +773,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   onEntryRemoveLiquidity(
     func: (call: lbp_scripts.RemoveLiquidityPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp_scripts {
     this.onEntryFunctionCall(
       func,
@@ -789,7 +789,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   onEntrySwapExactIn(
     func: (call: lbp_scripts.SwapExactInPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp_scripts {
     this.onEntryFunctionCall(
       func,
@@ -805,7 +805,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   onEntrySwapExactOut(
     func: (call: lbp_scripts.SwapExactOutPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): lbp_scripts {
     this.onEntryFunctionCall(
       func,

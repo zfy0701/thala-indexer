@@ -4,6 +4,7 @@
 
 /* Generated modules for account 0xcf810a2ba70d6650dc16245cb62812f466d9c30f1e60722b4a54eca6da1231ff */
 
+import { CallFilter } from "@sentio/sdk/move";
 import {
   MoveCoder,
   AptosBindOptions,
@@ -12,9 +13,8 @@ import {
   AptosNetwork,
   TypedEntryFunctionPayload,
   AptosContext,
-  CallFilter,
 } from "@sentio/sdk/aptos";
-import { AptosFetchConfig } from "@sentio/protos";
+import { MoveFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
@@ -46,7 +46,7 @@ export class init extends AptosBaseProcessor {
   onEntryInitialize(
     func: (call: init.InitializePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): init {
     this.onEntryFunctionCall(
       func,
@@ -95,7 +95,7 @@ export class package_ extends AptosBaseProcessor {
   onEntryPublishPackage(
     func: (call: package_.PublishPackagePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): package_ {
     this.onEntryFunctionCall(
       func,
@@ -154,7 +154,7 @@ export class base_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): base_pool {
     this.onEntryFunctionCall(
       func,
@@ -172,7 +172,7 @@ export class base_pool extends AptosBaseProcessor {
       event: base_pool.BasePoolParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): base_pool {
     this.onEvent(
       func,
@@ -257,7 +257,7 @@ export class stable_pool extends AptosBaseProcessor {
   onEntrySetAmpFactor(
     func: (call: stable_pool.SetAmpFactorPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEntryFunctionCall(
       func,
@@ -276,7 +276,7 @@ export class stable_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEntryFunctionCall(
       func,
@@ -295,7 +295,7 @@ export class stable_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEntryFunctionCall(
       func,
@@ -313,7 +313,7 @@ export class stable_pool extends AptosBaseProcessor {
       event: stable_pool.StablePoolCreationEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEvent(
       func,
@@ -330,7 +330,7 @@ export class stable_pool extends AptosBaseProcessor {
       event: stable_pool.AddLiquidityEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEvent(
       func,
@@ -347,7 +347,7 @@ export class stable_pool extends AptosBaseProcessor {
       event: stable_pool.RemoveLiquidityEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEvent(
       func,
@@ -361,7 +361,7 @@ export class stable_pool extends AptosBaseProcessor {
 
   onEventSwapEvent(
     func: (event: stable_pool.SwapEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEvent(
       func,
@@ -378,7 +378,7 @@ export class stable_pool extends AptosBaseProcessor {
       event: stable_pool.StablePoolParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool {
     this.onEvent(
       func,
@@ -594,7 +594,7 @@ export class fees_scripts extends AptosBaseProcessor {
   onEntryTransferFee(
     func: (call: fees_scripts.TransferFeePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): fees_scripts {
     this.onEntryFunctionCall(
       func,
@@ -647,7 +647,7 @@ export class weighted_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEntryFunctionCall(
       func,
@@ -666,7 +666,7 @@ export class weighted_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEntryFunctionCall(
       func,
@@ -684,7 +684,7 @@ export class weighted_pool extends AptosBaseProcessor {
       event: weighted_pool.WeightedPoolCreationEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEvent(
       func,
@@ -701,7 +701,7 @@ export class weighted_pool extends AptosBaseProcessor {
       event: weighted_pool.AddLiquidityEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEvent(
       func,
@@ -718,7 +718,7 @@ export class weighted_pool extends AptosBaseProcessor {
       event: weighted_pool.RemoveLiquidityEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEvent(
       func,
@@ -732,7 +732,7 @@ export class weighted_pool extends AptosBaseProcessor {
 
   onEventSwapEvent(
     func: (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEvent(
       func,
@@ -749,7 +749,7 @@ export class weighted_pool extends AptosBaseProcessor {
       event: weighted_pool.WeightedPoolParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool {
     this.onEvent(
       func,
@@ -1148,7 +1148,7 @@ export class multi_hop_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): multi_hop_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1167,7 +1167,7 @@ export class multi_hop_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): multi_hop_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1325,7 +1325,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1344,7 +1344,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1363,7 +1363,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1379,7 +1379,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
   onEntrySwap(
     func: (call: stable_pool_scripts.SwapPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stable_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1469,7 +1469,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1488,7 +1488,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1507,7 +1507,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1526,7 +1526,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1545,7 +1545,7 @@ export class weighted_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): weighted_pool_scripts {
     this.onEntryFunctionCall(
       func,

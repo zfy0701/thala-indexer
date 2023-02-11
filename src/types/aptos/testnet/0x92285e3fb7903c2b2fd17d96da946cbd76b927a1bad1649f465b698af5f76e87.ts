@@ -4,6 +4,7 @@
 
 /* Generated modules for account 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 */
 
+import { CallFilter } from "@sentio/sdk/move";
 import {
   MoveCoder,
   AptosBindOptions,
@@ -12,9 +13,8 @@ import {
   AptosNetwork,
   TypedEntryFunctionPayload,
   AptosContext,
-  CallFilter,
 } from "@sentio/sdk/aptos";
-import { AptosFetchConfig } from "@sentio/protos";
+import { MoveFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "@sentio/sdk/aptos";
 
 export namespace log_exp_math {

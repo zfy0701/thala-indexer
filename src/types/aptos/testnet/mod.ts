@@ -4,6 +4,7 @@
 
 /* Generated modules for account 0xaa4744bbb0fcb55dadbc3bd14fc099e43e8aa2060bfce30c302f0899b3a35ca5 */
 
+import { CallFilter } from "@sentio/sdk/move";
 import {
   MoveCoder,
   AptosBindOptions,
@@ -12,9 +13,8 @@ import {
   AptosNetwork,
   TypedEntryFunctionPayload,
   AptosContext,
-  CallFilter,
 } from "@sentio/sdk/aptos";
-import { AptosFetchConfig } from "@sentio/protos";
+import { MoveFetchConfig } from "@sentio/protos";
 import { Address, MoveModule } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
@@ -46,7 +46,7 @@ export class init extends AptosBaseProcessor {
   onEntryInitialize(
     func: (call: init.InitializePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): init {
     this.onEntryFunctionCall(
       func,
@@ -62,7 +62,7 @@ export class init extends AptosBaseProcessor {
   onEntryInitializeCollateral(
     func: (call: init.InitializeCollateralPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): init {
     this.onEntryFunctionCall(
       func,
@@ -126,7 +126,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetBorrowFeeBps(
     func: (call: vault.SetBorrowFeeBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -142,7 +142,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetFreezeCollateral(
     func: (call: vault.SetFreezeCollateralPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -158,7 +158,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetFreezeLiquidations(
     func: (call: vault.SetFreezeLiquidationsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -174,7 +174,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetInterestApr(
     func: (call: vault.SetInterestAprPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -190,7 +190,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetLiquidationFeeBps(
     func: (call: vault.SetLiquidationFeeBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -206,7 +206,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetLiquidatorBonusBps(
     func: (call: vault.SetLiquidatorBonusBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -225,7 +225,7 @@ export class vault extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -241,7 +241,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetMcrBps(
     func: (call: vault.SetMcrBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -260,7 +260,7 @@ export class vault extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -276,7 +276,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetMinDebtAmount(
     func: (call: vault.SetMinDebtAmountPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -292,7 +292,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetMintCap(
     func: (call: vault.SetMintCapPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -308,7 +308,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetRedemptionFeeBps(
     func: (call: vault.SetRedemptionFeeBpsPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -324,7 +324,7 @@ export class vault extends AptosBaseProcessor {
   onEntrySetRedemptionMode(
     func: (call: vault.SetRedemptionModePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEntryFunctionCall(
       func,
@@ -342,7 +342,7 @@ export class vault extends AptosBaseProcessor {
       event: vault.VaultCollateralParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -356,7 +356,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventBorrowEvent(
     func: (event: vault.BorrowEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -370,7 +370,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventRepayEvent(
     func: (event: vault.RepayEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -384,7 +384,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventDepositEvent(
     func: (event: vault.DepositEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -398,7 +398,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventWithdrawEvent(
     func: (event: vault.WithdrawEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -412,7 +412,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventLiquidationEvent(
     func: (event: vault.LiquidationEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -426,7 +426,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventRedemptionEvent(
     func: (event: vault.RedemptionEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -440,7 +440,7 @@ export class vault extends AptosBaseProcessor {
 
   onEventVaultUpdatedEvent(
     func: (event: vault.VaultUpdatedEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -457,7 +457,7 @@ export class vault extends AptosBaseProcessor {
       event: vault.VaultParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault {
     this.onEvent(
       func,
@@ -777,7 +777,7 @@ export class package_ extends AptosBaseProcessor {
   onEntryPublishPackage(
     func: (call: package_.PublishPackagePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): package_ {
     this.onEntryFunctionCall(
       func,
@@ -865,7 +865,7 @@ export class fees_scripts extends AptosBaseProcessor {
   onEntryTransferFee(
     func: (call: fees_scripts.TransferFeePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): fees_scripts {
     this.onEntryFunctionCall(
       func,
@@ -940,7 +940,7 @@ export class vault_scripts extends AptosBaseProcessor {
   onEntryBorrow(
     func: (call: vault_scripts.BorrowPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -956,7 +956,7 @@ export class vault_scripts extends AptosBaseProcessor {
   onEntryCloseVault(
     func: (call: vault_scripts.CloseVaultPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -975,7 +975,7 @@ export class vault_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -991,7 +991,7 @@ export class vault_scripts extends AptosBaseProcessor {
   onEntryLiquidate(
     func: (call: vault_scripts.LiquidatePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1007,7 +1007,7 @@ export class vault_scripts extends AptosBaseProcessor {
   onEntryOpenVault(
     func: (call: vault_scripts.OpenVaultPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1026,7 +1026,7 @@ export class vault_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1042,7 +1042,7 @@ export class vault_scripts extends AptosBaseProcessor {
   onEntryRepay(
     func: (call: vault_scripts.RepayPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1061,7 +1061,7 @@ export class vault_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): vault_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1159,7 +1159,7 @@ export class stability_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEntryFunctionCall(
       func,
@@ -1178,7 +1178,7 @@ export class stability_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEntryFunctionCall(
       func,
@@ -1197,7 +1197,7 @@ export class stability_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEntryFunctionCall(
       func,
@@ -1216,7 +1216,7 @@ export class stability_pool extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEntryFunctionCall(
       func,
@@ -1234,7 +1234,7 @@ export class stability_pool extends AptosBaseProcessor {
       event: stability_pool.DepositEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEvent(
       func,
@@ -1251,7 +1251,7 @@ export class stability_pool extends AptosBaseProcessor {
       event: stability_pool.WithdrawEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEvent(
       func,
@@ -1268,7 +1268,7 @@ export class stability_pool extends AptosBaseProcessor {
       event: stability_pool.DebtAbsorptionEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEvent(
       func,
@@ -1285,7 +1285,7 @@ export class stability_pool extends AptosBaseProcessor {
       event: stability_pool.DistributedCollateralEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEvent(
       func,
@@ -1302,7 +1302,7 @@ export class stability_pool extends AptosBaseProcessor {
       event: stability_pool.StabilityPoolParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool {
     this.onEvent(
       func,
@@ -1495,7 +1495,7 @@ export class collateral_auction extends AptosBaseProcessor {
   onEntryReset(
     func: (call: collateral_auction.ResetPayload, ctx: AptosContext) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEntryFunctionCall(
       func,
@@ -1513,7 +1513,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionStartEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1530,7 +1530,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionBidEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1547,7 +1547,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionEndEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1564,7 +1564,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionRepayEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1581,7 +1581,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionBadDebtEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1598,7 +1598,7 @@ export class collateral_auction extends AptosBaseProcessor {
       event: collateral_auction.CollateralAuctionParamChangeEventInstance,
       ctx: AptosContext
     ) => void,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction {
     this.onEvent(
       func,
@@ -1831,7 +1831,7 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1850,7 +1850,7 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1869,7 +1869,7 @@ export class stability_pool_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): stability_pool_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1939,7 +1939,7 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction_scripts {
     this.onEntryFunctionCall(
       func,
@@ -1958,7 +1958,7 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
       ctx: AptosContext
     ) => void,
     filter?: CallFilter,
-    fetchConfig?: AptosFetchConfig
+    fetchConfig?: MoveFetchConfig
   ): collateral_auction_scripts {
     this.onEntryFunctionCall(
       func,
