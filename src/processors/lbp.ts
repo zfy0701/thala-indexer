@@ -10,27 +10,35 @@ import { Gauge } from "@sentio/sdk";
 
 const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
-const START_VERSION = 369883229;
+const START_VERSION = 426312400;
 
 lbp
   .bind({ startVersion: START_VERSION })
   .onEventSwapEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
-    const poolId = event.data_decoded.pool_id;
+    const creator_addr = event.data_decoded.creator_addr;
     const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
     ctx.meter
       .Counter("volume_coin_0")
-      .add(scaleDown(event.data_decoded.amount_0, getCoinDecimals(coin0)), {
-        poolId,
-        dateString,
-      });
+      .add(
+        scaleDown(
+          event.data_decoded.is_buy
+            ? event.data_decoded.amount_in
+            : event.data_decoded.amount_out,
+          getCoinDecimals(coin0)
+        ),
+        {
+          creator_addr,
+          dateString,
+        }
+      );
   })
   .onEventLiquidityEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
     const coin1 = event.type_arguments[1];
-    const poolId = event.data_decoded.pool_id;
+    const creator_addr = event.data_decoded.creator_addr;
     coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-      poolId,
+      creator_addr,
     });
 
     // Track the amount of liquidity withdrawn - amount of liquidity provided for each coin
@@ -47,7 +55,7 @@ lbp
           getCoinDecimals(coin0)
         ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
         {
-          poolId,
+          creator_addr,
         }
       );
 
@@ -59,7 +67,7 @@ lbp
           getCoinDecimals(coin1)
         ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
         {
-          poolId,
+          creator_addr,
         }
       );
 
@@ -68,13 +76,13 @@ lbp
       ctx.meter
         .Counter("total_liquidity_provided_1")
         .add(scaleDown(event.data_decoded.amount_1, getCoinDecimals(coin1)), {
-          poolId,
+          creator_addr,
         });
     }
   })
   .onEventSwapEvent((event, ctx) => {
     coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-      poolId: event.data_decoded.pool_id,
+      creator_addr: event.data_decoded.creator_addr,
     });
   });
 

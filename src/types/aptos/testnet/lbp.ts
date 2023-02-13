@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/* Generated modules for account 0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04 */
+/* Generated modules for account 0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623 */
 
 import { CallFilter } from "@sentio/sdk/move";
 import {
@@ -26,7 +26,7 @@ export class lbp extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -114,8 +114,11 @@ export class lbp extends AptosBaseProcessor {
     return this;
   }
 
-  onEntrySetProtocolSwapFeePct(
-    func: (call: lbp.SetProtocolSwapFeePctPayload, ctx: AptosContext) => void,
+  onEntrySetProtocolSwapFeeAllocationPct(
+    func: (
+      call: lbp.SetProtocolSwapFeeAllocationPctPayload,
+      ctx: AptosContext
+    ) => void,
     filter?: CallFilter,
     fetchConfig?: MoveFetchConfig
   ): lbp {
@@ -123,7 +126,7 @@ export class lbp extends AptosBaseProcessor {
       func,
       {
         ...filter,
-        function: "lbp::set_protocol_swap_fee_pct",
+        function: "lbp::set_protocol_swap_fee_allocation_pct",
       },
       fetchConfig
     );
@@ -146,14 +149,28 @@ export class lbp extends AptosBaseProcessor {
     return this;
   }
 
-  onEventWhitelistEvent(
-    func: (event: lbp.WhitelistEventInstance, ctx: AptosContext) => void,
+  onEventCreatorWhitelistEvent(
+    func: (event: lbp.CreatorWhitelistEventInstance, ctx: AptosContext) => void,
     fetchConfig?: MoveFetchConfig
   ): lbp {
     this.onEvent(
       func,
       {
-        type: "lbp::WhitelistEvent",
+        type: "lbp::CreatorWhitelistEvent",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  onEventLBPCreationEvent(
+    func: (event: lbp.LBPCreationEventInstance, ctx: AptosContext) => void,
+    fetchConfig?: MoveFetchConfig
+  ): lbp {
+    this.onEvent(
+      func,
+      {
+        type: "lbp::LBPCreationEvent",
       },
       fetchConfig
     );
@@ -185,20 +202,6 @@ export class lbp extends AptosBaseProcessor {
       func,
       {
         type: "lbp::SetWeightScheduleEvent",
-      },
-      fetchConfig
-    );
-    return this;
-  }
-
-  onEventPoolCreationEvent(
-    func: (event: lbp.PoolCreationEventInstance, ctx: AptosContext) => void,
-    fetchConfig?: MoveFetchConfig
-  ): lbp {
-    this.onEvent(
-      func,
-      {
-        type: "lbp::PoolCreationEvent",
       },
       fetchConfig
     );
@@ -253,51 +256,79 @@ export class lbp extends AptosBaseProcessor {
 }
 
 export namespace lbp {
-  export class CreatorWhitelist {
+  export class CreatorWhitelistEvent<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::CreatorWhitelist";
-    ids: _0x1.table.Table<string, Boolean>;
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::CreatorWhitelistEvent";
+    creator_addr: Address;
+    whitelisted: Boolean;
+  }
+
+  export interface CreatorWhitelistEventInstance
+    extends TypedEventInstance<CreatorWhitelistEvent<any, any>> {
+    data_decoded: CreatorWhitelistEvent<any, any>;
+    type_arguments: [string, string];
   }
 
   export class LBP<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBP";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBP";
+    creator: Address;
     asset_0: _0x1.coin.Coin<T0>;
-    asset_1: _0x1.coin.Coin<T1>;
     start_weight_0: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-    start_weight_1: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     end_weight_0: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-    end_weight_1: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-    swap_fee_bps: bigint;
-    start_timestamp_seconds: bigint;
-    end_timestamp_seconds: bigint;
+    asset_1: _0x1.coin.Coin<T1>;
+    inverse_negated_swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
+    swap_fee_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
+    start_time_seconds: bigint;
+    end_time_seconds: bigint;
     asset_0_tax_free_amount: bigint;
     enabled: Boolean;
-    creator: Address;
+    events: lbp.LBPEvents<T0, T1>;
   }
 
-  export class LBPAccountCapability {
+  export class LBPCollection<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBPAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPCollection";
+    lbps: _0x1.table.Table<Address, lbp.LBP<T0, T1>>;
+    creator_whitelist: _0x1.table.Table<Address, Boolean>;
+    creator_whitelist_events: _0x1.event.EventHandle<
+      lbp.CreatorWhitelistEvent<T0, T1>
+    >;
+  }
+
+  export class LBPCreationEvent<T0, T1> {
+    static TYPE_QNAME =
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPCreationEvent";
+    creator_addr: Address;
+    start_weight_pct_0: bigint;
+    end_weight_pct_0: bigint;
+    start_time_seconds: bigint;
+    end_time_seconds: bigint;
+    enabled: Boolean;
+    swap_fee_bps: bigint;
+  }
+
+  export interface LBPCreationEventInstance
+    extends TypedEventInstance<LBPCreationEvent<any, any>> {
+    data_decoded: LBPCreationEvent<any, any>;
+    type_arguments: [string, string];
   }
 
   export class LBPEvents<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBPEvents";
-    whitelist_events: _0x1.event.EventHandle<lbp.WhitelistEvent<T0, T1>>;
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPEvents";
+    lbp_creation_events: _0x1.event.EventHandle<lbp.LBPCreationEvent<T0, T1>>;
     set_enabled_events: _0x1.event.EventHandle<lbp.SetEnabledEvent<T0, T1>>;
     set_weight_schedule_events: _0x1.event.EventHandle<
       lbp.SetWeightScheduleEvent<T0, T1>
     >;
-    pool_creation_events: _0x1.event.EventHandle<lbp.PoolCreationEvent<T0, T1>>;
     liquidity_events: _0x1.event.EventHandle<lbp.LiquidityEvent<T0, T1>>;
     swap_events: _0x1.event.EventHandle<lbp.SwapEvent<T0, T1>>;
   }
 
   export class LBPParamChangeEvent {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBPParamChangeEvent";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
@@ -311,24 +342,24 @@ export namespace lbp {
 
   export class LBPParams {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBPParams";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPParams";
     max_duration_seconds: bigint;
     max_swap_fee_bps: bigint;
-    protocol_swap_fee_pct: bigint;
+    protocol_swap_fee_allocation_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     param_change_events: _0x1.event.EventHandle<lbp.LBPParamChangeEvent>;
   }
 
   export class LiquidityEvent<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LiquidityEvent";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LiquidityEvent";
+    creator_addr: Address;
     is_add: Boolean;
     amount_0: bigint;
     amount_1: bigint;
-    balance_0: bigint;
-    balance_1: bigint;
     weight_0: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     weight_1: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-    pool_id: string;
+    balance_0: bigint;
+    balance_1: bigint;
   }
 
   export interface LiquidityEventInstance
@@ -337,35 +368,11 @@ export namespace lbp {
     type_arguments: [string, string];
   }
 
-  export class PoolCollection<T0, T1> {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::PoolCollection";
-    pools: _0x1.table.Table<string, lbp.LBP<T0, T1>>;
-  }
-
-  export class PoolCreationEvent<T0, T1> {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::PoolCreationEvent";
-    start_weight_0: bigint;
-    end_weight_0: bigint;
-    start_timestamp_seconds: bigint;
-    end_timestamp_seconds: bigint;
-    swap_fee_bps: bigint;
-    enabled: Boolean;
-    pool_id: string;
-  }
-
-  export interface PoolCreationEventInstance
-    extends TypedEventInstance<PoolCreationEvent<any, any>> {
-    data_decoded: PoolCreationEvent<any, any>;
-    type_arguments: [string, string];
-  }
-
   export class SetEnabledEvent<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SetEnabledEvent";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SetEnabledEvent";
+    creator_addr: Address;
     enabled: Boolean;
-    pool_id: string;
   }
 
   export interface SetEnabledEventInstance
@@ -376,12 +383,12 @@ export namespace lbp {
 
   export class SetWeightScheduleEvent<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SetWeightScheduleEvent";
-    start_weight_0: bigint;
-    end_weight_0: bigint;
-    start_timestamp_seconds: bigint;
-    end_timestamp_seconds: bigint;
-    pool_id: string;
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SetWeightScheduleEvent";
+    creator_addr: Address;
+    start_weight_pct_0: bigint;
+    end_weight_pct_0: bigint;
+    start_time_seconds: bigint;
+    end_time_seconds: bigint;
   }
 
   export interface SetWeightScheduleEventInstance
@@ -392,34 +399,21 @@ export namespace lbp {
 
   export class SwapEvent<T0, T1> {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SwapEvent";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SwapEvent";
+    creator_addr: Address;
     is_buy: Boolean;
-    amount_0: bigint;
-    amount_1: bigint;
-    balance_0: bigint;
-    balance_1: bigint;
+    amount_in: bigint;
+    amount_out: bigint;
+    fee_amount: bigint;
     weight_0: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
     weight_1: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
-    pool_id: string;
+    balance_0: bigint;
+    balance_1: bigint;
   }
 
   export interface SwapEventInstance
     extends TypedEventInstance<SwapEvent<any, any>> {
     data_decoded: SwapEvent<any, any>;
-    type_arguments: [string, string];
-  }
-
-  export class WhitelistEvent<T0, T1> {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::WhitelistEvent";
-    whitelisted: Boolean;
-    pool_id: string;
-    pool_creator: Address;
-  }
-
-  export interface WhitelistEventInstance
-    extends TypedEventInstance<WhitelistEvent<any, any>> {
-    data_decoded: WhitelistEvent<any, any>;
     type_arguments: [string, string];
   }
 
@@ -453,7 +447,7 @@ export namespace lbp {
     type_arguments: [];
   }
 
-  export interface SetProtocolSwapFeePctPayload
+  export interface SetProtocolSwapFeeAllocationPctPayload
     extends TypedEntryFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
@@ -469,7 +463,7 @@ export namespace lbp {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"lbp","friends":["0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::init"],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"create_lbp","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","u64","u64","u64","u64","u64","bool"],"return":[]},{"name":"grant_whitelist","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"revoke_whitelist","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"set_enabled","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_max_duration_seconds","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_max_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_protocol_swap_fee_pct","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_weight_schedule","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["vector<u8>","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"swap_exact_out","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["vector<u8>","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","u64","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]}],"structs":[{"name":"CreatorWhitelist","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"ids","type":"0x1::table::Table<vector<u8>, bool>"}]},{"name":"LBP","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"start_weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"start_weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"end_weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"end_weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"swap_fee_bps","type":"u64"},{"name":"start_timestamp_seconds","type":"u64"},{"name":"end_timestamp_seconds","type":"u64"},{"name":"asset_0_tax_free_amount","type":"u64"},{"name":"enabled","type":"bool"},{"name":"creator","type":"address"}]},{"name":"LBPAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]},{"name":"LBPEvents","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"whitelist_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::WhitelistEvent<T0, T1>>"},{"name":"set_enabled_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SetEnabledEvent<T0, T1>>"},{"name":"set_weight_schedule_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SetWeightScheduleEvent<T0, T1>>"},{"name":"pool_creation_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::PoolCreationEvent<T0, T1>>"},{"name":"liquidity_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LiquidityEvent<T0, T1>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::SwapEvent<T0, T1>>"}]},{"name":"LBPParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"LBPParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"max_duration_seconds","type":"u64"},{"name":"max_swap_fee_bps","type":"u64"},{"name":"protocol_swap_fee_pct","type":"u64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBPParamChangeEvent>"}]},{"name":"LiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"is_add","type":"bool"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"balance_0","type":"u64"},{"name":"balance_1","type":"u64"},{"name":"weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_id","type":"vector<u8>"}]},{"name":"PoolCollection","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"pools","type":"0x1::table::Table<vector<u8>, 0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp::LBP<T0, T1>>"}]},{"name":"PoolCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"start_weight_0","type":"u64"},{"name":"end_weight_0","type":"u64"},{"name":"start_timestamp_seconds","type":"u64"},{"name":"end_timestamp_seconds","type":"u64"},{"name":"swap_fee_bps","type":"u64"},{"name":"enabled","type":"bool"},{"name":"pool_id","type":"vector<u8>"}]},{"name":"SetEnabledEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"enabled","type":"bool"},{"name":"pool_id","type":"vector<u8>"}]},{"name":"SetWeightScheduleEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"start_weight_0","type":"u64"},{"name":"end_weight_0","type":"u64"},{"name":"start_timestamp_seconds","type":"u64"},{"name":"end_timestamp_seconds","type":"u64"},{"name":"pool_id","type":"vector<u8>"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"is_buy","type":"bool"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"balance_0","type":"u64"},{"name":"balance_1","type":"u64"},{"name":"weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"pool_id","type":"vector<u8>"}]},{"name":"WhitelistEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"whitelisted","type":"bool"},{"name":"pool_id","type":"vector<u8>"},{"name":"pool_creator","type":"address"}]}]}'
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"lbp","friends":["0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::init"],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"balances","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["address"],"return":["u64","u64"]},{"name":"create_lbp","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","0x1::coin::Coin<T0>","0x1::coin::Coin<T1>","u64","u64","u64","u64","u64","bool"],"return":[]},{"name":"enabled","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["address"],"return":["bool"]},{"name":"grant_whitelist","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"initialized_coin_pair","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]},{"name":"live","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["address"],"return":["bool"]},{"name":"remove_liquidity","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>","0x1::coin::Coin<T1>"]},{"name":"revoke_whitelist","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"set_enabled","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","bool"],"return":[]},{"name":"set_max_duration_seconds","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_max_swap_fee_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_protocol_swap_fee_allocation_pct","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"set_weight_schedule","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["address","0x1::coin::Coin<T2>"],"return":["0x1::coin::Coin<T3>"]},{"name":"swap_exact_out","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["address","0x1::coin::Coin<T2>","u64"],"return":["0x1::coin::Coin<T2>","0x1::coin::Coin<T3>"]},{"name":"weights","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["address"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]}],"structs":[{"name":"CreatorWhitelistEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"whitelisted","type":"bool"}]},{"name":"LBP","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator","type":"address"},{"name":"asset_0","type":"0x1::coin::Coin<T0>"},{"name":"start_weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"end_weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"asset_1","type":"0x1::coin::Coin<T1>"},{"name":"inverse_negated_swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"swap_fee_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"start_time_seconds","type":"u64"},{"name":"end_time_seconds","type":"u64"},{"name":"asset_0_tax_free_amount","type":"u64"},{"name":"enabled","type":"bool"},{"name":"events","type":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPEvents<T0, T1>"}]},{"name":"LBPCollection","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"lbps","type":"0x1::table::Table<address, 0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBP<T0, T1>>"},{"name":"creator_whitelist","type":"0x1::table::Table<address, bool>"},{"name":"creator_whitelist_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::CreatorWhitelistEvent<T0, T1>>"}]},{"name":"LBPCreationEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"start_weight_pct_0","type":"u64"},{"name":"end_weight_pct_0","type":"u64"},{"name":"start_time_seconds","type":"u64"},{"name":"end_time_seconds","type":"u64"},{"name":"enabled","type":"bool"},{"name":"swap_fee_bps","type":"u64"}]},{"name":"LBPEvents","is_native":false,"abilities":["store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"lbp_creation_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPCreationEvent<T0, T1>>"},{"name":"set_enabled_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SetEnabledEvent<T0, T1>>"},{"name":"set_weight_schedule_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SetWeightScheduleEvent<T0, T1>>"},{"name":"liquidity_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LiquidityEvent<T0, T1>>"},{"name":"swap_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::SwapEvent<T0, T1>>"}]},{"name":"LBPParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"LBPParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"max_duration_seconds","type":"u64"},{"name":"max_swap_fee_bps","type":"u64"},{"name":"protocol_swap_fee_allocation_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp::LBPParamChangeEvent>"}]},{"name":"LiquidityEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"is_add","type":"bool"},{"name":"amount_0","type":"u64"},{"name":"amount_1","type":"u64"},{"name":"weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"balance_0","type":"u64"},{"name":"balance_1","type":"u64"}]},{"name":"SetEnabledEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"enabled","type":"bool"}]},{"name":"SetWeightScheduleEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"start_weight_pct_0","type":"u64"},{"name":"end_weight_pct_0","type":"u64"},{"name":"start_time_seconds","type":"u64"},{"name":"end_time_seconds","type":"u64"}]},{"name":"SwapEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]},{"constraints":[]}],"fields":[{"name":"creator_addr","type":"address"},{"name":"is_buy","type":"bool"},{"name":"amount_in","type":"u64"},{"name":"amount_out","type":"u64"},{"name":"fee_amount","type":"u64"},{"name":"weight_0","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"weight_1","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"balance_0","type":"u64"},{"name":"balance_1","type":"u64"}]}]}'
   );
 }
 
@@ -479,7 +473,7 @@ export class fees extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -487,8 +481,11 @@ export class fees extends AptosBaseProcessor {
     return new fees({ ...fees.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryExtractFee(
-    func: (call: fees.ExtractFeePayload, ctx: AptosContext) => void,
+  onEntrySetCustomLbpCommissionBps(
+    func: (
+      call: fees.SetCustomLbpCommissionBpsPayload,
+      ctx: AptosContext
+    ) => void,
     filter?: CallFilter,
     fetchConfig?: MoveFetchConfig
   ): fees {
@@ -496,15 +493,18 @@ export class fees extends AptosBaseProcessor {
       func,
       {
         ...filter,
-        function: "fees::extract_fee",
+        function: "fees::set_custom_lbp_commission_bps",
       },
       fetchConfig
     );
     return this;
   }
 
-  onEntrySetLbpCommissionBps(
-    func: (call: fees.SetLbpCommissionBpsPayload, ctx: AptosContext) => void,
+  onEntrySetDefaultLbpCommissionBps(
+    func: (
+      call: fees.SetDefaultLbpCommissionBpsPayload,
+      ctx: AptosContext
+    ) => void,
     filter?: CallFilter,
     fetchConfig?: MoveFetchConfig
   ): fees {
@@ -512,7 +512,26 @@ export class fees extends AptosBaseProcessor {
       func,
       {
         ...filter,
-        function: "fees::set_lbp_commission_bps",
+        function: "fees::set_default_lbp_commission_bps",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  onEntryUnsetCustomLbpCommissionBps(
+    func: (
+      call: fees.UnsetCustomLbpCommissionBpsPayload,
+      ctx: AptosContext
+    ) => void,
+    filter?: CallFilter,
+    fetchConfig?: MoveFetchConfig
+  ): fees {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees::unset_custom_lbp_commission_bps",
       },
       fetchConfig
     );
@@ -539,48 +558,46 @@ export class fees extends AptosBaseProcessor {
 }
 
 export namespace fees {
-  export class FeeParamChangeEvent<T0> {
+  export class FeeParamChangeEvent {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::fees::FeeParamChangeEvent";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::fees::FeeParamChangeEvent";
     name: string;
     prev_value: bigint;
     new_value: bigint;
   }
 
   export interface FeeParamChangeEventInstance
-    extends TypedEventInstance<FeeParamChangeEvent<any>> {
-    data_decoded: FeeParamChangeEvent<any>;
-    type_arguments: [string];
+    extends TypedEventInstance<FeeParamChangeEvent> {
+    data_decoded: FeeParamChangeEvent;
+    type_arguments: [];
   }
 
-  export class FeeParams<T0> {
+  export class FeeParams {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::fees::FeeParams";
-    lbp_commission_bps: bigint;
-    param_change_events: _0x1.event.EventHandle<fees.FeeParamChangeEvent<T0>>;
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::fees::FeeParams";
+    lbp_commission_ratio: _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64;
+    custom_lbp_commission_ratios: _0x1.table.Table<
+      string,
+      _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.fixed_point64.FixedPoint64
+    >;
+    param_change_events: _0x1.event.EventHandle<fees.FeeParamChangeEvent>;
   }
 
-  export class Fees<T0> {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::fees::Fees";
-    coin: _0x1.coin.Coin<T0>;
-  }
-
-  export class FeesAccountCapability {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::fees::FeesAccountCapability";
-    signer_cap: _0x1.account.SignerCapability;
-  }
-
-  export interface ExtractFeePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address]> {
-    arguments_decoded: [Address];
-    type_arguments: [string];
-  }
-
-  export interface SetLbpCommissionBpsPayload<T0 = any>
+  export interface SetCustomLbpCommissionBpsPayload<T0 = any>
     extends TypedEntryFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
+    type_arguments: [string];
+  }
+
+  export interface SetDefaultLbpCommissionBpsPayload
+    extends TypedEntryFunctionPayload<[bigint]> {
+    arguments_decoded: [bigint];
+    type_arguments: [];
+  }
+
+  export interface UnsetCustomLbpCommissionBpsPayload<T0 = any>
+    extends TypedEntryFunctionPayload<[]> {
+    arguments_decoded: [];
     type_arguments: [string];
   }
 
@@ -588,7 +605,7 @@ export namespace fees {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"fees","friends":["0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::init","0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::lbp"],"exposed_functions":[{"name":"absorb_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"extract_fee","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialize_base_coin","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"lbp_commission","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"register_coin","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":[]},{"name":"set_lbp_commission_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]}],"structs":[{"name":"FeeParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"FeeParams","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"lbp_commission_bps","type":"u64"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::fees::FeeParamChangeEvent<T0>>"}]},{"name":"Fees","is_native":false,"abilities":["key"],"generic_type_params":[{"constraints":[]}],"fields":[{"name":"coin","type":"0x1::coin::Coin<T0>"}]},{"name":"FeesAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"fees","friends":["0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::init","0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp"],"exposed_functions":[{"name":"absorb_fee","visibility":"friend","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["0x1::coin::Coin<T0>"],"return":[]},{"name":"balance","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":[],"return":["u64"]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"lbp_commission_amount","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["u64"],"return":["u64"]},{"name":"set_custom_lbp_commission_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":[]},{"name":"set_default_lbp_commission_bps","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","u64"],"return":[]},{"name":"unset_custom_lbp_commission_bps","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer"],"return":[]},{"name":"withdraw_fee","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]}],"params":["&signer","u64"],"return":["0x1::coin::Coin<T0>"]}],"structs":[{"name":"FeeParamChangeEvent","is_native":false,"abilities":["drop","store"],"generic_type_params":[],"fields":[{"name":"name","type":"0x1::string::String"},{"name":"prev_value","type":"u64"},{"name":"new_value","type":"u64"}]},{"name":"FeeParams","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"lbp_commission_ratio","type":"0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"},{"name":"custom_lbp_commission_ratios","type":"0x1::table::Table<0x1::string::String, 0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64>"},{"name":"param_change_events","type":"0x1::event::EventHandle<0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::fees::FeeParamChangeEvent>"}]}]}'
   );
 }
 
@@ -598,7 +615,7 @@ export class init extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -637,46 +654,34 @@ export namespace init {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[]}'
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"init","friends":[],"exposed_functions":[{"name":"initialize","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer"],"return":[]}],"structs":[]}'
   );
 }
 
-export namespace math {
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"math","friends":[],"exposed_functions":[{"name":"calc_in_given_out","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u64"],"return":["u64"]},{"name":"calc_out_given_in","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u64"],"return":["u64"]},{"name":"interpolate_fp64_with_u64","visibility":"public","is_entry":false,"generic_type_params":[],"params":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64","u64","u64","u64"],"return":["0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87::fixed_point64::FixedPoint64"]},{"name":"mul_div","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64"],"return":["u64"]},{"name":"split_swap_fee","visibility":"public","is_entry":false,"generic_type_params":[],"params":["u64","u64","u64"],"return":["u64","u64","u64"]}],"structs":[]}'
-  );
-}
-
-export class manager extends AptosBaseProcessor {
+export class package_ extends AptosBaseProcessor {
   constructor(options: AptosBindOptions) {
-    super("manager", options);
+    super("package", options);
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
     network: AptosNetwork.TEST_NET,
   };
 
-  static bind(options: Partial<AptosBindOptions> = {}): manager {
-    return new manager({ ...manager.DEFAULT_OPTIONS, ...options });
+  static bind(options: Partial<AptosBindOptions> = {}): package_ {
+    return new package_({ ...package_.DEFAULT_OPTIONS, ...options });
   }
 
-  onEntryChangeManagerAddress(
-    func: (
-      call: manager.ChangeManagerAddressPayload,
-      ctx: AptosContext
-    ) => void,
+  onEntryPublishPackage(
+    func: (call: package_.PublishPackagePayload, ctx: AptosContext) => void,
     filter?: CallFilter,
     fetchConfig?: MoveFetchConfig
-  ): manager {
+  ): package_ {
     this.onEntryFunctionCall(
       func,
       {
         ...filter,
-        function: "manager::change_manager_address",
+        function: "package::publish_package",
       },
       fetchConfig
     );
@@ -688,22 +693,16 @@ export class manager extends AptosBaseProcessor {
   }
 }
 
-export namespace manager {
-  export class Manager {
+export namespace package_ {
+  export class ResourceSignerCapability {
     static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::manager::Manager";
-    manager_address: Address;
-  }
-
-  export class ManagerAccountCapability {
-    static TYPE_QNAME =
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::manager::ManagerAccountCapability";
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::package::ResourceSignerCapability";
     signer_cap: _0x1.account.SignerCapability;
   }
 
-  export interface ChangeManagerAddressPayload
-    extends TypedEntryFunctionPayload<[Address]> {
-    arguments_decoded: [Address];
+  export interface PublishPackagePayload
+    extends TypedEntryFunctionPayload<[string, string[]]> {
+    arguments_decoded: [string, string[]];
     type_arguments: [];
   }
 
@@ -711,16 +710,7 @@ export namespace manager {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"manager","friends":["0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04::init"],"exposed_functions":[{"name":"change_manager_address","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","address"],"return":[]},{"name":"initialize","visibility":"friend","is_entry":false,"generic_type_params":[],"params":["&signer"],"return":[]},{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"is_manager","visibility":"public","is_entry":false,"generic_type_params":[],"params":["address"],"return":["bool"]}],"structs":[{"name":"Manager","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"manager_address","type":"address"}]},{"name":"ManagerAccountCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
-  );
-}
-
-export namespace coin_helper {
-  export function loadTypes(_r: MoveCoder) {
-    loadAllTypes(_r);
-  }
-  export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"coin_helper","friends":[],"exposed_functions":[{"name":"is_equal","visibility":"public","is_entry":false,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":[],"return":["bool"]}],"structs":[]}'
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"package","friends":["0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::fees","0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623::lbp"],"exposed_functions":[{"name":"initialized","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["bool"]},{"name":"publish_package","visibility":"public","is_entry":true,"generic_type_params":[],"params":["&signer","vector<u8>","vector<vector<u8>>"],"return":[]},{"name":"resource_account_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_deployer_address","visibility":"public","is_entry":false,"generic_type_params":[],"params":[],"return":["address"]},{"name":"resource_account_signer","visibility":"friend","is_entry":false,"generic_type_params":[],"params":[],"return":["signer"]}],"structs":[{"name":"ResourceSignerCapability","is_native":false,"abilities":["key"],"generic_type_params":[],"fields":[{"name":"signer_cap","type":"0x1::account::SignerCapability"}]}]}'
   );
 }
 
@@ -730,7 +720,7 @@ export class lbp_scripts extends AptosBaseProcessor {
   }
   static DEFAULT_OPTIONS: AptosBindOptions = {
     address:
-      "0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04",
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
     network: AptosNetwork.TEST_NET,
   };
 
@@ -853,23 +843,73 @@ export namespace lbp_scripts {
     type_arguments: [string, string];
   }
 
-  export interface SwapExactInPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
-    arguments_decoded: [string, bigint, bigint, bigint];
-    type_arguments: [string, string];
+  export interface SwapExactInPayload<T0 = any, T1 = any, T2 = any, T3 = any>
+    extends TypedEntryFunctionPayload<[Address, bigint, bigint]> {
+    arguments_decoded: [Address, bigint, bigint];
+    type_arguments: [string, string, string, string];
   }
 
-  export interface SwapExactOutPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[string, bigint, bigint, bigint]> {
-    arguments_decoded: [string, bigint, bigint, bigint];
-    type_arguments: [string, string];
+  export interface SwapExactOutPayload<T0 = any, T1 = any, T2 = any, T3 = any>
+    extends TypedEntryFunctionPayload<[Address, bigint, bigint]> {
+    arguments_decoded: [Address, bigint, bigint];
+    type_arguments: [string, string, string, string];
   }
 
   export function loadTypes(_r: MoveCoder) {
     loadAllTypes(_r);
   }
   export const ABI: MoveModule = JSON.parse(
-    '{"address":"0x1001fadfd3543e1d3caa1af08b3f256a4896dad6b6dd62cde80015027ca0be04","name":"lbp_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_lbp","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64","u64","u64","u64","bool"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","vector<u8>","u64","u64","u64"],"return":[]},{"name":"swap_exact_out","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","vector<u8>","u64","u64","u64"],"return":[]}],"structs":[]}'
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"lbp_scripts","friends":[],"exposed_functions":[{"name":"add_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64"],"return":[]},{"name":"create_lbp","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64","u64","u64","u64","u64","bool"],"return":[]},{"name":"remove_liquidity","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]}],"params":["&signer","u64","u64","u64"],"return":[]},{"name":"swap_exact_in","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","address","u64","u64"],"return":[]},{"name":"swap_exact_out","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]},{"constraints":[]},{"constraints":[]},{"constraints":[]}],"params":["&signer","address","u64","u64"],"return":[]}],"structs":[]}'
+  );
+}
+
+export class fees_scripts extends AptosBaseProcessor {
+  constructor(options: AptosBindOptions) {
+    super("fees_scripts", options);
+  }
+  static DEFAULT_OPTIONS: AptosBindOptions = {
+    address:
+      "0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623",
+    network: AptosNetwork.TEST_NET,
+  };
+
+  static bind(options: Partial<AptosBindOptions> = {}): fees_scripts {
+    return new fees_scripts({ ...fees_scripts.DEFAULT_OPTIONS, ...options });
+  }
+
+  onEntryTransferFee(
+    func: (call: fees_scripts.TransferFeePayload, ctx: AptosContext) => void,
+    filter?: CallFilter,
+    fetchConfig?: MoveFetchConfig
+  ): fees_scripts {
+    this.onEntryFunctionCall(
+      func,
+      {
+        ...filter,
+        function: "fees_scripts::transfer_fee",
+      },
+      fetchConfig
+    );
+    return this;
+  }
+
+  loadTypesInternal(registry: MoveCoder) {
+    loadAllTypes(registry);
+  }
+}
+
+export namespace fees_scripts {
+  export interface TransferFeePayload<T0 = any>
+    extends TypedEntryFunctionPayload<[Address, bigint]> {
+    arguments_decoded: [Address, bigint];
+    type_arguments: [string];
+  }
+
+  export function loadTypes(_r: MoveCoder) {
+    loadAllTypes(_r);
+  }
+  export const ABI: MoveModule = JSON.parse(
+    '{"address":"0x83661f339fd8dd7d31ab9ee5a82fe9388adf7fccaa88a7d5598a5d6d6475c623","name":"fees_scripts","friends":[],"exposed_functions":[{"name":"transfer_fee","visibility":"public","is_entry":true,"generic_type_params":[{"constraints":[]}],"params":["&signer","address","u64"],"return":[]}],"structs":[]}'
   );
 }
 
@@ -882,8 +922,7 @@ export function loadAllTypes(_r: MoveCoder) {
   _r.load(lbp.ABI);
   _r.load(fees.ABI);
   _r.load(init.ABI);
-  _r.load(math.ABI);
-  _r.load(manager.ABI);
-  _r.load(coin_helper.ABI);
+  _r.load(package_.ABI);
   _r.load(lbp_scripts.ABI);
+  _r.load(fees_scripts.ABI);
 }
