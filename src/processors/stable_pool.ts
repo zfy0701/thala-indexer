@@ -11,7 +11,7 @@ import {
 import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
 
-const START_VERSION = 421368795;
+const START_VERSION = 425585432;
 
 const EPSILON = 0.00000001; // for detecting convergence in stableswap math
 const MAX_LOOP_LIMIT = 100;

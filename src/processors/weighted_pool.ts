@@ -10,7 +10,7 @@ import {
 import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
 
-const START_VERSION = 421368795;
+const START_VERSION = 425585432;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 

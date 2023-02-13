@@ -42,6 +42,9 @@ export async function getPriceAsof(
   coinType: string,
   asof: Date
 ): Promise<number> {
+  if (coinType.includes("mod_coin::MOD")) {
+    return 1;
+  }
   // TODO: fetch lp coin price from thala-oracle
   if (coinType.includes("PoolToken")) {
     return 0;
