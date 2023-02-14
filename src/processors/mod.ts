@@ -9,6 +9,7 @@ const MOD_DECIMALS = 8;
 
 // const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
 const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
+const vaultUserTvlGauge = Gauge.register("vault_user_tvl", { sparse: true });
 
 vault
   .bind({ startVersion: START_VERSION })
@@ -66,6 +67,17 @@ vault
       new Date(Number(ctx.transaction.timestamp) / 1000)
     );
     coinPriceGauge.record(ctx, price, { coin: coinType });
+
+    // update vault tvl
+    const vaultTvl = scaleDown(
+      event.data_decoded.collateral,
+      getCoinDecimals(coinType)
+    ).multipliedBy(price);
+
+    vaultUserTvlGauge.record(ctx, vaultTvl.toNumber(), {
+      account: event.data_decoded.vault_address,
+      coinType,
+    });
 
     //   const data = {
     //     version: event.version,
