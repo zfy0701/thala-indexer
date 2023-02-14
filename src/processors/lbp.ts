@@ -16,7 +16,6 @@ lbp
   .bind({ startVersion: START_VERSION })
   .onEventSwapEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
-    const creator_addr = event.data_decoded.creator_addr;
     const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
     ctx.meter
       .Counter("volume_coin_0")
@@ -28,7 +27,7 @@ lbp
           getCoinDecimals(coin0)
         ),
         {
-          creator_addr,
+          poolId: getPoolId(event),
           dateString,
         }
       );
@@ -36,9 +35,8 @@ lbp
   .onEventLiquidityEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
     const coin1 = event.type_arguments[1];
-    const creator_addr = event.data_decoded.creator_addr;
     coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-      creator_addr,
+      poolId: getPoolId(event),
     });
 
     // Track the amount of liquidity withdrawn - amount of liquidity provided for each coin
@@ -55,7 +53,7 @@ lbp
           getCoinDecimals(coin0)
         ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
         {
-          creator_addr,
+          poolId: getPoolId(event),
         }
       );
 
@@ -67,7 +65,7 @@ lbp
           getCoinDecimals(coin1)
         ).multipliedBy(event.data_decoded.is_add ? -1 : 1),
         {
-          creator_addr,
+          poolId: getPoolId(event),
         }
       );
 
@@ -76,13 +74,13 @@ lbp
       ctx.meter
         .Counter("total_liquidity_provided_1")
         .add(scaleDown(event.data_decoded.amount_1, getCoinDecimals(coin1)), {
-          creator_addr,
+          poolId: getPoolId(event),
         });
     }
   })
   .onEventSwapEvent((event, ctx) => {
     coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-      creator_addr: event.data_decoded.creator_addr,
+      poolId: getPoolId(event),
     });
   });
 
@@ -106,4 +104,8 @@ function getPriceFromEvent(
   // https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
   // price1 = (balance0 / balance1) * (weight1 / weight0)
   return (balance0.div(balance1).toNumber() * weight1) / weight0;
+}
+
+function getPoolId(event: lbp.LiquidityEventInstance | lbp.SwapEventInstance) {
+  return [event.data_decoded.creator_addr, event.type_arguments[0], event.type_arguments[1]].join("_");
 }
