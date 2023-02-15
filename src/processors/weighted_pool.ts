@@ -1,21 +1,12 @@
 import { weighted_pool } from "../types/aptos/testnet/amm.js";
-import {
-  bigintToInteger,
-  getCoinDecimals,
-  getPairTag,
-  getPriceAsof,
-  scaleDown,
-} from "../utils.js";
+import { getCoinDecimals, scaleDown } from "../utils.js";
 
-import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
+import { onEventSwapEvent } from "./base_pool.js";
 
 const START_VERSION = 425585432;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
-
-const ammCoinPriceGauge = Gauge.register("amm_coin_price", { sparse: true });
-const poolTvlUsdGauge = Gauge.register("pool_tvl_usd", { sparse: true });
 
 weighted_pool
   .bind({ startVersion: START_VERSION })
@@ -31,99 +22,24 @@ weighted_pool
         weights
       );
 
-      const relativePricesToCoin0 = [
-        1,
-        coin1Price,
-        coin2Price || 0,
-        coin3Price || 0,
-      ];
+      const relativePrices = [1, coin1Price, coin2Price || 0, coin3Price || 0];
 
-      // actual prices
-      const actualCoin0Price = await getPriceAsof(
-        coins[0],
-        new Date(Number(ctx.transaction.timestamp) / 1000)
-      );
-      const actualCoinPrices = relativePricesToCoin0.map(
-        (e) => e * actualCoin0Price
-      );
-
-      const decimals = coins.map(getCoinDecimals);
-      const idxIn = bigintToInteger(event.data_decoded.idx_in);
-      const idxOut = bigintToInteger(event.data_decoded.idx_out);
-
-      const swapAmountIn = scaleDown(
+      await onEventSwapEvent(
+        ctx,
+        "weighted",
+        coins,
+        poolTag,
+        relativePrices,
+        event.data_decoded.idx_in,
+        event.data_decoded.idx_out,
         event.data_decoded.amount_in,
-        decimals[idxIn]
-      );
-      const swapAmountOut = scaleDown(
         event.data_decoded.amount_out,
-        decimals[idxOut]
-      );
-
-      const coinIn = coins[idxIn];
-      const coinOut = coins[idxOut];
-
-      const actualCoinInPrice = actualCoinPrices[idxIn];
-      const actualCoinOutPrice = actualCoinPrices[idxOut];
-      const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
-
-      const pairTag = getPairTag(coinIn, coinOut);
-      ammCoinPriceGauge.record(ctx, actualCoinInPrice, {
-        pairTag,
-        coin: coinIn,
-      });
-      ammCoinPriceGauge.record(ctx, actualCoinOutPrice, {
-        pairTag,
-        coin: coinOut,
-      });
-
-      const swapAttributes = {
-        pair:
-          coinIn.localeCompare(coinOut) < 0
-            ? `${coinIn}-${coinOut}`
-            : `${coinOut}-${coinIn}`,
-        coin_address_in: coinIn,
-        coin_address_out: coinOut,
-        amount_in: swapAmountIn,
-        amount_out: swapAmountOut,
-        price_in: actualCoinInPrice,
-        price_out: actualCoinOutPrice,
-        volume: volumeUsd,
-        fee_amount: event.data_decoded.fee_amount,
-        type: "weighted",
-      };
-
-      ctx.eventLogger.emit("swap", {
-        message: `Swap ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut}`,
-        ...swapAttributes,
-      });
-
-      // TVL
-      const balances = [
+        event.data_decoded.fee_amount,
         event.data_decoded.pool_balance_0,
         event.data_decoded.pool_balance_1,
         event.data_decoded.pool_balance_2,
-        event.data_decoded.pool_balance_3,
-      ]
-        .slice(0, coins.length)
-        .map((e, i) => scaleDown(e, decimals[i]));
-
-      const tvlUsd = balances
-        .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
-        .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
-      poolTvlUsdGauge.record(ctx, tvlUsd, { poolTag });
-
-      ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
-
-      ctx.meter
-        .Counter("pool_swap_fee_usd")
-        .add(
-          scaleDown(
-            event.data_decoded.fee_amount,
-            decimals[idxIn]
-          ).multipliedBy(actualCoinInPrice),
-          { poolTag }
-        );
+        event.data_decoded.pool_balance_3
+      );
     }
   )
   .onEventWeightedPoolCreationEvent((event, ctx) => {

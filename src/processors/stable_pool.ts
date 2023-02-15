@@ -1,15 +1,8 @@
 import { stable_pool } from "../types/aptos/testnet/amm.js";
-import {
-  bigintToInteger,
-  getCoinDecimals,
-  getDateTag,
-  getPairTag,
-  getPriceAsof,
-  scaleDown,
-} from "../utils.js";
+import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils.js";
 
-import { Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
+import { onEventSwapEvent } from "./base_pool.js";
 
 const START_VERSION = 425585432;
 
@@ -18,94 +11,32 @@ const MAX_LOOP_LIMIT = 100;
 
 const NULL_TYPE = `${stable_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
-// all coin prices are relative to coin0
-const coin1PriceGauge = Gauge.register("stable_price_coin_1", { sparse: true });
-const coin2PriceGauge = Gauge.register("stable_price_coin_2", { sparse: true });
-const coin3PriceGauge = Gauge.register("stable_price_coin_3", { sparse: true });
-
 stable_pool
   .bind({ startVersion: START_VERSION })
   .onEventSwapEvent(
     async (event: stable_pool.SwapEventInstance, ctx: AptosContext) => {
       const coins = getCoins(event);
       const poolTag = getPoolTag(coins);
-      const dateTag = getDateTag(Number(ctx.transaction.timestamp) / 1000);
 
-      // actual price 0
-      const actualCoin0Price = await getPriceAsof(
-        coins[0],
-        new Date(Number(ctx.transaction.timestamp) / 1000)
-      );
-
-      // relative price 1
-      const pair1Tag = getPairTag(coins[0], coins[1]);
       const { coin1Price, coin2Price, coin3Price } = getPrices(event, coins);
-      coin1PriceGauge.record(ctx, coin1Price, { poolTag, pairTag: pair1Tag });
+      const relativePrices = [1, coin1Price, coin2Price || 0, coin3Price || 0];
 
-      // relative price 2
-      if (coin2Price) {
-        const pair2Tag = getPairTag(coins[0], coins[2]);
-        coin2PriceGauge.record(ctx, coin2Price, {
-          poolTag,
-          pairTag: pair2Tag,
-        });
-      }
-
-      // relative price 3
-      if (coin3Price) {
-        const pair3Tag = getPairTag(coins[0], coins[3]);
-        coin3PriceGauge.record(ctx, coin3Price, {
-          poolTag,
-          pairTag: pair3Tag,
-        });
-      }
-
-      // volume is converted to coin0 amount
-      const relativePricesToCoin0 = [
-        1,
-        coin1Price,
-        coin2Price || 0,
-        coin3Price || 0,
-      ];
-      const assetInIndex = bigintToInteger(event.data_decoded.idx_in);
-      const swapAmountIn = scaleDown(
+      await onEventSwapEvent(
+        ctx,
+        "stable",
+        coins,
+        poolTag,
+        relativePrices,
+        event.data_decoded.idx_in,
+        event.data_decoded.idx_out,
         event.data_decoded.amount_in,
-        getCoinDecimals(event.type_arguments[assetInIndex])
-      );
-
-      const assetOutIndex = bigintToInteger(event.data_decoded.idx_out);
-      const swapAmountOut = scaleDown(
         event.data_decoded.amount_out,
-        getCoinDecimals(event.type_arguments[assetOutIndex])
+        event.data_decoded.fee_amount,
+        event.data_decoded.pool_balance_0,
+        event.data_decoded.pool_balance_1,
+        event.data_decoded.pool_balance_2,
+        event.data_decoded.pool_balance_3
       );
-
-      const coinAddressIn = event.type_arguments[assetInIndex];
-      const coinAddressOut = event.type_arguments[assetOutIndex];
-      const pair =
-        coinAddressIn.localeCompare(coinAddressOut) < 0
-          ? `${coinAddressIn}-${coinAddressOut}`
-          : `${coinAddressOut}-${coinAddressIn}`;
-
-      const swapAttributes = {
-        pair,
-        coin_address_in: coinAddressIn,
-        coin_address_out: coinAddressOut,
-        amount_in: swapAmountIn,
-        amount_out: swapAmountOut,
-        fee_amount: event.data_decoded.fee_amount,
-        type: "stable",
-      };
-
-      const volumeUsd = swapAmountIn
-        .multipliedBy(relativePricesToCoin0[assetInIndex])
-        .multipliedBy(actualCoin0Price);
-
-      ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag, dateTag });
-
-      ctx.eventLogger.emit("swap", {
-        message: `Swap ${swapAmountIn} ${coinAddressIn} for ${swapAmountOut} ${coinAddressOut}`,
-        ...swapAttributes,
-      });
     }
   )
   .onEventStablePoolCreationEvent((event, ctx) => {
