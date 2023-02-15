@@ -107,5 +107,9 @@ function getPriceFromEvent(
 }
 
 function getPoolId(event: lbp.LiquidityEventInstance | lbp.SwapEventInstance) {
-  return [event.data_decoded.creator_addr, event.type_arguments[0], event.type_arguments[1]].join("_");
+  return [
+    event.data_decoded.creator_addr,
+    event.type_arguments[0],
+    event.type_arguments[1],
+  ].join("_");
 }

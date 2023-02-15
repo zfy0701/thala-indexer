@@ -4,7 +4,7 @@ import { Gauge } from "@sentio/sdk";
 // import { Exporter } from "@sentio/sdk/lib/core/exporter";
 import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
 
-const START_VERSION = 421373649;
+const START_VERSION = 428030567;
 const MOD_DECIMALS = 8;
 
 // const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
@@ -34,7 +34,7 @@ vault
     });
     ctx.meter
       .Counter("cumulative_repay_amount")
-      .add(scaleDown(event.data_decoded.debt_amount, MOD_DECIMALS), {
+      .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
   })
