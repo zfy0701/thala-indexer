@@ -8,8 +8,21 @@ import {
   scaleDown,
 } from "../utils.js";
 
-const ammCoinPriceGauge = Gauge.register("amm_coin_price", { sparse: true });
-const poolTvlUsdGauge = Gauge.register("pool_tvl_usd", { sparse: true });
+const commonOptions = {
+  sparse: true
+}
+
+const volOptions = {
+  sparse: true,
+  aggregationConfig: {
+    intervalInMinutes: [60],
+  }
+}
+
+const ammCoinPriceGauge = Gauge.register("amm_coin_price", commonOptions);
+const tvlGauge = Gauge.register("pool_tvl_usd", commonOptions);
+const volumeGauge = Gauge.register("pool_volume_usd", volOptions);
+const feeGauge = Gauge.register("pool_swap_fee_usd", volOptions);
 
 export async function onEventSwapEvent(
   ctx: AptosContext,
@@ -47,6 +60,7 @@ export async function onEventSwapEvent(
   const actualCoinInPrice = actualCoinPrices[idxIn];
   const actualCoinOutPrice = actualCoinPrices[idxOut];
   const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
+  const feeUsd = scaleDown(fee_amount, decimals[idxIn]).multipliedBy(actualCoinInPrice);
 
   const pairTag = getPairTag(coinIn, coinOut);
   ammCoinPriceGauge.record(ctx, actualCoinInPrice, {
@@ -70,7 +84,7 @@ export async function onEventSwapEvent(
     price_in: actualCoinInPrice,
     price_out: actualCoinOutPrice,
     volume: volumeUsd,
-    fee_amount: fee_amount,
+    fee: feeUsd,
     type,
   };
 
@@ -92,14 +106,8 @@ export async function onEventSwapEvent(
   const tvlUsd = balances
     .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
     .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
-  poolTvlUsdGauge.record(ctx, tvlUsd, { poolTag });
 
-  ctx.meter.Counter("pool_volume_usd").add(volumeUsd, { poolTag });
-
-  ctx.meter
-    .Counter("pool_swap_fee_usd")
-    .add(
-      scaleDown(fee_amount, decimals[idxIn]).multipliedBy(actualCoinInPrice),
-      { poolTag }
-    );
+  tvlGauge.record(ctx, tvlUsd, { poolTag });
+  volumeGauge.record(ctx, volumeUsd, { poolTag });
+  feeGauge.record(ctx, feeUsd, { poolTag });
 }
