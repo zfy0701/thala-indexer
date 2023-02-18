@@ -4,7 +4,7 @@ import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils.js";
 import { AptosContext } from "@sentio/sdk/aptos";
 import { onEventSwapEvent } from "./base_pool.js";
 
-const START_VERSION = 425585432;
+const START_VERSION = 429427564;
 
 const EPSILON = 0.00000001; // for detecting convergence in stableswap math
 const MAX_LOOP_LIMIT = 100;

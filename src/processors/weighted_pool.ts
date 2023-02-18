@@ -4,7 +4,7 @@ import { getCoinDecimals, scaleDown } from "../utils.js";
 import { AptosContext } from "@sentio/sdk/aptos";
 import { onEventSwapEvent } from "./base_pool.js";
 
-const START_VERSION = 425585432;
+const START_VERSION = 429427564;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
