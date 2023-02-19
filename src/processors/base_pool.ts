@@ -9,15 +9,15 @@ import {
 } from "../utils.js";
 
 const commonOptions = {
-  sparse: true
-}
+  sparse: true,
+};
 
 const volOptions = {
   sparse: true,
   aggregationConfig: {
     intervalInMinutes: [60],
-  }
-}
+  },
+};
 
 const ammCoinPriceGauge = Gauge.register("amm_coin_price", commonOptions);
 const tvlGauge = Gauge.register("pool_tvl_usd", commonOptions);
@@ -60,7 +60,9 @@ export async function onEventSwapEvent(
   const actualCoinInPrice = actualCoinPrices[idxIn];
   const actualCoinOutPrice = actualCoinPrices[idxOut];
   const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
-  const feeUsd = scaleDown(fee_amount, decimals[idxIn]).multipliedBy(actualCoinInPrice);
+  const feeUsd = scaleDown(fee_amount, decimals[idxIn]).multipliedBy(
+    actualCoinInPrice
+  );
 
   const pairTag = getPairTag(coinIn, coinOut);
   ammCoinPriceGauge.record(ctx, actualCoinInPrice, {
