@@ -2,7 +2,7 @@ import { weighted_pool } from "../types/aptos/testnet/amm.js";
 import { getCoinDecimals, scaleDown } from "../utils.js";
 
 import { AptosContext } from "@sentio/sdk/aptos";
-import { onEventSwapEvent } from "./base_pool.js";
+import { onEventLiquidityEvent, onEventSwapEvent } from "./base_pool.js";
 
 const START_VERSION = 429427564;
 
@@ -15,14 +15,12 @@ weighted_pool
       const { coins, weights } = getCoinsAndWeights(event);
       const poolTag = getPoolTag(coins, weights);
 
-      // relative prices
-      const { coin1Price, coin2Price, coin3Price } = getPrices(
-        event,
-        coins,
-        weights
-      );
-
-      const relativePrices = [1, coin1Price, coin2Price || 0, coin3Price || 0];
+      const relativePrices = getRelativePrices(coins, weights, [
+        event.data_decoded.pool_balance_0,
+        event.data_decoded.pool_balance_1,
+        event.data_decoded.pool_balance_2,
+        event.data_decoded.pool_balance_3,
+      ]);
 
       await onEventSwapEvent(
         ctx,
@@ -42,109 +40,112 @@ weighted_pool
       );
     }
   )
-  .onEventWeightedPoolCreationEvent((event, ctx) => {
-    const pool = `${
-      weighted_pool.DEFAULT_OPTIONS.address
-    }::weighted_pool::WeightedPool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
+  .onEventWeightedPoolCreationEvent(async (event, ctx) => {
+    const { coins, weights } = getCoinsAndWeights(event);
+    const poolType = getPoolType(event);
+
+    const relativePrices = getRelativePrices(coins, weights, [
+      event.data_decoded.amount_0,
+      event.data_decoded.amount_1,
+      event.data_decoded.amount_2,
+      event.data_decoded.amount_3,
+    ]);
 
     ctx.eventLogger.emit("create_pool", {
-      pool,
+      pool: poolType,
       creator: ctx.transaction.sender,
       timestamp: ctx.transaction.timestamp,
     });
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Add",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+
+    await onEventLiquidityEvent(ctx, "Add", coins, poolType, relativePrices, [
+      event.data_decoded.amount_0,
+      event.data_decoded.amount_1,
+      event.data_decoded.amount_2,
+      event.data_decoded.amount_3,
+    ]);
   })
-  .onEventAddLiquidityEvent((event, ctx) => {
-    const pool = `${
-      weighted_pool.DEFAULT_OPTIONS.address
-    }::weighted_pool::WeightedPool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Add",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+  .onEventAddLiquidityEvent(async (event, ctx) => {
+    const { coins, weights } = getCoinsAndWeights(event);
+    const poolType = getPoolType(event);
+
+    const relativePrices = getRelativePrices(coins, weights, [
+      event.data_decoded.amount_0,
+      event.data_decoded.amount_1,
+      event.data_decoded.amount_2,
+      event.data_decoded.amount_3,
+    ]);
+
+    await onEventLiquidityEvent(ctx, "Add", coins, poolType, relativePrices, [
+      event.data_decoded.amount_0,
+      event.data_decoded.amount_1,
+      event.data_decoded.amount_2,
+      event.data_decoded.amount_3,
+    ]);
   })
-  .onEventRemoveLiquidityEvent((event, ctx) => {
-    const pool = `${
-      weighted_pool.DEFAULT_OPTIONS.address
-    }::weighted_pool::WeightedPool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Remove",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+  .onEventRemoveLiquidityEvent(async (event, ctx) => {
+    const { coins, weights } = getCoinsAndWeights(event);
+    const poolType = getPoolType(event);
+
+    const relativePrices = getRelativePrices(coins, weights, [
+      event.data_decoded.amount_0,
+      event.data_decoded.amount_1,
+      event.data_decoded.amount_2,
+      event.data_decoded.amount_3,
+    ]);
+
+    await onEventLiquidityEvent(
+      ctx,
+      "Remove",
+      coins,
+      poolType,
+      relativePrices,
+      [
+        event.data_decoded.amount_0,
+        event.data_decoded.amount_1,
+        event.data_decoded.amount_2,
+        event.data_decoded.amount_3,
+      ]
+    );
   });
 
-// get the price of coin 1, 2, 3 quoted based on coin 0 from SwapEventInstance
-// if any coin is Null, the price is undefined
-function getPrices(
-  event: weighted_pool.SwapEventInstance,
+// get the relative price of for each asset based on coin 0, returns an array of relative prices
+// if any coin is Null, returned price is 0
+// params:
+// coins: array of coin addresses
+// weights: array of weights (0 ~ 1)
+// amounts: array of amounts of bigint (either pool balances or proportionally added/removed liquidity amounts)
+function getRelativePrices(
   coins: string[],
-  weights: number[]
-): {
-  coin1Price: number;
-  coin2Price: number | undefined;
-  coin3Price: number | undefined;
-} {
+  weights: number[],
+  amounts: bigint[]
+): number[] {
+  const decimals = coins.map(getCoinDecimals);
+
   const numCoins = coins.length;
+  const amountsScaled = amounts
+    .slice(0, numCoins)
+    .map((e, i) => scaleDown(e, decimals[i]));
 
-  const balance0 = scaleDown(
-    event.data_decoded.pool_balance_0,
-    getCoinDecimals(coins[0])
-  );
-  const balance1 = scaleDown(
-    event.data_decoded.pool_balance_1,
-    getCoinDecimals(coins[1])
-  );
-
-  // https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
-  // price1 = (balance0 / balance1) * (weight1 / weight0)
-  const coin1Price =
-    (balance0.div(balance1).toNumber() * weights[1]) / weights[0];
-
-  let coin2Price: number | undefined;
-  let coin3Price: number | undefined;
-
-  if (numCoins > 2) {
-    const balance2 = scaleDown(
-      event.data_decoded.pool_balance_2,
-      getCoinDecimals(coins[2])
-    );
-    coin2Price = (balance0.div(balance2).toNumber() * weights[2]) / weights[0];
-  }
-
-  if (numCoins > 3) {
-    const balance3 = scaleDown(
-      event.data_decoded.pool_balance_3,
-      getCoinDecimals(coins[2])
-    );
-    coin3Price = (balance0.div(balance3).toNumber() * weights[3]) / weights[0];
-  }
-
-  return {
-    coin1Price,
-    coin2Price,
-    coin3Price,
-  };
+  // formula: https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
+  // price1to0 = (balance0 / balance1) * (weight1 / weight0)
+  return [
+    1,
+    ...weights
+      .slice(1, numCoins)
+      .map(
+        (w, i) =>
+          (amountsScaled[0].div(amountsScaled[i + 1]).toNumber() * w) /
+          weights[0]
+      ),
+  ];
 }
 
-function getCoinsAndWeights(event: weighted_pool.SwapEventInstance): {
+function getCoinsAndWeights(
+  event:
+    | weighted_pool.SwapEventInstance
+    | weighted_pool.AddLiquidityEventInstance
+    | weighted_pool.RemoveLiquidityEventInstance
+): {
   coins: string[];
   weights: number[];
 } {
@@ -184,6 +185,8 @@ function isNullType(typeArg: string): boolean {
 
 // use "WP-123456coin0Name-100000coin1Name-200000coin2Name-300000coin3Name-weight0-weight1-weight2-weight3" as unique tag for each pool
 // the first 6 digits of coin address are used to reduce the length of the tag
+// TODO: poolTag was a workaround for older sentio sdk that did not support long tags
+// now tag string can be up to 512 characters. we can migrate both frontend and indexer to use full pool type (getPoolType)
 function getPoolTag(coins: string[], weights: number[]): string {
   const concatCoins = coins
     .map((coin) => {
@@ -193,4 +196,19 @@ function getPoolTag(coins: string[], weights: number[]): string {
     .join("-");
   const concatWeights = weights.join("-");
   return `WP-${concatCoins}-${concatWeights}`;
+}
+
+// get complete pool type name. notice: there's a space after ", ". example:
+// 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::weighted_pool::WeightedPool<0x347b2ef2a5509414630d939e6cedb0c7fae5e1a295bf93587fec19cac34ba5b::mod_coin::MOD, 0x3c27315fb69ba6e4b960f1507d1cefcc9a4247869f26a8d59d6b7869d23782c::test_coins::USDC, 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::base_pool::Null, 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::base_pool::Null>
+function getPoolType(
+  event:
+    | weighted_pool.AddLiquidityEventInstance
+    | weighted_pool.RemoveLiquidityEventInstance
+    | weighted_pool.SwapEventInstance
+) {
+  return `${
+    weighted_pool.DEFAULT_OPTIONS.address
+  }::weighted_pool::WeightedPool<${event.type_arguments
+    .map((e) => e.trim())
+    .join(", ")}>`;
 }

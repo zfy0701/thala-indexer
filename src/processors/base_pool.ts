@@ -40,12 +40,11 @@ export async function onEventSwapEvent(
   pool_balance_2: bigint,
   pool_balance_3: bigint
 ) {
-  // actual prices
-  const actualCoin0Price = await getPriceAsof(
-    coins[0],
-    new Date(Number(ctx.transaction.timestamp) / 1000)
+  const actualCoinPrices = await getActualCoinPrices(
+    coins,
+    relativePrices,
+    Number(ctx.transaction.timestamp) / 1000
   );
-  const actualCoinPrices = relativePrices.map((e) => e * actualCoin0Price);
 
   const decimals = coins.map(getCoinDecimals);
   const idxIn = bigintToInteger(idx_in);
@@ -112,4 +111,62 @@ export async function onEventSwapEvent(
   tvlGauge.record(ctx, tvlUsd, { poolTag });
   volumeGauge.record(ctx, volumeUsd, { poolTag });
   feeGauge.record(ctx, feeUsd, { poolTag });
+}
+
+export async function onEventLiquidityEvent(
+  ctx: AptosContext,
+  liquidityEventType: "Add" | "Remove",
+  coins: string[],
+  pool: string,
+  relativePrices: number[],
+  amounts: bigint[]
+) {
+  const actualCoinPrices = await getActualCoinPrices(
+    coins,
+    relativePrices,
+    Number(ctx.transaction.timestamp) / 1000
+  );
+
+  const decimals = coins.map(getCoinDecimals);
+  const amountsScaled = amounts
+    .slice(0, coins.length)
+    .map((e, i) => scaleDown(e, decimals[i]));
+  const usdValue = amountsScaled
+    .map((amount, i) => amount.multipliedBy(actualCoinPrices[i]))
+    .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
+
+  ctx.eventLogger.emit("liquidity", {
+    liquidityEventType,
+    pool,
+    value: usdValue,
+    maker: ctx.transaction.sender,
+  });
+}
+
+// get usd prices based on the first asset with known price (which is available via price API)
+// if none of the assets have known price, use 0
+// returns an array of price for each asset
+async function getActualCoinPrices(
+  coins: string[],
+  relativePrices: number[],
+  timestampMillis: number
+): Promise<number[]> {
+  let knownPriceIdx = 0;
+  let knownPrice = 0;
+  while (knownPriceIdx < coins.length) {
+    knownPrice = await getPriceAsof(
+      coins[knownPriceIdx],
+      new Date(timestampMillis)
+    );
+    if (knownPrice) {
+      break;
+    }
+    knownPriceIdx += 1;
+  }
+
+  return knownPrice == 0
+    ? Array(coins.length).fill(0)
+    : relativePrices.map(
+        (e) => (knownPrice / relativePrices[knownPriceIdx]) * e
+      );
 }

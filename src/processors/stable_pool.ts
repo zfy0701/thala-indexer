@@ -2,7 +2,7 @@ import { stable_pool } from "../types/aptos/testnet/amm.js";
 import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils.js";
 
 import { AptosContext } from "@sentio/sdk/aptos";
-import { onEventSwapEvent } from "./base_pool.js";
+import { onEventLiquidityEvent, onEventSwapEvent } from "./base_pool.js";
 
 const START_VERSION = 429427564;
 
@@ -11,6 +11,11 @@ const MAX_LOOP_LIMIT = 100;
 
 const NULL_TYPE = `${stable_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
+// for stable pool add/remove liquidity event: we allow disproportional liquidity, so there's no way to
+// derive spot price based on amounts added/removed
+// we assume relative prices are all one for stable pool
+const RELATIVE_PRICES_ONE = [1, 1, 1, 1];
+
 stable_pool
   .bind({ startVersion: START_VERSION })
   .onEventSwapEvent(
@@ -18,8 +23,7 @@ stable_pool
       const coins = getCoins(event);
       const poolTag = getPoolTag(coins);
 
-      const { coin1Price, coin2Price, coin3Price } = getPrices(event, coins);
-      const relativePrices = [1, coin1Price, coin2Price || 0, coin3Price || 0];
+      const relativePrices = getRelativePrices(event, coins);
 
       await onEventSwapEvent(
         ctx,
@@ -39,64 +43,73 @@ stable_pool
       );
     }
   )
-  .onEventStablePoolCreationEvent((event, ctx) => {
-    const pool = `${
-      stable_pool.DEFAULT_OPTIONS.address
-    }::stable_pool::StablePool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
+  .onEventStablePoolCreationEvent(async (event, ctx) => {
+    const coins = getCoins(event);
+    const poolType = getPoolType(event);
+
     ctx.eventLogger.emit("create_pool", {
-      pool,
+      pool: poolType,
       creator: ctx.transaction.sender,
       timestamp: ctx.transaction.timestamp,
     });
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Add",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+
+    await onEventLiquidityEvent(
+      ctx,
+      "Add",
+      coins,
+      poolType,
+      RELATIVE_PRICES_ONE,
+      [
+        event.data_decoded.amount_0,
+        event.data_decoded.amount_1,
+        event.data_decoded.amount_2,
+        event.data_decoded.amount_3,
+      ]
+    );
   })
-  .onEventAddLiquidityEvent((event, ctx) => {
-    const pool = `${
-      stable_pool.DEFAULT_OPTIONS.address
-    }::stable_pool::StablePool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Add",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+  .onEventAddLiquidityEvent(async (event, ctx) => {
+    const coins = getCoins(event);
+    const poolType = getPoolType(event);
+
+    await onEventLiquidityEvent(
+      ctx,
+      "Add",
+      coins,
+      poolType,
+      RELATIVE_PRICES_ONE,
+      [
+        event.data_decoded.amount_0,
+        event.data_decoded.amount_1,
+        event.data_decoded.amount_2,
+        event.data_decoded.amount_3,
+      ]
+    );
   })
-  .onEventRemoveLiquidityEvent((event, ctx) => {
-    const pool = `${
-      stable_pool.DEFAULT_OPTIONS.address
-    }::stable_pool::StablePool<${event.type_arguments
-      .map((e) => e.trim())
-      .join(", ")}>`;
-    ctx.eventLogger.emit("liquidity", {
-      liquidityEventType: "Remove",
-      pool,
-      // TODO
-      value: 0,
-      maker: ctx.transaction.sender,
-    });
+  .onEventRemoveLiquidityEvent(async (event, ctx) => {
+    const coins = getCoins(event);
+    const poolType = getPoolType(event);
+
+    await onEventLiquidityEvent(
+      ctx,
+      "Remove",
+      coins,
+      poolType,
+      RELATIVE_PRICES_ONE,
+      [
+        event.data_decoded.amount_0,
+        event.data_decoded.amount_1,
+        event.data_decoded.amount_2,
+        event.data_decoded.amount_3,
+      ]
+    );
   });
 
-// get the price of coin 1, 2, 3 quoted based on coin 0 from SwapEventInstance
+// get the relative price of for each asset based on coin 0, returns an array of relative prices
 // if any coin is Null, the price is undefined
-function getPrices(
+function getRelativePrices(
   event: stable_pool.SwapEventInstance,
   coins: string[]
-): {
-  coin1Price: number;
-  coin2Price: number | undefined;
-  coin3Price: number | undefined;
-} {
+): number[] {
   const numCoins = coins.length;
 
   const balance0 = scaleDown(
@@ -126,20 +139,21 @@ function getPrices(
 
   const amp = bigintToInteger(event.data_decoded.amp_factor);
   const d = getD(balances, amp);
-  const coin1Price = getStablePrice(0, 1, balances, amp, d);
-  const coin2Price =
-    numCoins > 2 ? getStablePrice(0, 2, balances, amp, d) : undefined;
-  const coin3Price =
-    numCoins > 3 ? getStablePrice(0, 3, balances, amp, d) : undefined;
 
-  return {
-    coin1Price,
-    coin2Price,
-    coin3Price,
-  };
+  return [
+    1,
+    getStablePrice(0, 1, balances, amp, d),
+    numCoins > 2 ? getStablePrice(0, 2, balances, amp, d) : 0,
+    numCoins > 3 ? getStablePrice(0, 3, balances, amp, d) : 0,
+  ];
 }
 
-function getCoins(event: stable_pool.SwapEventInstance): string[] {
+function getCoins(
+  event:
+    | stable_pool.SwapEventInstance
+    | stable_pool.AddLiquidityEventInstance
+    | stable_pool.RemoveLiquidityEventInstance
+): string[] {
   const coins = [];
   coins.push(event.type_arguments[0]);
   coins.push(event.type_arguments[1]);
@@ -163,6 +177,8 @@ function isNullType(typeArg: string): boolean {
 
 // use "SP-123456coin0Name-100000coin1Name-200000coin2Name-300000coin3Name" as unique tag for each pool
 // the first 6 digits of coin address are used to reduce the length of the tag
+// TODO: poolTag was a workaround for older sentio sdk that did not support long tags
+// now tag string can be up to 512 characters. we can migrate both frontend and indexer to use full pool type (getPoolType)
 function getPoolTag(coins: string[]): string {
   const concatCoins = coins
     .map((coin) => {
@@ -171,6 +187,21 @@ function getPoolTag(coins: string[]): string {
     })
     .join("-");
   return `SP-${concatCoins}`;
+}
+
+// get complete pool type name. notice: there's a space after ", ". example:
+// 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::stable_pool::StablePool<0x347b2ef2a5509414630d939e6cedb0c7fae5e1a295bf93587fec19cac34ba5b::mod_coin::MOD, 0x3c27315fb69ba6e4b960f1507d1cefcc9a4247869f26a8d59d6b7869d23782c::test_coins::USDC, 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::base_pool::Null, 0xf727908689c999b8aa9ad6bd2d73b964bcc65a700dbbcc234d02827e2fc71d56::base_pool::Null>
+function getPoolType(
+  event:
+    | stable_pool.AddLiquidityEventInstance
+    | stable_pool.RemoveLiquidityEventInstance
+    | stable_pool.SwapEventInstance
+) {
+  return `${
+    stable_pool.DEFAULT_OPTIONS.address
+  }::stable_pool::StablePool<${event.type_arguments
+    .map((e) => e.trim())
+    .join(", ")}>`;
 }
 
 // get relative price of coin j to i

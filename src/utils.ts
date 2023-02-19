@@ -30,19 +30,26 @@ export async function getPriceAsof(
   if (coinType.includes("mod_coin::MOD")) {
     return 1;
   }
-  // TODO: fetch lp coin price from thala-oracle
   if (coinType.includes("PoolToken")) {
+    // TODO: support LP price https://linear.app/thala-labs/issue/THA-785/index-lpt-price-history
     return 0;
   }
-  if (coinType.includes("test_coins")) {
-    return getPriceBySymbol(coinType.split("::")[2], asof);
+
+  try {
+    if (coinType.includes("test_coins")) {
+      return await getPriceBySymbol(coinType.split("::")[2], asof);
+    }
+
+    return await getPriceByType(
+      // use mainnet price is fine
+      CHAIN_IDS.APTOS_MAINNET,
+      coinType,
+      asof
+    );
+  } catch (e) {
+    // if price is not found, return 0
+    return 0;
   }
-  return getPriceByType(
-    // use mainnet price is fine
-    CHAIN_IDS.APTOS_MAINNET,
-    coinType,
-    asof
-  );
 }
 
 export function scaleDown(n: bigint, decimals: number): BigDecimal {
