@@ -2,40 +2,25 @@ import { BigDecimal } from "@sentio/sdk";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/utils";
 import { CHAIN_IDS } from "@sentio/sdk";
 
-interface CoinInfo {
-  address: string;
-  decimals: number;
-}
-
 // if coin is not found in COMMON_COINS, we use 8 decimals by default
 // in that case, frontend / metrics users need to handle scaling if decimal is incorrect
 const DEFAULT_DECIMALS = 8;
 
-const COMMON_COINS: { [key: string]: CoinInfo } = {
-  "0x1::aptos_coin::AptosCoin": {
-    address: "0x1::aptos_coin::AptosCoin",
-    decimals: 8,
-  },
+const TEST_COINS_ADDRESS =
+  "0x3c27315fb69ba6e4b960f1507d1cefcc9a4247869f26a8d59d6b7869d23782c";
+const WBTC = `${TEST_COINS_ADDRESS}::test_coins::WBTC`;
+const WETH = `${TEST_COINS_ADDRESS}::test_coins::WETH`;
+const USDC = `${TEST_COINS_ADDRESS}::test_coins::USDC`;
+const CAKE = `${TEST_COINS_ADDRESS}::test_coins::CAKE`;
+const TAPT = `${TEST_COINS_ADDRESS}::test_coins::tAPT`;
 
-  // below are test coins
-  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::BTC":
-    {
-      address:
-        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::BTC",
-      decimals: 6,
-    },
-  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::ETH":
-    {
-      address:
-        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::ETH",
-      decimals: 8,
-    },
-  "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::USDC":
-    {
-      address:
-        "0xf626feab4559a8b94356044303cfd165d89d79b2181a68ad43bcd97504edde06::test_coins::USDC",
-      decimals: 6,
-    },
+const COIN_DECIMALS: { [key: string]: number } = {
+  "0x1::aptos_coin::AptosCoin": 8,
+  [WBTC]: 8,
+  [WETH]: 6,
+  [USDC]: 6,
+  [TAPT]: 8,
+  [CAKE]: 8,
 };
 
 export async function getPriceAsof(
@@ -65,8 +50,7 @@ export function scaleDown(n: bigint, decimals: number): BigDecimal {
 }
 
 export function getCoinDecimals(address: string): number {
-  const info = COMMON_COINS[address];
-  return info ? info.decimals : DEFAULT_DECIMALS;
+  return COIN_DECIMALS[address] ?? DEFAULT_DECIMALS;
 }
 
 // use "123456coin1Name-789012coin2Name" as pair tag for each pool
