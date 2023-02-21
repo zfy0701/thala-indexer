@@ -16,14 +16,19 @@ lbp
   .bind({ startVersion: START_VERSION })
   .onEventSwapEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
+    const coin1 = event.type_arguments[1];
+    const swapAmountIn = event.data_decoded.amount_in;
+    const swapAmountOut = event.data_decoded.amount_out;
+    const isBuy = event.data_decoded.is_buy;
+
     const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
     ctx.meter
       .Counter("volume_coin_0")
       .add(
         scaleDown(
-          event.data_decoded.is_buy
-            ? event.data_decoded.amount_in
-            : event.data_decoded.amount_out,
+          isBuy
+            ? swapAmountIn
+            : swapAmountOut,
           getCoinDecimals(coin0)
         ),
         {
@@ -31,6 +36,21 @@ lbp
           dateString,
         }
       );
+    const swapAttributes = {
+      pair: `${coin0}-${coin1}`,
+      is_buy: isBuy,
+      creator_address: event.data_decoded.creator_addr,
+      coin_address_in: coin0,
+      coin_address_out: coin1,
+      amount_in: swapAmountIn,
+      amount_out: swapAmountOut,
+      fee_amount: event.data_decoded.fee_amount,
+    };
+
+    ctx.eventLogger.emit("swap", {
+      message: `Swap ${swapAmountIn} ${coin0} for ${swapAmountOut} ${coin1}`,
+      ...swapAttributes,
+    });
   })
   .onEventLiquidityEvent((event, ctx) => {
     const coin0 = event.type_arguments[0];
