@@ -1,13 +1,12 @@
 import { scaleDown, getCoinDecimals, getPriceAsof } from "../utils.js";
 
-import { Gauge } from "@sentio/sdk";
-// import { Exporter } from "@sentio/sdk/lib/core/exporter";
+import { Exporter, Gauge } from "@sentio/sdk";
 import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
 
 const START_VERSION = 429533127;
 const MOD_DECIMALS = 8;
 
-// const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
+const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
 const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
 const vaultUserTvlGauge = Gauge.register("vault_user_tvl", { sparse: true });
 
@@ -79,14 +78,14 @@ vault
       coinType,
     });
 
-    //   const data = {
-    //     version: event.version,
-    //     account: event.data_decoded.vault_address,
-    //     coinType,
-    //     collateral: event.data_decoded.collateral,
-    //     debt: event.data_decoded.debt,
-    //   };
-    //   exporter.emit(ctx, data);
+    // update offchain sorted vaults in redis
+    exporter.emit(ctx, {
+      version: event.version,
+      account: event.data_decoded.vault_address,
+      coinType,
+      collateral: event.data_decoded.collateral,
+      liability: event.data_decoded.liability,
+    });
   });
 
 stability_pool
