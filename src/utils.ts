@@ -36,6 +36,10 @@ export async function getPriceAsof(
   }
 
   try {
+    // TODO: DELETE ME AFTER SENTIO ADD SUPPORT FOR TAPT PRICE
+    if (coinType.includes("test_coins::TAPT")) {
+      return await getPriceBySymbol("APT", asof);
+    }
     if (coinType.includes("test_coins")) {
       return await getPriceBySymbol(coinType.split("::")[2], asof);
     }
