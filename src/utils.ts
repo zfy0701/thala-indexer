@@ -12,7 +12,7 @@ const WBTC = `${TEST_COINS_ADDRESS}::test_coins::WBTC`;
 const WETH = `${TEST_COINS_ADDRESS}::test_coins::WETH`;
 const USDC = `${TEST_COINS_ADDRESS}::test_coins::USDC`;
 const CAKE = `${TEST_COINS_ADDRESS}::test_coins::CAKE`;
-const TAPT = `${TEST_COINS_ADDRESS}::test_coins::tAPT`;
+const TAPT = `${TEST_COINS_ADDRESS}::test_coins::TAPT`;
 
 const COIN_DECIMALS: { [key: string]: number } = {
   "0x1::aptos_coin::AptosCoin": 8,
@@ -36,10 +36,6 @@ export async function getPriceAsof(
   }
 
   try {
-    // TODO: DELETE ME AFTER SENTIO ADD SUPPORT FOR TAPT PRICE
-    if (coinType.includes("test_coins::TAPT")) {
-      return await getPriceBySymbol("APT", asof);
-    }
     if (coinType.includes("test_coins")) {
       return await getPriceBySymbol(coinType.split("::")[2], asof);
     }
