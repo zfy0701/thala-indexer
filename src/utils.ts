@@ -120,3 +120,10 @@ export function bigintToInteger(a: bigint): number {
   }
   return Number(a);
 }
+
+export function safeDiv(a: bigint, b: bigint): BigDecimal {
+  if (b == 0n) {
+    return new BigDecimal(0);
+  }
+  return a.asBigDecimal().dividedBy(b.asBigDecimal());
+}

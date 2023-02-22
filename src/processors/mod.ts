@@ -1,4 +1,4 @@
-import { scaleDown, getCoinDecimals, getPriceAsof } from "../utils.js";
+import { scaleDown, getCoinDecimals, getPriceAsof, safeDiv } from "../utils.js";
 
 import { Exporter, Gauge } from "@sentio/sdk";
 import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
@@ -84,7 +84,7 @@ vault
       coinType,
       collateral: event.data_decoded.collateral,
       liability: event.data_decoded.liability,
-      nicr: event.data_decoded.collateral.asBigDecimal().dividedBy(event.data_decoded.liability.asBigDecimal())
+      nicr: safeDiv(event.data_decoded.collateral, event.data_decoded.liability)
     })
 
     // update offchain sorted vaults in redis
