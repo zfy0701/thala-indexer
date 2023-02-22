@@ -78,6 +78,15 @@ vault
       coinType,
     });
 
+    ctx.eventLogger.emit("update_vault", {
+      version: event.version,
+      account: event.data_decoded.vault_address,
+      coinType,
+      collateral: event.data_decoded.collateral,
+      liability: event.data_decoded.liability,
+      nicr: event.data_decoded.collateral.asBigDecimal().dividedBy(event.data_decoded.liability.asBigDecimal())
+    })
+
     // update offchain sorted vaults in redis
     exporter.emit(ctx, {
       version: event.version,
