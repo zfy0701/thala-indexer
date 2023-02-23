@@ -25,12 +25,7 @@ lbp
     ctx.meter
       .Counter("volume_coin_0")
       .add(
-        scaleDown(
-          isBuy
-            ? swapAmountIn
-            : swapAmountOut,
-          getCoinDecimals(coin0)
-        ),
+        scaleDown(isBuy ? swapAmountIn : swapAmountOut, getCoinDecimals(coin0)),
         {
           poolId: getPoolId(event),
           dateString,

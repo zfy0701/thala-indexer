@@ -1,6 +1,7 @@
 import { BigDecimal } from "@sentio/sdk";
 import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/utils";
 import { CHAIN_IDS } from "@sentio/sdk";
+import { mod_coin } from "./types/aptos/testnet/mod.js";
 
 // if coin is not found in COMMON_COINS, we use 8 decimals by default
 // in that case, frontend / metrics users need to handle scaling if decimal is incorrect
@@ -8,11 +9,13 @@ const DEFAULT_DECIMALS = 8;
 
 const TEST_COINS_ADDRESS =
   "0x3c27315fb69ba6e4b960f1507d1cefcc9a4247869f26a8d59d6b7869d23782c";
-const WBTC = `${TEST_COINS_ADDRESS}::test_coins::WBTC`;
-const WETH = `${TEST_COINS_ADDRESS}::test_coins::WETH`;
-const USDC = `${TEST_COINS_ADDRESS}::test_coins::USDC`;
-const CAKE = `${TEST_COINS_ADDRESS}::test_coins::CAKE`;
-const TAPT = `${TEST_COINS_ADDRESS}::test_coins::TAPT`;
+export const WBTC = `${TEST_COINS_ADDRESS}::test_coins::WBTC`;
+export const WETH = `${TEST_COINS_ADDRESS}::test_coins::WETH`;
+export const USDC = `${TEST_COINS_ADDRESS}::test_coins::USDC`;
+export const CAKE = `${TEST_COINS_ADDRESS}::test_coins::CAKE`;
+export const TAPT = `${TEST_COINS_ADDRESS}::test_coins::TAPT`;
+
+export const MOD = mod_coin.MOD.TYPE_QNAME;
 
 const COIN_DECIMALS: { [key: string]: number } = {
   "0x1::aptos_coin::AptosCoin": 8,
@@ -21,6 +24,14 @@ const COIN_DECIMALS: { [key: string]: number } = {
   [USDC]: 6,
   [TAPT]: 8,
   [CAKE]: 8,
+};
+
+export const GALXE_QUESTS = {
+  BORROW_MOD: "borrow_mod",
+  DEPOSIT_STABILITY_POOL: "deposit_stability_pool",
+  SWAP_MOD_TO_USDC: "swap_mod_to_usdc",
+  ADD_MOD_USDC_LP: "add_mod_usdc_lp",
+  STAKE_MOD_USDC_LP: "stake_mod_usdc_lp",
 };
 
 export async function getPriceAsof(

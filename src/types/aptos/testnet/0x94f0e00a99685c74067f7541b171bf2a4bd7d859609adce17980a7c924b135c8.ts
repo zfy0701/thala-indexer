@@ -12,11 +12,11 @@ import {
   AptosBaseProcessor,
   TypedEventInstance,
   AptosNetwork,
-  TypedEntryFunctionPayload,
+  TypedFunctionPayload,
   AptosContext,
 } from "@sentio/sdk/aptos";
 import { MoveFetchConfig } from "@sentio/protos";
-import { Address } from "@sentio/sdk/aptos";
+import { Address, ModuleClient } from "@sentio/sdk/aptos";
 
 export namespace log_exp_math {}
 

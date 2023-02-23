@@ -12,11 +12,11 @@ import {
   AptosBaseProcessor,
   TypedEventInstance,
   AptosNetwork,
-  TypedEntryFunctionPayload,
+  TypedFunctionPayload,
   AptosContext,
 } from "@sentio/sdk/aptos";
 import { MoveFetchConfig } from "@sentio/protos";
-import { Address } from "@sentio/sdk/aptos";
+import { Address, ModuleClient } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
 import * as _0x94f0e00a99685c74067f7541b171bf2a4bd7d859609adce17980a7c924b135c8 from "./0x94f0e00a99685c74067f7541b171bf2a4bd7d859609adce17980a7c924b135c8.js";
@@ -71,13 +71,13 @@ export class init extends AptosBaseProcessor {
 }
 
 export namespace init {
-  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+  export interface InitializePayload extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [];
   }
 
   export interface InitializeCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [string];
   }
@@ -637,79 +637,79 @@ export namespace vault {
   }
 
   export interface SetBorrowFeeBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetFreezeCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedFunctionPayload<[Boolean]> {
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetFreezeLiquidationsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedFunctionPayload<[Boolean]> {
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
 
   export interface SetInterestAprBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetLiquidationFeeBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetLiquidatorBonusCapModAmountPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMcrBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMcrPenaltyMultiplierPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetMinLiabilityAmountPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMintCapPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionFeeBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetRedemptionModePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedFunctionPayload<[Boolean]> {
     arguments_decoded: [Boolean];
     type_arguments: [string];
   }
@@ -756,7 +756,7 @@ export namespace package_ {
   }
 
   export interface PublishPackagePayload
-    extends TypedEntryFunctionPayload<[string, string[]]> {
+    extends TypedFunctionPayload<[string, string[]]> {
     arguments_decoded: [string, string[]];
     type_arguments: [];
   }
@@ -813,7 +813,7 @@ export class fees_scripts extends AptosBaseProcessor {
 
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint]> {
+    extends TypedFunctionPayload<[Address, bigint]> {
     arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
@@ -991,49 +991,49 @@ export class vault_scripts extends AptosBaseProcessor {
 
 export namespace vault_scripts {
   export interface BorrowPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedFunctionPayload<[bigint, Address[]]> {
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface CloseVaultPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[]> {
+    extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [string];
   }
 
   export interface DepositCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedFunctionPayload<[bigint, Address[]]> {
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface LiquidatePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address, Address[]]> {
+    extends TypedFunctionPayload<[Address, Address[]]> {
     arguments_decoded: [Address, Address[]];
     type_arguments: [string];
   }
 
   export interface OpenVaultPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, Address[]]> {
+    extends TypedFunctionPayload<[bigint, bigint, Address[]]> {
     arguments_decoded: [bigint, bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface RedeemCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface RepayPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedFunctionPayload<[bigint, Address[]]> {
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
 
   export interface WithdrawCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, Address[]]> {
+    extends TypedFunctionPayload<[bigint, Address[]]> {
     arguments_decoded: [bigint, Address[]];
     type_arguments: [string];
   }
@@ -1343,25 +1343,25 @@ export namespace stability_pool {
   }
 
   export interface AddToRwaWhitelistPayload
-    extends TypedEntryFunctionPayload<[Address]> {
+    extends TypedFunctionPayload<[Address]> {
     arguments_decoded: [Address];
     type_arguments: [];
   }
 
   export interface RemoveFromRwaWhitelistPayload
-    extends TypedEntryFunctionPayload<[Address]> {
+    extends TypedFunctionPayload<[Address]> {
     arguments_decoded: [Address];
     type_arguments: [];
   }
 
   export interface SetWithdrawalFeeMaxBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetWithdrawalFeePeriodSecondsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -1639,7 +1639,7 @@ export namespace collateral_auction {
   }
 
   export interface ResetPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -1759,19 +1759,19 @@ export class stability_pool_scripts extends AptosBaseProcessor {
 
 export namespace stability_pool_scripts {
   export interface ClaimDistributedCollateralPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[]> {
+    extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [string];
   }
 
   export interface DepositModPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface WithdrawModPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
@@ -1837,13 +1837,13 @@ export class collateral_auction_scripts extends AptosBaseProcessor {
 
 export namespace collateral_auction_scripts {
   export interface BidPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint];
     type_arguments: [string];
   }
 
   export interface RepayDebtPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [string];
   }

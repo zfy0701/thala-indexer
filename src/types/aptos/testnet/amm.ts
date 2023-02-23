@@ -12,11 +12,11 @@ import {
   AptosBaseProcessor,
   TypedEventInstance,
   AptosNetwork,
-  TypedEntryFunctionPayload,
+  TypedFunctionPayload,
   AptosContext,
 } from "@sentio/sdk/aptos";
 import { MoveFetchConfig } from "@sentio/protos";
-import { Address } from "@sentio/sdk/aptos";
+import { Address, ModuleClient } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
 import * as _0x94f0e00a99685c74067f7541b171bf2a4bd7d859609adce17980a7c924b135c8 from "./0x94f0e00a99685c74067f7541b171bf2a4bd7d859609adce17980a7c924b135c8.js";
@@ -55,7 +55,7 @@ export class init extends AptosBaseProcessor {
 }
 
 export namespace init {
-  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+  export interface InitializePayload extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [];
   }
@@ -100,7 +100,7 @@ export namespace package_ {
   }
 
   export interface PublishPackagePayload
-    extends TypedEntryFunctionPayload<[string, string[]]> {
+    extends TypedFunctionPayload<[string, string[]]> {
     arguments_decoded: [string, string[]];
     type_arguments: [];
   }
@@ -186,7 +186,7 @@ export namespace base_pool {
   }
 
   export interface SetSwapFeeProtocolAllocationBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -499,13 +499,13 @@ export namespace stable_pool {
   }
 
   export interface SetAmpFactorPayload<T0 = any, T1 = any, T2 = any, T3 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -515,7 +515,7 @@ export namespace stable_pool {
     T1 = any,
     T2 = any,
     T3 = any
-  > extends TypedEntryFunctionPayload<[bigint]> {
+  > extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string, string, string, string];
   }
@@ -554,7 +554,7 @@ export class fees_scripts extends AptosBaseProcessor {
 
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint]> {
+    extends TypedFunctionPayload<[Address, bigint]> {
     arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }
@@ -1018,7 +1018,7 @@ export namespace weighted_pool {
   }
 
   export interface SetDefaultPoolSwapFeeBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
@@ -1032,7 +1032,7 @@ export namespace weighted_pool {
     T5 = any,
     T6 = any,
     T7 = any
-  > extends TypedEntryFunctionPayload<[bigint]> {
+  > extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [
       string,
@@ -1124,7 +1124,7 @@ export namespace multi_hop_scripts {
     T16 = any,
     T17 = any,
     T18 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
@@ -1178,7 +1178,7 @@ export namespace multi_hop_scripts {
     T25 = any,
     T26 = any,
     T27 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
@@ -1328,7 +1328,7 @@ export class stable_pool_scripts extends AptosBaseProcessor {
 
 export namespace stable_pool_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any, T2 = any, T3 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1338,9 +1338,7 @@ export namespace stable_pool_scripts {
     T1 = any,
     T2 = any,
     T3 = any
-  > extends TypedEntryFunctionPayload<
-      [bigint, bigint, bigint, bigint, bigint]
-    > {
+  > extends TypedFunctionPayload<[bigint, bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1350,9 +1348,7 @@ export namespace stable_pool_scripts {
     T1 = any,
     T2 = any,
     T3 = any
-  > extends TypedEntryFunctionPayload<
-      [bigint, bigint, bigint, bigint, bigint]
-    > {
+  > extends TypedFunctionPayload<[bigint, bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -1364,7 +1360,7 @@ export namespace stable_pool_scripts {
     T3 = any,
     T4 = any,
     T5 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [string, string, string, string, string, string];
   }
@@ -1376,7 +1372,7 @@ export namespace stable_pool_scripts {
     T3 = any,
     T4 = any,
     T5 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [string, string, string, string, string, string];
   }
@@ -1505,7 +1501,7 @@ export namespace weighted_pool_scripts {
     T5 = any,
     T6 = any,
     T7 = any
-  > extends TypedEntryFunctionPayload<
+  > extends TypedFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint, bigint, bigint, bigint]
     > {
     arguments_decoded: [
@@ -1539,7 +1535,7 @@ export namespace weighted_pool_scripts {
     T5 = any,
     T6 = any,
     T7 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
@@ -1562,9 +1558,7 @@ export namespace weighted_pool_scripts {
     T5 = any,
     T6 = any,
     T7 = any
-  > extends TypedEntryFunctionPayload<
-      [bigint, bigint, bigint, bigint, bigint]
-    > {
+  > extends TypedFunctionPayload<[bigint, bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint, bigint];
     type_arguments: [
       string,
@@ -1589,7 +1583,7 @@ export namespace weighted_pool_scripts {
     T7 = any,
     T8 = any,
     T9 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,
@@ -1616,7 +1610,7 @@ export namespace weighted_pool_scripts {
     T7 = any,
     T8 = any,
     T9 = any
-  > extends TypedEntryFunctionPayload<[bigint, bigint]> {
+  > extends TypedFunctionPayload<[bigint, bigint]> {
     arguments_decoded: [bigint, bigint];
     type_arguments: [
       string,

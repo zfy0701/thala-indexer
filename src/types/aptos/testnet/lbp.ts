@@ -12,11 +12,11 @@ import {
   AptosBaseProcessor,
   TypedEventInstance,
   AptosNetwork,
-  TypedEntryFunctionPayload,
+  TypedFunctionPayload,
   AptosContext,
 } from "@sentio/sdk/aptos";
 import { MoveFetchConfig } from "@sentio/protos";
-import { Address } from "@sentio/sdk/aptos";
+import { Address, ModuleClient } from "@sentio/sdk/aptos";
 
 import { _0x1 } from "@sentio/sdk/aptos/builtin";
 import * as _0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87 from "./0x92285e3fb7903c2b2fd17d96da946cbd76b927a1bad1649f465b698af5f76e87.js";
@@ -415,43 +415,43 @@ export namespace lbp {
   }
 
   export interface GrantWhitelistPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[Address]> {
+    extends TypedFunctionPayload<[Address]> {
     arguments_decoded: [Address];
     type_arguments: [string, string];
   }
 
   export interface RevokeWhitelistPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[Address]> {
+    extends TypedFunctionPayload<[Address]> {
     arguments_decoded: [Address];
     type_arguments: [string, string];
   }
 
   export interface SetEnabledPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[Boolean]> {
+    extends TypedFunctionPayload<[Boolean]> {
     arguments_decoded: [Boolean];
     type_arguments: [string, string];
   }
 
   export interface SetMaxDurationSecondsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetMaxSwapFeeBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetProtocolSwapFeeAllocationPctPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface SetWeightSchedulePayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
@@ -570,19 +570,19 @@ export namespace fees {
   }
 
   export interface SetCustomLbpCommissionBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [string];
   }
 
   export interface SetDefaultLbpCommissionBpsPayload
-    extends TypedEntryFunctionPayload<[bigint]> {
+    extends TypedFunctionPayload<[bigint]> {
     arguments_decoded: [bigint];
     type_arguments: [];
   }
 
   export interface UnsetCustomLbpCommissionBpsPayload<T0 = any>
-    extends TypedEntryFunctionPayload<[]> {
+    extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [string];
   }
@@ -620,7 +620,7 @@ export class init extends AptosBaseProcessor {
 }
 
 export namespace init {
-  export interface InitializePayload extends TypedEntryFunctionPayload<[]> {
+  export interface InitializePayload extends TypedFunctionPayload<[]> {
     arguments_decoded: [];
     type_arguments: [];
   }
@@ -665,7 +665,7 @@ export namespace package_ {
   }
 
   export interface PublishPackagePayload
-    extends TypedEntryFunctionPayload<[string, string[]]> {
+    extends TypedFunctionPayload<[string, string[]]> {
     arguments_decoded: [string, string[]];
     type_arguments: [];
   }
@@ -768,13 +768,13 @@ export class lbp_scripts extends AptosBaseProcessor {
 
 export namespace lbp_scripts {
   export interface AddLiquidityPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface CreateLbpPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<
+    extends TypedFunctionPayload<
       [bigint, bigint, bigint, bigint, bigint, bigint, bigint, Boolean]
     > {
     arguments_decoded: [
@@ -791,19 +791,19 @@ export namespace lbp_scripts {
   }
 
   export interface RemoveLiquidityPayload<T0 = any, T1 = any>
-    extends TypedEntryFunctionPayload<[bigint, bigint, bigint]> {
+    extends TypedFunctionPayload<[bigint, bigint, bigint]> {
     arguments_decoded: [bigint, bigint, bigint];
     type_arguments: [string, string];
   }
 
   export interface SwapExactInPayload<T0 = any, T1 = any, T2 = any, T3 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint, bigint]> {
+    extends TypedFunctionPayload<[Address, bigint, bigint]> {
     arguments_decoded: [Address, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
 
   export interface SwapExactOutPayload<T0 = any, T1 = any, T2 = any, T3 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint, bigint]> {
+    extends TypedFunctionPayload<[Address, bigint, bigint]> {
     arguments_decoded: [Address, bigint, bigint];
     type_arguments: [string, string, string, string];
   }
@@ -842,7 +842,7 @@ export class fees_scripts extends AptosBaseProcessor {
 
 export namespace fees_scripts {
   export interface TransferFeePayload<T0 = any>
-    extends TypedEntryFunctionPayload<[Address, bigint]> {
+    extends TypedFunctionPayload<[Address, bigint]> {
     arguments_decoded: [Address, bigint];
     type_arguments: [string];
   }

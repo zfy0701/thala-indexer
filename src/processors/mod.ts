@@ -1,4 +1,10 @@
-import { scaleDown, getCoinDecimals, getPriceAsof, safeDiv } from "../utils.js";
+import {
+  scaleDown,
+  getCoinDecimals,
+  getPriceAsof,
+  safeDiv,
+  GALXE_QUESTS,
+} from "../utils.js";
 
 import { Exporter, Gauge } from "@sentio/sdk";
 import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
@@ -13,6 +19,9 @@ const vaultUserTvlGauge = Gauge.register("vault_user_tvl", { sparse: true });
 vault
   .bind({ startVersion: START_VERSION })
   .onEventBorrowEvent((event, ctx) => {
+    ctx.eventLogger.emit(GALXE_QUESTS.BORROW_MOD, {
+      distinctId: ctx.transaction.sender,
+    });
     ctx.meter.Counter("count_borrow").add(1, {
       coin: event.type_arguments[0],
     });
@@ -84,8 +93,11 @@ vault
       coinType,
       collateral: event.data_decoded.collateral,
       liability: event.data_decoded.liability,
-      nicr: safeDiv(event.data_decoded.collateral, event.data_decoded.liability)
-    })
+      nicr: safeDiv(
+        event.data_decoded.collateral,
+        event.data_decoded.liability
+      ),
+    });
 
     // update offchain sorted vaults in redis
     exporter.emit(ctx, {
@@ -100,6 +112,9 @@ vault
 stability_pool
   .bind({ startVersion: START_VERSION })
   .onEventDepositEvent((event, ctx) => {
+    ctx.eventLogger.emit(GALXE_QUESTS.DEPOSIT_STABILITY_POOL, {
+      distinctId: ctx.transaction.sender,
+    });
     ctx.meter
       .Counter("total_stability")
       .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
