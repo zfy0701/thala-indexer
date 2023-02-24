@@ -43,6 +43,7 @@ lbp
     };
 
     ctx.eventLogger.emit("swap", {
+      distinctId: ctx.transaction.sender,
       message: `Swap ${swapAmountIn} ${coin0} for ${swapAmountOut} ${coin1}`,
       ...swapAttributes,
     });

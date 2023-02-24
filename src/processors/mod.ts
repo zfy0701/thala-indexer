@@ -87,6 +87,7 @@ vault
     });
 
     ctx.eventLogger.emit("update_vault", {
+      distinctId: ctx.transaction.sender,
       version: event.version,
       account: event.data_decoded.vault_address,
       coinType,
@@ -98,6 +99,16 @@ vault
         event.data_decoded.liability
       ),
     });
+  })
+  .onEventLiquidationEvent((event, ctx) => {
+    ctx.eventLogger.emit("liquidation", {
+      distinctId: ctx.transaction.sender,
+    })
+  })
+  .onEventRedemptionEvent((event, ctx) => {
+    ctx.eventLogger.emit("redemption", {
+      distinctId: ctx.transaction.sender,
+    })
   });
 
 stability_pool
@@ -111,6 +122,9 @@ stability_pool
       .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
         account: event.data_decoded.depositor,
       });
+    ctx.eventLogger.emit("stability", {
+      distinctId: ctx.transaction.sender,
+    })
   })
   .onEventWithdrawEvent((event, ctx) => {
     ctx.meter
@@ -118,4 +132,7 @@ stability_pool
       .sub(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
         account: event.data_decoded.depositor,
       });
+    ctx.eventLogger.emit("stability", {
+      distinctId: ctx.transaction.sender,
+    });
   });

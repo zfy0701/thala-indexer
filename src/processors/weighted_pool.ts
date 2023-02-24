@@ -52,8 +52,8 @@ weighted_pool
     ]);
 
     ctx.eventLogger.emit("create_pool", {
+      distinctId: ctx.transaction.sender,
       pool: poolType,
-      creator: ctx.transaction.sender,
       timestamp: ctx.transaction.timestamp,
     });
 

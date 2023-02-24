@@ -90,6 +90,7 @@ export async function onEventSwapEvent(
   };
 
   ctx.eventLogger.emit("swap", {
+    distinctId: ctx.transaction.sender,
     message: `Swap ${swapAmountIn} ${coinIn} for ${swapAmountOut} ${coinOut}`,
     ...swapAttributes,
   });
@@ -136,10 +137,10 @@ export async function onEventLiquidityEvent(
     .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
 
   ctx.eventLogger.emit("liquidity", {
+    distinctId: ctx.transaction.sender,
     liquidityEventType,
     pool,
     value: usdValue,
-    maker: ctx.transaction.sender,
   });
 }
 
