@@ -6,13 +6,12 @@ import {
   GALXE_QUESTS,
 } from "../utils.js";
 
-import { Exporter, Gauge } from "@sentio/sdk";
+import { Gauge } from "@sentio/sdk";
 import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
 
 const START_VERSION = 429533127;
 const MOD_DECIMALS = 8;
 
-const exporter = Exporter.register("VaultUpdated", "UpdateSortedVaults");
 const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
 const vaultUserTvlGauge = Gauge.register("vault_user_tvl", { sparse: true });
 
@@ -93,19 +92,11 @@ vault
       coinType,
       collateral: event.data_decoded.collateral,
       liability: event.data_decoded.liability,
+
       nicr: safeDiv(
         event.data_decoded.collateral,
         event.data_decoded.liability
       ),
-    });
-
-    // update offchain sorted vaults in redis
-    exporter.emit(ctx, {
-      version: event.version,
-      account: event.data_decoded.vault_address,
-      coinType,
-      collateral: event.data_decoded.collateral,
-      liability: event.data_decoded.liability,
     });
   });
 
