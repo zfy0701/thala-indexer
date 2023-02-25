@@ -140,7 +140,7 @@ export async function onEventLiquidityEvent(
     distinctId: ctx.transaction.sender,
     liquidityEventType,
     pool,
-    value: usdValue,
+    value: usdValue.isNaN() ? new BigDecimal(0) : usdValue,
   });
 }
 
