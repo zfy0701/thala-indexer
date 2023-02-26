@@ -110,21 +110,11 @@ stability_pool
     ctx.eventLogger.emit(GALXE_QUESTS.DEPOSIT_STABILITY_POOL, {
       distinctId: ctx.transaction.sender,
     });
-    ctx.meter
-      .Counter("total_stability")
-      .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
-        account: event.data_decoded.depositor,
-      });
     ctx.eventLogger.emit("stability", {
       distinctId: ctx.transaction.sender,
     })
   })
   .onEventWithdrawEvent((event, ctx) => {
-    ctx.meter
-      .Counter("total_stability")
-      .sub(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
-        account: event.data_decoded.depositor,
-      });
     ctx.eventLogger.emit("stability", {
       distinctId: ctx.transaction.sender,
     });
