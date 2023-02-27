@@ -1,4 +1,4 @@
-import { farming } from "../types/aptos/testnet/farming.js";
+import { farming, scripts } from "../types/aptos/testnet/farming.js";
 import { GALXE_QUESTS } from "../utils.js";
 
 const START_VERSION = 431178000;
@@ -15,3 +15,7 @@ farming
       });
     }
   });
+
+  scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+    ctx.meter.Counter("total_txn").add(1, { type: "farming" });
+  })
