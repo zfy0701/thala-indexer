@@ -1,4 +1,4 @@
-import { lbp } from "../types/aptos/testnet/lbp.js";
+import { lbp, lbp_scripts } from "../types/aptos/testnet/lbp.js";
 import {
   fp64ToFloat,
   getCoinDecimals,
@@ -99,6 +99,12 @@ lbp
       poolId: getPoolId(event),
     });
   });
+
+  lbp_scripts
+  .bind({ startVersion: START_VERSION })
+  .onTransaction((tx, ctx) => {
+    ctx.meter.Counter("total_txn").add(1, { type: "lbp" })
+  })
 
 // get the price of coin 1 quoted based on coin 0
 function getPriceFromEvent(
