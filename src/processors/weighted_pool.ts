@@ -1,4 +1,4 @@
-import { weighted_pool, weighted_pool_scripts } from "../types/aptos/testnet/amm.js";
+import { weighted_pool } from "../types/aptos/testnet/amm.js";
 import { getCoinDecimals, scaleDown } from "../utils.js";
 
 import { AptosContext } from "@sentio/sdk/aptos";
@@ -212,7 +212,3 @@ function getPoolType(
     .map((e) => e.trim())
     .join(", ")}>`;
 }
-
-weighted_pool_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
-  ctx.meter.Counter("total_txn").add(1, { type: "weighted_pool"})
-})
