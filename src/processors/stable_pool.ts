@@ -1,4 +1,4 @@
-import { stable_pool } from "../types/aptos/testnet/amm.js";
+import { stable_pool, stable_pool_scripts } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
   GALXE_QUESTS,
@@ -125,6 +125,11 @@ stable_pool
       ]
     );
   });
+
+
+stable_pool_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+  ctx.meter.Counter("total_txn").add(1, { type: "stable_pool"})
+})
 
 // get the relative price of for each asset based on coin 0, returns an array of relative prices
 // if any coin is Null, the price is undefined

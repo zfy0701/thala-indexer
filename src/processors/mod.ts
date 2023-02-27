@@ -7,7 +7,7 @@ import {
 } from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
-import { stability_pool, vault } from "../types/aptos/testnet/mod.js";
+import { stability_pool, stability_pool_scripts, vault, vault_scripts } from "../types/aptos/testnet/mod.js";
 
 const START_VERSION = 429533127;
 const MOD_DECIMALS = 8;
@@ -119,3 +119,11 @@ stability_pool
       distinctId: ctx.transaction.sender,
     });
   });
+
+vault_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+  ctx.meter.Counter("total_txn").add(1, {type: "vault"})
+});
+
+stability_pool_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+  ctx.meter.Counter("total_txn").add(1, {type: "stability_pool"})
+});
