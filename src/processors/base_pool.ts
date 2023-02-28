@@ -21,7 +21,6 @@ const volOptions = {
 
 const ammCoinPriceGauge = Gauge.register("amm_coin_price", commonOptions);
 const tvlGauge = Gauge.register("pool_tvl_usd", commonOptions);
-const liquidityGauge = Gauge.register("pool_liquidity_usd", commonOptions);
 const volumeGauge = Gauge.register("pool_volume_usd", volOptions);
 const feeGauge = Gauge.register("pool_swap_fee_usd", volOptions);
 
@@ -29,7 +28,7 @@ export async function onEventSwapEvent(
   ctx: AptosContext,
   type: "weighted" | "stable",
   coins: string[],
-  poolType: string,
+  poolTag: string,
   relativePrices: number[],
   idx_in: bigint,
   idx_out: bigint,
@@ -71,7 +70,6 @@ export async function onEventSwapEvent(
   });
   ammCoinPriceGauge.record(ctx, actualCoinOutPrice, {
     pairTag,
-    poolType,
     coin: coinOut,
   });
 
@@ -111,16 +109,16 @@ export async function onEventSwapEvent(
     .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
     .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
 
-  tvlGauge.record(ctx, tvlUsd, { poolType });
-  volumeGauge.record(ctx, volumeUsd, { poolType });
-  feeGauge.record(ctx, feeUsd, { poolType });
+  tvlGauge.record(ctx, tvlUsd, { poolTag });
+  volumeGauge.record(ctx, volumeUsd, { poolTag });
+  feeGauge.record(ctx, feeUsd, { poolTag });
 }
 
 export async function onEventLiquidityEvent(
   ctx: AptosContext,
   liquidityEventType: "Add" | "Remove",
   coins: string[],
-  poolType: string,
+  pool: string,
   relativePrices: number[],
   amounts: bigint[]
 ) {
@@ -138,16 +136,12 @@ export async function onEventLiquidityEvent(
     .map((amount, i) => amount.multipliedBy(actualCoinPrices[i]))
     .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
 
-  const value = usdValue.isNaN() ? new BigDecimal(0) : usdValue;
   ctx.eventLogger.emit("liquidity", {
     distinctId: ctx.transaction.sender,
     liquidityEventType,
-    poolType,
-    value,
+    pool,
+    value: usdValue.isNaN() ? new BigDecimal(0) : usdValue,
   });
-
-  const relativeUsdValue = liquidityEventType === "Add" ? value : value.times(-1);
-  liquidityGauge.record(ctx, relativeUsdValue, { poolType })
 }
 
 // get usd prices based on the first asset with known price (which is available via price API)
