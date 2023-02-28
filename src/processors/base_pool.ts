@@ -2,10 +2,13 @@ import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
 import {
   bigintToInteger,
+  GALXE_QUESTS,
   getCoinDecimals,
   getPairTag,
   getPriceAsof,
+  MOD,
   scaleDown,
+  USDC,
 } from "../utils.js";
 
 const commonOptions = {
@@ -40,6 +43,15 @@ export async function onEventSwapEvent(
   pool_balance_2: bigint,
   pool_balance_3: bigint
 ) {
+  if (
+    coins[Number(idx_in)] === MOD &&
+    coins[Number(idx_out)] === USDC
+  ) {
+    ctx.eventLogger.emit(GALXE_QUESTS.SWAP_MOD_TO_USDC, {
+      distinctId: ctx.transaction.sender,
+    });
+  }
+
   const actualCoinPrices = await getActualCoinPrices(
     coins,
     relativePrices,
@@ -122,6 +134,12 @@ export async function onEventLiquidityEvent(
   relativePrices: number[],
   amounts: bigint[]
 ) {
+  if (liquidityEventType === "Add" && coins.length == 2 && coins.includes(MOD) && coins.includes(USDC)) {
+    ctx.eventLogger.emit(GALXE_QUESTS.ADD_MOD_USDC_LP, {
+      distinctId: ctx.transaction.sender,
+    });
+  }
+
   const actualCoinPrices = await getActualCoinPrices(
     coins,
     relativePrices,

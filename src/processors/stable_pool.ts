@@ -1,11 +1,8 @@
 import { stable_pool, stable_pool_scripts } from "../types/aptos/testnet/amm.js";
 import {
   bigintToInteger,
-  GALXE_QUESTS,
   getCoinDecimals,
-  MOD,
   scaleDown,
-  USDC,
 } from "../utils.js";
 
 import { AptosContext } from "@sentio/sdk/aptos";
@@ -48,15 +45,6 @@ stable_pool
         event.data_decoded.pool_balance_2,
         event.data_decoded.pool_balance_3
       );
-
-      if (
-        coins[Number(event.data_decoded.idx_in)] === MOD &&
-        coins[Number(event.data_decoded.idx_out)] === USDC
-      ) {
-        ctx.eventLogger.emit(GALXE_QUESTS.SWAP_MOD_TO_USDC, {
-          distinctId: ctx.transaction.sender,
-        });
-      }
     }
   )
   .onEventStablePoolCreationEvent(async (event, ctx) => {
@@ -100,12 +88,6 @@ stable_pool
         event.data_decoded.amount_3,
       ]
     );
-
-    if (coins.length == 2 && coins.includes(MOD) && coins.includes(USDC)) {
-      ctx.eventLogger.emit(GALXE_QUESTS.ADD_MOD_USDC_LP, {
-        distinctId: ctx.transaction.sender,
-      });
-    }
   })
   .onEventRemoveLiquidityEvent(async (event, ctx) => {
     const coins = getCoins(event);
