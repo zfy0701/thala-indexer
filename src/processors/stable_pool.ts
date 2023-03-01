@@ -25,7 +25,7 @@ stable_pool
   .onEventSwapEvent(
     async (event: stable_pool.SwapEventInstance, ctx: AptosContext) => {
       const coins = getCoins(event);
-      const poolTag = getPoolTag(coins);
+      const poolType = getPoolType(event);
 
       const relativePrices = getRelativePrices(event, coins);
 
@@ -33,7 +33,7 @@ stable_pool
         ctx,
         "stable",
         coins,
-        poolTag,
+        poolType,
         relativePrices,
         event.data_decoded.idx_in,
         event.data_decoded.idx_out,
@@ -182,20 +182,6 @@ function getCoins(
 
 function isNullType(typeArg: string): boolean {
   return typeArg === NULL_TYPE;
-}
-
-// use "SP-123456coin0Name-100000coin1Name-200000coin2Name-300000coin3Name" as unique tag for each pool
-// the first 6 digits of coin address are used to reduce the length of the tag
-// TODO: poolTag was a workaround for older sentio sdk that did not support long tags
-// now tag string can be up to 512 characters. we can migrate both frontend and indexer to use full pool type (getPoolType)
-function getPoolTag(coins: string[]): string {
-  const concatCoins = coins
-    .map((coin) => {
-      const fragments = coin.split("::");
-      return fragments[0].slice(2, 8) + fragments[fragments.length - 1];
-    })
-    .join("-");
-  return `SP-${concatCoins}`;
 }
 
 // get complete pool type name. notice: there's a space after ", ". example:

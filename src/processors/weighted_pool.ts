@@ -13,7 +13,7 @@ weighted_pool
   .onEventSwapEvent(
     async (event: weighted_pool.SwapEventInstance, ctx: AptosContext) => {
       const { coins, weights } = getCoinsAndWeights(event);
-      const poolTag = getPoolTag(coins, weights);
+      const poolType = getPoolType(event);
 
       const relativePrices = getRelativePrices(coins, weights, [
         event.data_decoded.pool_balance_0,
@@ -26,7 +26,7 @@ weighted_pool
         ctx,
         "weighted",
         coins,
-        poolTag,
+        poolType,
         relativePrices,
         event.data_decoded.idx_in,
         event.data_decoded.idx_out,
@@ -181,21 +181,6 @@ function parseWeight(typeArg: string): number {
 
 function isNullType(typeArg: string): boolean {
   return typeArg === NULL_TYPE;
-}
-
-// use "WP-123456coin0Name-100000coin1Name-200000coin2Name-300000coin3Name-weight0-weight1-weight2-weight3" as unique tag for each pool
-// the first 6 digits of coin address are used to reduce the length of the tag
-// TODO: poolTag was a workaround for older sentio sdk that did not support long tags
-// now tag string can be up to 512 characters. we can migrate both frontend and indexer to use full pool type (getPoolType)
-function getPoolTag(coins: string[], weights: number[]): string {
-  const concatCoins = coins
-    .map((coin) => {
-      const fragments = coin.split("::");
-      return fragments[0].slice(2, 8) + fragments[fragments.length - 1];
-    })
-    .join("-");
-  const concatWeights = weights.join("-");
-  return `WP-${concatCoins}-${concatWeights}`;
 }
 
 // get complete pool type name. notice: there's a space after ", ". example:
