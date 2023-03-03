@@ -100,11 +100,9 @@ lbp
     });
   });
 
-  lbp_scripts
-  .bind({ startVersion: START_VERSION })
-  .onTransaction((tx, ctx) => {
-    ctx.meter.Counter("total_txn").add(1, { type: "lbp" })
-  })
+lbp_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+  ctx.meter.Counter("total_txn").add(1, { type: "lbp" });
+});
 
 // get the price of coin 1 quoted based on coin 0
 function getPriceFromEvent(

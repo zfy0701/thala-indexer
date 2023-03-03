@@ -16,6 +16,6 @@ farming
     }
   });
 
-  scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
-    ctx.meter.Counter("total_txn").add(1, { type: "farming" });
-  })
+scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
+  ctx.meter.Counter("total_txn").add(1, { type: "farming" });
+});

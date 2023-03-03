@@ -44,10 +44,7 @@ export async function onEventSwapEvent(
   pool_balance_2: bigint,
   pool_balance_3: bigint
 ) {
-  if (
-    coins[Number(idx_in)] === MOD &&
-    coins[Number(idx_out)] === USDC
-  ) {
+  if (coins[Number(idx_in)] === MOD && coins[Number(idx_out)] === USDC) {
     ctx.eventLogger.emit(GALXE_QUESTS.SWAP_MOD_TO_USDC, {
       distinctId: ctx.transaction.sender,
     });
@@ -136,7 +133,12 @@ export async function onEventLiquidityEvent(
   relativePrices: number[],
   amounts: bigint[]
 ) {
-  if (liquidityEventType === "Add" && coins.length == 2 && coins.includes(MOD) && coins.includes(USDC)) {
+  if (
+    liquidityEventType === "Add" &&
+    coins.length == 2 &&
+    coins.includes(MOD) &&
+    coins.includes(USDC)
+  ) {
     ctx.eventLogger.emit(GALXE_QUESTS.ADD_MOD_USDC_LP, {
       distinctId: ctx.transaction.sender,
     });
@@ -164,8 +166,9 @@ export async function onEventLiquidityEvent(
     value,
   });
 
-  const relativeUsdValue = liquidityEventType === "Add" ? value : value.times(-1);
-  liquidityGauge.record(ctx, relativeUsdValue, { poolType })
+  const relativeUsdValue =
+    liquidityEventType === "Add" ? value : value.times(-1);
+  liquidityGauge.record(ctx, relativeUsdValue, { poolType });
 }
 
 // get usd prices based on the first asset with known price (which is available via price API)

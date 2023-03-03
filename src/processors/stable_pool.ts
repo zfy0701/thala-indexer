@@ -1,9 +1,8 @@
-import { stable_pool, stable_pool_scripts } from "../types/aptos/testnet/amm.js";
 import {
-  bigintToInteger,
-  getCoinDecimals,
-  scaleDown,
-} from "../utils.js";
+  stable_pool,
+  stable_pool_scripts,
+} from "../types/aptos/testnet/amm.js";
+import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils.js";
 
 import { AptosContext } from "@sentio/sdk/aptos";
 import { onEventLiquidityEvent, onEventSwapEvent } from "./base_pool.js";
@@ -108,10 +107,11 @@ stable_pool
     );
   });
 
-
-stable_pool_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
-  ctx.meter.Counter("total_txn").add(1, { type: "stable_pool"})
-})
+stable_pool_scripts
+  .bind({ startVersion: START_VERSION })
+  .onTransaction((tx, ctx) => {
+    ctx.meter.Counter("total_txn").add(1, { type: "stable_pool" });
+  });
 
 // get the relative price of for each asset based on coin 0, returns an array of relative prices
 // if any coin is Null, the price is undefined
