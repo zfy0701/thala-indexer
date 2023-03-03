@@ -25,6 +25,7 @@ const volOptions = {
 const ammCoinPriceGauge = Gauge.register("amm_coin_price", commonOptions);
 const tvlGauge = Gauge.register("pool_tvl_usd", commonOptions);
 const liquidityGauge = Gauge.register("pool_liquidity_usd", commonOptions);
+export const tvlByPoolGauge = Gauge.register("tvl_by_pool", commonOptions);
 const volumeGauge = Gauge.register("pool_volume_usd", volOptions);
 const feeGauge = Gauge.register("pool_swap_fee_usd", volOptions);
 
