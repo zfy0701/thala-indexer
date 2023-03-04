@@ -1,11 +1,26 @@
 import {
+  base_pool,
   stable_pool,
   stable_pool_scripts,
 } from "../types/aptos/testnet/amm.js";
-import { bigintToInteger, getCoinDecimals, scaleDown } from "../utils.js";
+import {
+  bigintToInteger,
+  getCoinDecimals,
+  getPriceAsof,
+  scaleDown,
+} from "../utils.js";
 
-import { AptosContext } from "@sentio/sdk/aptos";
-import { onEventLiquidityEvent, onEventSwapEvent } from "./base_pool.js";
+import {
+  AptosAccountProcessor,
+  AptosContext,
+  defaultMoveCoder,
+} from "@sentio/sdk/aptos";
+import {
+  onEventLiquidityEvent,
+  onEventSwapEvent,
+  tvlByPoolGauge,
+} from "./base_pool.js";
+import { BigDecimal } from "@sentio/sdk";
 
 const START_VERSION = 429427564;
 
@@ -112,6 +127,41 @@ stable_pool_scripts
   .onTransaction((tx, ctx) => {
     ctx.meter.Counter("total_txn").add(1, { type: "stable_pool" });
   });
+
+AptosAccountProcessor.bind({
+  address: stable_pool.DEFAULT_OPTIONS.address,
+  startVersion: START_VERSION,
+  network: 2,
+}).onVersionInterval(async (resources, ctx) => {
+  const asof = new Date(ctx.timestampInMicros / 1000);
+  const pools = defaultMoveCoder().filterAndDecodeResources<
+    stable_pool.StablePool<any, any, any, any>
+  >(stable_pool.StablePool.TYPE_QNAME, resources);
+  console.log("number of stable pools:", pools.length);
+
+  for (const pool of pools) {
+    const nullIndex = pool.type_arguments.indexOf(base_pool.Null.TYPE_QNAME);
+    const numCoins = nullIndex === -1 ? 4 : nullIndex;
+
+    const coinTypes = pool.type_arguments.slice(0, numCoins);
+    const coinPrices = await Promise.all(
+      coinTypes.map((coinType) => getPriceAsof(coinType, asof))
+    );
+    const coinAmounts: BigDecimal[] = [...Array(numCoins).keys()].map((i) =>
+      scaleDown(
+        // @ts-ignore
+        (pool.data_decoded[`asset_${i}`] as { value: bigint }).value,
+        getCoinDecimals(coinTypes[i])
+      )
+    );
+    const tvl = coinAmounts.reduce(
+      (acc, amount, i) => acc.plus(amount.times(coinPrices[i])),
+      BigDecimal(0)
+    );
+
+    tvlByPoolGauge.record(ctx, tvl, { poolType: pool.type });
+  }
+});
 
 // get the relative price of for each asset based on coin 0, returns an array of relative prices
 // if any coin is Null, the price is undefined

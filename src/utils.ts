@@ -14,10 +14,10 @@ export const WETH = `${TEST_COINS_ADDRESS}::test_coins::WETH`;
 export const USDC = `${TEST_COINS_ADDRESS}::test_coins::USDC`;
 export const CAKE = `${TEST_COINS_ADDRESS}::test_coins::CAKE`;
 export const TAPT = `${TEST_COINS_ADDRESS}::test_coins::TAPT`;
-
 export const MOD = mod_coin.MOD.TYPE_QNAME;
 
 const COIN_DECIMALS: { [key: string]: number } = {
+  [MOD]: 8,
   "0x1::aptos_coin::AptosCoin": 8,
   [WBTC]: 8,
   [WETH]: 6,
