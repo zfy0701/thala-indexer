@@ -23,7 +23,6 @@ const volOptions = {
 };
 
 const ammCoinPriceGauge = Gauge.register("amm_coin_price", commonOptions);
-const tvlGauge = Gauge.register("pool_tvl_usd", commonOptions);
 const liquidityGauge = Gauge.register("pool_liquidity_usd", commonOptions);
 export const tvlByPoolGauge = Gauge.register("tvl_by_pool", commonOptions);
 const volumeGauge = Gauge.register("pool_volume_usd", volOptions);
@@ -117,11 +116,6 @@ export async function onEventSwapEvent(
     .slice(0, coins.length)
     .map((e, i) => scaleDown(e, decimals[i]));
 
-  const tvlUsd = balances
-    .map((balance, i) => balance.multipliedBy(actualCoinPrices[i]))
-    .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
-
-  tvlGauge.record(ctx, tvlUsd, { poolType });
   volumeGauge.record(ctx, volumeUsd, { poolType });
   feeGauge.record(ctx, feeUsd, { poolType });
 }
