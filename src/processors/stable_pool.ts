@@ -54,10 +54,6 @@ stable_pool
         event.data_decoded.amount_in,
         event.data_decoded.amount_out,
         event.data_decoded.fee_amount,
-        event.data_decoded.pool_balance_0,
-        event.data_decoded.pool_balance_1,
-        event.data_decoded.pool_balance_2,
-        event.data_decoded.pool_balance_3
       );
     }
   )

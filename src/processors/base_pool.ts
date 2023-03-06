@@ -39,10 +39,6 @@ export async function onEventSwapEvent(
   amount_in: bigint,
   amount_out: bigint,
   fee_amount: bigint,
-  pool_balance_0: bigint,
-  pool_balance_1: bigint,
-  pool_balance_2: bigint,
-  pool_balance_3: bigint
 ) {
   if (coins[Number(idx_in)] === MOD && coins[Number(idx_out)] === USDC) {
     ctx.eventLogger.emit(GALXE_QUESTS.SWAP_MOD_TO_USDC, {
