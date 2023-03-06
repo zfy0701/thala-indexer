@@ -106,16 +106,6 @@ export async function onEventSwapEvent(
     ...swapAttributes,
   });
 
-  // TVL
-  const balances = [
-    pool_balance_0,
-    pool_balance_1,
-    pool_balance_2,
-    pool_balance_3,
-  ]
-    .slice(0, coins.length)
-    .map((e, i) => scaleDown(e, decimals[i]));
-
   volumeGauge.record(ctx, volumeUsd, { poolType });
   feeGauge.record(ctx, feeUsd, { poolType });
 }
