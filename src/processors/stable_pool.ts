@@ -24,7 +24,7 @@ import { BigDecimal } from "@sentio/sdk";
 
 const START_VERSION = 429427564;
 
-const EPSILON = 0.00000001; // for detecting convergence in stableswap math
+const EPSILON = 0.000001; // 10e-6, for detecting convergence in stableswap math
 const MAX_LOOP_LIMIT = 100;
 
 const NULL_TYPE = `${stable_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
@@ -265,7 +265,7 @@ function getStablePrice(
   return (balances[i] * b + naxx) / (balances[j] * b + naxx);
 }
 
-// https://github.com/ThalaLabs/thalaswap-v1/blob/main/sources/stable_math.move#L54
+// see `compute_invarient` in https://github.com/ThalaLabs/thala-modules/blob/main/thalaswap_math/sources/stable_math.move
 function getD(xp: number[], a: number): number {
   const n = xp.length;
 
@@ -299,5 +299,5 @@ function getD(xp: number[], a: number): number {
     i = i + 1;
   }
 
-  throw new Error("not converged in getD");
+  throw new Error(`not converged in getD, xp: ${xp}, a: ${a}`);
 }
