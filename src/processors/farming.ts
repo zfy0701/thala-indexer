@@ -14,6 +14,14 @@ farming
         distinctId: ctx.transaction.sender,
       });
     }
+  })
+  .onEventClaimEvent((event, ctx) => {
+      ctx.eventLogger.emit("claim_reward", {
+          distinctId: ctx.transaction.sender,
+          amount: event.data_decoded.amount,
+          stake_coin: event.data_decoded.stake_coin,
+          reward_coin: event.data_decoded.reward_coin
+      })
   });
 
 scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
