@@ -2,7 +2,6 @@ import { lbp, lbp_scripts } from "../types/aptos/testnet/lbp.js";
 import {
   fp64ToFloat,
   getCoinDecimals,
-  getDateTag,
   scaleDown,
 } from "../utils.js";
 
@@ -21,14 +20,12 @@ lbp
     const swapAmountOut = event.data_decoded.amount_out;
     const isBuy = event.data_decoded.is_buy;
 
-    const dateString = getDateTag(Number(ctx.transaction.timestamp) / 1000);
     ctx.meter
       .Counter("volume_coin_0")
       .add(
         scaleDown(isBuy ? swapAmountIn : swapAmountOut, getCoinDecimals(coin0)),
         {
           poolId: getPoolId(event),
-          dateString,
         }
       );
     const swapAttributes = {
