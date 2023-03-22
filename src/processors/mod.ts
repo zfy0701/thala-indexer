@@ -12,9 +12,9 @@ import {
   stability_pool_scripts,
   vault,
   vault_scripts,
-} from "../types/aptos/testnet/mod.js";
+} from "../types/aptos/mod.js";
 
-const START_VERSION = 429533127;
+const START_VERSION = 104596796;
 const MOD_DECIMALS = 8;
 
 const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
@@ -71,33 +71,33 @@ vault
         coin,
       });
   })
-  .onEventVaultUpdatedEvent(async (event, ctx) => {
-    let coinType = event.type_arguments[0];
-    let price = await getPriceAsof(
-      coinType,
-      new Date(Number(ctx.transaction.timestamp) / 1000)
-    );
-    coinPriceGauge.record(ctx, price, { coin: coinType });
+  // .onEventVaultUpdatedEvent(async (event, ctx) => {
+  //   let coinType = event.type_arguments[0];
+  //   let price = await getPriceAsof(
+  //     coinType,
+  //     new Date(Number(ctx.transaction.timestamp) / 1000)
+  //   );
+  //   coinPriceGauge.record(ctx, price, { coin: coinType });
 
-    const tvl = scaleDown(
-      event.data_decoded.collateral,
-      getCoinDecimals(coinType)
-    ).multipliedBy(price);
+  //   const tvl = scaleDown(
+  //     event.data_decoded.collateral,
+  //     getCoinDecimals(coinType)
+  //   ).multipliedBy(price);
 
-    ctx.eventLogger.emit("update_vault", {
-      distinctId: ctx.transaction.sender,
-      version: event.version,
-      account: event.data_decoded.vault_address,
-      coinType,
-      collateral: event.data_decoded.collateral,
-      liability: event.data_decoded.liability,
-      tvl,
-      nicr: safeDiv(
-        event.data_decoded.collateral,
-        event.data_decoded.liability
-      ),
-    });
-  })
+  //   ctx.eventLogger.emit("update_vault", {
+  //     distinctId: ctx.transaction.sender,
+  //     version: event.version,
+  //     account: event.data_decoded.vault_address,
+  //     coinType,
+  //     collateral: event.data_decoded.collateral,
+  //     liability: event.data_decoded.liability,
+  //     tvl,
+  //     nicr: safeDiv(
+  //       event.data_decoded.collateral,
+  //       event.data_decoded.liability
+  //     ),
+  //   });
+  // })
   .onEventLiquidationEvent((event, ctx) => {
     ctx.eventLogger.emit("liquidation", {
       distinctId: ctx.transaction.sender,

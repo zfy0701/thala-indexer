@@ -1,15 +1,11 @@
-import { lbp, lbp_scripts } from "../types/aptos/testnet/lbp.js";
-import {
-  fp64ToFloat,
-  getCoinDecimals,
-  scaleDown,
-} from "../utils.js";
+import { lbp, lbp_scripts } from "../types/aptos/lbp.js";
+import { fp64ToFloat, getCoinDecimals, scaleDown } from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
 
 const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
-const START_VERSION = 426312400;
+const START_VERSION = 105750578;
 
 lbp
   .bind({ startVersion: START_VERSION })

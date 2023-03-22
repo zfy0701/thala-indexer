@@ -2,7 +2,7 @@ import {
   base_pool,
   weighted_pool,
   weighted_pool_scripts,
-} from "../types/aptos/testnet/amm.js";
+} from "../types/aptos/amm.js";
 import { getCoinDecimals, getPriceAsof, scaleDown } from "../utils.js";
 
 import {
@@ -17,7 +17,7 @@ import {
 } from "./base_pool.js";
 import { BigDecimal } from "@sentio/sdk";
 
-const START_VERSION = 429427564;
+const START_VERSION = 104592735;
 
 const NULL_TYPE = `${weighted_pool.DEFAULT_OPTIONS.address}::base_pool::Null`;
 
@@ -45,7 +45,7 @@ weighted_pool
         event.data_decoded.idx_out,
         event.data_decoded.amount_in,
         event.data_decoded.amount_out,
-        event.data_decoded.fee_amount,
+        event.data_decoded.fee_amount
       );
     }
   )
@@ -126,7 +126,6 @@ weighted_pool_scripts
 AptosAccountProcessor.bind({
   address: weighted_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
-  network: 2,
 }).onVersionInterval(async (resources, ctx) => {
   const asof = new Date(ctx.timestampInMicros / 1000);
   const pools = defaultMoveCoder().filterAndDecodeResources<

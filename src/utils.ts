@@ -1,7 +1,7 @@
 import { BigDecimal } from "@sentio/sdk";
-import { getPriceBySymbol, getPriceByType } from "@sentio/sdk/utils";
+import { getPriceByType } from "@sentio/sdk/utils";
 import { CHAIN_IDS } from "@sentio/sdk";
-import { mod_coin } from "./types/aptos/testnet/mod.js";
+import { mod_coin } from "./types/aptos/mod.js";
 
 // if coin is not found in COMMON_COINS, we use 8 decimals by default
 // in that case, frontend / metrics users need to handle scaling if decimal is incorrect
@@ -47,10 +47,6 @@ export async function getPriceAsof(
   }
 
   try {
-    if (coinType.includes("test_coins")) {
-      return await getPriceBySymbol(coinType.split("::")[2], asof);
-    }
-
     return await getPriceByType(
       // use mainnet price is fine
       CHAIN_IDS.APTOS_MAINNET,
