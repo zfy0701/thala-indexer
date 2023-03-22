@@ -3,7 +3,6 @@ import {
   getCoinDecimals,
   getPriceAsof,
   safeDiv,
-  GALXE_QUESTS,
 } from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
@@ -22,9 +21,6 @@ const coinPriceGauge = Gauge.register("coin_price", { sparse: true });
 vault
   .bind({ startVersion: START_VERSION })
   .onEventBorrowEvent((event, ctx) => {
-    ctx.eventLogger.emit(GALXE_QUESTS.BORROW_MOD, {
-      distinctId: ctx.transaction.sender,
-    });
     ctx.meter.Counter("count_borrow").add(1, {
       coin: event.type_arguments[0],
     });
@@ -112,9 +108,6 @@ vault
 stability_pool
   .bind({ startVersion: START_VERSION })
   .onEventDepositEvent((event, ctx) => {
-    ctx.eventLogger.emit(GALXE_QUESTS.DEPOSIT_STABILITY_POOL, {
-      distinctId: ctx.transaction.sender,
-    });
     ctx.eventLogger.emit("stability", {
       distinctId: ctx.transaction.sender,
     });

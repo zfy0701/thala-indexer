@@ -26,14 +26,6 @@ const COIN_DECIMALS: { [key: string]: number } = {
   [CAKE]: 8,
 };
 
-export const GALXE_QUESTS = {
-  BORROW_MOD: "borrow_mod",
-  DEPOSIT_STABILITY_POOL: "deposit_stability_pool",
-  SWAP_MOD_TO_USDC: "swap_mod_to_usdc",
-  ADD_MOD_USDC_LP: "add_mod_usdc_lp",
-  STAKE_MOD_USDC_LP: "stake_mod_usdc_lp",
-};
-
 export async function getPriceAsof(
   coinType: string,
   asof: Date
