@@ -2,7 +2,7 @@ import {
   base_pool,
   stable_pool,
   stable_pool_scripts,
-} from "../types/aptos/testnet/amm.js";
+} from "../types/aptos/amm.js";
 import {
   bigintToInteger,
   getCoinDecimals,
@@ -22,7 +22,7 @@ import {
 } from "./base_pool.js";
 import { BigDecimal } from "@sentio/sdk";
 
-const START_VERSION = 429427564;
+const START_VERSION = 104592735;
 
 const EPSILON = 0.000001; // 10e-6, for detecting convergence in stableswap math
 const MAX_LOOP_LIMIT = 100;
@@ -53,7 +53,7 @@ stable_pool
         event.data_decoded.idx_out,
         event.data_decoded.amount_in,
         event.data_decoded.amount_out,
-        event.data_decoded.fee_amount,
+        event.data_decoded.fee_amount
       );
     }
   )
@@ -127,7 +127,6 @@ stable_pool_scripts
 AptosAccountProcessor.bind({
   address: stable_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
-  network: 2,
 }).onVersionInterval(async (resources, ctx) => {
   const asof = new Date(ctx.timestampInMicros / 1000);
   const pools = defaultMoveCoder().filterAndDecodeResources<
