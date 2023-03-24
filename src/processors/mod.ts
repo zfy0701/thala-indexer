@@ -116,6 +116,14 @@ stability_pool
     ctx.eventLogger.emit("stability", {
       distinctId: ctx.transaction.sender,
     });
+  })
+  .onEventClaimEvent((event, ctx) => {
+    ctx.eventLogger.emit("claim_reward", {
+      distinctId: ctx.transaction.sender,
+      depositor: event.data_decoded.depositor,
+      amount: event.data_decoded.coin_amount,
+      reward_coin: event.data_decoded.coin_name
+    });
   });
 
 vault_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
