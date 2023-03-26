@@ -1,9 +1,4 @@
-import {
-  scaleDown,
-  getCoinDecimals,
-  getPriceAsof,
-  safeDiv,
-} from "../utils.js";
+import { scaleDown, getCoinDecimals, getPriceAsof, safeDiv } from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
 import {
@@ -122,7 +117,7 @@ stability_pool
       distinctId: ctx.transaction.sender,
       depositor: event.data_decoded.depositor,
       amount: event.data_decoded.coin_amount,
-      reward_coin: event.data_decoded.coin_name
+      reward_coin: event.data_decoded.coin_name,
     });
   });
 
