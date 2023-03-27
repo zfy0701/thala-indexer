@@ -1,5 +1,10 @@
 import { lbp, lbp_scripts } from "../types/aptos/lbp.js";
-import { fp64ToFloat, getCoinDecimals, scaleDown } from "../utils.js";
+import {
+  fp64ToFloat,
+  getCoinDecimals,
+  getPriceAsof,
+  scaleDown,
+} from "../utils.js";
 
 import { Gauge } from "@sentio/sdk";
 
@@ -7,43 +12,54 @@ const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
 const START_VERSION = 107983306;
 
-lbp.bind({ startVersion: START_VERSION }).onEventSwapEvent((event, ctx) => {
-  const coin0 = event.type_arguments[0];
-  const coin1 = event.type_arguments[1];
-  const swapAmountIn = event.data_decoded.amount_in;
-  const swapAmountOut = event.data_decoded.amount_out;
-  const isBuy = event.data_decoded.is_buy;
+lbp
+  .bind({ startVersion: START_VERSION })
+  .onEventSwapEvent(async (event, ctx) => {
+    const coin0 = event.type_arguments[0];
+    const coin1 = event.type_arguments[1];
+    const swapAmountIn = event.data_decoded.amount_in;
+    const swapAmountOut = event.data_decoded.amount_out;
+    const isBuy = event.data_decoded.is_buy;
 
-  ctx.meter
-    .Counter("volume_coin_0")
-    .add(
-      scaleDown(isBuy ? swapAmountIn : swapAmountOut, getCoinDecimals(coin0)),
-      {
-        poolId: getPoolId(event),
-      }
+    ctx.meter
+      .Counter("volume_coin_0")
+      .add(
+        scaleDown(isBuy ? swapAmountIn : swapAmountOut, getCoinDecimals(coin0)),
+        {
+          poolId: getPoolId(event),
+        }
+      );
+
+    const price1To0 = getPriceFromEvent(event);
+    const price0Usd = await getPriceAsof(
+      coin0,
+      new Date(Number(ctx.transaction.timestamp) / 1000)
     );
+    const price1Usd = price0Usd * price1To0;
 
-  coin1PriceGauge.record(ctx, getPriceFromEvent(event), {
-    poolId: getPoolId(event),
+    const swapAttributes = {
+      pair: `${coin0}-${coin1}`,
+      is_buy: isBuy,
+      creator_address: event.data_decoded.creator_addr,
+      coin_address_in: isBuy ? coin0 : coin1,
+      coin_address_out: isBuy ? coin1 : coin0,
+      amount_in: swapAmountIn,
+      amount_out: swapAmountOut,
+      fee_amount: event.data_decoded.fee_amount,
+      price_in: isBuy ? price0Usd : price1Usd,
+      price_out: isBuy ? price1Usd : price0Usd,
+    };
+
+    coin1PriceGauge.record(ctx, price1Usd, {
+      poolId: getPoolId(event),
+    });
+
+    ctx.eventLogger.emit("swap", {
+      distinctId: ctx.transaction.sender,
+      message: `Swap ${swapAmountIn} ${coin0} for ${swapAmountOut} ${coin1}`,
+      ...swapAttributes,
+    });
   });
-
-  const swapAttributes = {
-    pair: `${coin0}-${coin1}`,
-    is_buy: isBuy,
-    creator_address: event.data_decoded.creator_addr,
-    coin_address_in: coin0,
-    coin_address_out: coin1,
-    amount_in: swapAmountIn,
-    amount_out: swapAmountOut,
-    fee_amount: event.data_decoded.fee_amount,
-  };
-
-  ctx.eventLogger.emit("swap", {
-    distinctId: ctx.transaction.sender,
-    message: `Swap ${swapAmountIn} ${coin0} for ${swapAmountOut} ${coin1}`,
-    ...swapAttributes,
-  });
-});
 
 lbp_scripts.bind({ startVersion: START_VERSION }).onTransaction((tx, ctx) => {
   ctx.meter.Counter("total_txn").add(1, { type: "lbp" });
