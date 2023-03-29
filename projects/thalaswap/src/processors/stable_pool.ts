@@ -8,7 +8,7 @@ import {
   getCoinDecimals,
   getPriceAsof,
   scaleDown,
-} from "../utils.js";
+} from "../../../../src/utils.js";
 
 import {
   AptosAccountProcessor,

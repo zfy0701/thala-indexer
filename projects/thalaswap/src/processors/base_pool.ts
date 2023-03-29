@@ -6,7 +6,7 @@ import {
   getPairTag,
   getPriceAsof,
   scaleDown,
-} from "../utils.js";
+} from "../../../../src/utils.js";
 
 const commonOptions = {
   sparse: true,

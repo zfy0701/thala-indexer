@@ -3,7 +3,7 @@ import {
   weighted_pool,
   weighted_pool_scripts,
 } from "../types/aptos/amm.js";
-import { getCoinDecimals, getPriceAsof, scaleDown } from "../utils.js";
+import { getCoinDecimals, getPriceAsof, scaleDown } from "../../../../src/utils.js";
 
 import {
   AptosAccountProcessor,

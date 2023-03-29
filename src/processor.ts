@@ -1,5 +1,1 @@
-import "./processors/mod.js";
-import "./processors/lbp.js";
-import "./processors/weighted_pool.js";
-import "./processors/stable_pool.js";
-import "./processors/farming.js";
+// Intentionally empty, processors have been moved to ./projects/<projectname>/src/processor.ts
