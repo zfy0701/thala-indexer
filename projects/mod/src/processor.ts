@@ -1,10 +1,3 @@
-import {
-  scaleDown,
-  getCoinDecimals,
-  getPriceAsof,
-  safeDiv,
-} from "../../../src/utils.js";
-
 import { Gauge } from "@sentio/sdk";
 import {
   stability_pool,
@@ -12,6 +5,7 @@ import {
   vault,
   vault_scripts,
 } from "./types/aptos/mod.js";
+import { getCoinInfo } from "@sentio/sdk/aptos/ext";
 
 const START_VERSION = 104596796;
 const MOD_DECIMALS = 8;
@@ -26,12 +20,12 @@ vault
     });
     ctx.meter
       .Counter("cumulative_borrow_amount")
-      .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
+      .add(event.data_decoded.amount.scaleDown(MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
     ctx.meter
       .Counter("cumulative_borrow_fee")
-      .add(scaleDown(event.data_decoded.fee, MOD_DECIMALS), {
+      .add(event.data_decoded.fee.scaleDown(MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
   })
@@ -41,7 +35,7 @@ vault
     });
     ctx.meter
       .Counter("cumulative_repay_amount")
-      .add(scaleDown(event.data_decoded.amount, MOD_DECIMALS), {
+      .add(event.data_decoded.amount.scaleDown(MOD_DECIMALS), {
         coin: event.type_arguments[0],
       });
   })
@@ -52,7 +46,7 @@ vault
     });
     ctx.meter
       .Counter("cumulative_deposit_collateral_amount")
-      .add(scaleDown(event.data_decoded.amount, getCoinDecimals(coin)), {
+      .add(event.data_decoded.amount.scaleDown(getCoinInfo(coin).decimals), {
         coin,
       });
   })
@@ -63,7 +57,7 @@ vault
     });
     ctx.meter
       .Counter("cumulative_withdraw_collateral_amount")
-      .add(scaleDown(event.data_decoded.amount, getCoinDecimals(coin)), {
+      .add(event.data_decoded.amount.scaleDown(getCoinInfo(coin).decimals), {
         coin,
       });
   })
@@ -135,3 +129,10 @@ stability_pool_scripts
   .onTransaction((tx, ctx) => {
     ctx.meter.Counter("total_txn").add(1, { type: "stability_pool" });
   });
+
+// function safeDiv(a: bigint, b: bigint): BigDecimal {
+//   if (b == 0n) {
+//     return new BigDecimal(0);
+//   }
+//   return a.asBigDecimal().dividedBy(b.asBigDecimal());
+// }
