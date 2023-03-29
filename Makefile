@@ -11,3 +11,6 @@ $(PROJECTS):
 
 %:
 	cd $(PROJECTS_DIR)/$@ && yarn install && yarn build
+
+upload-%:
+	cd $(PROJECTS_DIR)/$* && yarn upload
