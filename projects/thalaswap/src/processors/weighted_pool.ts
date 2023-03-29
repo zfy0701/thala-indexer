@@ -5,7 +5,7 @@ import {
 } from "../types/aptos/amm.js";
 
 import {
-  AptosAccountProcessor,
+  AptosResourcesProcessor,
   AptosContext,
   defaultMoveCoder,
 } from "@sentio/sdk/aptos";
@@ -123,7 +123,7 @@ weighted_pool_scripts
     ctx.meter.Counter("total_txn").add(1, { type: "weighted_pool" });
   });
 
-AptosAccountProcessor.bind({
+AptosResourcesProcessor.bind({
   address: weighted_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
 }).onVersionInterval(async (resources, ctx) => {

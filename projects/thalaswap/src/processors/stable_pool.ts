@@ -5,7 +5,7 @@ import {
 } from "../types/aptos/amm.js";
 
 import {
-  AptosAccountProcessor,
+  AptosResourcesProcessor,
   AptosContext,
   defaultMoveCoder,
 } from "@sentio/sdk/aptos";
@@ -120,7 +120,7 @@ stable_pool_scripts
     ctx.meter.Counter("total_txn").add(1, { type: "stable_pool" });
   });
 
-AptosAccountProcessor.bind({
+AptosResourcesProcessor.bind({
   address: stable_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
 }).onVersionInterval(async (resources, ctx) => {
