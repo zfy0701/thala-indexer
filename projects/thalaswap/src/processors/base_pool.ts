@@ -1,12 +1,6 @@
 import { BigDecimal, Gauge } from "@sentio/sdk";
 import { AptosContext } from "@sentio/sdk/aptos";
-import {
-  bigintToInteger,
-  getCoinDecimals,
-  getPairTag,
-  getPriceAsof,
-  scaleDown,
-} from "../../../../src/utils.js";
+import { getCoinInfo, getPrice } from "@sentio/sdk/aptos/ext";
 
 const commonOptions = {
   sparse: true,
@@ -40,15 +34,15 @@ export async function onEventSwapEvent(
   const actualCoinPrices = await getActualCoinPrices(
     coins,
     relativePrices,
-    Number(ctx.transaction.timestamp) / 1000
+    Number(ctx.transaction.timestamp)
   );
 
-  const decimals = coins.map(getCoinDecimals);
+  const decimals = coins.map((coin) => getCoinInfo(coin).decimals);
   const idxIn = bigintToInteger(idx_in);
   const idxOut = bigintToInteger(idx_out);
 
-  const swapAmountIn = scaleDown(amount_in, decimals[idxIn]);
-  const swapAmountOut = scaleDown(amount_out, decimals[idxOut]);
+  const swapAmountIn = amount_in.scaleDown(decimals[idxIn]);
+  const swapAmountOut = amount_out.scaleDown(decimals[idxOut]);
 
   const coinIn = coins[idxIn];
   const coinOut = coins[idxOut];
@@ -56,9 +50,9 @@ export async function onEventSwapEvent(
   const actualCoinInPrice = actualCoinPrices[idxIn];
   const actualCoinOutPrice = actualCoinPrices[idxOut];
   const volumeUsd = swapAmountIn.multipliedBy(actualCoinInPrice);
-  const feeUsd = scaleDown(fee_amount, decimals[idxIn]).multipliedBy(
-    actualCoinInPrice
-  );
+  const feeUsd = fee_amount
+    .scaleDown(decimals[idxIn])
+    .multipliedBy(actualCoinInPrice);
 
   const pairTag = getPairTag(coinIn, coinOut);
   ammCoinPriceGauge.record(ctx, actualCoinInPrice, {
@@ -108,13 +102,13 @@ export async function onEventLiquidityEvent(
   const actualCoinPrices = await getActualCoinPrices(
     coins,
     relativePrices,
-    Number(ctx.transaction.timestamp) / 1000
+    Number(ctx.transaction.timestamp)
   );
 
-  const decimals = coins.map(getCoinDecimals);
+  const decimals = coins.map((coin) => getCoinInfo(coin).decimals);
   const amountsScaled = amounts
     .slice(0, coins.length)
-    .map((e, i) => scaleDown(e, decimals[i]));
+    .map((e, i) => e.scaleDown(decimals[i]));
   const usdValue = amountsScaled
     .map((amount, i) => amount.multipliedBy(actualCoinPrices[i]))
     .reduce((acc, e) => acc.plus(e), new BigDecimal(0));
@@ -138,15 +132,12 @@ export async function onEventLiquidityEvent(
 async function getActualCoinPrices(
   coins: string[],
   relativePrices: number[],
-  timestampMillis: number
+  timestampMicros: number
 ): Promise<number[]> {
   let knownPriceIdx = 0;
   let knownPrice = 0;
   while (knownPriceIdx < coins.length) {
-    knownPrice = await getPriceAsof(
-      coins[knownPriceIdx],
-      new Date(timestampMillis)
-    );
+    knownPrice = await getPrice(coins[knownPriceIdx], timestampMicros);
     if (knownPrice) {
       break;
     }
@@ -158,4 +149,26 @@ async function getActualCoinPrices(
     : relativePrices.map(
         (e) => (knownPrice / relativePrices[knownPriceIdx]) * e
       );
+}
+
+// use "123456coin1Name-789012coin2Name" as pair tag for each pool
+// the first 6 digits of coin address are used to reduce the length of the tag
+// tags are sorted alphabetically
+function getPairTag(coin0: string, coin1: string): string {
+  const fragments0 = coin0.split("::");
+  const coinTag0 =
+    fragments0[0].slice(2, 8) + fragments0[fragments0.length - 1];
+  const fragments1 = coin1.split("::");
+  const coinTag1 =
+    fragments1[0].slice(2, 8) + fragments1[fragments1.length - 1];
+  return coinTag0.localeCompare(coinTag1) < 0
+    ? coinTag0.concat("-").concat(coinTag1)
+    : coinTag1.concat("-").concat(coinTag0);
+}
+
+export function bigintToInteger(a: bigint): number {
+  if (a > BigInt(Number.MAX_SAFE_INTEGER)) {
+    throw new Error("too large");
+  }
+  return Number(a);
 }

@@ -3,12 +3,6 @@ import {
   stable_pool,
   stable_pool_scripts,
 } from "../types/aptos/amm.js";
-import {
-  bigintToInteger,
-  getCoinDecimals,
-  getPriceAsof,
-  scaleDown,
-} from "../../../../src/utils.js";
 
 import {
   AptosAccountProcessor,
@@ -16,11 +10,13 @@ import {
   defaultMoveCoder,
 } from "@sentio/sdk/aptos";
 import {
+  bigintToInteger,
   onEventLiquidityEvent,
   onEventSwapEvent,
   tvlByPoolGauge,
 } from "./base_pool.js";
 import { BigDecimal } from "@sentio/sdk";
+import { getCoinInfo, getPrice } from "@sentio/sdk/aptos/ext";
 
 const START_VERSION = 104592735;
 
@@ -128,7 +124,6 @@ AptosAccountProcessor.bind({
   address: stable_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
 }).onVersionInterval(async (resources, ctx) => {
-  const asof = new Date(ctx.timestampInMicros / 1000);
   const pools = defaultMoveCoder().filterAndDecodeResources<
     stable_pool.StablePool<any, any, any, any>
   >(stable_pool.StablePool.TYPE_QNAME, resources);
@@ -140,13 +135,12 @@ AptosAccountProcessor.bind({
 
     const coinTypes = pool.type_arguments.slice(0, numCoins);
     const coinPrices = await Promise.all(
-      coinTypes.map((coinType) => getPriceAsof(coinType, asof))
+      coinTypes.map((coinType) => getPrice(coinType, ctx.timestampInMicros))
     );
     const coinAmounts: BigDecimal[] = [...Array(numCoins).keys()].map((i) =>
-      scaleDown(
-        // @ts-ignore
-        (pool.data_decoded[`asset_${i}`] as { value: bigint }).value,
-        getCoinDecimals(coinTypes[i])
+      // @ts-ignore
+      (pool.data_decoded[`asset_${i}`] as { value: bigint }).value.scaleDown(
+        getCoinInfo(coinTypes[i]).decimals
       )
     );
     const tvl = coinAmounts.reduce(
@@ -166,27 +160,23 @@ function getRelativePrices(
 ): number[] {
   const numCoins = coins.length;
 
-  const balance0 = scaleDown(
-    event.data_decoded.pool_balance_0,
-    getCoinDecimals(coins[0])
+  const balance0 = event.data_decoded.pool_balance_0.scaleDown(
+    getCoinInfo(coins[0]).decimals
   );
-  const balance1 = scaleDown(
-    event.data_decoded.pool_balance_1,
-    getCoinDecimals(coins[1])
+  const balance1 = event.data_decoded.pool_balance_1.scaleDown(
+    getCoinInfo(coins[1]).decimals
   );
 
   const balances = [balance0.toNumber(), balance1.toNumber()];
   if (numCoins > 2) {
-    const balance2 = scaleDown(
-      event.data_decoded.pool_balance_2,
-      getCoinDecimals(coins[2])
+    const balance2 = event.data_decoded.pool_balance_2.scaleDown(
+      getCoinInfo(coins[2]).decimals
     );
     balances.push(balance2.toNumber());
   }
   if (numCoins > 3) {
-    const balance3 = scaleDown(
-      event.data_decoded.pool_balance_3,
-      getCoinDecimals(coins[3])
+    const balance3 = event.data_decoded.pool_balance_3.scaleDown(
+      getCoinInfo(coins[3]).decimals
     );
     balances.push(balance3.toNumber());
   }

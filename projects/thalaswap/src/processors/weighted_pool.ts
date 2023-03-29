@@ -3,11 +3,6 @@ import {
   weighted_pool,
   weighted_pool_scripts,
 } from "../types/aptos/amm.js";
-import {
-  getCoinDecimals,
-  getPriceAsof,
-  scaleDown,
-} from "../../../../src/utils.js";
 
 import {
   AptosAccountProcessor,
@@ -20,6 +15,7 @@ import {
   tvlByPoolGauge,
 } from "./base_pool.js";
 import { BigDecimal } from "@sentio/sdk";
+import { getCoinInfo, getPrice } from "@sentio/sdk/aptos/ext";
 
 const START_VERSION = 104592735;
 
@@ -131,7 +127,6 @@ AptosAccountProcessor.bind({
   address: weighted_pool.DEFAULT_OPTIONS.address,
   startVersion: START_VERSION,
 }).onVersionInterval(async (resources, ctx) => {
-  const asof = new Date(ctx.timestampInMicros / 1000);
   const pools = defaultMoveCoder().filterAndDecodeResources<
     weighted_pool.WeightedPool<any, any, any, any, any, any, any, any>
   >(weighted_pool.WeightedPool.TYPE_QNAME, resources);
@@ -145,13 +140,12 @@ AptosAccountProcessor.bind({
 
     const coinTypes = pool.type_arguments.slice(0, numCoins);
     const coinPrices = await Promise.all(
-      coinTypes.map((coinType) => getPriceAsof(coinType, asof))
+      coinTypes.map((coinType) => getPrice(coinType, ctx.timestampInMicros))
     );
     const coinAmounts: BigDecimal[] = [...Array(numCoins).keys()].map((i) =>
-      scaleDown(
-        // @ts-ignore
-        (pool.data_decoded[`asset_${i}`] as { value: bigint }).value,
-        getCoinDecimals(coinTypes[i])
+      // @ts-ignore
+      (pool.data_decoded[`asset_${i}`] as { value: bigint }).value.scaleDown(
+        getCoinInfo(coinTypes[i]).decimals
       )
     );
     const tvl = coinAmounts.reduce(
@@ -174,12 +168,12 @@ function getRelativePrices(
   weights: number[],
   amounts: bigint[]
 ): number[] {
-  const decimals = coins.map(getCoinDecimals);
+  const decimals = coins.map((coin) => getCoinInfo(coin).decimals);
 
   const numCoins = coins.length;
   const amountsScaled = amounts
     .slice(0, numCoins)
-    .map((e, i) => scaleDown(e, decimals[i]));
+    .map((e, i) => e.scaleDown(decimals[i]));
 
   // formula: https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
   // price1to0 = (balance0 / balance1) * (weight1 / weight0)

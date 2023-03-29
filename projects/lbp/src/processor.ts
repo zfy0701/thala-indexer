@@ -1,12 +1,7 @@
 import { lbp, lbp_scripts } from "./types/aptos/lbp.js";
-import {
-  fp64ToFloat,
-  getCoinDecimals,
-  getPriceAsof,
-  scaleDown,
-} from "../../../src/utils.js";
 
 import { Gauge } from "@sentio/sdk";
+import { getCoinInfo, getPrice } from "@sentio/sdk/aptos/ext";
 
 const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
@@ -24,17 +19,16 @@ lbp
     ctx.meter
       .Counter("volume_coin_0")
       .add(
-        scaleDown(isBuy ? swapAmountIn : swapAmountOut, getCoinDecimals(coin0)),
+        (isBuy ? swapAmountIn : swapAmountOut).scaleDown(
+          getCoinInfo(coin0).decimals
+        ),
         {
           poolId: getPoolId(event),
         }
       );
 
     const price1To0 = getPriceFromEvent(event);
-    const price0Usd = await getPriceAsof(
-      coin0,
-      new Date(Number(ctx.transaction.timestamp) / 1000)
-    );
+    const price0Usd = await getPrice(coin0, Number(ctx.transaction.timestamp));
     const price1Usd = price0Usd * price1To0;
 
     const swapAttributes = {
@@ -71,13 +65,11 @@ function getPriceFromEvent(event: lbp.SwapEventInstance) {
   const coin1 = event.type_arguments[1];
   const weight0 = fp64ToFloat(event.data_decoded.weight_0.v);
   const weight1 = fp64ToFloat(event.data_decoded.weight_1.v);
-  const balance0 = scaleDown(
-    event.data_decoded.balance_0,
-    getCoinDecimals(coin0)
+  const balance0 = event.data_decoded.balance_0.scaleDown(
+    getCoinInfo(coin0).decimals
   );
-  const balance1 = scaleDown(
-    event.data_decoded.balance_1,
-    getCoinDecimals(coin1)
+  const balance1 = event.data_decoded.balance_1.scaleDown(
+    getCoinInfo(coin1).decimals
   );
 
   // https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
@@ -91,4 +83,39 @@ function getPoolId(event: lbp.SwapEventInstance) {
     event.type_arguments[0],
     event.type_arguments[1],
   ].join("_");
+}
+
+// input cannot be larger the 2^31
+// this should allow at least 6 digits precision in the fractional part
+// https://stackoverflow.com/questions/45929493/node-js-maximum-safe-floating-point-number
+function fp64ToFloat(a: bigint): number {
+  // avoid large number
+  let mask = BigInt("0xffffffff000000000000000000000000");
+  if ((a & mask) != 0n) {
+    throw new Error("too large");
+  }
+
+  // integer part
+  mask = BigInt("0x10000000000000000");
+  let base = 1;
+  let result = 0;
+  for (let i = 0; i < 32; ++i) {
+    if ((a & mask) != 0n) {
+      result += base;
+    }
+    base *= 2;
+    mask = mask << 1n;
+  }
+
+  // fractional part
+  mask = BigInt("0x8000000000000000");
+  base = 0.5;
+  for (let i = 0; i < 32; ++i) {
+    if ((a & mask) != 0n) {
+      result += base;
+    }
+    base /= 2;
+    mask = mask >> 1n;
+  }
+  return result;
 }

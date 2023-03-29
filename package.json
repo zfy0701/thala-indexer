@@ -7,12 +7,7 @@
     "projects/*"
   ],
   "scripts": {
-    "test": "sentio test",
-    "gen": "sentio gen",
-    "build": "sentio build",
-    "upload": "sentio upload",
-    "postinstall": "sentio gen",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --ignore-path .gitignore --write ."
   },
   "dependencies": {
     "@sentio/sdk": "^2.8.0"
