@@ -1,5 +1,5 @@
 import { coin, optional_aggregator } from "@sentio/sdk/aptos/builtin/0x1";
-import { AptosAccountProcessor, defaultMoveCoder } from "@sentio/sdk/aptos";
+import { AptosResourcesProcessor, defaultMoveCoder } from "@sentio/sdk/aptos";
 import { Gauge } from "@sentio/sdk";
 
 const START_VERSION = 2375822;
@@ -9,7 +9,7 @@ const LAYERZERO_USDC =
 
 const totalSupply = Gauge.register("total_supply", { sparse: true });
 
-AptosAccountProcessor.bind({
+AptosResourcesProcessor.bind({
   address: LAYERZERO_USDC.split("::")[0],
   startVersion: START_VERSION,
 }).onTimeInterval(

@@ -10,7 +10,7 @@
     "prettier": "prettier --ignore-path .gitignore --write ."
   },
   "dependencies": {
-    "@sentio/sdk": "^2.8.0"
+    "@sentio/sdk": "^2.9.2"
   },
   "devDependencies": {
     "@sentio/cli": "^2.4.0",

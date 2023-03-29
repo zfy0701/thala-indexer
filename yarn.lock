@@ -978,20 +978,20 @@
     lodash "^4.17.15"
     ts-essentials "^7.0.1"
 
-"@sentio/protos@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@sentio/protos/-/protos-2.8.0.tgz#187e4290a0a0896fdeffbdc759924927d11c70dc"
-  integrity sha512-BsJIJLLN5up/7wGNr8o87z6X61KhDoAhvs16+8VM8+2yecJgkM3YaDds5tDsuu9J1qOdJPhKnv8wbFIwxEHAAQ==
+"@sentio/protos@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@sentio/protos/-/protos-2.9.2.tgz#9964114acaf561c15fd7c2d6bea011c1677981da"
+  integrity sha512-ILB2pCsoShOnD/qIU7kToml8hZUJW3+EahlzhHsIxnlvu2jvhcZCH0Tlx6O++h8S2husQZiRwKDzFAt3q+Rsog==
   dependencies:
     google-protobuf "^3.21.2"
     nice-grpc "^2.1.0"
 
-"@sentio/runtime@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@sentio/runtime/-/runtime-2.8.0.tgz#a633f4c092467e94decdeb87bb0aeb3776083b89"
-  integrity sha512-jiVhY1+MeoC5us/QrB+pys3ugdDoDG9cz/bE4rgq5654nn1SQrEr8DBFfUkaj9pS/chjHiLBCYLvrjZvRstb2Q==
+"@sentio/runtime@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@sentio/runtime/-/runtime-2.9.2.tgz#e661f0027c3bf65e27d282e3f22500c75fe6310d"
+  integrity sha512-fUs8MtKW2juuo7kpzbG7UAIhbblWo9hWVEcuvpTYDQwvZt+PibUUyNpmv4ffQJmbqkWti5Y/5Jp+ZjBGfvyeTQ==
   dependencies:
-    "@sentio/protos" "^2.8.0"
+    "@sentio/protos" "^2.9.2"
     command-line-args "^5.2.1"
     command-line-usage "^7.0.1"
     fs-extra "^11.0.0"
@@ -1001,17 +1001,17 @@
     nice-grpc-prometheus "^0.1.2"
     winston "^3.8.2"
 
-"@sentio/sdk@^2.8.0":
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-2.8.0.tgz#0b917a8453b4c1fa81ba8f25faaf0bbbae3c2974"
-  integrity sha512-OwRUJclqb9Pbpp8/H8SitnRIY2w+tVFzGuNDmgEuk4w32MJ5GFAsAYtNExcOSviNFfDZluOYS/OJC997HC++Hg==
+"@sentio/sdk@^2.9.2":
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/@sentio/sdk/-/sdk-2.9.2.tgz#da0155f1466d0cc5044766909d1077f33c3acda4"
+  integrity sha512-iF9v2gSrEM4YPf/DDX+6WOxc1j6q+ATBoUyHWHT3zHK2pFH2eXNtTLyt1+cHKFkTARH//YphI1S9Jvmm5WccTg==
   dependencies:
     "@mysten/sui.js" "npm:@sentio/sui.js@0.17.0"
     "@project-serum/anchor" "^0.26.0"
     "@sentio/bigdecimal" "^9.1.1-patch.3"
     "@sentio/ethers-v6" "^1.0.25"
-    "@sentio/protos" "^2.8.0"
-    "@sentio/runtime" "^2.8.0"
+    "@sentio/protos" "^2.9.2"
+    "@sentio/runtime" "^2.9.2"
     "@solana/web3.js" "^1.73.2"
     "@types/prettier" "^2.7.2"
     aptos-sdk "npm:aptos@^1.7.1"

@@ -6,8 +6,9 @@ Powered by sentio.
 
 1. Get ABI of a Move module in https://mainnet.aptoslabs.com/v1/accounts/<account>/modules. Add the JSON file under `projects/<newproject>/abis/aptos` folder.
 1. Edit `src/processor.ts`.
-1. Build: `make <newproject>`.
+1. Build: `make <newproject>`. Or build all: `make`.
 1. Upload: `make upload-<newproject>`.
+1. Before push, `yarn prettier`.
 
 ## How to add a processor
 
