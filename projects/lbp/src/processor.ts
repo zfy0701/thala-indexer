@@ -5,7 +5,7 @@ import { getCoinInfo, getPrice } from "@sentio/sdk/aptos/ext";
 
 const coin1PriceGauge = Gauge.register("price_coin_1", { sparse: true });
 
-const START_VERSION = 107983306;
+const START_VERSION = 110367206;
 
 lbp
   .bind({ startVersion: START_VERSION })
