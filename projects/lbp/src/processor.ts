@@ -69,7 +69,8 @@ function getPriceFromEvent(event: lbp.SwapEventInstance) {
     getCoinInfo(coin0).decimals
   );
   const balance1 = event.data_decoded.balance_1.scaleDown(
-    getCoinInfo(coin1).decimals
+    // TODO: fix this!!! getCoinInfo(coin1).decimals
+    8
   );
 
   // https://docs.balancer.fi/v/v1/core-concepts/protocol/index#spot-price
